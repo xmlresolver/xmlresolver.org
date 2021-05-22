@@ -1,0 +1,4 @@
+#+TITLE README.org
+
+This repository contains the sources for [[xmlresolver.org]]. It’s a single-page
+site with some namespace documents. This all needs some work.
