@@ -1,4 +1,6 @@
-#+TITLE README.org
+#+title: Towards XML Resolver 2.0.0
+#+options: toc:nil
+#+date: 2021-05-22
 
 This repository contains the sources for [[xmlresolver.org]]. It’s a single-page
 site with some namespace documents. This all needs some work.
