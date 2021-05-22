@@ -1,4 +1,4 @@
-#+title: Towards XML Resolver 2.0.0
+#+title: README.org
 #+options: toc:nil
 #+date: 2021-05-22
 
