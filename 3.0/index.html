@@ -1,0 +1,181 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" class="no-js"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script><title>Welcome to XMLResolver.org</title><link href="./css/pygments.css" rel="stylesheet"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link href="https://purl.org/dc/elements/1.1/" rel="schema.dc"/><meta name="dc.modified" content="2021-06-13T10:42:36Z"/><meta name="generator" content="DocBook xslTNG version 1.5.0-SNAPSHOT / 85cff60 / SAXON HE 10.5"/><link href="./css/docbook.css" rel="stylesheet"/><link href="./css/docbook-screen.css" rel="stylesheet"/></head><body class="home"><nav class="top"></nav><main><article class="article"><header><h1>Welcome to XMLResolver.org</h1></header><div class="list-of-titles"><div class="lot toc"><div class="title">Table of Contents</div><ul class="toc"><li><a href="#catalogs"><span class="number">1<span class="sep"> </span></span>XML Catalogs</a></li><li><a href="#getting"><span class="number">2<span class="sep"> </span></span>How to get the XML Resolver</a></li><li><a href="#howto"><span class="number">3<span class="sep"> </span></span>How to use XML Resolver</a><ul class="toc"><li><a href="#programming"><span class="number">3<span class="sep">.</span>1<span class="sep"> </span></span>Programming with the resolver</a></li><li><a href="#configuring"><span class="number">3<span class="sep">.</span>2<span class="sep"> </span></span>Configuring XML Resolver</a></li><li><a href="#howto_s3"><span class="number">3<span class="sep">.</span>3<span class="sep"> </span></span>Example catalog properties file</a></li></ul></li><li><a href="#seealso"><span class="number">4<span class="sep"> </span></span>See also</a></li></ul></div></div><div class="admonition note"><div><div class="icon">🛈︎</div><div class="body"><header><div class="title">Note</div></header><div><p>These pages are a work in progress: they attempt to
+document the XML Resolver 3.x release.
+</p></div></div></div></div><p>As you can tell from the clever name, this site is about an XML
+Resolver.
+(The code is <a href="https://github.com/xmlresolver/xmlresolver/" class="link">over on
+github</a>.) Many (Java-based) XML APIs include features for
+"resolvers" of various sorts. For example, many XML parsers allow you
+to define a "entity resolver" that can intercept attempts to load
+system identifiers. Schema processors provide a "URI resolver" that
+lets you intercept schema module URIs. Stylesheet and query processors
+have similar APIs for intercepting stylesheet and query
+modules.</p><p>The resolver APIs exist because it’s sometimes useful in applications
+to return a locally cached resource instead of the resource actually
+requested. It’s a significant feature of the web that you can
+dereference the URI</p><div class="pre-wrap" db-startinglinenumber="1" db-numberoflines="1"><pre class="language-none numbered programlisting verbatim verblines"><span class="line" db-line="1"><span class="ln"></span><span class="ld"><code>http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd</code></span></span>
+</pre></div><p>and find out that it’s the DTD for XHTML. It is not, however,
+<em>desireable</em> that <em>everyone</em>
+should <em>always</em> dereference that URI to get the
+XHTML DTD. It hasn’t changed in more than a decade and there’s no
+reason to believe it will <em>ever change again</em>.</p><p>I know, DTDs are unfashionable and XHTML has measles or some
+other disease against which the world should have been vaccinated, but
+I chose that example with care. The W3C web server gets <em>so
+many</em> requests for the XHTML DTD that it goes out of its way
+to make retrieving it painful.</p><p>Go ahead, download that DTD. You’ll find that the server introduces a
+significant delay before returning the data and if you get it
+often enough they’ll lock you out for 24 hours or something.</p><p>Point being: there are lots of URIs which you can usefully cache
+locally.</p><p>There are basically two approaches to local caching: you can
+setup a proxy server and have it cache things for you, or you can use
+<a href="https://xmlcatalogs.org" class="link">XML Catalogs</a>. Oh, I
+don’t dispute there might be other approaches, but those are the two
+common, obvious ones.</p><p>The advantage of the local caching proxy is that it’s automatic. It
+caches the resources you request according to whatever criteria you
+establish, it works transparently in the background. No muss, no fuss.
+Well, except for the fact that you have to install and setup a local
+caching proxy. You have to use it everywhere. You might have to chain
+it together with your corporate caching proxy. You also have to
+configure the criteria for local caching. I find its advantages are a
+lot more theoretical than practical.</p><p>The XML Resolver project is about doing it with catalogs, but it
+will also cache resources for you!</p><section id="catalogs" class="section"><header><h2><span class="number">1<span class="sep"> </span></span>XML Catalogs</h2></header><p>Catalogs are straightforward, you provide an XML document that has
+mappings from identifiers that might appear in documents to local
+resources that should be returned for those identifiers.</p><p>Here’s an example:</p><div class="pre-wrap" db-startinglinenumber="1" db-numberoflines="4"><pre class="language-none numbered programlisting verbatim verblines"><span class="line" db-line="1"><span class="ln"></span><span class="ld"><code>&lt;catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog"&gt;</code></span></span>
+<span class="line" db-line="2"><span class="ln"></span><span class="ld"><code>  &lt;system systemId="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"</code></span></span>
+<span class="line" db-line="3"><span class="ln"></span><span class="ld"><code>          uri="/share/dtds/xhtml1-strict.dtd"/&gt;</code></span></span>
+<span class="line" db-line="4"><span class="ln"></span><span class="ld"><code>&lt;/catalog&gt;</code></span></span>
+</pre></div><p>If you load that catalog, attempts to obtain the XHTML DTD from the W3C
+will be satisfied by a local copy of the DTD obtained from the
+<code>/share/dtds/xhtml1-strict.dtd</code>.</p></section><section id="getting" class="section"><header><h2><span class="number">2<span class="sep"> </span></span>How to get the XML Resolver</h2></header><p>The XML Resolver is distributed in two ways: you can get it as a release
+from <a href="https://github.com/xmlresolver/xmlresolver/releases" class="link">GitHub</a>,
+or you can get it from Maven with coordinates like these:</p><div class="pre-wrap highlight" db-startinglinenumber="1" db-numberoflines="12"><pre class="language-xml long numbered programlisting verbatim verblines"><span class="line" db-line="1"><span class="ln">1</span><span class="ld"><code>&lt;dependency&gt;</code></span></span>
+<span class="line" db-line="2"><span class="ln"></span><span class="ld"><code>  &lt;groupId&gt;org.xmlresolver&lt;/groupId&gt;</code></span></span>
+<span class="line" db-line="3"><span class="ln"></span><span class="ld"><code>  &lt;artifactId&gt;xmlresolver&lt;/artifactId&gt;</code></span></span>
+<span class="line" db-line="4"><span class="ln"></span><span class="ld"><code>  &lt;version&gt;3.0.0&lt;/version&gt;</code></span></span>
+<span class="line" db-line="5"><span class="ln">5</span><span class="ld"><code>&lt;/dependency&gt;</code></span></span>
+<span class="line" db-line="6"><span class="ln"></span><span class="ld"><code> </code></span></span>
+<span class="line" db-line="7"><span class="ln"></span><span class="ld"><code>&lt;dependency&gt;</code></span></span>
+<span class="line" db-line="8"><span class="ln"></span><span class="ld"><code>  &lt;groupId&gt;org.xmlresolver&lt;/groupId&gt;</code></span></span>
+<span class="line" db-line="9"><span class="ln"></span><span class="ld"><code>  &lt;artifactId&gt;xmlresolver&lt;/artifactId&gt;</code></span></span>
+<span class="line" db-line="10"><span class="ln">10</span><span class="ld"><code>  &lt;version&gt;3.0.0&lt;/version&gt;</code></span></span>
+<span class="line" db-line="11"><span class="ln"></span><span class="ld"><code>  &lt;classifier&gt;data&lt;/classifier&gt;</code></span></span>
+<span class="line" db-line="12"><span class="ln"></span><span class="ld"><code>&lt;/dependency&gt;</code></span></span>
+</pre></div><p>Place the XML Resolver jar file on your classpath to use the resolver.
+If you also place the “data” jar file on your classpath, you will automatically
+get local resolution of a large number of open source schemas and DTDs. (These are
+mostly from the W3C for the reasons described above.)</p><p>Other distributions can also take advantage of this automatic
+behavior by placing a catalog file at
+<code class="literal">org/xmlresolver/catalog.xml</code> in the jar file. For example, the
+<a href="https://github.com/docbook/docbook" class="link">DocBook schemas</a>
+and
+<a href="https://github.com/docbook/xslTNG" class="link">xslTNG</a> releases do this.
+Simply placing those jar files in your classpath will make catalog resolution of
+the standard URIs quick and efficient.
+</p></section><section id="howto" class="section"><header><h2><span class="number">3<span class="sep"> </span></span>How to use XML Resolver</h2></header><p>The simplest possible thing you can do is instantiate an instance of
+<code>org.xmlresolver.Resolver</code> and use it as the resolver for your parser.
+The <code>Resolver</code> class implements the following resolvers:</p><ul class="itemizedlist"><li><p><code>org.xml.sax.EntityResolver</code> the SAX1 interface used to load XML entities
+</p></li><li><p><code>org.xml.sax.EntityResolver2</code> the SAX2 interface used to load XML entities
+</p></li><li><p><code>javax.xml.transform.URIResolver</code> used to load XSLT resources
+</p></li><li><p><code>org.w3c.dom.ls.LSResourceResolver</code> used by the DOM to load resources
+</p></li><li><p><code>org.xmlresolver.NamespaceResolver</code> an interface for loading namespace-based
+resources based on <a href="https://en.wikipedia.org/wiki/RDDL(RDDL)" class="link">RDDL</a>
+that never really took off, but there you go.
+</p></li><li><p><code>javax.xml.stream.XMLResolver</code> the StAX interface used to load XML entities.
+(This interface is actually supported by the <code>org.xmlresolver.StAXResolver</code> class
+because the StAX <code>XMLResolver</code> API and the SAX <code>EntityResolver</code> APIs are
+incompatible.)
+</p></li></ul><p>Another simple integration point is to instantiate
+<code>org.xmlresolver.tools.ResolvingXMLReader</code> as your XML parser.</p><section id="programming" class="section"><header><h3><span class="number">3<span class="sep">.</span>1<span class="sep"> </span></span>Programming with the resolver</h3></header><p>If you want to take more complete programmatic control of the resolver,
+instantiate a resolver configuration:</p><div class="pre-wrap" db-startinglinenumber="1" db-numberoflines="2"><pre class="language-java numbered programlisting verbatim verblines"><span class="line" db-line="1"><span class="ln"></span><span class="ld"><code>XMLResolverConfiguration config</code></span></span>
+<span class="line" db-line="2"><span class="ln"></span><span class="ld"><code>  = new XMLResolverConfiguration(propertyFiles, catalogs);</code></span></span>
+</pre></div><p>Set the features as you wish:</p><div class="pre-wrap" db-startinglinenumber="1" db-numberoflines="6"><pre class="language-java long numbered programlisting verbatim verblines"><span class="line" db-line="1"><span class="ln">1</span><span class="ld"><code>config.setFeature(ResolverFeature.CACHE_UNDER_HOME, false);</code></span></span>
+<span class="line" db-line="2"><span class="ln"></span><span class="ld"><code> </code></span></span>
+<span class="line" db-line="3"><span class="ln"></span><span class="ld"><code>if (validateCatalogs) {</code></span></span>
+<span class="line" db-line="4"><span class="ln"></span><span class="ld"><code>    config.setFeature(ResolverFeature.CATALOG_LOADER_CLASS,</code></span></span>
+<span class="line" db-line="5"><span class="ln">5</span><span class="ld"><code>                      "org.xmlresolver.loaders.ValidatingXmlLoader");</code></span></span>
+<span class="line" db-line="6"><span class="ln"></span><span class="ld"><code>}</code></span></span>
+</pre></div><p>Then instantiate a resolver:</p><div class="pre-wrap" db-startinglinenumber="1" db-numberoflines="1"><pre class="language-java numbered programlisting verbatim verblines"><span class="line" db-line="1"><span class="ln"></span><span class="ld"><code>Resolver resolver = new Resolver(config);</code></span></span>
+</pre></div><p>and use that resolver in your parsing and URI retrieval.</p><p>For additional APIs, consult the <a href="javadoc/index.html" class="link">JavaDoc</a>.</p></section><section id="configuring" class="section"><header><h3><span class="number">3<span class="sep">.</span>2<span class="sep"> </span></span>Configuring XML Resolver</h3></header><p>The Resolver classes use either Java system properties or a standard
+Java properties file to establish an initial environment.</p><p>The resolver searches for a property file by looking in the following places,
+in this order:</p><ul class="itemizedlist"><li><p>The location identified by the <code>xmlresolver.properties</code> system property.
+</p></li><li><p>The location identified by the <code>XMLRESOLVER_PROPERTIES</code> environment variable.
+</p></li><li><p>A file named <code>xmlresolver.properties</code> on your classpath.
+</p></li></ul><p>The following features may be configured with properties.</p><section id="configuring_s1" class="section"><header><h4><span class="number">3<span class="sep">.</span>2<span class="sep">.</span>1<span class="sep"> </span></span>The initial list of catalog files</h4></header><ul class="itemizedlist"><li><p class="simpara">System property <code>xml.catalog.files</code></p></li><li><p class="simpara">Property file property <code>catalogs</code></p></li></ul><p>A semicolon-delimited list of catalog files. These are the catalog
+files that are initially consulted for resolution. If no catalog files
+are specified, by default the resolver will attempt to use a file
+named <code>catalog.xml</code> in the current directory as a catalog.</p></section><section id="configuring_s2" class="section"><header><h4><span class="number">3<span class="sep">.</span>2<span class="sep">.</span>2<span class="sep"> </span></span>A list of additional catalog files</h4></header><ul class="itemizedlist"><li><p class="simpara">System property <code>xml.catalog.additions</code></p></li><li><p class="simpara">Property file property <code>catalog-additions</code></p></li></ul><p>A semicolon-delimited list of catalog files. This list is used in
+addition to the initial list of catalog files.</p><p>If you attempt to use both a system property _and_ a property from a
+property file to create the initial list of catalog files, you’ll only
+get one or the other. (See prefer-property-file.)</p><p>This property provides a way to add to the current list of files. For
+example, suppose you use a global properties file to initialize the resolver, but
+for a particular application you want to search _additional_ catalogs.
+You can specify them in the <code>xml.catalog.additions</code> system property and they’ll
+be appended to the list instead of replacing the list entirely as setting
+<code>xml.catalog.files</code> would.</p></section><section id="configuring_s3" class="section"><header><h4><span class="number">3<span class="sep">.</span>2<span class="sep">.</span>3<span class="sep"> </span></span>Load catalogs from the classpath</h4></header><ul class="itemizedlist"><li><p class="simpara">System property <code>xml.catalog.classpathCatalogs</code></p></li><li><p class="simpara">Property file property <code>classpath-catalogs</code></p></li></ul><p>Load catalog files from the classpath. If this property is true, the
+resolver will search for all of the files named
+<code>org/xmlresolver/catalog.xml</code> on the classpath and add each of them to the end
+of the catalog list.</p></section><section id="configuring_s4" class="section"><header><h4><span class="number">3<span class="sep">.</span>2<span class="sep">.</span>4<span class="sep"> </span></span>Preference for public or system identifiers</h4></header><ul class="itemizedlist"><li><p class="simpara">System property <code>xml.catalog.prefer</code></p></li><li><p class="simpara">Property file property <code>prefer</code></p></li></ul><p>The initial prefer setting, either public or system.</p></section><section id="configuring_s5" class="section"><header><h4><span class="number">3<span class="sep">.</span>2<span class="sep">.</span>5<span class="sep"> </span></span>Obey <code>oasis-xml-catalog</code> processing instruction</h4></header><ul class="itemizedlist"><li><p class="simpara">System property <code>xml.catalog.allowPI</code></p></li><li><p class="simpara">Property file property <code>allow-oasis-xml-catalog-pi</code></p></li></ul><p>This setting allows you to toggle whether or not the resolver classes
+obey the <code></code> processing instruction.</p><p>If you never use the processing instruction, you can get a very tiny
+performance improvement by disabling this feature. (If this feature is
+enabled, the parser has to create a copy of the resolver configuration
+for every parse.)</p></section><section id="configuring_s6" class="section"><header><h4><span class="number">3<span class="sep">.</span>2<span class="sep">.</span>6<span class="sep"> </span></span>Support relative catalog paths</h4></header><ul class="itemizedlist"><li><p class="simpara">Property file property <code>relative-catalogs</code></p></li></ul><p>If <code>relative-catalogs</code> is true, relative filenames in the <code>catalogs</code>
+property list will be made absolute relative to the current working
+directory; otherwise they will be made
+absolute with respect to the base URI of the properties file from
+which they came.</p><p>This setting has no effect on catalogs loaded from the
+<code>xml.catalogs.files</code> system property which are always made absolute
+with respect to the current working directory.</p></section><section id="configuring_s7" class="section"><header><h4><span class="number">3<span class="sep">.</span>2<span class="sep">.</span>7<span class="sep"> </span></span>Cache documents</h4></header><ul class="itemizedlist"><li><p class="simpara">System properties <code>xml.catalog.cache</code>, <code>xml.catalog.cacheUnderHome</code></p></li><li><p class="simpara">Property file property <code>cache</code>, <code>cacheUnderHome</code></p></li></ul><p>The <code>cache</code> properties specify the directory in which the XML Resolver
+should attempt to cache files that fail to resolve locally. If, instead,
+one of the <code>cacheUnderHome</code> properties is set, the cache directory will
+default to <code>$HOME/.xmlresolver/cache</code>.</p></section><section id="configuring_s8" class="section"><header><h4><span class="number">3<span class="sep">.</span>2<span class="sep">.</span>8<span class="sep"> </span></span>Prefer property file values</h4></header><ul class="itemizedlist"><li><p class="simpara">System property <code>xml.catalog.preferPropertyFile</code></p></li><li><p class="simpara">Property file property <code>prefer-property-file</code></p></li></ul><p>Prefer properties from the properties file.
+If a property file is loaded to configure the resolver and one of the properties in that
+file is also specified as a system property, the system property takes precedence.
+If you’d prefer to have the property file take precedence (as was the case in some
+earlier versions), set the “prefer property file” property to true.</p></section><section id="configuring_s9" class="section"><header><h4><span class="number">3<span class="sep">.</span>2<span class="sep">.</span>9<span class="sep"> </span></span>Use URI entries for system resolution</h4></header><ul class="itemizedlist"><li><p class="simpara">System property <code>xml.catalog.uriForSystem</code></p></li><li><p class="simpara">Property file property <code>uri-for-system</code></p></li></ul><p>Ignore the distinction between system identifiers and URIs.
+The distinction between external identifiers (the public and system identifiers that
+are used in DTDs) and general URIs (as might be used to load a RELAX NG Grammar or XML Schema,
+for example), is not supported uniformly by the parser APIs.
+The Xerces XML Schema implementation, for example, users the <code>resolveEntity</code> API to load
+XML Schema imports.</p><p>Ordinarily, system identifier resolution interrogates the <code>system</code> and <code>public</code> entries (and their
+related entries), but not the <code>uri</code> entries. If this property is true, the resolver will attempt
+to resolve system identifiers with <code>uri</code> entries (_after_ attempting to resolve them with the
+system and public entries.</p></section><section id="configuring_s10" class="section"><header><h4><span class="number">3<span class="sep">.</span>2<span class="sep">.</span>10<span class="sep"> </span></span>Merge http: and https: URI schemes</h4></header><ul class="itemizedlist"><li><p class="simpara">System property <code>xml.catalog.mergeHttps</code></p></li><li><p class="simpara">Property file property <code>merge-https</code></p></li></ul><p>Treat http: and https: URIs as equivalent for the purpose of resolution. The web used to
+be served over http: and many existing catalog files contain http: system identifiers.
+Today, the web is largely served over https: and many documents contain https: system
+identifiers. If this property is true, that distinction will be ignored during catalog lookup,
+<code>http://example.com/sample.dtd</code> will match <code>https://example.com/sample.dtd</code>.</p><p>Note: this has *no effect* on the URIs returned by the resolver or retrieved over the web.
+It only effects catalog lookup for system identifiers and URIs.</p></section><section id="configuring_s11" class="section"><header><h4><span class="number">3<span class="sep">.</span>2<span class="sep">.</span>11<span class="sep"> </span></span>Mask jar URIs</h4></header><ul class="itemizedlist"><li><p class="simpara">System property <code>xml.catalog.maskJarUris</code></p></li><li><p class="simpara">Property file property <code>mask-jar-uris</code></p></li></ul><p>Don’t return jar: or classpath: URIs. Most entity resolver APIs are defined such that if
+resolution succeeds, the base URI of the resource returned is the base URI of the actual,
+local resource. This can greatly simplify things because subsequent relative URIs can be
+resolved against the local resource directly.</p><p>However, the Java URI class does not treat jar: or classpath: URI schemes as hierarchical,
+so any subsequent attempts to resolve relative URIs will fail. If this property is true,
+the local resource will be returned but the URI will be left unchanged. That may require a
+more complete catalog, but it will avoid a situation which is guaranteed to fail.</p></section><section id="configuring_s12" class="section"><header><h4><span class="number">3<span class="sep">.</span>2<span class="sep">.</span>12<span class="sep"> </span></span>Catalog loader class</h4></header><ul class="itemizedlist"><li><p class="simpara">System property <code>xml.catalog.catalogLoaderClass</code></p></li><li><p class="simpara">Property file property <code>catalog-loader-class</code></p></li></ul><p>Specify the catalog loader class. The default catalog loader ignores
+any errors encountered when loading catalogs. This is convenient for
+production use, but can be frustrating because it may not be obvious
+when resolution fails, especially if your internet connection is fast.
+A typo in a catalog file can easily go unnoticed.</p><p>If the value <code>org.xmlresolver.loaders.ValidatingXmlLoader</code> is specified
+for this property, catalog files will be validated when they are
+loaded and the resolver will throw an exception for any validity
+errors encountered.</p></section><section id="configuring_s13" class="section"><header><h4><span class="number">3<span class="sep">.</span>2<span class="sep">.</span>13<span class="sep"> </span></span>Parse RDDL documents</h4></header><ul class="itemizedlist"><li><p class="simpara">System property <code>xml.catalog.parseRddl</code></p></li><li><p class="simpara">Property file property <code>parse-rddl</code></p></li></ul><p>Attempt to resolve RDDL resources in namespace URI lookup. If the
+namespace resolver is used, if a nature and purpose are specified, and
+if the resource returned is an HTML document, the resolver will
+attempt to find the RDDL resource description for the requested
+namespace and resolve that URI.</p><p>For example, the following API call will return the XML Schema for XML:</p><div class="pre-wrap" db-startinglinenumber="1" db-numberoflines="3"><pre class="language-java numbered programlisting verbatim verblines"><span class="line" db-line="1"><span class="ln"></span><span class="ld"><code>resolveNamespaceURI("http://www.w3.org/XML/1998/namespace",</code></span></span>
+<span class="line" db-line="2"><span class="ln"></span><span class="ld"><code>                    "http://www.w3.org/2001/XMLSchema",</code></span></span>
+<span class="line" db-line="3"><span class="ln"></span><span class="ld"><code>                    "http://www.rddl.org/purposes#schema-validation");</code></span></span>
+</pre></div><p>Attempting to resolve RDDL resources requires extra processing. If you
+know it will never succeed you can disable it by setting this property
+to false.</p></section></section><section id="howto_s3" class="section"><header><h3><span class="number">3<span class="sep">.</span>3<span class="sep"> </span></span>Example catalog properties file</h3></header><p>My <code>xmlresolver.properties</code> file looks like this:</p><div class="pre-wrap" db-startinglinenumber="1" db-numberoflines="11"><pre class="language-none long numbered programlisting verbatim verblines"><span class="line" db-line="1"><span class="ln">1</span><span class="ld"><code># xmlresolver.properties</code></span></span>
+<span class="line" db-line="2"><span class="ln"></span><span class="ld"><code> </code></span></span>
+<span class="line" db-line="3"><span class="ln"></span><span class="ld"><code>relative-catalogs=yes</code></span></span>
+<span class="line" db-line="4"><span class="ln"></span><span class="ld"><code> </code></span></span>
+<span class="line" db-line="5"><span class="ln">5</span><span class="ld"><code># Always use semicolons in this list</code></span></span>
+<span class="line" db-line="6"><span class="ln"></span><span class="ld"><code>catalogs=./catalog.xml;/Users/ndw/Documents/catalog.xml</code></span></span>
+<span class="line" db-line="7"><span class="ln"></span><span class="ld"><code> </code></span></span>
+<span class="line" db-line="8"><span class="ln"></span><span class="ld"><code>prefer=public</code></span></span>
+<span class="line" db-line="9"><span class="ln"></span><span class="ld"><code>cache=/Users/ndw/Library/Caches/xmlresolver.org/cache</code></span></span>
+<span class="line" db-line="10"><span class="ln">10</span><span class="ld"><code>allow-oasis-xml-catalog-pi=no</code></span></span>
+<span class="line" db-line="11"><span class="ln"></span><span class="ld"><code>prefer-property-file=false</code></span></span>
+</pre></div></section></section><section id="seealso" class="section"><header><h2><span class="number">4<span class="sep"> </span></span>See also</h2></header><ul class="itemizedlist"><li><p>Absent more complete information here, most of
+<a href="https://xerces.apache.org/xml-commons/components/resolver/resolver-article.html" class="link">XML
+Entity and URI Resolvers</a> is still relevant.</p></li><li><p><a href="https://xmlcatalogs.org" class="link">XML Catalogs</a>
+</p></li></ul></section></article></main><nav class="bottom"></nav></body></html>

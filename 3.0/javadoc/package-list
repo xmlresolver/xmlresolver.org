@@ -1,0 +1,7 @@
+org.xmlresolver
+org.xmlresolver.apps
+org.xmlresolver.cache
+org.xmlresolver.exceptions
+org.xmlresolver.loaders
+org.xmlresolver.sources
+org.xmlresolver.tools
