@@ -1,0 +1,135 @@
+buildscript {
+  repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url "https://dev.saxonica.com/maven" }
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+  }
+
+  configurations.all {
+    resolutionStrategy {
+      force 'xml-apis:xml-apis:1.4.01',
+        "${saxonGroup}:${saxonEdition}:${saxonVersion}",
+        "org.xmlresolver:xmlresolver:${xmlresolverVersion}"
+    }
+  }
+
+  dependencies {
+    classpath group: saxonGroup, name: saxonEdition, version: saxonVersion
+    classpath group: 'org.docbook', name: 'schemas-docbook', version: docbookVersion
+    classpath group: 'org.docbook', name: 'docbook-xslTNG', version: "1.5.0-SNAPSHOT"
+  }
+}
+
+plugins {
+  id 'com.nwalsh.saxon-gradle' version '0.9.1-beta4'
+  id 'com.nwalsh.gradle.relaxng.validate' version '0.0.6'
+}
+
+import com.nwalsh.SaxonXsltTask
+import com.nwalsh.gradle.relaxng.validate.RelaxNGValidateTask
+import com.nwalsh.gradle.relaxng.translate.RelaxNGTranslateTask
+
+repositories {
+  mavenLocal()
+  mavenCentral()
+  maven { url "https://dev.saxonica.com/maven" }
+  maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+}
+
+configurations.all {
+  resolutionStrategy {
+    force 'xml-apis:xml-apis:1.4.01',
+      "${saxonGroup}:${saxonEdition}:${saxonVersion}",
+      "org.xmlresolver:xmlresolver:${xmlresolverVersion}"
+  }
+}
+
+configurations {
+  transform.extendsFrom(implementation)
+}
+
+dependencies {
+  implementation "org.xmlresolver:xmlresolver:${xmlresolverVersion}"
+  implementation "org.xmlresolver:xmlresolver:${xmlresolverVersion}:data"
+  implementation (
+    [group: saxonGroup, name: saxonEdition, version: saxonVersion],
+    [group: 'org.docbook', name: 'schemas-docbook', version: '5.2b10-SNAPSHOT'],
+    [group: 'org.docbook', name: 'docbook-xslTNG', version: "1.5.0-SNAPSHOT"],
+    [group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25' ],
+    [group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.1'],
+    [group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.1']
+  )
+}
+
+defaultTasks 'website'
+
+saxon.configure {
+  classpath configurations.transform
+  entityResolverClass "org.xmlresolver.Resolver"
+  uriResolverClass "org.xmlresolver.Resolver"
+  sourceSaxParser "org.xmlresolver.tools.ResolvingXMLReader"
+  stylesheetSaxParser "org.xmlresolver.tools.ResolvingXMLReader"
+  initializer 'org.docbook.xsltng.extensions.Register'
+}
+
+task validate(type: RelaxNGValidateTask) {
+  input "${projectDir}/src/main/xml/index.xml"
+  output "${buildDir}/xml/index.xml"
+  schema "${projectDir}/src/main/schema/docbook.rng"
+}
+
+task website(type: SaxonXsltTask, dependsOn: ["validate", "copyResources"]) {
+  input validate.outputs.files.singleFile
+  output "${buildDir}/${destinationPath}/index.html"
+  stylesheet "${projectDir}/tools/docbook.xsl"
+  initializer 'org.docbook.xsltng.extensions.Register'
+}
+
+task copyResources() {
+  def dbjar = null
+  configurations.transform.each { path ->
+    if (path.toString().contains("docbook-xslTNG")) {
+      dbjar = path
+    }
+  }
+
+  doFirst {
+    copy {
+      into "${buildDir}/website"
+      from ("${projectDir}/src/main/resources") {
+        exclude ".htaccess" // no longer relevant?
+      }
+    }
+  }
+
+  doLast {
+    if (dbjar == null) {
+      throw new GradleException("Failed to locate DocBook xslTNG jar file")
+    }
+    copy {
+      into "${buildDir}/${destinationPath}"
+      from ({ zipTree(dbjar.toString()) }) {
+        include "org/docbook/xsltng/resources/**"
+      }
+      eachFile { fileCopyDetails ->
+        def originalPath = fileCopyDetails.path
+        fileCopyDetails.path = originalPath.replace('org/docbook/xsltng/resources/', '')
+      }
+    }
+  }
+
+  doLast {
+    delete "${buildDir}/${destinationPath}/org"
+  }
+}
+
+task helloWorld() {
+  doLast {
+    println('Hello, world')
+    configurations.transform.each { path ->
+      println("CP: ${path}")
+    }
+    println(System.getProperty("xml.catalog.logging"))
+  }
+}

@@ -1,6 +1,6 @@
 #+title: README.org
 #+options: toc:nil
-#+date: 2021-05-22
+#+date: 2021-06-13
 
-This repository contains the sources for [[xmlresolver.org]]. It’s a single-page
-site with some namespace documents. This all needs some work.
+This repository contains the sources for [[xmlresolver.org]].
+
