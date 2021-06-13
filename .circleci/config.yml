@@ -15,7 +15,7 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-            - "62:d0:45:ae:79:ad:29:b9:41:77:c3:02:8c:08:2d:ba"
+            - "71:b1:3f:07:64:54:71:15:8a:3c:e4:da:bb:82:2c:ca"
 
       - checkout
 
@@ -33,10 +33,8 @@ jobs:
 
       - run: ./gradlew website
 
-      - persist_to_workspace:
-          root: build
-          paths:
-            - distributions
+      - run:
+          command: .circleci/publish.sh
 
 workflows:
   version: 2
