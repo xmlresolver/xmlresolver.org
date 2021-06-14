@@ -76,14 +76,24 @@ saxon.configure {
 task validate(type: RelaxNGValidateTask) {
   input "${projectDir}/src/main/xml/index.xml"
   output "${buildDir}/xml/index.xml"
-  schema "${projectDir}/src/main/schema/docbook.rng"
+  schema "${projectDir}/src/main/schema/dbextension.rnc"
+  compact true
 }
 
-task website(type: SaxonXsltTask, dependsOn: ["validate", "copyResources"]) {
+task augment(type: SaxonXsltTask, dependsOn: ["validate"]) {
   input validate.outputs.files.singleFile
+  output "${buildDir}/aug/index.xml"
+  stylesheet "${projectDir}/tools/augment.xsl"
+}
+
+task website(type: SaxonXsltTask, dependsOn: ["augment", "copyResources"]) {
+  input augment.outputs.files.singleFile
   output "${buildDir}/${destinationPath}/index.html"
   stylesheet "${projectDir}/tools/docbook.xsl"
   initializer 'org.docbook.xsltng.extensions.Register'
+  parameters (
+    'local-conventions': "file://${projectDir}/tools/local-conventions.xsl"
+  )
 }
 
 task copyResources() {

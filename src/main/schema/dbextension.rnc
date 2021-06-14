@@ -1,0 +1,40 @@
+namespace rng  = "http://relaxng.org/ns/structure/1.0"
+namespace db = "http://docbook.org/ns/docbook"
+default namespace = "http://docbook.org/ns/docbook"
+
+include "https://cdn.docbook.org/schema/5.2/rng/docbookxi.rnc" {
+   db.extension.inlines |= ext.sysprop | ext.fprop
+}
+
+# ============================================================
+
+div {
+   ext.sysprop.role.attribute = attribute role { text }
+
+   ext.sysprop.attlist =
+      ext.sysprop.role.attribute?
+    & db.common.attributes
+    & db.common.linking.attributes
+
+   ext.sysprop =
+      element sysprop {
+         ext.sysprop.attlist,
+         db.systemitem.inlines*
+      }
+}
+
+div {
+   ext.fprop.role.attribute = attribute role { text }
+
+   ext.fprop.attlist =
+      ext.fprop.role.attribute?
+    & db.common.attributes
+    & db.common.linking.attributes
+
+   ext.fprop =
+      element fprop {
+         ext.fprop.attlist,
+         db.systemitem.inlines*
+      }
+}
+

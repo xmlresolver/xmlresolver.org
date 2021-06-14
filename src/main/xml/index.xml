@@ -81,7 +81,7 @@ resources that should be returned for those identifiers.</para>
 
 <para>If you load that catalog, attempts to obtain the XHTML DTD from the W3C
 will be satisfied by a local copy of the DTD obtained from the
-<code>/share/dtds/xhtml1-strict.dtd</code>.</para>
+<filename>/share/dtds/xhtml1-strict.dtd</filename>.</para>
 </section>
 
 <section xml:id="getting">
@@ -125,43 +125,46 @@ the standard URIs quick and efficient.
 <title>How to use XML Resolver</title>
 
 <para>The simplest possible thing you can do is instantiate an instance of
-<code>org.xmlresolver.Resolver</code> and use it as the resolver for your parser.
-The <code>Resolver</code> class implements the following resolvers:</para>
+<classname>org.xmlresolver.Resolver</classname> and use it as the resolver for your parser.
+The <classname role="org.xmlresolver">Resolver</classname> class implements the following resolvers:</para>
 
 <itemizedlist>
 <listitem>
-<para><code>org.xml.sax.EntityResolver</code> the SAX1 interface used to load XML entities
+<para><interfacename>org.xml.sax.EntityResolver</interfacename> the SAX1 interface used to load XML entities
 </para>
 </listitem>
 <listitem>
-<para><code>org.xml.sax.EntityResolver2</code> the SAX2 interface used to load XML entities
+<para><interfacename>org.xml.sax.ext.EntityResolver2</interfacename>
+the SAX2 interface used to load XML entities
 </para>
 </listitem>
 <listitem>
-<para><code>javax.xml.transform.URIResolver</code> used to load XSLT resources
+<para><interfacename>javax.xml.transform.URIResolver</interfacename> used to load XSLT resources
 </para>
 </listitem>
 <listitem>
-<para><code>org.w3c.dom.ls.LSResourceResolver</code> used by the DOM to load resources
+<para><interfacename>org.w3c.dom.ls.LSResourceResolver</interfacename> used by the DOM to load resources
 </para>
 </listitem>
 <listitem>
-<para><code>org.xmlresolver.NamespaceResolver</code> an interface for loading namespace-based
+<para><interfacename>org.xmlresolver.NamespaceResolver</interfacename> an interface for loading namespace-based
 resources based on <link xlink:href="https://en.wikipedia.org/wiki/RDDL(RDDL)">RDDL</link>
 that never really took off, but there you go.
 </para>
 </listitem>
 <listitem>
-<para><code>javax.xml.stream.XMLResolver</code> the StAX interface used to load XML entities.
-(This interface is actually supported by the <code>org.xmlresolver.StAXResolver</code> class
-because the StAX <code>XMLResolver</code> API and the SAX <code>EntityResolver</code> APIs are
+<para><interfacename>javax.xml.stream.XMLResolver</interfacename>
+the StAX interface used to load XML entities.
+(This interface is actually supported by the <classname>org.xmlresolver.StAXResolver</classname> class
+because the StAX <interfacename role="javax.xml.stream">XMLResolver</interfacename>
+API and the SAX <interfacename role="org.xml.sax.ext">EntityResolver2</interfacename> APIs are
 incompatible.)
 </para>
 </listitem>
 </itemizedlist>
 
 <para>Another simple integration point is to instantiate
-<code>org.xmlresolver.tools.ResolvingXMLReader</code> as your XML parser.</para>
+<classname>org.xmlresolver.tools.ResolvingXMLReader</classname> as your XML parser.</para>
 
 <section xml:id="programming">
 <title>Programming with the resolver</title>
@@ -201,15 +204,15 @@ in this order:</para>
 
 <itemizedlist>
 <listitem>
-<para>The location identified by the <code>xmlresolver.properties</code> system property.
+<para>The location identified by the <sysprop>xmlresolver.properties</sysprop> system property.
 </para>
 </listitem>
 <listitem>
-<para>The location identified by the <code>XMLRESOLVER_PROPERTIES</code> environment variable.
+<para>The location identified by the <envar>XMLRESOLVER_PROPERTIES</envar> environment variable.
 </para>
 </listitem>
 <listitem>
-<para>A file named <code>xmlresolver.properties</code> on your classpath.
+<para>A file named <filename>xmlresolver.properties</filename> on your classpath.
 </para>
 </listitem>
 </itemizedlist>
@@ -220,50 +223,50 @@ in this order:</para>
 <title>The initial list of catalog files</title>
 
 <itemizedlist>
-<listitem><simpara>System property <code>xml.catalog.files</code></simpara></listitem>
-<listitem><simpara>Property file property <code>catalogs</code></simpara></listitem>
+<listitem><simpara>System property <sysprop>xml.catalog.files</sysprop></simpara></listitem>
+<listitem><simpara>Property file property <fprop>catalogs</fprop></simpara></listitem>
 </itemizedlist>
 
 <para>A semicolon-delimited list of catalog files. These are the catalog
 files that are initially consulted for resolution. If no catalog files
 are specified, by default the resolver will attempt to use a file
-named <code>catalog.xml</code> in the current directory as a catalog.</para>
+named <filename>catalog.xml</filename> in the current directory as a catalog.</para>
 
 </section>
 <section>
 <title>A list of additional catalog files</title>
 
 <itemizedlist>
-<listitem><simpara>System property <code>xml.catalog.additions</code></simpara></listitem>
-<listitem><simpara>Property file property <code>catalog-additions</code></simpara></listitem>
+<listitem><simpara>System property <sysprop>xml.catalog.additions</sysprop></simpara></listitem>
+<listitem><simpara>Property file property <fprop>catalog-additions</fprop></simpara></listitem>
 </itemizedlist>
 
 <para>A semicolon-delimited list of catalog files. This list is used in
 addition to the initial list of catalog files.</para>
 
-<para>If you attempt to use both a system property _and_ a property from a
+<para>If you attempt to use both a system property <emphasis>and</emphasis> a property from a
 property file to create the initial list of catalog files, you’ll only
 get one or the other. (See prefer-property-file.)</para>
 
 <para>This property provides a way to add to the current list of files. For
 example, suppose you use a global properties file to initialize the resolver, but
-for a particular application you want to search _additional_ catalogs.
-You can specify them in the <code>xml.catalog.additions</code> system property and they’ll
+for a particular application you want to search <emphasis>additional</emphasis> catalogs.
+You can specify them in the <sysprop>xml.catalog.additions</sysprop> system property and they’ll
 be appended to the list instead of replacing the list entirely as setting
-<code>xml.catalog.files</code> would.</para>
+<sysprop>xml.catalog.files</sysprop> would.</para>
 
 </section>
 <section>
 <title>Load catalogs from the classpath</title>
 
 <itemizedlist>
-<listitem><simpara>System property <code>xml.catalog.classpathCatalogs</code></simpara></listitem>
-<listitem><simpara>Property file property <code>classpath-catalogs</code></simpara></listitem>
+<listitem><simpara>System property <sysprop>xml.catalog.classpathCatalogs</sysprop></simpara></listitem>
+<listitem><simpara>Property file property <fprop>classpath-catalogs</fprop></simpara></listitem>
 </itemizedlist>
 
 <para>Load catalog files from the classpath. If this property is true, the
 resolver will search for all of the files named
-<code>org/xmlresolver/catalog.xml</code> on the classpath and add each of them to the end
+<filename>org/xmlresolver/catalog.xml</filename> on the classpath and add each of them to the end
 of the catalog list.</para>
 
 </section>
@@ -271,23 +274,23 @@ of the catalog list.</para>
 <title>Preference for public or system identifiers</title>
 
 <itemizedlist>
-<listitem><simpara>System property <code>xml.catalog.prefer</code></simpara></listitem>
-<listitem><simpara>Property file property <code>prefer</code></simpara></listitem>
+<listitem><simpara>System property <sysprop>xml.catalog.prefer</sysprop></simpara></listitem>
+<listitem><simpara>Property file property <fprop>prefer</fprop></simpara></listitem>
 </itemizedlist>
 
 <para>The initial prefer setting, either public or system.</para>
 
 </section>
 <section>
-<title>Obey <code>oasis-xml-catalog</code> processing instruction</title>
+<title>Obey <tag class="pi">oasis-xml-catalog</tag> processing instruction</title>
 
 <itemizedlist>
-<listitem><simpara>System property <code>xml.catalog.allowPI</code></simpara></listitem>
-<listitem><simpara>Property file property <code>allow-oasis-xml-catalog-pi</code></simpara></listitem>
+<listitem><simpara>System property <sysprop>xml.catalog.allowPI</sysprop></simpara></listitem>
+<listitem><simpara>Property file property <fprop>allow-oasis-xml-catalog-pi</fprop></simpara></listitem>
 </itemizedlist>
 
 <para>This setting allows you to toggle whether or not the resolver classes
-obey the <code><?oasis-xml-catalog?></code> processing instruction.</para>
+obey the <literal>&lt;?oasis-xml-catalog?&gt;</literal> processing instruction.</para>
 
 <para>If you never use the processing instruction, you can get a very tiny
 performance improvement by disabling this feature. (If this feature is
@@ -299,17 +302,18 @@ for every parse.)</para>
 <title>Support relative catalog paths</title>
 
 <itemizedlist>
-<listitem><simpara>Property file property <code>relative-catalogs</code></simpara></listitem>
+<listitem><simpara>Property file property <fprop>relative-catalogs</fprop></simpara></listitem>
 </itemizedlist>
 
-<para>If <code>relative-catalogs</code> is true, relative filenames in the <code>catalogs</code>
+<para>If <fprop>relative-catalogs</fprop> is true, relative filenames in the
+<fprop>catalogs</fprop>
 property list will be made absolute relative to the current working
 directory; otherwise they will be made
 absolute with respect to the base URI of the properties file from
 which they came.</para>
 
 <para>This setting has no effect on catalogs loaded from the
-<code>xml.catalogs.files</code> system property which are always made absolute
+<sysprop>xml.catalogs.files</sysprop> system property which are always made absolute
 with respect to the current working directory.</para>
 
 </section>
@@ -317,22 +321,24 @@ with respect to the current working directory.</para>
 <title>Cache documents</title>
 
 <itemizedlist>
-<listitem><simpara>System properties <code>xml.catalog.cache</code>, <code>xml.catalog.cacheUnderHome</code></simpara></listitem>
-<listitem><simpara>Property file property <code>cache</code>, <code>cacheUnderHome</code></simpara></listitem>
+<listitem><simpara>System properties <sysprop>xml.catalog.cache</sysprop>, <sysprop>xml.catalog.cacheUnderHome</sysprop></simpara></listitem>
+<listitem><simpara>Property file properties <fprop>cache</fprop>, <fprop>cacheUnderHome</fprop>
+</simpara></listitem>
 </itemizedlist>
 
-<para>The <code>cache</code> properties specify the directory in which the XML Resolver
+<para>The <fprop>cache</fprop> properties specify the directory in which the XML Resolver
 should attempt to cache files that fail to resolve locally. If, instead,
-one of the <code>cacheUnderHome</code> properties is set, the cache directory will
-default to <code>$HOME/.xmlresolver/cache</code>.</para>
+one of the <fprop>cacheUnderHome</fprop> properties is set, the cache directory will
+default to <filename>$HOME/.xmlresolver/cache</filename><indexterm type="envar">
+<primary>HOME</primary></indexterm>.</para>
 
 </section>
 <section>
 <title>Prefer property file values</title>
 
 <itemizedlist>
-<listitem><simpara>System property <code>xml.catalog.preferPropertyFile</code></simpara></listitem>
-<listitem><simpara>Property file property <code>prefer-property-file</code></simpara></listitem>
+<listitem><simpara>System property <sysprop>xml.catalog.preferPropertyFile</sysprop></simpara></listitem>
+<listitem><simpara>Property file property <fprop>prefer-property-file</fprop></simpara></listitem>
 </itemizedlist>
 
 <para>Prefer properties from the properties file.
@@ -346,20 +352,22 @@ earlier versions), set the “prefer property file” property to true.</para>
 <title>Use URI entries for system resolution</title>
 
 <itemizedlist>
-<listitem><simpara>System property <code>xml.catalog.uriForSystem</code></simpara></listitem>
-<listitem><simpara>Property file property <code>uri-for-system</code></simpara></listitem>
+<listitem><simpara>System property <sysprop>xml.catalog.uriForSystem</sysprop></simpara></listitem>
+<listitem><simpara>Property file property <fprop>uri-for-system</fprop></simpara></listitem>
 </itemizedlist>
 
 <para>Ignore the distinction between system identifiers and URIs.
 The distinction between external identifiers (the public and system identifiers that
 are used in DTDs) and general URIs (as might be used to load a RELAX NG Grammar or XML Schema,
 for example), is not supported uniformly by the parser APIs.
-The Xerces XML Schema implementation, for example, users the <code>resolveEntity</code> API to load
+The Xerces XML Schema implementation, for example, users the
+<methodname role="org.xml.sax.EntityResolver">resolveEntity</methodname> API to load
 XML Schema imports.</para>
 
-<para>Ordinarily, system identifier resolution interrogates the <code>system</code> and <code>public</code> entries (and their
-related entries), but not the <code>uri</code> entries. If this property is true, the resolver will attempt
-to resolve system identifiers with <code>uri</code> entries (_after_ attempting to resolve them with the
+<para>Ordinarily, system identifier resolution interrogates the <tag>system</tag> and <tag>public</tag> entries (and their
+related entries), but not the <tag>uri</tag> entries. If this property is true, the resolver will attempt
+to resolve system identifiers with <tag>uri</tag> entries (<emphasis>after</emphasis>
+attempting to resolve them with the
 system and public entries.</para>
 
 </section>
@@ -367,15 +375,15 @@ system and public entries.</para>
 <title>Merge http: and https: URI schemes</title>
 
 <itemizedlist>
-<listitem><simpara>System property <code>xml.catalog.mergeHttps</code></simpara></listitem>
-<listitem><simpara>Property file property <code>merge-https</code></simpara></listitem>
+<listitem><simpara>System property <sysprop>xml.catalog.mergeHttps</sysprop></simpara></listitem>
+<listitem><simpara>Property file property <fprop>merge-https</fprop></simpara></listitem>
 </itemizedlist>
 
 <para>Treat http: and https: URIs as equivalent for the purpose of resolution. The web used to
 be served over http: and many existing catalog files contain http: system identifiers.
 Today, the web is largely served over https: and many documents contain https: system
 identifiers. If this property is true, that distinction will be ignored during catalog lookup,
-<code>http://example.com/sample.dtd</code> will match <code>https://example.com/sample.dtd</code>.</para>
+<uri>http://example.com/sample.dtd</uri> will match <uri>https://example.com/sample.dtd</uri>.</para>
 
 <para>Note: this has *no effect* on the URIs returned by the resolver or retrieved over the web.
 It only effects catalog lookup for system identifiers and URIs.</para>
@@ -385,8 +393,8 @@ It only effects catalog lookup for system identifiers and URIs.</para>
 <title>Mask jar URIs</title>
 
 <itemizedlist>
-<listitem><simpara>System property <code>xml.catalog.maskJarUris</code></simpara></listitem>
-<listitem><simpara>Property file property <code>mask-jar-uris</code></simpara></listitem>
+<listitem><simpara>System property <sysprop>xml.catalog.maskJarUris</sysprop></simpara></listitem>
+<listitem><simpara>Property file property <fprop>mask-jar-uris</fprop></simpara></listitem>
 </itemizedlist>
 
 <para>Don’t return jar: or classpath: URIs. Most entity resolver APIs are defined such that if
@@ -404,8 +412,8 @@ more complete catalog, but it will avoid a situation which is guaranteed to fail
 <title>Catalog loader class</title>
 
 <itemizedlist>
-<listitem><simpara>System property <code>xml.catalog.catalogLoaderClass</code></simpara></listitem>
-<listitem><simpara>Property file property <code>catalog-loader-class</code></simpara></listitem>
+<listitem><simpara>System property <sysprop>xml.catalog.catalogLoaderClass</sysprop></simpara></listitem>
+<listitem><simpara>Property file property <fprop>catalog-loader-class</fprop></simpara></listitem>
 </itemizedlist>
 
 <para>Specify the catalog loader class. The default catalog loader ignores
@@ -414,7 +422,7 @@ production use, but can be frustrating because it may not be obvious
 when resolution fails, especially if your internet connection is fast.
 A typo in a catalog file can easily go unnoticed.</para>
 
-<para>If the value <code>org.xmlresolver.loaders.ValidatingXmlLoader</code> is specified
+<para>If the value <classname>org.xmlresolver.loaders.ValidatingXmlLoader</classname> is specified
 for this property, catalog files will be validated when they are
 loaded and the resolver will throw an exception for any validity
 errors encountered.</para>
@@ -424,8 +432,8 @@ errors encountered.</para>
 <title>Parse RDDL documents</title>
 
 <itemizedlist>
-<listitem><simpara>System property <code>xml.catalog.parseRddl</code></simpara></listitem>
-<listitem><simpara>Property file property <code>parse-rddl</code></simpara></listitem>
+<listitem><simpara>System property <sysprop>xml.catalog.parseRddl</sysprop></simpara></listitem>
+<listitem><simpara>Property file property <fprop>parse-rddl</fprop></simpara></listitem>
 </itemizedlist>
 
 <para>Attempt to resolve RDDL resources in namespace URI lookup. If the
@@ -447,9 +455,83 @@ to false.</para>
 </section>
 </section>
 <section>
-<title>Example catalog properties file</title>
+<title>Logging</title>
 
-<para>My <code>xmlresolver.properties</code> file looks like this:</para>
+<para>The resolver uses
+<link xlink:href="http://www.slf4j.org/">SLF4J</link> to do logging,
+so it should be configurable by all the usual means. But some systems
+appear to make configuring logging selectively more difficult, so as a
+convenience, the resolver categorizes log messages and allows you to
+change the logging level for categories selectively.</para>
+
+<para>Suppose, for example, you want to know more about how the cache
+is being managed. At the level of logging configuration, change how
+<classname>org.xmlresolver.cache.ResourceCache</classname> log messages are
+presented. If you can’t easily do that, change how the resolver logs
+messages related to caching: make them into warning messages instead
+of info messages, for example.</para>
+
+<para>The log categories aren’t as fine grained as the class hierarchy.
+There are six categories:</para>
+
+<variablelist>
+<varlistentry><term><literal>request</literal></term>
+<listitem>
+<para>Information related to the request.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><literal>response</literal></term>
+<listitem>
+<para>Information related to the response.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><literal>config</literal></term>
+<listitem>
+<para>Information related to configuration.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><literal>cache</literal></term>
+<listitem>
+<para>Information related to caching.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><literal>warning</literal></term>
+<listitem>
+<para>Reported warnings.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><literal>error</literal></term>
+<listitem>
+<para>Reported errors.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para>Any of these categories can be reported as “debug”, “info”, or
+“warn” logging messages. This is configured with the system property
+<sysprop>xml.catalog.logging</sysprop>. That property is interpreted as a comma
+delimited list of <replaceable>category</replaceable>:<replaceable>level</replaceable>
+pairs: for example, <code>cache:warn,response:info</code>, would log cache
+messages as warnings and response messages as info.</para>
+
+<para>If you prefer to specify this in a configuration file, use the
+<fprop>catalog-logging</fprop> property. Note, however, that this
+setting only applies if the system property is not set. (Because the
+logging class doesn’t have access to the resolver configuration, it
+can’t apply the usual defaulting rules.)</para>
+</section>
+
+<section>
+<title>Example xmlresolver.properties file</title>
+
+<para>An <filename>xmlresolver.properties</filename> file
+might look like this:</para>
 
 <programlisting># xmlresolver.properties
 
@@ -480,5 +562,31 @@ Entity and URI Resolvers</link> is still relevant.</para>
 </listitem>
 </itemizedlist>
 
+<para>Spoon. The simplest possible thing you can do is instantiate an instance of
+<classname>org.xmlresolver.Resolver</classname> and use it as the resolver for your parser.
+The <classname role="org.xmlresolver">Resolver</classname> class implements the following resolvers:
+</para>
+
 </section>
+
+<index type="sysprop">
+<title>System properties index</title>
+</index>
+
+<index type="fprop">
+<title>File properties index</title>
+</index>
+
+<index type="envar">
+<title>Environment variable index</title>
+</index>
+
+<index type="code">
+<title>API index</title>
+<para>This index only includes the interface items mentioned in the
+text. For additional APIs, consult the <link
+xlink:href="javadoc/index.html">JavaDoc</link>.
+</para>
+</index>
+
 </article>
