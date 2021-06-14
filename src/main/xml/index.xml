@@ -219,10 +219,13 @@ in this order:</para>
 
 <para>The following features may be configured with properties.</para>
 
-<section>
+<section xml:id="xml.catalog.files">
 <title>The initial list of catalog files</title>
 
 <itemizedlist>
+<listitem>
+<simpara>Feature <constant>ResolverFeature.CATALOG_FILES</constant> (type: <type>List&lt;String&gt;</type>)</simpara>
+</listitem>
 <listitem><simpara>System property <sysprop>xml.catalog.files</sysprop></simpara></listitem>
 <listitem><simpara>Property file property <fprop>catalogs</fprop></simpara></listitem>
 </itemizedlist>
@@ -233,10 +236,13 @@ are specified, by default the resolver will attempt to use a file
 named <filename>catalog.xml</filename> in the current directory as a catalog.</para>
 
 </section>
-<section>
+<section xml:id="xml.catalog.additions">
 <title>A list of additional catalog files</title>
 
 <itemizedlist>
+<listitem>
+<simpara>Feature <constant>ResolverFeature.CATALOG_ADDITIONS</constant> (type: <type>List&lt;String&gt;</type>)</simpara>
+</listitem>
 <listitem><simpara>System property <sysprop>xml.catalog.additions</sysprop></simpara></listitem>
 <listitem><simpara>Property file property <fprop>catalog-additions</fprop></simpara></listitem>
 </itemizedlist>
@@ -256,10 +262,13 @@ be appended to the list instead of replacing the list entirely as setting
 <sysprop>xml.catalog.files</sysprop> would.</para>
 
 </section>
-<section>
+<section xml:id="xml.catalog.classpathCatalogs">
 <title>Load catalogs from the classpath</title>
 
 <itemizedlist>
+<listitem>
+<simpara>Feature <constant>ResolverFeature.CLASSPATH_CATALOGS</constant> (type: <type>Boolean</type>)</simpara>
+</listitem>
 <listitem><simpara>System property <sysprop>xml.catalog.classpathCatalogs</sysprop></simpara></listitem>
 <listitem><simpara>Property file property <fprop>classpath-catalogs</fprop></simpara></listitem>
 </itemizedlist>
@@ -270,10 +279,13 @@ resolver will search for all of the files named
 of the catalog list.</para>
 
 </section>
-<section>
+<section xml:id="xml.catalog.prefer">
 <title>Preference for public or system identifiers</title>
 
 <itemizedlist>
+<listitem>
+<simpara>Feature <constant>ResolverFeature.PREFER_PUBLIC</constant> (type: <type>Boolean</type>)</simpara>
+</listitem>
 <listitem><simpara>System property <sysprop>xml.catalog.prefer</sysprop></simpara></listitem>
 <listitem><simpara>Property file property <fprop>prefer</fprop></simpara></listitem>
 </itemizedlist>
@@ -281,10 +293,13 @@ of the catalog list.</para>
 <para>The initial prefer setting, either public or system.</para>
 
 </section>
-<section>
+<section xml:id="xml.catalog.allowPI">
 <title>Obey <tag class="pi">oasis-xml-catalog</tag> processing instruction</title>
 
 <itemizedlist>
+<listitem>
+<simpara>Feature <constant>ResolverFeature.ALLOW_CATALOG_PI</constant> (type: <type>Boolean</type>)</simpara>
+</listitem>
 <listitem><simpara>System property <sysprop>xml.catalog.allowPI</sysprop></simpara></listitem>
 <listitem><simpara>Property file property <fprop>allow-oasis-xml-catalog-pi</fprop></simpara></listitem>
 </itemizedlist>
@@ -298,7 +313,7 @@ enabled, the parser has to create a copy of the resolver configuration
 for every parse.)</para>
 
 </section>
-<section>
+<section xml:id="relative-catalogs">
 <title>Support relative catalog paths</title>
 
 <itemizedlist>
@@ -317,10 +332,15 @@ which they came.</para>
 with respect to the current working directory.</para>
 
 </section>
-<section>
+<section xml:id="xml.catalog.cache">
 <title>Cache documents</title>
 
 <itemizedlist>
+<listitem>
+<simpara>Features <constant>ResolverFeature.CACHE</constant> (type: <type>ResourceCache</type>),
+<constant>ResolverFeature.CACHE_DIRECTORY</constant> (type: <type>String</type>),
+<constant>ResolverFeature.CACHE_UNDER_HOME</constant> (type: <type>Boolean</type>)</simpara>
+</listitem>
 <listitem><simpara>System properties <sysprop>xml.catalog.cache</sysprop>, <sysprop>xml.catalog.cacheUnderHome</sysprop></simpara></listitem>
 <listitem><simpara>Property file properties <fprop>cache</fprop>, <fprop>cache-under-home</fprop>
 </simpara></listitem>
@@ -333,10 +353,13 @@ default to <filename>$HOME/.xmlresolver/cache</filename><indexterm type="envar">
 <primary>HOME</primary></indexterm>.</para>
 
 </section>
-<section>
+<section xml:id="xml.catalog.preferPropertyFile">
 <title>Prefer property file values</title>
 
 <itemizedlist>
+<listitem>
+<simpara>Feature <constant>ResolverFeature.PREFER_PROPERTY_FILE</constant> (type: <type>Boolean</type>)</simpara>
+</listitem>
 <listitem><simpara>System property <sysprop>xml.catalog.preferPropertyFile</sysprop></simpara></listitem>
 <listitem><simpara>Property file property <fprop>prefer-property-file</fprop></simpara></listitem>
 </itemizedlist>
@@ -348,10 +371,13 @@ If you’d prefer to have the property file take precedence (as was the case in 
 earlier versions), set the “prefer property file” property to true.</para>
 
 </section>
-<section>
+<section xml:id="xml.catalog.uriForSystem">
 <title>Use URI entries for system resolution</title>
 
 <itemizedlist>
+<listitem>
+<simpara>Feature <constant>ResolverFeature.URI_FOR_SYSTEM</constant> (type: <type>Boolean</type>)</simpara>
+</listitem>
 <listitem><simpara>System property <sysprop>xml.catalog.uriForSystem</sysprop></simpara></listitem>
 <listitem><simpara>Property file property <fprop>uri-for-system</fprop></simpara></listitem>
 </itemizedlist>
@@ -371,10 +397,13 @@ attempting to resolve them with the
 system and public entries.</para>
 
 </section>
-<section>
+<section xml:id="xml.catalog.mergeHttps">
 <title>Merge http: and https: URI schemes</title>
 
 <itemizedlist>
+<listitem>
+<simpara>Feature <constant>ResolverFeature.MERGE_HTTPS</constant> (type: <type>Boolean</type>)</simpara>
+</listitem>
 <listitem><simpara>System property <sysprop>xml.catalog.mergeHttps</sysprop></simpara></listitem>
 <listitem><simpara>Property file property <fprop>merge-https</fprop></simpara></listitem>
 </itemizedlist>
@@ -389,10 +418,13 @@ identifiers. If this property is true, that distinction will be ignored during c
 It only effects catalog lookup for system identifiers and URIs.</para>
 
 </section>
-<section>
+<section xml:id="xml.catalog.maskJarUris">
 <title>Mask jar URIs</title>
 
 <itemizedlist>
+<listitem>
+<simpara>Feature <constant>ResolverFeature.MASK_JAR_URIS</constant> (type: <type>Boolean</type>)</simpara>
+</listitem>
 <listitem><simpara>System property <sysprop>xml.catalog.maskJarUris</sysprop></simpara></listitem>
 <listitem><simpara>Property file property <fprop>mask-jar-uris</fprop></simpara></listitem>
 </itemizedlist>
@@ -408,10 +440,13 @@ the local resource will be returned but the URI will be left unchanged. That may
 more complete catalog, but it will avoid a situation which is guaranteed to fail.</para>
 
 </section>
-<section>
+<section xml:id="xml.catalog.catalogLoaderClass">
 <title>Catalog loader class</title>
 
 <itemizedlist>
+<listitem>
+<simpara>Feature <constant>ResolverFeature.CATALOG_LOADER_CLASS</constant> (type: <type>String</type>)</simpara>
+</listitem>
 <listitem><simpara>System property <sysprop>xml.catalog.catalogLoaderClass</sysprop></simpara></listitem>
 <listitem><simpara>Property file property <fprop>catalog-loader-class</fprop></simpara></listitem>
 </itemizedlist>
@@ -428,10 +463,13 @@ loaded and the resolver will throw an exception for any validity
 errors encountered.</para>
 
 </section>
-<section>
+<section xml:id="xml.catalog.parseRddl">
 <title>Parse RDDL documents</title>
 
 <itemizedlist>
+<listitem>
+<simpara>Feature <constant>ResolverFeature.PARSE_RDDL</constant> (type: <type>Boolean</type>)</simpara>
+</listitem>
 <listitem><simpara>System property <sysprop>xml.catalog.parseRddl</sysprop></simpara></listitem>
 <listitem><simpara>Property file property <fprop>parse-rddl</fprop></simpara></listitem>
 </itemizedlist>
@@ -453,8 +491,38 @@ know it will never succeed you can disable it by setting this property
 to false.</para>
 
 </section>
+<section xml:id="classloader">
+<title>Specify an alternate class loader</title>
+
+<itemizedlist>
+<listitem>
+<simpara>Feature <constant>ResolverFeature.CLASSLOADER</constant> (type: <type>ClassLoader</type>)</simpara>
+</listitem>
+</itemizedlist>
+
+<para>If you are using the resolver in an environment where the default class
+loader (<code>getClass().getCatalogLoader()</code>) will not return useful
+class loader, you can specify an alternate loader with this feature.
+</para>
+
 </section>
-<section>
+
+</section>
+<section xml:id="catalogmanager">
+<title>Access the underlying catalog manager</title>
+
+<itemizedlist>
+<listitem>
+<simpara>Feature <constant>ResolverFeature.CATALOG_MANAGER</constant> (type: <type>CatalogManager</type>)</simpara>
+</listitem>
+</itemizedlist>
+
+<para>The <classname role="org.xmlresolver">CatalogManager</classname> class provides
+some lower-level methods for mapping to URIs without returning sources of any kind.
+</para>
+</section>
+</section>
+<section xml:id="logging">
 <title>Logging</title>
 
 <para>The resolver uses
@@ -527,7 +595,7 @@ logging class doesn’t have access to the resolver configuration, it
 can’t apply the usual defaulting rules.)</para>
 </section>
 
-<section>
+<section xml:id="xmlresolver.properties">
 <title>Example xmlresolver.properties file</title>
 
 <para>An <filename>xmlresolver.properties</filename> file
@@ -544,7 +612,6 @@ prefer=public
 cache=/Users/ndw/Library/Caches/xmlresolver.org/cache
 allow-oasis-xml-catalog-pi=no
 prefer-property-file=false</programlisting>
-</section>
 </section>
 
 <section xml:id="seealso">
@@ -569,19 +636,23 @@ The <classname role="org.xmlresolver">Resolver</classname> class implements the 
 
 </section>
 
-<index type="sysprop">
+<index xml:id="system-properties-index" type="sysprop">
 <title>System properties index</title>
 </index>
 
-<index type="fprop">
+<index xml:id="property-file-properties-index" type="fprop">
 <title>File properties index</title>
 </index>
 
-<index type="envar">
-<title>Environment variable index</title>
+<index xml:id="envar-index" type="envar">
+<title>Environment variables index</title>
 </index>
 
-<index type="code">
+<index xml:id="constant-index" type="constant">
+<title>Constants index</title>
+</index>
+
+<index xml:id="api-index" type="code">
 <title>API index</title>
 <para>This index only includes the interface items mentioned in the
 text. For additional APIs, consult the <link

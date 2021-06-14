@@ -14,4 +14,7 @@
 
 <xsl:param name="section-toc-depth" select="1"/>
 
+<xsl:param name="css-links"
+           select="'css/docbook.css css/docbook-screen.css css/resolver.css'"/>
+
 </xsl:stylesheet>

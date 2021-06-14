@@ -3,7 +3,7 @@ version: '3.8'
 services:
     xtserver:
       image: httpd:2.4
-      container_name: xmlresolver
+      container_name: xmlresdotorg
       ports:
         - 8818:80
       working_dir: /src

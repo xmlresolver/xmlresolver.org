@@ -108,4 +108,23 @@
   </xsl:choose>
 </xsl:template>
 
+<xsl:template match="db:constant">
+  <xsl:copy>
+    <xsl:apply-templates select="@*,node()"/>
+  </xsl:copy>
+  <xsl:choose>
+    <xsl:when test="starts-with(., 'ResolverFeature.')">
+      <indexterm type="constant">
+        <primary>org.xmlresolver.ResolverFeature</primary>
+        <secondary><xsl:value-of select="substring-after(., '.')"/></secondary>
+      </indexterm>
+    </xsl:when>
+    <xsl:otherwise>
+      <indexterm type="constant">
+        <primary><xsl:value-of select="."/></primary>
+      </indexterm>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:template>
+
 </xsl:stylesheet>

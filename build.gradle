@@ -22,11 +22,11 @@ buildscript {
 }
 
 plugins {
-  id 'com.nwalsh.saxon-gradle' version '0.9.1-beta4'
+  id 'com.nwalsh.gradle.saxon.saxon-gradle' version '0.9.3'
   id 'com.nwalsh.gradle.relaxng.validate' version '0.0.6'
 }
 
-import com.nwalsh.SaxonXsltTask
+import com.nwalsh.gradle.saxon.SaxonXsltTask
 import com.nwalsh.gradle.relaxng.validate.RelaxNGValidateTask
 import com.nwalsh.gradle.relaxng.translate.RelaxNGTranslateTask
 
