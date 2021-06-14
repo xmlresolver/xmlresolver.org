@@ -31,7 +31,7 @@ jobs:
             - ~/.gradle
           key: v1-dependencies-{{ checksum "build.gradle" }}
 
-      - run: ./gradlew website
+      - run: ./gradlew website --refresh-dependencies
 
       - run:
           command: .circleci/publish.sh
