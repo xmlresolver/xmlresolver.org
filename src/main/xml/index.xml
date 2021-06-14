@@ -322,13 +322,13 @@ with respect to the current working directory.</para>
 
 <itemizedlist>
 <listitem><simpara>System properties <sysprop>xml.catalog.cache</sysprop>, <sysprop>xml.catalog.cacheUnderHome</sysprop></simpara></listitem>
-<listitem><simpara>Property file properties <fprop>cache</fprop>, <fprop>cacheUnderHome</fprop>
+<listitem><simpara>Property file properties <fprop>cache</fprop>, <fprop>cache-under-home</fprop>
 </simpara></listitem>
 </itemizedlist>
 
 <para>The <fprop>cache</fprop> properties specify the directory in which the XML Resolver
 should attempt to cache files that fail to resolve locally. If, instead,
-one of the <fprop>cacheUnderHome</fprop> properties is set, the cache directory will
+one of the “cache under home” properties is set, the cache directory will
 default to <filename>$HOME/.xmlresolver/cache</filename><indexterm type="envar">
 <primary>HOME</primary></indexterm>.</para>
 
