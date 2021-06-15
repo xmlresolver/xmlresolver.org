@@ -10,8 +10,7 @@ document the XML Resolver 3.x release.
 </para>
 </note>
 
-<para>As you can tell from the clever name, this site is about an XML
-Resolver.
+<para>As you can tell from the clever name, this site is about an XML Resolver.
 (The code is <link xlink:href="https://github.com/xmlresolver/xmlresolver/">over on
 github</link>.) Many (Java-based) XML APIs include features for
 "resolvers" of various sorts. For example, many XML parsers allow you
