@@ -19,7 +19,7 @@ if [ "$GITHUB_CNAME" != "" ]; then
     echo $GITHUB_CNAME > CNAME
 fi;
 
-rsync -ar --delete --exclude README --exclude .git $BUILD/website/ ./
+rsync -ar --delete --exclude README --exclude .git --exclude .circleci $BUILD/website/ ./
 
 git add --all .
 git commit -m "CircleCI build: $CIRCLE_BUILD_URL"
