@@ -1,0 +1,113 @@
+<article xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:rddl="http://www.rddl.org/"
+         version="5.2" xml:lang="en">
+<info>
+<title>Sample Schema</title>
+<pubdate>2021-05-18</pubdate>
+</info>
+
+<section xml:id="intro">
+<title>Introduction</title>
+<para>This document describes the “Sample Schema” namespace used for testing
+in the XML Resolver project:
+<link xlink:href="https://xmlresolver.org/ns/sample">https://xmlresolver.org/ns/sample</link>.
+It also contains a directory of links to these related resources, using 
+<link xlink:href="http://www.rddl.org/">Resource Directory Description Language</link>.</para>
+
+<para>The Sample Schema is a very simple documentation schema. In brief:</para>
+
+<itemizedlist>
+<listitem><para>A document is either a <code>book</code> or an <code>article</code>.
+</para></listitem>
+<listitem><para>A book can contain chapters (<code>chapter</code>) or
+articles (<code>article</code>).</para></listitem>
+<listitem><para>Books and chapters must have a title (<code>title</code>) containing only text;
+titles on articles are optional but, if present, contain only text.</para></listitem>
+<listitem><para>Chapters and articles contain paragraphs (<code>p</code>) which may
+contain text and either emphasis (<code>em</code>) or hypertext links (<code>link</code>).
+</para></listitem>
+<listitem><para>Emphasis and links contain only text.
+The link target is in an <code>xlink:href</code> attribute.</para></listitem>
+</itemizedlist>
+
+<para>The Sample Schema is described with a DTD, XML Schema, and RELAX NG grammar.
+</para>
+</section>
+
+<section xml:id="related.resources">
+<title>Related Resources</title>
+<!-- start resource definitions -->
+<section role="resource" xml:id="DTD">
+<title>DTD</title>
+<rddl:resource xlink:title="Sample DTD for validation"
+               xlink:arcrole="http://www.rddl.org/purposes#validation"
+               xlink:role="http://www.isi.edu/in-notes/iana/assignments/media-types/application/xml-dtd"
+               xlink:href="sample.dtd">
+<para>A DTD, <link xlink:href="sample.dtd">sample.dtd</link>, for Sample Schema.  It
+incorporates an auxiliary DTD, <link xlink:href="blocks.dtd">blocks.dtd</link>.</para>
+<para>This DTD is a little bit atypical in that it’s been written so that it
+will validate a document with the XSD instance attributes.</para>
+</rddl:resource>
+</section>
+
+<section role="resource" xml:id="xmlschema">
+<title>XML Schema</title>
+<rddl:resource xlink:title="Sample XML Schema for validation"
+               xlink:role="http://www.w3.org/2001/XMLSchema"
+               xlink:arcrole="http://www.rddl.org/purposes#schema-validation"
+               xlink:href="sample.xsd">
+<para>An <link xlink:href="sample.xsd">XML Schema schema document</link> for Sample Schema.
+It also incorporates auxiliary files: <link xlink:href="blocks.xsd">blocks.xsd</link>,
+<link xlink:href="xml.xsd">xml.xsd</link>, and <link xlink:href="xlink.xsd">xlink.xsd</link>.
+</para>
+</rddl:resource>
+</section>
+
+<section role="resource" xml:id="rng">
+<title>RELAX NG Grammar</title>
+<rddl:resource xlink:title="Sample RELAX NG grammar for validation"
+               xlink:role="http://relaxng.org/ns/structure/1.0"
+               xlink:arcrole="http://www.rddl.org/purposes#schema-validation"
+               xlink:href="sample.rng">
+<para>A <link xlink:href="sample.rng">RELAX NG grammar</link> for Sample Schema.
+It also incorporates an auxiliary file, <link xlink:href="blocks.xsd">blocks.rng</link>.
+</para>
+<para>This grammar is a little bit atypical in that it’s been written so that it
+will validate a document with the XSD instance attributes.</para>
+</rddl:resource>
+
+<section role="resource" xml:id="rnc">
+<title>RELAX NG Compact Syntax Grammar</title>
+<rddl:resource xlink:title="Sample DTD for validation"
+               xlink:arcrole="http://www.rddl.org/purposes#validation"
+               xlink:role="http://www.isi.edu/in-notes/iana/assignments/media-types/application/vnd.relax-ng.rnc"
+               xlink:href="sample.rnc">
+<para>As a convenience to users, a compact syntax grammar,
+<link xlink:href="sample.rnc">sample.rnc</link>, is also provided.  It
+incorporates <link xlink:href="blocks.rnc">blocks.rnc</link>.</para>
+</rddl:resource>
+</section>
+</section>
+<section role="resource" xml:id="tohtml">
+<title>XSLT Transformation to HTML</title>
+<rddl:resource xlink:title="Transform to HTML"
+               xlink:arcrole="http://www.rddl.org/purposes#transformation"
+               xlink:role="http://www.w3.org/1999/XSL/Transform"
+               xlink:href="sample.xsl">
+<para>This distribution includes a
+<link xlink:href="sample.xsl">simple transformation</link> to HTML.</para>
+</rddl:resource>
+</section>
+<section role="resource" xml:id="example">
+<title>Example document</title>
+<rddl:resource xlink:title="Example document"
+               xlink:arcrole="http://www.rddl.org/purposes#example"
+               xlink:role="https://xmlresolver.org/ns/sample"
+               xlink:href="sample.xml">
+<para>A short <link xlink:href="sample.xml">sample document</link> is also provided.</para>
+</rddl:resource>
+</section>
+</section>
+</article>
+

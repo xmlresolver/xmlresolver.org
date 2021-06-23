@@ -1,0 +1,22 @@
+body {
+    display: block;
+    width: 100%;
+    max-width: 50rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1in;
+}
+
+nav.tocopen span {
+    display: none;
+}
+
+nav.tocopen:before {
+  content: "☰";
+}
+
+.list-of-titles {
+    display: none;
+}

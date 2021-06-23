@@ -76,8 +76,29 @@ saxon.configure {
 task validate(type: RelaxNGValidateTask) {
   input "${projectDir}/src/main/xml/index.xml"
   output "${buildDir}/xml/index.xml"
-  schema "${projectDir}/src/main/schema/dbextension.rnc"
+  schema "${projectDir}/tools/dbextension.rnc"
   compact true
+}
+
+task validatens(type: RelaxNGValidateTask) {
+  input "${projectDir}/src/main/xml/sample-ns.xml"
+  output "${buildDir}/xml/sample-ns.xml"
+  schema "${projectDir}/tools/dbextension.rnc"
+  compact true
+}
+
+task nsdoc_to_html(type: SaxonXsltTask, dependsOn: ["validatens"]) {
+  inputs.files "${projectDir}/tools/docbook.xsl"
+  input validatens.outputs.files.singleFile
+  output "${buildDir}/tmp/ns/sample/index.html"
+  stylesheet "${projectDir}/tools/rddl.xsl"
+  initializer 'org.docbook.xsltng.extensions.Register'
+}
+
+task nsdoc(type: SaxonXsltTask, dependsOn: ["nsdoc_to_html", "copyResources"]) {
+  input nsdoc_to_html.outputs.files.singleFile
+  output "${buildDir}/website/ns/sample/index.html"
+  stylesheet "${projectDir}/tools/rddl-cleanup.xsl"
 }
 
 task augment(type: SaxonXsltTask, dependsOn: ["validate"]) {
@@ -86,7 +107,7 @@ task augment(type: SaxonXsltTask, dependsOn: ["validate"]) {
   stylesheet "${projectDir}/tools/augment.xsl"
 }
 
-task website(type: SaxonXsltTask, dependsOn: ["augment", "copyResources"]) {
+task website(type: SaxonXsltTask, dependsOn: ["augment", "copyResources", "nsdoc"]) {
   input augment.outputs.files.singleFile
   output "${buildDir}/${destinationPath}/index.html"
   stylesheet "${projectDir}/tools/docbook.xsl"
@@ -118,7 +139,7 @@ task copyResources() {
       throw new GradleException("Failed to locate DocBook xslTNG jar file")
     }
     copy {
-      into "${buildDir}/${destinationPath}"
+      into "${buildDir}/website"
       from ({ zipTree(dbjar.toString()) }) {
         include "org/docbook/xsltng/resources/**"
       }
@@ -130,7 +151,7 @@ task copyResources() {
   }
 
   doLast {
-    delete "${buildDir}/${destinationPath}/org"
+    delete "${buildDir}/website/org"
   }
 }
 

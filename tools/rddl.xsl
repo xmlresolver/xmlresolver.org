@@ -1,4 +1,5 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:db="http://docbook.org/ns/docbook"
                 xmlns:f="http://docbook.org/ns/docbook/functions"
                 xmlns:fp="http://docbook.org/ns/docbook/functions/private"
@@ -11,20 +12,13 @@
                 exclude-result-prefixes="#all"
                 version="3.0">
 
-<xsl:import href="https://cdn.docbook.org/release/xsltng/current/xslt/docbook.xsl"/>
+<xsl:import href="docbook.xsl"/>
 
-<xsl:param name="section-toc-depth" select="1"/>
-
-<xsl:param name="resource-base-uri" select="'/'"/>
+<xsl:output method="xml"/>
 
 <xsl:param name="css-links"
-           select="'css/docbook.css css/docbook-screen.css css/resolver.css'"/>
+           select="'css/docbook.css css/docbook-screen.css css/rddl.css'"/>
 
-<xsl:template match="rddl:resource" mode="m:docbook">
-  <rddl:resource>
-    <xsl:sequence select="@*"/>
-    <xsl:apply-templates select="node()" mode="m:docbook"/>
-  </rddl:resource>
-</xsl:template>
+<xsl:param name="persistent-toc" select="'true'"/>
 
 </xsl:stylesheet>
