@@ -1,125 +1,37 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:xlink="http://www.w3.org/1999/xlink"
-      xmlns:rddl="http://www.rddl.org/" xml:lang="en">
-<head>
-  <title>Sample Schema</title>
-
-  <link rel="stylesheet" href="default.css" />
-</head>
-<body>
-<h1>Sample Schema</h1>
-<div class="head">
-  <p>18 May 2021</p>
-</div>
-
-<div id="toc">
-  <h2>Table of contents</h2>
-  <ol>
-    <li><a href="#intro">Introduction</a></li>
-    <li><a href="#related.resources">Resources</a></li>
-  </ol>
-</div>
-
-<div id="intro">
-<h2>Introduction</h2>
-<p>This document describes the “Sample Schema” namespace used for testing
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:rddl="http://www.rddl.org/" xmlns:xlink="http://www.w3.org/1999/xlink" class="no-js"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script><title>Sample Schema</title><meta name="viewport" content="width=device-width, initial-scale=1.0" /><link href="https://purl.org/dc/elements/1.1/" rel="schema.dc" /><meta name="dc.modified" content="2021-06-23T07:35:38Z" /><meta name="dc.created" content="2021-05-18" /><meta name="generator" content="DocBook xslTNG version 1.5.0-SNAPSHOT / 3e3bfbe / SAXON HE 10.5" /><link href="/css/docbook.css" rel="stylesheet" /><link href="/css/docbook-screen.css" rel="stylesheet" /><link href="/css/rddl.css" rel="stylesheet" /><link href="/css/docbook-toc.css" rel="stylesheet" /></head><body class="home"><nav class="top"></nav><header><h1>Sample Schema</h1><p class="pubdate"><time class="pubdate" datetime="2021-05-18">18 May 2021</time></p></header><div class="list-of-titles"><div class="lot toc"><div class="title">Table of Contents</div><ul class="toc"><li><a href="#intro"><span class="number">1<span class="sep"> </span></span>Introduction</a></li><li><a href="#related.resources"><span class="number">2<span class="sep"> </span></span>Related Resources</a><ul class="toc"><li><a href="#DTD"><span class="number">2<span class="sep">.</span>1<span class="sep"> </span></span>DTD</a></li><li><a href="#xmlschema"><span class="number">2<span class="sep">.</span>2<span class="sep"> </span></span>XML Schema</a></li><li><a href="#rng"><span class="number">2<span class="sep">.</span>3<span class="sep"> </span></span>RELAX NG Grammar</a></li><li><a href="#tohtml"><span class="number">2<span class="sep">.</span>4<span class="sep"> </span></span>XSLT Transformation to HTML</a></li><li><a href="#example"><span class="number">2<span class="sep">.</span>5<span class="sep"> </span></span>Example document</a></li></ul></li></ul></div></div><section id="intro" class="section"><header><h2><span class="number">1<span class="sep"> </span></span>Introduction</h2></header><p>This document describes the “Sample Schema” namespace used for testing
 in the XML Resolver project:
-<a href="https://xmlresolver.org/ns/sample">https://xmlresolver.org/ns/sample</a>.
+<a href="https://xmlresolver.org/ns/sample" class="link">https://xmlresolver.org/ns/sample</a>.
 It also contains a directory of links to these related resources, using 
-<a href="http://www.rddl.org/">Resource Directory Description Language</a>.</p>
-
-<p>The Sample Schema is a very simple documentation schema. In brief:</p>
-<ul>
-<li>A document is either a <code>book</code> or an <code>article</code>.
-</li>
-<li>A book can contain chapters (<code>chapter</code>) or
-articles (<code>article</code>).</li>
-<li>Books and chapters must have a title (<code>title</code>) containing only text;
-titles on articles are optional but, if present, contain only text.</li>
-<li>Chapters and articles contain paragraphs (<code>p</code>) which may
+<a href="http://www.rddl.org/" class="link">Resource Directory Description Language</a>.</p><p>The Sample Schema is a very simple documentation schema. In brief:</p><ul class="itemizedlist"><li><p>A document is either a <code>book</code> or an <code>article</code>.
+</p></li><li><p>A book can contain chapters (<code>chapter</code>) or
+articles (<code>article</code>).</p></li><li><p>Books and chapters must have a title (<code>title</code>) containing only text;
+titles on articles are optional but, if present, contain only text.</p></li><li><p>Chapters and articles contain paragraphs (<code>p</code>) which may
 contain text and either emphasis (<code>em</code>) or hypertext links (<code>link</code>).
-</li>
-<li>Emphasis and links contain only text.
-The link target is in an <code>xlink:href</code> attribute.</li>
-</ul>
-
-<p>The Sample Schema is described with a DTD, XML Schema, and RELAX NG grammar.
-</p>
-</div>
-
-<div id="related.resources">
-<h2>Related Resources</h2>
-<!-- start resource definitions -->
-<div class="resource" id="DTD">
-<rddl:resource xlink:title="Sample DTD for validation"
-               xlink:arcrole="http://www.rddl.org/purposes#validation"
-               xlink:role="http://www.isi.edu/in-notes/iana/assignments/media-types/application/xml-dtd"
-               xlink:href="sample.dtd">
-<h3>DTD</h3>
-<p>A DTD, <a href="sample.dtd">sample.dtd</a>, for Sample Schema.  It
-incorporates an auxiliary DTD, <a href="blocks.dtd">blocks.dtd</a>.</p>
+</p></li><li><p>Emphasis and links contain only text.
+The link target is in an <code>xlink:href</code> attribute.</p></li></ul><p>The Sample Schema is described with a DTD, XML Schema, and RELAX NG grammar.
+</p></section><a name="related.resources" id="related.resources"></a><header><h2><span class="number">2<span class="sep"> </span></span>Related Resources</h2></header><a name="DTD" id="DTD"></a><header><h3><span class="number">2<span class="sep">.</span>1<span class="sep"> </span></span>DTD</h3></header><rddl:resource xlink:title="Sample DTD for validation" xlink:arcrole="http://www.rddl.org/purposes#validation" xlink:role="http://www.isi.edu/in-notes/iana/assignments/media-types/application/xml-dtd" xlink:href="sample.dtd">
+<p>A DTD, <a href="sample.dtd" class="link">sample.dtd</a>, for Sample Schema.  It
+incorporates an auxiliary DTD, <a href="blocks.dtd" class="link">blocks.dtd</a>.</p>
 <p>This DTD is a little bit atypical in that it’s been written so that it
 will validate a document with the XSD instance attributes.</p>
-</rddl:resource>
-</div>
-
-<div class="resource" id="xmlschema">
-<rddl:resource xlink:title="Sample XML Schema for validation"
-               xlink:role="http://www.w3.org/2001/XMLSchema"
-               xlink:arcrole="http://www.rddl.org/purposes#schema-validation"
-               xlink:href="sample.xsd">
-<h2>XML Schema</h2>
-<p>An <a href="sample.xsd">XML Schema schema document</a> for Sample Schema.
-It also incorporates auxiliary file, <a href="blocks.xsd">blocks.xsd</a>
-and <a href="xlink.xsd">xlink.xsd</a>.
+</rddl:resource><a name="xmlschema" id="xmlschema"></a><header><h3><span class="number">2<span class="sep">.</span>2<span class="sep"> </span></span>XML Schema</h3></header><rddl:resource xlink:title="Sample XML Schema for validation" xlink:role="http://www.w3.org/2001/XMLSchema" xlink:arcrole="http://www.rddl.org/purposes#schema-validation" xlink:href="sample.xsd">
+<p>An <a href="sample.xsd" class="link">XML Schema schema document</a> for Sample Schema.
+It also incorporates auxiliary files: <a href="blocks.xsd" class="link">blocks.xsd</a>,
+<a href="xml.xsd" class="link">xml.xsd</a>, and <a href="xlink.xsd" class="link">xlink.xsd</a>.
 </p>
-</rddl:resource>
-</div>
-
-<div class="resource" id="rng">
-<rddl:resource xlink:title="Sample RELAX NG grammar for validation"
-               xlink:role="http://relaxng.org/ns/structure/1.0"
-               xlink:arcrole="http://www.rddl.org/purposes#schema-validation"
-               xlink:href="sample.rng">
-<h2>RELAX NG Grammar</h2>
-<p>A <a href="sample.rng">RELAX NG grammar</a> for Sample Schema.
-It also incorporates an auxiliary file, <a href="blocks.xsd">blocks.rng</a>.
+</rddl:resource><a name="rng" id="rng"></a><header><h3><span class="number">2<span class="sep">.</span>3<span class="sep"> </span></span>RELAX NG Grammar</h3></header><rddl:resource xlink:title="Sample RELAX NG grammar for validation" xlink:role="http://relaxng.org/ns/structure/1.0" xlink:arcrole="http://www.rddl.org/purposes#schema-validation" xlink:href="sample.rng">
+<p>A <a href="sample.rng" class="link">RELAX NG grammar</a> for Sample Schema.
+It also incorporates an auxiliary file, <a href="blocks.xsd" class="link">blocks.rng</a>.
 </p>
 <p>This grammar is a little bit atypical in that it’s been written so that it
 will validate a document with the XSD instance attributes.</p>
-</rddl:resource>
-
-<div class="resource" id="rnc">
-<rddl:resource xlink:title="Sample DTD for validation"
-               xlink:arcrole="http://www.rddl.org/purposes#validation"
-               xlink:role="http://www.isi.edu/in-notes/iana/assignments/media-types/application/vnd.relax-ng.rnc"
-               xlink:href="sample.rnc">
-<h4>RELAX NG Compact Syntax Grammar</h4>
+</rddl:resource><a name="rnc" id="rnc"></a><header><h4><span class="number">2<span class="sep">.</span>3<span class="sep">.</span>1<span class="sep"> </span></span>RELAX NG Compact Syntax Grammar</h4></header><rddl:resource xlink:title="Sample DTD for validation" xlink:arcrole="http://www.rddl.org/purposes#validation" xlink:role="http://www.isi.edu/in-notes/iana/assignments/media-types/application/vnd.relax-ng.rnc" xlink:href="sample.rnc">
 <p>As a convenience to users, a compact syntax grammar,
-<a href="sample.rnc">sample.rnc</a>, is also provided.  It
-incorporates <a href="blocks.rnc">blocks.rnc</a>.</p>
-</rddl:resource>
-</div>
-</div>
-<div class="resource" id="tohtml">
-<rddl:resource xlink:title="Transform to HTML"
-               xlink:arcrole="http://www.rddl.org/purposes#transformation"
-               xlink:role="http://www.w3.org/1999/XSL/Transform"
-               xlink:href="sample.xsl">
-<h3>XSLT Transformation to HTML</h3>
+<a href="sample.rnc" class="link">sample.rnc</a>, is also provided.  It
+incorporates <a href="blocks.rnc" class="link">blocks.rnc</a>.</p>
+</rddl:resource><a name="tohtml" id="tohtml"></a><header><h3><span class="number">2<span class="sep">.</span>4<span class="sep"> </span></span>XSLT Transformation to HTML</h3></header><rddl:resource xlink:title="Transform to HTML" xlink:arcrole="http://www.rddl.org/purposes#transformation" xlink:role="http://www.w3.org/1999/XSL/Transform" xlink:href="sample.xsl">
 <p>This distribution includes a
-<a href="sample.xsl">simple transformation</a> to HTML.</p>
-</rddl:resource>
-</div>
-<div class="resource" id="example">
-<rddl:resource xlink:title="Example document"
-               xlink:arcrole="http://www.rddl.org/purposes#example"
-               xlink:role="https://xmlresolver.org/ns/sample"
-               xlink:href="sample.xml">
-<h3>Example document</h3>
-<p>A short <a href="sample.xml">sample document</a> is also provided.</p>
-</rddl:resource>
-</div>
-</div>
-</body>
-</html>
+<a href="sample.xsl" class="link">simple transformation</a> to HTML.</p>
+</rddl:resource><a name="example" id="example"></a><header><h3><span class="number">2<span class="sep">.</span>5<span class="sep"> </span></span>Example document</h3></header><rddl:resource xlink:title="Example document" xlink:arcrole="http://www.rddl.org/purposes#example" xlink:role="https://xmlresolver.org/ns/sample" xlink:href="sample.xml">
+<p>A short <a href="sample.xml" class="link">sample document</a> is also provided.</p>
+</rddl:resource><nav class="bottom"><nav class="tocopen"></nav><nav class="toc"></nav><!-- Hide ToC details from user agents that don’t support JS --><script type="text/html" class="tocopen"><span>[toc]</span></script><script type="text/html" class="toc"><header><span>Table of Contents</span><span class="close"><span>╳</span></span><p class="ptoc-search"><input class="ptoc-search" placeholder="Search" style="width: 80%" /></p></header><div><ul class="toc"><li><a href="#intro"><span class="number">1<span class="sep"> </span></span>Introduction</a></li><li><a href="#related.resources"><span class="number">2<span class="sep"> </span></span>Related Resources</a><ul class="toc"><li><a href="#DTD"><span class="number">2<span class="sep">.</span>1<span class="sep"> </span></span>DTD</a></li><li><a href="#xmlschema"><span class="number">2<span class="sep">.</span>2<span class="sep"> </span></span>XML Schema</a></li><li><a href="#rng"><span class="number">2<span class="sep">.</span>3<span class="sep"> </span></span>RELAX NG Grammar</a></li><li><a href="#tohtml"><span class="number">2<span class="sep">.</span>4<span class="sep"> </span></span>XSLT Transformation to HTML</a></li><li><a href="#example"><span class="number">2<span class="sep">.</span>5<span class="sep"> </span></span>Example document</a></li></ul></li></ul></div></script></nav><script src="/js/persistent-toc.js"></script></body></html>
