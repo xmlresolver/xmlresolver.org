@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-    xtserver:
+    xmlres_server:
       image: httpd:2.4
       container_name: xmlresdotorg
       ports:
@@ -12,7 +12,7 @@ services:
       stdin_open: true
       tty: true
       networks:
-        - external_net
+        - external_resdotorgnet
 
 networks:
-  external_net: {}
+  external_resdotorgnet: {}

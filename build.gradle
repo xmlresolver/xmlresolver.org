@@ -17,18 +17,20 @@ buildscript {
   dependencies {
     classpath group: saxonGroup, name: saxonEdition, version: saxonVersion
     classpath group: 'org.docbook', name: 'schemas-docbook', version: docbookVersion
-    classpath group: 'org.docbook', name: 'docbook-xslTNG', version: "1.5.0-SNAPSHOT"
+    classpath group: 'org.docbook', name: 'docbook-xslTNG', version: xslTNGversion
   }
 }
 
 plugins {
   id 'com.nwalsh.gradle.saxon.saxon-gradle' version '0.9.3'
-  id 'com.nwalsh.gradle.relaxng.validate' version '0.0.6'
+  id 'com.nwalsh.gradle.relaxng.validate' version '0.0.8'
+  id 'com.nwalsh.gradle.docker.container' version '0.0.3'
 }
 
 import com.nwalsh.gradle.saxon.SaxonXsltTask
 import com.nwalsh.gradle.relaxng.validate.RelaxNGValidateTask
 import com.nwalsh.gradle.relaxng.translate.RelaxNGTranslateTask
+import com.nwalsh.gradle.docker.DockerContainer
 
 repositories {
   mavenLocal()
@@ -55,11 +57,19 @@ dependencies {
   implementation (
     [group: saxonGroup, name: saxonEdition, version: saxonVersion],
     [group: 'org.docbook', name: 'schemas-docbook', version: '5.2b10-SNAPSHOT'],
-    [group: 'org.docbook', name: 'docbook-xslTNG', version: "1.5.0-SNAPSHOT"],
+    [group: 'org.docbook', name: 'docbook-xslTNG', version: xslTNGversion],
     [group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25' ],
     [group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.1'],
     [group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.1']
   )
+}
+
+ext {
+  c_xmlres = "xmlresdotorg"
+}
+
+docker_container.configure {
+  workingDir = "docker"
 }
 
 defaultTasks 'website'
@@ -109,11 +119,13 @@ task augment(type: SaxonXsltTask, dependsOn: ["validate"]) {
 
 task website(type: SaxonXsltTask, dependsOn: ["augment", "copyResources", "nsdoc"]) {
   input augment.outputs.files.singleFile
-  output "${buildDir}/${destinationPath}/index.html"
+  output "${buildDir}/website/index.html"
   stylesheet "${projectDir}/tools/docbook.xsl"
   initializer 'org.docbook.xsltng.extensions.Register'
   parameters (
-    'local-conventions': "file://${projectDir}/tools/local-conventions.xsl"
+    'local-conventions': "file:${projectDir}/tools/local-conventions.xsl",
+    'mediaobject-input-base-uri': "file:${projectDir}/build/website/",
+    'mediaobject-output-base-uri': "/"
   )
 }
 
@@ -154,6 +166,33 @@ task copyResources() {
     delete "${buildDir}/website/org"
   }
 }
+
+// ======================================================================
+
+task dockerup() {
+  doLast {
+    if (!DockerContainer.running(c_xmlres)) {
+      DockerContainer.compose {
+        command = "up"
+        options = ["-p", "xmlresorg"]
+        args = ["-d"]
+      }
+    }
+  }
+}
+
+task dockerdown() {
+  doLast {
+    if (DockerContainer.running(c_xmlres)) {
+      DockerContainer.compose {
+        command = "down"
+        options = ["-p", "xmlresorg"]
+      }
+    }
+  }
+}
+
+// ======================================================================
 
 task helloWorld() {
   doLast {

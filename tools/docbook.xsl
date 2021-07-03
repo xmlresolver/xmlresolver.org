@@ -12,6 +12,11 @@
                 version="3.0">
 
 <xsl:import href="https://cdn.docbook.org/release/xsltng/current/xslt/docbook.xsl"/>
+<!--
+<xsl:import href="/Users/ndw/Projects/docbook/xslTNG/build/xslt/docbook.xsl"/>
+-->
+
+<xsl:param name="persistent-toc" select="'true'"/>
 
 <xsl:param name="section-toc-depth" select="1"/>
 
@@ -25,6 +30,10 @@
     <xsl:sequence select="@*"/>
     <xsl:apply-templates select="node()" mode="m:docbook"/>
   </rddl:resource>
+</xsl:template>
+
+<xsl:template match="*" mode="m:html-head-links">
+  <link rel="icon" href="/img/xr.png"/>
 </xsl:template>
 
 </xsl:stylesheet>

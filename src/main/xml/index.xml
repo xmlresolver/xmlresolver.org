@@ -1,14 +1,14 @@
 <article xmlns="http://docbook.org/ns/docbook"
          xmlns:xlink="http://www.w3.org/1999/xlink"
+         role="homepage"
          version="5.2">
 <info>
-<title>Welcome to XMLResolver.org</title>
+<title>Welcome to XMLResolver.org<inlinemediaobject>
+<imageobject>
+<imagedata fileref="../website/img/xr.png"/>
+</imageobject>
+</inlinemediaobject></title>
 </info>
-
-<note><para>These pages are a work in progress: they attempt to
-document the XML Resolver 3.x release.
-</para>
-</note>
 
 <para>As you can tell from the clever name, this site is about an XML Resolver.
 (The code is <link xlink:href="https://github.com/xmlresolver/xmlresolver/">over on
@@ -93,13 +93,13 @@ or you can get it from Maven with coordinates like these:</para>
 <programlisting language="xml"><![CDATA[<dependency>
   <groupId>org.xmlresolver</groupId>
   <artifactId>xmlresolver</artifactId>
-  <version>3.0.0</version>
+  <version>3.0.1</version>
 </dependency>
 
 <dependency>
   <groupId>org.xmlresolver</groupId>
   <artifactId>xmlresolver</artifactId>
-  <version>3.0.0</version>
+  <version>3.0.1</version>
   <classifier>data</classifier>
 </dependency>]]></programlisting>
 
@@ -350,6 +350,10 @@ should attempt to cache files that fail to resolve locally. If, instead,
 one of the “cache under home” properties is set, the cache directory will
 default to <filename>$HOME/.xmlresolver/cache</filename><indexterm type="envar">
 <primary>HOME</primary></indexterm>.</para>
+
+<para>If the <sysprop>xmlresolver.offline</sysprop> system property is
+set, no documents will expire from the cache, regardless of their
+age.</para>
 
 </section>
 <section xml:id="xml.catalog.preferPropertyFile">
@@ -627,11 +631,6 @@ Entity and URI Resolvers</link> is still relevant.</para>
 </para>
 </listitem>
 </itemizedlist>
-
-<para>Spoon. The simplest possible thing you can do is instantiate an instance of
-<classname>org.xmlresolver.Resolver</classname> and use it as the resolver for your parser.
-The <classname role="org.xmlresolver">Resolver</classname> class implements the following resolvers:
-</para>
 
 </section>
 

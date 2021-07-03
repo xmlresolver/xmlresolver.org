@@ -1,9 +1,21 @@
-/*
-.indexed-section::before {
-    content: "⌜";
+.article header {
+    text-align: left;
 }
 
-.indexed-section::after {
-    content: "⌟";
+article header h1 img {
+    position: absolute;
+    left: calc(((100% - 50rem) / 4));
+    top: 45px;
+}    
+
+.homepage .list-of-titles {
+    display: none;
 }
-*/
+
+nav.tocopen span {
+    display: none;
+}
+
+nav.tocopen:before {
+  content: "☰";
+}
