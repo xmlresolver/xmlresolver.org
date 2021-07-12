@@ -465,6 +465,12 @@ for this property, catalog files will be validated when they are
 loaded and the resolver will throw an exception for any validity
 errors encountered.</para>
 
+<para>The validating loader depends on having version 20181222 of
+<link
+xlink:href="https://search.maven.org/artifact/org.relaxng/jing">Jing</link>
+on your classpath. (This is an optional dependency in the Maven
+distribution of the resolver, so you may have to add it by hand.)</para>
+
 </section>
 <section xml:id="xml.catalog.parseRddl">
 <title>Parse RDDL documents</title>
