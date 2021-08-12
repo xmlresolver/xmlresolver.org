@@ -513,6 +513,25 @@ to false.</para>
 loader (<code>getClass().getCatalogLoader()</code>) will not return useful
 class loader, you can specify an alternate loader with this feature.
 </para>
+</section>
+
+<section xml:id="xml.catalog.archivedCatalogs" role="since-3.1.0">
+<title>Support catalog files in ZIP archives</title>
+
+<para>This feature is new in XML Resolver 3.1.0. (Only available
+in a snapshot release at the time of writing.)</para>
+
+<itemizedlist>
+<listitem>
+<simpara>Feature <constant>ResolverFeature.ARCHIVED_CATALOGS</constant> (type: <type>Boolean</type>)</simpara>
+</listitem>
+<listitem><simpara>System property <sysprop>xml.catalog.archivedCatalogs</sysprop></simpara></listitem>
+<listitem><simpara>Property file property <fprop>archived-catalogs</fprop></simpara></listitem>
+</itemizedlist>
+
+<para>If archived catalogs are allowed, then you can place ZIP files of resources
+directly on the catalog path. The resolver will search inside the ZIP file for a catalog
+(<code>/org/xmlresolver/catalog.xml</code> or <code>/catalog.xml</code>) to use.</para>
 
 </section>
 
