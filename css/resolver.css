@@ -31,7 +31,7 @@ h2 {
 
 .narrow img {
     display: none;
-    width: 4rem;
+    width: 100px;
 }    
 
 .homepage .list-of-titles {
@@ -46,14 +46,21 @@ nav.tocopen:before {
   content: "☰";
 }
 
-@media screen and (max-width: 1025px) {
+@media screen and (max-width: 1110px) {
     h1 {
         margin-top: 1rem;
+        margin-left: 100px;
+        text-indent: -50px;
     }
     .margin img {
         display: none;
     }
-    .narrow img {
+    .narrow .media {
         display: inline-block;
+        height: 1em;
+    }
+    .narrow img {
+        display: block;
+        position: relative;
     }
 }
