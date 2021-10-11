@@ -3,8 +3,12 @@
          role="homepage"
          version="5.2">
 <info>
-<title>Welcome to XMLResolver.org<inlinemediaobject>
+<title><inlinemediaobject role="narrow">
 <imageobject>
+<imagedata fileref="../website/img/xr.png"/>
+</imageobject>
+</inlinemediaobject>Welcome to XMLResolver.org<inlinemediaobject>
+<imageobject role="margin">
 <imagedata fileref="../website/img/xr.png"/>
 </imageobject>
 </inlinemediaobject></title>
