@@ -4,7 +4,9 @@
 
 article header h1 img {
     position: absolute;
-    left: calc(((100% - 50rem) / 4));
+    width: calc(((100% - 50rem) / 2));
+    max-width: 480px;
+    left: 0;
     top: 45px;
 }    
 
