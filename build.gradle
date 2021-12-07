@@ -118,6 +118,7 @@ task augment(type: SaxonXsltTask, dependsOn: ["validate"]) {
 }
 
 task website(type: SaxonXsltTask, dependsOn: ["augment", "copyResources", "nsdoc"]) {
+  inputs.file "${projectDir}/tools/docbook.xsl"
   input augment.outputs.files.singleFile
   output "${buildDir}/website/index.html"
   stylesheet "${projectDir}/tools/docbook.xsl"
@@ -125,7 +126,9 @@ task website(type: SaxonXsltTask, dependsOn: ["augment", "copyResources", "nsdoc
   parameters (
     'local-conventions': "file:${projectDir}/tools/local-conventions.xsl",
     'mediaobject-input-base-uri': "file:${projectDir}/build/website/",
-    'mediaobject-output-base-uri': "/"
+    'mediaobject-output-base-uri': "/",
+    'chunk': 'index.html',
+    'chunk-output-base-uri': "${projectDir}/build/website/"
   )
 }
 

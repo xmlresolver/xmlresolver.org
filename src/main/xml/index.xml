@@ -1,4 +1,4 @@
-<article xmlns="http://docbook.org/ns/docbook"
+<book xmlns="http://docbook.org/ns/docbook"
          xmlns:xlink="http://www.w3.org/1999/xlink"
          role="homepage"
          version="5.2">
@@ -7,26 +7,56 @@
 <imageobject>
 <imagedata fileref="../website/img/xr.png"/>
 </imageobject>
-</inlinemediaobject>Welcome to XMLResolver.org<inlinemediaobject>
+</inlinemediaobject>The XML Resolver Project<inlinemediaobject>
 <imageobject role="margin">
 <imagedata fileref="../website/img/xr.png"/>
 </imageobject>
 </inlinemediaobject></title>
+<abstract>
+<para>Welcome! This is the home page for a family of resolver projects,
+including implementations in
+<link xlink:href="https://github.com/xmlresolver/xmlresolver">Java</link>
+and
+<link xlink:href="https://github.com/xmlresolver/xmlresolvercs">C#</link>.
+These implementations and related projects are hosted under the
+<link xlink:href="https://github.com/xmlresolver">XML Resolver</link>
+organization at
+<link xlink:href="https://github.com/">GitHub</link>.</para>
+<itemizedlist>
+<listitem>
+<para><link linkend="what">What is it?</link></para>
+</listitem>
+<listitem>
+<para><link linkend="why">Why do I want it?</link></para>
+</listitem>
+<listitem>
+<para><link linkend="getting">How do I get it?</link></para>
+</listitem>
+<listitem>
+<para><link linkend="using">How do I use it?</link></para>
+</listitem>
+<listitem>
+<para><link linkend="configuring">How do I configure it?</link></para>
+</listitem>
+</itemizedlist>
+</abstract>
 </info>
 
-<para>As you can tell from the clever name, this site is about an XML Resolver.
-(The code is <link xlink:href="https://github.com/xmlresolver/xmlresolver/">over on
-github</link>.) Many (Java-based) XML APIs include features for
-"resolvers" of various sorts. For example, many XML parsers allow you
-to define a "entity resolver" that can intercept attempts to load
-system identifiers. Schema processors provide a "URI resolver" that
-lets you intercept schema module URIs. Stylesheet and query processors
-have similar APIs for intercepting stylesheet and query
-modules.</para>
+<chapter xml:id="what">
+<title>What is a resolver?</title>
 
-<para>The resolver APIs exist because it’s sometimes useful in applications
-to return a locally cached resource instead of the resource actually
-requested. It’s a significant feature of the web that you can
+<para>An XML Resolver is an tool for mapping URIs to local resources.
+The name comes from the fact that there are APIs to support this
+mapping in most XML parsers and the underlying catalog format grew out
+of an existing markup standard. In principle, it can be used in any environment
+where it would be useful to remap URIs.</para>
+
+<para>The web encourages us to name resources with URIs. This is
+generally “a good thing,” but there are circumstances under which it’s
+inconvenient. A canonical example is when you don’t have reliable
+internet connectivity. Sometimes it’s useful in applications to return
+a locally cached resource instead of the resource actually requested.
+For example, it’s a significant feature of the web that you can
 dereference the URI</para>
 
 <programlisting>http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd</programlisting>
@@ -35,17 +65,32 @@ dereference the URI</para>
 <emphasis>desireable</emphasis> that <emphasis>everyone</emphasis>
 should <emphasis>always</emphasis> dereference that URI to get the
 XHTML DTD. It hasn’t changed in more than a decade and there’s no
-reason to believe it will <emphasis>ever change again</emphasis>.</para>
+reason to believe it <emphasis>will  ever</emphasis> change again.</para>
 
-<para>I know, DTDs are unfashionable and XHTML has measles or some
-other disease against which the world should have been vaccinated, but
-I chose that example with care. The W3C web server gets <emphasis>so
-many</emphasis> requests for the XHTML DTD that it goes out of its way
-to make retrieving it painful.</para>
+<para>The same is true of resources located in repositories like Maven
+and NuGet, where institutional policies dictate that once a resource
+is published, it can never be updated in place.</para>
 
-<para>Go ahead, download that DTD. You’ll find that the server introduces a
-significant delay before returning the data and if you get it
-often enough they’ll lock you out for 24 hours or something.</para>
+</chapter>
+
+<chapter xml:id="why">
+<title>Why use a resolver?</title>
+
+<para>I chose the preceding DTD example with care. Even though DTDs
+are no longer fashionable in many circles, it’s a popular, effectively
+immutable resource served up by the W3C. The W3C web server gets
+<emphasis>so many</emphasis> requests for the XHTML DTD that it sometimes goes
+out of its way to make retrieving it painful.</para>
+
+<para>You may have noticed that downloading resources (schemas, DTDs,
+etc., not the specifications, generally) from the W3C is sometimes
+very slow. This is a kind of rate limiting effect to save bandwidth.
+It discourages developers from pounding on their servers. If you don’t
+take the hint, they’ll even lock you out for a period of time.</para>
+
+<para>Even if the servers you frequently access don’t discourage you
+from repeatedly downloading the same resources, you (or your
+customers!) may sometimes have limited connectivity.</para>
 
 <para>Point being: there are lots of URIs which you can usefully cache
 locally.</para>
@@ -68,16 +113,15 @@ lot more theoretical than practical.</para>
 <para>The XML Resolver project is about doing it with catalogs, but it
 will also cache resources for you!</para>
 
-<section xml:id="catalogs">
-<title>XML Catalogs</title>
-
-<para>Catalogs are straightforward, you provide an XML document that has
+<para>
+<link xlink:href="https://xmlcatalogs.org">XML Catalogs</link>
+are straightforward; you provide an XML document that has
 mappings from identifiers that might appear in documents to local
 resources that should be returned for those identifiers.</para>
 
 <para>Here’s an example:</para>
 
-<programlisting><![CDATA[<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+<programlisting language="xml"><![CDATA[<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
   <system systemId="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"
           uri="/share/dtds/xhtml1-strict.dtd"/>
 </catalog>]]></programlisting>
@@ -85,10 +129,16 @@ resources that should be returned for those identifiers.</para>
 <para>If you load that catalog, attempts to obtain the XHTML DTD from the W3C
 will be satisfied by a local copy of the DTD obtained from the
 <filename>/share/dtds/xhtml1-strict.dtd</filename>.</para>
-</section>
 
-<section xml:id="getting">
-<title>How to get the XML Resolver</title>
+<para>You can write catalogs that suit your resources, and they can be chained
+together to work with and across multiple projects.</para>
+
+</chapter>
+
+<chapter xml:id="getting">
+<info>
+<title>Getting an XML Resolver</title>
+</info>
 
 <para>The XML Resolver is distributed in two ways: you can get it as a release
 from <link xlink:href="https://github.com/xmlresolver/xmlresolver/releases">GitHub</link>,
@@ -97,13 +147,13 @@ or you can get it from Maven with coordinates like these:</para>
 <programlisting language="xml"><![CDATA[<dependency>
   <groupId>org.xmlresolver</groupId>
   <artifactId>xmlresolver</artifactId>
-  <version>3.0.1</version>
+  <version>3.1.6</version>
 </dependency>
 
 <dependency>
   <groupId>org.xmlresolver</groupId>
   <artifactId>xmlresolver</artifactId>
-  <version>3.0.1</version>
+  <version>3.1.6</version>
   <classifier>data</classifier>
 </dependency>]]></programlisting>
 
@@ -122,10 +172,11 @@ Simply placing those jar files in your classpath will make catalog resolution of
 the standard URIs quick and efficient.
 </para>
 
-</section>
-
-<section xml:id="howto">
-<title>How to use XML Resolver</title>
+</chapter>
+<chapter xml:id="using">
+<info>
+<title>Using an XML Resolver</title>
+</info>
 
 <para>The simplest possible thing you can do is instantiate an instance of
 <classname>org.xmlresolver.Resolver</classname> and use it as the resolver for your parser.
@@ -194,10 +245,14 @@ if (validateCatalogs) {
 <para>and use that resolver in your parsing and URI retrieval.</para>
 
 <para>For additional APIs, consult the <link xlink:href="javadoc/index.html">JavaDoc</link>.</para>
-
 </section>
-<section xml:id="configuring">
-<title>Configuring XML Resolver</title>
+
+</chapter>
+
+<chapter xml:id="configuring">
+<info>
+<title>Configuring an XML Resolver</title>
+</info>
 
 <para>The Resolver classes use either Java system properties or a standard
 Java properties file to establish an initial environment.</para>
@@ -538,8 +593,6 @@ directly on the catalog path. The resolver will search inside the ZIP file for a
 (<code>/org/xmlresolver/catalog.xml</code> or <code>/catalog.xml</code>) to use.</para>
 
 </section>
-
-</section>
 <section xml:id="catalogmanager">
 <title>Access the underlying catalog manager</title>
 
@@ -553,7 +606,7 @@ directly on the catalog path. The resolver will search inside the ZIP file for a
 some lower-level methods for mapping to URIs without returning sources of any kind.
 </para>
 </section>
-</section>
+
 <section xml:id="logging">
 <title>Logging</title>
 
@@ -645,8 +698,9 @@ cache=/Users/ndw/Library/Caches/xmlresolver.org/cache
 allow-oasis-xml-catalog-pi=no
 prefer-property-file=false</programlisting>
 </section>
+</chapter>
 
-<section xml:id="seealso">
+<chapter xml:id="seealso">
 <title>See also</title>
 
 <itemizedlist>
@@ -661,7 +715,7 @@ Entity and URI Resolvers</link> is still relevant.</para>
 </listitem>
 </itemizedlist>
 
-</section>
+</chapter>
 
 <index xml:id="system-properties-index" type="sysprop">
 <title>System properties index</title>
@@ -687,4 +741,4 @@ xlink:href="javadoc/index.html">JavaDoc</link>.
 </para>
 </index>
 
-</article>
+</book>

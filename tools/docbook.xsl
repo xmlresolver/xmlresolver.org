@@ -7,6 +7,7 @@
                 xmlns:rddl="http://www.rddl.org/"
                 xmlns:t="http://docbook.org/ns/docbook/templates"
                 xmlns:tp="http://docbook.org/ns/docbook/templates/private"
+                xmlns:v="http://docbook.org/ns/docbook/variables"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 exclude-result-prefixes="#all"
                 version="3.0">
@@ -24,6 +25,17 @@
 
 <xsl:param name="css-links"
            select="'css/docbook.css css/docbook-screen.css css/resolver.css'"/>
+
+<xsl:variable name="v:user-title-properties" as="element()*">
+  <title xpath="self::db:chapter"
+         label="false"/>
+  <title xpath="self::db:section"
+         label="false"/>
+</xsl:variable>
+
+<xsl:param name="chunk-section-depth" select="0"/>
+<xsl:param name="chunk-include" as="xs:string*"
+           select="('parent::db:book')"/>
 
 <xsl:template match="rddl:resource" mode="m:docbook">
   <rddl:resource>
