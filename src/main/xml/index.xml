@@ -38,6 +38,9 @@ organization at
 <listitem>
 <para><link linkend="configuring">How do I configure it?</link></para>
 </listitem>
+<listitem>
+<para><link linkend="config-settings">What can I configure?</link></para>
+</listitem>
 </itemizedlist>
 </abstract>
 </info>
@@ -254,11 +257,24 @@ if (validateCatalogs) {
 <title>Configuring an XML Resolver</title>
 </info>
 
-<para>The Resolver classes use either Java system properties or a standard
-Java properties file to establish an initial environment.</para>
+<para>The XML Resolver is available for both Java and .NET. By and
+large, it works the same way in both environments and has similar
+features. One area where differences are unavoidable is in
+configuration because Java and .NET expose different mechanisms.</para>
 
-<para>The resolver searches for a property file by looking in the following places,
-in this order:</para>
+<para>The Java XML Resolver classes use either Java system properties
+or a standard Java properties file to establish an initial
+environment.</para>
+
+<para>On .NET, environment variables are used instead of system
+properties and the properties file is a standard .NET configuration
+file.</para>
+
+<section xml:id="config-java">
+<title>Configuring XML Resolver on Java</title>
+
+<para>On Java, the resolver searches for a property file by looking in
+the following places, in this order:</para>
 
 <itemizedlist>
 <listitem>
@@ -275,16 +291,91 @@ in this order:</para>
 </listitem>
 </itemizedlist>
 
-<para>The following features may be configured with properties.</para>
+<section xml:id="xmlresolver.properties">
+<title>Example xmlresolver.properties file</title>
+
+<para>An <filename>xmlresolver.properties</filename> file
+might look like this:</para>
+
+<programlisting># xmlresolver.properties
+
+relative-catalogs=yes
+
+# Always use semicolons in this list
+catalogs=./catalog.xml;/Users/ndw/Documents/catalog.xml
+
+prefer=public
+cache=/Users/ndw/Library/Caches/xmlresolver.org/cache
+allow-oasis-xml-catalog-pi=no
+prefer-property-file=false</programlisting>
+</section>
+</section>
+
+<section xml:id="config-net">
+<title>Configuring XML Resolver on .NET</title>
+
+<para>On .NET, the resolver uses the enviornment variable <envar>XMLRESOLVER_APPSETTINGS</envar>
+to locate .NET properties file. The properties file can be either XML (in an
+<code>XmlResolver</code> section) or JSON (in an <code>XmlResolver</code> object).</para>
+
+<section xml:id="xmlresolver.config.xml">
+<title>Example xmlresolver.config file</title>
+
+<para>An <filename>xmlresolver.config</filename> file
+might look like this:</para>
+
+<programlisting language="xml"><![CDATA[<configuration>
+  <xmlResolver relativeCatalogs="no"
+               catalogs="./catalog.xml;/Users/userid/Documents/catalog.xml"
+               prefer="public"
+               allowOasisXmlCatalogPi="yes"
+               cache="/Users/userid/Library/Caches/xmlresolver.org/cache"
+               cacheUnderHome="false"
+               preferPropertyFile="no"/>
+</configuration>]]></programlisting>
+
+<para>If JSON is more convenient, <!-- stranger things have happened -->
+it might look like this:</para>
+
+<programlisting language="json">{
+  "XmlResolver": {
+    "preferPublic": true,
+    "relativeCatalogs": "false",
+    "catalogs": "./catalog.xml;/Users/userid/Documents/catalog.xml",
+    "prefer": "public",
+    "allowOasisXmlCatalogPi": "yes",
+    "cache": "/Users/userid/Library/Caches/xmlresolver.org/cache",
+    "cacheUnderHome": "false",
+    "preferPropertyFile": "no"
+  }
+}</programlisting>
+</section>
+
+</section>
+</chapter>
+
+<chapter xml:id="config-settings">
+<title>What you can configure</title>
+
+<para>This chapter lists all of the configurable settings in XML Resolver.
+</para>
 
 <section xml:id="xml.catalog.files">
 <title>The initial list of catalog files</title>
 
-<itemizedlist>
+<itemizedlist role="java">
 <listitem>
 <simpara>Feature <constant>ResolverFeature.CATALOG_FILES</constant> (type: <type>List&lt;String&gt;</type>)</simpara>
 </listitem>
 <listitem><simpara>System property <sysprop>xml.catalog.files</sysprop></simpara></listitem>
+<listitem><simpara>Property file property <fprop>catalogs</fprop></simpara></listitem>
+</itemizedlist>
+
+<itemizedlist role="net">
+<listitem>
+<simpara>Feature <constant>ResolverFeature.CATALOG_FILES</constant> (type: <type>List&lt;string&gt;</type>)</simpara>
+</listitem>
+<listitem><simpara>Environment variable <envar>XML_CATALOG_FILES</envar></simpara></listitem>
 <listitem><simpara>Property file property <fprop>catalogs</fprop></simpara></listitem>
 </itemizedlist>
 
@@ -297,12 +388,20 @@ named <filename>catalog.xml</filename> in the current directory as a catalog.</p
 <section xml:id="xml.catalog.additions">
 <title>A list of additional catalog files</title>
 
-<itemizedlist>
+<itemizedlist role="java">
 <listitem>
 <simpara>Feature <constant>ResolverFeature.CATALOG_ADDITIONS</constant> (type: <type>List&lt;String&gt;</type>)</simpara>
 </listitem>
 <listitem><simpara>System property <sysprop>xml.catalog.additions</sysprop></simpara></listitem>
 <listitem><simpara>Property file property <fprop>catalog-additions</fprop></simpara></listitem>
+</itemizedlist>
+
+<itemizedlist role="net">
+<listitem>
+<simpara>Feature <constant>ResolverFeature.CATALOG_ADDITIONS</constant> (type: <type>List&lt;string&gt;</type>)</simpara>
+</listitem>
+<listitem><simpara>Environment variable <envar>XML_CATALOG_ADDITIONS</envar></simpara></listitem>
+<listitem><simpara>Property file property <fprop>catalogAdditions</fprop></simpara></listitem>
 </itemizedlist>
 
 <para>A semicolon-delimited list of catalog files. This list is used in
@@ -320,15 +419,69 @@ be appended to the list instead of replacing the list entirely as setting
 <sysprop>xml.catalog.files</sysprop> would.</para>
 
 </section>
+
+<section xml:id="xml.assembly.catalogs">
+<title>Catalogs to load from assemblies</title>
+
+<itemizedlist role="java">
+<listitem>
+<simpara>This setting has no equivalent on .NET</simpara>
+</listitem>
+</itemizedlist>
+
+<itemizedlist role="net">
+<listitem>
+<simpara>Feature <constant>ResolverFeature.ASSEMBLY_CATALOGS</constant> (type: <type>List&lt;string&gt;</type>)</simpara>
+</listitem>
+</itemizedlist>
+
+<para>This setting can be used to load additional catalogs from other assemblies
+linked into your application.</para>
+
+</section>
+
+<section xml:id="xml.data.assembly">
+<title>Load the XmlResolverData assembly catalog?</title>
+
+<itemizedlist role="java">
+<listitem>
+<simpara>This setting has no equivalent on .NET</simpara>
+</listitem>
+</itemizedlist>
+
+<itemizedlist role="net">
+<listitem>
+<simpara>Feature <constant>ResolverFeature.USE_DATA_ASSEMBLY</constant> (type: <type>bool</type>)</simpara>
+</listitem>
+<listitem><simpara>Environment variable <envar>XML_CATALOG_USE_DATA_ASSEMBLY</envar></simpara></listitem>
+<listitem><simpara>Property file property <fprop>useDataAssembly</fprop></simpara></listitem>
+</itemizedlist>
+
+<para>This setting, which defaults to <code>true</code>, tells the resolver that
+it should always attempt to use the catalog in the
+<filename>XmlResolverData.dll</filename> assembly. This assembly is distributed as
+<link xlink:href="https://www.nuget.org/packages/XmlResolverData/">a
+separate NuGet package</link> and includes a variety of common resources.</para>
+
+<para>This setting has no effect unless you’ve linked that assembly into your application.
+</para>
+</section>
+
 <section xml:id="xml.catalog.classpathCatalogs">
 <title>Load catalogs from the classpath</title>
 
-<itemizedlist>
+<itemizedlist role="java">
 <listitem>
 <simpara>Feature <constant>ResolverFeature.CLASSPATH_CATALOGS</constant> (type: <type>Boolean</type>)</simpara>
 </listitem>
 <listitem><simpara>System property <sysprop>xml.catalog.classpathCatalogs</sysprop></simpara></listitem>
 <listitem><simpara>Property file property <fprop>classpath-catalogs</fprop></simpara></listitem>
+</itemizedlist>
+
+<itemizedlist role="net">
+<listitem>
+<simpara>This setting has no equivalent on .NET</simpara>
+</listitem>
 </itemizedlist>
 
 <para>Load catalog files from the classpath. If this property is true, the
@@ -340,11 +493,19 @@ of the catalog list.</para>
 <section xml:id="xml.catalog.prefer">
 <title>Preference for public or system identifiers</title>
 
-<itemizedlist>
+<itemizedlist role="java">
 <listitem>
 <simpara>Feature <constant>ResolverFeature.PREFER_PUBLIC</constant> (type: <type>Boolean</type>)</simpara>
 </listitem>
 <listitem><simpara>System property <sysprop>xml.catalog.prefer</sysprop></simpara></listitem>
+<listitem><simpara>Property file property <fprop>prefer</fprop></simpara></listitem>
+</itemizedlist>
+
+<itemizedlist role="net">
+<listitem>
+<simpara>Feature <constant>ResolverFeature.PREFER_PUBLIC</constant> (type: <type>bool</type>)</simpara>
+</listitem>
+<listitem><simpara>Environment variable <envar>XML_CATALOG_PREFER</envar></simpara></listitem>
 <listitem><simpara>Property file property <fprop>prefer</fprop></simpara></listitem>
 </itemizedlist>
 
@@ -354,12 +515,20 @@ of the catalog list.</para>
 <section xml:id="xml.catalog.allowPI">
 <title>Obey <tag class="pi">oasis-xml-catalog</tag> processing instruction</title>
 
-<itemizedlist>
+<itemizedlist role="java">
 <listitem>
 <simpara>Feature <constant>ResolverFeature.ALLOW_CATALOG_PI</constant> (type: <type>Boolean</type>)</simpara>
 </listitem>
 <listitem><simpara>System property <sysprop>xml.catalog.allowPI</sysprop></simpara></listitem>
 <listitem><simpara>Property file property <fprop>allow-oasis-xml-catalog-pi</fprop></simpara></listitem>
+</itemizedlist>
+
+<itemizedlist role="net">
+<listitem>
+<simpara>Feature <constant>ResolverFeature.ALLOW_CATALOG_PI</constant> (type: <type>bool</type>)</simpara>
+</listitem>
+<listitem><simpara>Environment variable <envar>XML_CATALOG_ALLOW_PI</envar></simpara></listitem>
+<listitem><simpara>Property file property <fprop>allowOasisXmlCatalogPi</fprop></simpara></listitem>
 </itemizedlist>
 
 <para>This setting allows you to toggle whether or not the resolver classes
@@ -374,8 +543,12 @@ for every parse.)</para>
 <section xml:id="relative-catalogs">
 <title>Support relative catalog paths</title>
 
-<itemizedlist>
+<itemizedlist role="java">
 <listitem><simpara>Property file property <fprop>relative-catalogs</fprop></simpara></listitem>
+</itemizedlist>
+
+<itemizedlist role="net">
+<listitem><simpara>Property file property <fprop>relativeCatalogs</fprop></simpara></listitem>
 </itemizedlist>
 
 <para>If <fprop>relative-catalogs</fprop> is true, relative filenames in the
@@ -393,7 +566,7 @@ with respect to the current working directory.</para>
 <section xml:id="xml.catalog.cache">
 <title>Cache documents</title>
 
-<itemizedlist>
+<itemizedlist role="java">
 <listitem>
 <simpara>Features <constant>ResolverFeature.CACHE</constant> (type: <type>ResourceCache</type>),
 <constant>ResolverFeature.CACHE_DIRECTORY</constant> (type: <type>String</type>),
@@ -401,6 +574,20 @@ with respect to the current working directory.</para>
 </listitem>
 <listitem><simpara>System properties <sysprop>xml.catalog.cache</sysprop>, <sysprop>xml.catalog.cacheUnderHome</sysprop></simpara></listitem>
 <listitem><simpara>Property file properties <fprop>cache</fprop>, <fprop>cache-under-home</fprop>
+</simpara></listitem>
+</itemizedlist>
+
+<itemizedlist role="net">
+<listitem>
+<simpara>Features <constant>ResolverFeature.CACHE</constant> (type: <type>ResourceCache</type>),
+<constant>ResolverFeature.CACHE_DIRECTORY</constant> (type: <type>string</type>),
+<constant>ResolverFeature.CACHE_UNDER_HOME</constant> (type: <type>bool</type>)</simpara>
+</listitem>
+<listitem><simpara>Environment variables
+<envar>XML_CATALOG_CACHE</envar> and <envar>XML_CATALOG_CACHE_UNDER_HOME</envar>.
+</simpara></listitem>
+<listitem><simpara>Property file properties <fprop>catalogCache</fprop>,
+<fprop>cacheUnderHome</fprop>
 </simpara></listitem>
 </itemizedlist>
 
@@ -418,12 +605,20 @@ age.</para>
 <section xml:id="xml.catalog.preferPropertyFile">
 <title>Prefer property file values</title>
 
-<itemizedlist>
+<itemizedlist role="java">
 <listitem>
 <simpara>Feature <constant>ResolverFeature.PREFER_PROPERTY_FILE</constant> (type: <type>Boolean</type>)</simpara>
 </listitem>
 <listitem><simpara>System property <sysprop>xml.catalog.preferPropertyFile</sysprop></simpara></listitem>
 <listitem><simpara>Property file property <fprop>prefer-property-file</fprop></simpara></listitem>
+</itemizedlist>
+
+<itemizedlist role="net">
+<listitem>
+<simpara>Feature <constant>ResolverFeature.PREFER_PROPERTY_FILE</constant> (type: <type>bool</type>)</simpara>
+</listitem>
+<listitem><simpara>Environment variable <envar>XML_CATALOG_PREFER_PROPERTY_FILE</envar></simpara></listitem>
+<listitem><simpara>Property file property <fprop>preferPropertyFile</fprop></simpara></listitem>
 </itemizedlist>
 
 <para>Prefer properties from the properties file.
@@ -436,12 +631,20 @@ earlier versions), set the “prefer property file” property to true.</para>
 <section xml:id="xml.catalog.uriForSystem">
 <title>Use URI entries for system resolution</title>
 
-<itemizedlist>
+<itemizedlist role="java">
 <listitem>
 <simpara>Feature <constant>ResolverFeature.URI_FOR_SYSTEM</constant> (type: <type>Boolean</type>)</simpara>
 </listitem>
 <listitem><simpara>System property <sysprop>xml.catalog.uriForSystem</sysprop></simpara></listitem>
 <listitem><simpara>Property file property <fprop>uri-for-system</fprop></simpara></listitem>
+</itemizedlist>
+
+<itemizedlist role="net">
+<listitem>
+<simpara>Feature <constant>ResolverFeature.URI_FOR_SYSTEM</constant> (type: <type>bool</type>)</simpara>
+</listitem>
+<listitem><simpara>Environment variable <envar>XML_CATALOG_URI_FOR_SYSTEM</envar></simpara></listitem>
+<listitem><simpara>Property file property <fprop>uriForSystem</fprop></simpara></listitem>
 </itemizedlist>
 
 <para>Ignore the distinction between system identifiers and URIs.
@@ -462,12 +665,20 @@ system and public entries.</para>
 <section xml:id="xml.catalog.mergeHttps">
 <title>Merge http: and https: URI schemes</title>
 
-<itemizedlist>
+<itemizedlist role="java">
 <listitem>
 <simpara>Feature <constant>ResolverFeature.MERGE_HTTPS</constant> (type: <type>Boolean</type>)</simpara>
 </listitem>
 <listitem><simpara>System property <sysprop>xml.catalog.mergeHttps</sysprop></simpara></listitem>
 <listitem><simpara>Property file property <fprop>merge-https</fprop></simpara></listitem>
+</itemizedlist>
+
+<itemizedlist role="net">
+<listitem>
+<simpara>Feature <constant>ResolverFeature.MERGE_HTTPS</constant> (type: <type>bool</type>)</simpara>
+</listitem>
+<listitem><simpara>Environment variable <envar>XML_CATALOG_MERGE_HTTPS</envar></simpara></listitem>
+<listitem><simpara>Property file property <fprop>mergeHttps</fprop></simpara></listitem>
 </itemizedlist>
 
 <para>Treat http: and https: URIs as equivalent for the purpose of resolution. The web used to
@@ -483,12 +694,27 @@ It only effects catalog lookup for system identifiers and URIs.</para>
 <section xml:id="xml.catalog.maskJarUris">
 <title>Mask jar URIs</title>
 
-<itemizedlist>
+<itemizedlist role="java">
 <listitem>
 <simpara>Feature <constant>ResolverFeature.MASK_JAR_URIS</constant> (type: <type>Boolean</type>)</simpara>
 </listitem>
 <listitem><simpara>System property <sysprop>xml.catalog.maskJarUris</sysprop></simpara></listitem>
 <listitem><simpara>Property file property <fprop>mask-jar-uris</fprop></simpara></listitem>
+</itemizedlist>
+
+<!--
+<itemizedlist role="net">
+<listitem>
+<simpara>Feature <constant>ResolverFeature.MASK_PACK_URIS</constant> (type: <type>bool</type>)</simpara>
+</listitem>
+<listitem><simpara>Environment variable <envar>XML_CATALOG_MASK_PACK_URIS</envar></simpara></listitem>
+<listitem><simpara>Property file property <fprop>maskPackUris</fprop></simpara></listitem>
+</itemizedlist>
+-->
+<itemizedlist role="net">
+<listitem>
+<simpara>This setting has no equivalent on .NET</simpara>
+</listitem>
 </itemizedlist>
 
 <para>Don’t return jar: or classpath: URIs. Most entity resolver APIs are defined such that if
@@ -501,16 +727,31 @@ so any subsequent attempts to resolve relative URIs will fail. If this property 
 the local resource will be returned but the URI will be left unchanged. That may require a
 more complete catalog, but it will avoid a situation which is guaranteed to fail.</para>
 
+<sidebar>
+<para>On .NET, a similar feature could be imagined for “pack:” scheme URIs, but in
+practice, the way the <classname>System.XmlResolver</classname> works, it doesn’t
+serve any useful purpose.
+</para>
+</sidebar>
+
 </section>
 <section xml:id="xml.catalog.catalogLoaderClass">
 <title>Catalog loader class</title>
 
-<itemizedlist>
+<itemizedlist role="java">
 <listitem>
 <simpara>Feature <constant>ResolverFeature.CATALOG_LOADER_CLASS</constant> (type: <type>String</type>)</simpara>
 </listitem>
 <listitem><simpara>System property <sysprop>xml.catalog.catalogLoaderClass</sysprop></simpara></listitem>
 <listitem><simpara>Property file property <fprop>catalog-loader-class</fprop></simpara></listitem>
+</itemizedlist>
+
+<itemizedlist role="net">
+<listitem>
+<simpara>Feature <constant>ResolverFeature.CATALOG_LOADER_CLASS</constant> (type: <type>string</type>)</simpara>
+</listitem>
+<listitem><simpara>Environment variable <envar>XML_CATALOG_LOADER_CLASS</envar></simpara></listitem>
+<listitem><simpara>Property file property <fprop>catalogLoaderClass</fprop></simpara></listitem>
 </itemizedlist>
 
 <para>Specify the catalog loader class. The default catalog loader ignores
@@ -534,12 +775,20 @@ distribution of the resolver, so you may have to add it by hand.)</para>
 <section xml:id="xml.catalog.parseRddl">
 <title>Parse RDDL documents</title>
 
-<itemizedlist>
+<itemizedlist role="java">
 <listitem>
 <simpara>Feature <constant>ResolverFeature.PARSE_RDDL</constant> (type: <type>Boolean</type>)</simpara>
 </listitem>
 <listitem><simpara>System property <sysprop>xml.catalog.parseRddl</sysprop></simpara></listitem>
 <listitem><simpara>Property file property <fprop>parse-rddl</fprop></simpara></listitem>
+</itemizedlist>
+
+<itemizedlist role="net">
+<listitem>
+<simpara>Feature <constant>ResolverFeature.PARSE_RDDL</constant> (type: <type>bool</type>)</simpara>
+</listitem>
+<listitem><simpara>Environment variable <envar>XML_CATALOG_PARSE_RDDL</envar></simpara></listitem>
+<listitem><simpara>Property file property <fprop>parseRddl</fprop></simpara></listitem>
 </itemizedlist>
 
 <para>Attempt to resolve RDDL resources in namespace URI lookup. If the
@@ -562,9 +811,15 @@ to false.</para>
 <section xml:id="classloader">
 <title>Specify an alternate class loader</title>
 
-<itemizedlist>
+<itemizedlist role="java">
 <listitem>
 <simpara>Feature <constant>ResolverFeature.CLASSLOADER</constant> (type: <type>ClassLoader</type>)</simpara>
+</listitem>
+</itemizedlist>
+
+<itemizedlist role="net">
+<listitem>
+<simpara>This setting has no equivalent on .NET</simpara>
 </listitem>
 </itemizedlist>
 
@@ -577,15 +832,22 @@ class loader, you can specify an alternate loader with this feature.
 <section xml:id="xml.catalog.archivedCatalogs" role="since-3.1.0">
 <title>Support catalog files in ZIP archives</title>
 
-<para>This feature is new in XML Resolver 3.1.0. (Only available
-in a snapshot release at the time of writing.)</para>
+<para>This feature is new in XML Resolver 3.1.0.</para>
 
-<itemizedlist>
+<itemizedlist role="java">
 <listitem>
 <simpara>Feature <constant>ResolverFeature.ARCHIVED_CATALOGS</constant> (type: <type>Boolean</type>)</simpara>
 </listitem>
 <listitem><simpara>System property <sysprop>xml.catalog.archivedCatalogs</sysprop></simpara></listitem>
 <listitem><simpara>Property file property <fprop>archived-catalogs</fprop></simpara></listitem>
+</itemizedlist>
+
+<itemizedlist role="net">
+<listitem>
+<simpara>Feature <constant>ResolverFeature.ARCHIVED_CATALOGS</constant> (type: <type>bool</type>)</simpara>
+</listitem>
+<listitem><simpara>Environment variable <envar>XML_CATALOG_ARCHIVED_CATALOGS</envar></simpara></listitem>
+<listitem><simpara>Property file property <fprop>archivedCatalogs</fprop></simpara></listitem>
 </itemizedlist>
 
 <para>If archived catalogs are allowed, then you can place ZIP files of resources
@@ -596,7 +858,13 @@ directly on the catalog path. The resolver will search inside the ZIP file for a
 <section xml:id="catalogmanager">
 <title>Access the underlying catalog manager</title>
 
-<itemizedlist>
+<itemizedlist role="java">
+<listitem>
+<simpara>Feature <constant>ResolverFeature.CATALOG_MANAGER</constant> (type: <type>CatalogManager</type>)</simpara>
+</listitem>
+</itemizedlist>
+
+<itemizedlist role="net">
 <listitem>
 <simpara>Feature <constant>ResolverFeature.CATALOG_MANAGER</constant> (type: <type>CatalogManager</type>)</simpara>
 </listitem>
@@ -610,12 +878,66 @@ some lower-level methods for mapping to URIs without returning sources of any ki
 <section xml:id="logging">
 <title>Logging</title>
 
-<para>The resolver uses
-<link xlink:href="http://www.slf4j.org/">SLF4J</link> to do logging,
-so it should be configurable by all the usual means. But some systems
-appear to make configuring logging selectively more difficult, so as a
-convenience, the resolver categorizes log messages and allows you to
-change the logging level for categories selectively.</para>
+<para>There are two options to control logging: the class used to perform logging
+and the logging level desired.</para>
+
+<para>These settings only apply to Java. On .NET, the <link
+xlink:href="https://www.nuget.org/packages/NLog">NLog</link> package
+is used for logging.</para>
+
+<section xml:id="xml.catalog.resolverLoggerClass">
+<title>The logger class</title>
+
+<itemizedlist role="java">
+<listitem>
+<simpara>Feature <constant>ResolverFeature.RESOLVER_LOGGER_CLASS</constant> (type: <type>String</type>)</simpara>
+</listitem>
+<listitem><simpara>System property <sysprop>xml.catalog.resolverLoggerClass</sysprop></simpara></listitem>
+<listitem><simpara>Property file property <fprop>resolver-logger-class</fprop></simpara></listitem>
+</itemizedlist>
+
+<itemizedlist role="net">
+<listitem>
+<simpara>This setting has no equivalent on .NET</simpara>
+</listitem>
+</itemizedlist>
+
+<para>The default logger class (<classname>org.xmlresolver.logging.DefaultLogger</classname>)
+simply writes messages to standard error. For many applications, this is sufficient and
+requires no additional configuration.</para>
+
+<para>An alternate logger class (<classname>org.xmlresolver.logging.SystemLogger</classname>)
+can easily be swapped in for environments where writing to standard error is inappropriate
+or where more control is desired. If the system logger is used, it uses the 
+<link xlink:href="http://www.slf4j.org/">SLF4J</link> API to do logging. You must configure
+your environment with an appropriate logging backend.</para>
+
+<para>A third option, available only at the API level, is to instantiate the
+<classname>SystemLogger</classname> yourself and pass in the
+<classname>java.util.logging.Logger</classname> class that you would like it to use.
+</para>
+</section>
+
+<section xml:id="xml.catalog.defaultLoggerLogLevel">
+<title>The logging level</title>
+
+<itemizedlist role="java">
+<listitem>
+<simpara>Feature <constant>ResolverFeature.DEFAULT_LOGGER_LOG_LEVEL</constant> (type: <type>String</type>)</simpara>
+</listitem>
+<listitem><simpara>System property <sysprop>xml.catalog.defaultLoggerLogLevel</sysprop></simpara></listitem>
+<listitem><simpara>Property file property <fprop>default-logger-log-level</fprop></simpara></listitem>
+</itemizedlist>
+
+<itemizedlist role="net">
+<listitem>
+<simpara>This setting has no equivalent on .NET</simpara>
+</listitem>
+</itemizedlist>
+
+<para>As a convenience, the resolver categorizes log messages and
+allows you to change the logging level for categories
+selectively.</para>
 
 <para>Suppose, for example, you want to know more about how the cache
 is being managed. At the level of logging configuration, change how
@@ -679,31 +1001,13 @@ setting only applies if the system property is not set. (Because the
 logging class doesn’t have access to the resolver configuration, it
 can’t apply the usual defaulting rules.)</para>
 </section>
-
-<section xml:id="xmlresolver.properties">
-<title>Example xmlresolver.properties file</title>
-
-<para>An <filename>xmlresolver.properties</filename> file
-might look like this:</para>
-
-<programlisting># xmlresolver.properties
-
-relative-catalogs=yes
-
-# Always use semicolons in this list
-catalogs=./catalog.xml;/Users/ndw/Documents/catalog.xml
-
-prefer=public
-cache=/Users/ndw/Library/Caches/xmlresolver.org/cache
-allow-oasis-xml-catalog-pi=no
-prefer-property-file=false</programlisting>
 </section>
 </chapter>
 
 <chapter xml:id="seealso">
 <title>See also</title>
 
-<itemizedlist>
+<itemizedlist role="java">
 <listitem>
 <para>Absent more complete information here, most of
 <link xlink:href="https://xerces.apache.org/xml-commons/components/resolver/resolver-article.html">XML
