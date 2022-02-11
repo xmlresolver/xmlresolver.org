@@ -39,6 +39,10 @@ h2 {
     font-size: 2.6rem;
 }
 
+#logging h3 {
+    margin-bottom: 1em;
+}
+
 .margin img {
     position: absolute;
     width: calc(((100% - 50rem) / 2));
@@ -62,6 +66,32 @@ nav.tocopen span {
 
 nav.tocopen:before {
   content: "☰";
+}
+
+span.logo {
+    position: relative;
+}
+
+.proptable.java {
+    border: 4px solid rgba(229, 58, 56, 0.75);
+    border-radius: 8px;
+}
+
+.proptable.net {
+    margin-top: 1em;
+    border: 4px solid rgba(108, 15, 232, 0.75);
+    border-radius: 8px;
+}
+
+.listnav > h3 {
+    display: none;
+}
+
+.logo img,
+.logo img {
+    position: absolute;
+    top: 0;
+    left: -80px;
 }
 
 @media screen and (max-width: 1400px) {

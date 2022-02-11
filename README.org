@@ -1,6 +1,6 @@
 #+title: README.org
 #+options: toc:nil
-#+date: 2021-06-13
+#+date: 2022-02-11
 
 This repository contains the sources for [[xmlresolver.org]].
 

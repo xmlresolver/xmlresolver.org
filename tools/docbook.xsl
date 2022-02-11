@@ -48,4 +48,24 @@
   <link rel="icon" href="/img/xr.png"/>
 </xsl:template>
 
+<xsl:template match="db:itemizedlist[@role='java']" mode="m:docbook" priority="10">
+  <div class="proptable java">
+    <div class="listnav">
+      <span class="logo"><img src="/img/java.png" alt="Java logo"/></span>
+      <h3>Configuration on Java</h3>
+    </div>
+    <xsl:next-match/>
+  </div>
+</xsl:template>
+
+<xsl:template match="db:itemizedlist[@role='net']" mode="m:docbook" priority="10">
+  <div class="proptable net">
+    <div class="listnav">
+      <span class="logo"><img src="/img/dotNET.png" alt=".NET logo"/></span>
+      <h3>Configuration on .NET</h3>
+    </div>
+    <xsl:next-match/>
+  </div>
+</xsl:template>
+
 </xsl:stylesheet>
