@@ -68,4 +68,32 @@
   </div>
 </xsl:template>
 
+<xsl:template match="processing-instruction('settings-toc')" mode="m:docbook">
+  <xsl:variable name="chapter" select=".."/>
+  <xsl:variable name="features"
+                select="distinct-values($chapter//db:constant/text())"/>
+  <ul>
+    <xsl:for-each select="$features">
+      <xsl:sort select="."/>
+      <xsl:variable name="name" select="."/>
+
+      <xsl:variable name="constant"
+                    select="($chapter//db:constant[. = $name])[1]"/>
+      <xsl:variable name="section"
+                    select="$constant/ancestor::*[@xml:id][1]"/>
+
+      <li>
+        <a href="#{$section/@xml:id}">
+          <xsl:sequence select="."/>
+        </a>
+        <xsl:if test="starts-with($section/@role, 'since-')">
+          <xsl:text> (Since </xsl:text>
+          <xsl:value-of select="substring-after($section/@role, 'since-')"/>
+          <xsl:text>)</xsl:text>
+        </xsl:if>
+      </li>
+    </xsl:for-each>
+  </ul>
+</xsl:template>
+
 </xsl:stylesheet>
