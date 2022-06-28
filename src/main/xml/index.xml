@@ -360,6 +360,8 @@ it might look like this:</para>
 <para>This chapter lists all of the configurable settings in XML Resolver.
 </para>
 
+<?settings-toc?>
+
 <section xml:id="xml.catalog.files">
 <title>The initial list of catalog files</title>
 
@@ -563,6 +565,44 @@ which they came.</para>
 with respect to the current working directory.</para>
 
 </section>
+
+<section xml:id="xml.catalog.fixWindowsSystemIdentifiers" role="since-4.4.0">
+<title>Fix system identifiers on Windows.</title>
+
+<para>This feature is new in XML Resolver 4.4.0.</para>
+
+<itemizedlist role="java">
+<listitem>
+<simpara>Feature <constant>ResolverFeature.FIX_WINDOWS_SYSTEM_IDENTIFIERS</constant>
+(type: <type>Boolean</type>)</simpara>
+</listitem>
+<listitem><simpara>System property <sysprop>xml.catalog.fixWindowsSystemIdentifiers</sysprop></simpara></listitem>
+<listitem><simpara>Property file property <fprop>fix-windows-system-identifiers</fprop></simpara></listitem>
+</itemizedlist>
+
+<itemizedlist role="net">
+<listitem>
+<simpara>Feature <constant>ResolverFeature.FIX_WINDOWS_SYSTEM_IDENTIFIERS</constant>
+(type: <type>bool</type>)</simpara>
+</listitem>
+<listitem><simpara>Environment variable <envar>XML_CATALOG_FIX_WINDOWS_SYSTEM_IDENTIFIERS</envar></simpara></listitem>
+<listitem><simpara>Property file property <fprop>fixWindowsSystemIdentifiers</fprop></simpara></listitem>
+</itemizedlist>
+
+<para>Windows uses the backslash (“\”) instead of the forward slash as
+a path separator. The URI specification does not allow unescaped
+backslashes to appear in URIs, but as a practical reality, many users
+think of them as filenames and may simply copy filesystem paths as
+system identifiers. On Windows, this will cause “URI syntax”
+exceptions if an attempt is made to resolve them.</para>
+
+<para>If <code>FIX_WINDOWS_SYSTEM_IDENTIFIERS</code> is true, and the
+resolver is running on a Windows system, backslashes in system
+identifiers are replaced with forward slashes before any resolution is
+attempted.</para>
+
+</section>
+
 <section xml:id="xml.catalog.cache">
 <title>Cache documents</title>
 
@@ -570,10 +610,16 @@ with respect to the current working directory.</para>
 <listitem>
 <simpara>Features <constant>ResolverFeature.CACHE</constant> (type: <type>ResourceCache</type>),
 <constant>ResolverFeature.CACHE_DIRECTORY</constant> (type: <type>String</type>),
-<constant>ResolverFeature.CACHE_UNDER_HOME</constant> (type: <type>Boolean</type>)</simpara>
+<constant>ResolverFeature.CACHE_UNDER_HOME</constant> (type: <type>Boolean</type>),
+<constant>ResolverFeature.CACHE_ENABLED</constant> (type: <type>Boolean</type>)
+</simpara>
 </listitem>
-<listitem><simpara>System properties <sysprop>xml.catalog.cache</sysprop>, <sysprop>xml.catalog.cacheUnderHome</sysprop></simpara></listitem>
-<listitem><simpara>Property file properties <fprop>cache</fprop>, <fprop>cache-under-home</fprop>
+<listitem><simpara>System properties <sysprop>xml.catalog.cache</sysprop>,
+<sysprop>xml.catalog.cacheUnderHome</sysprop>,
+<sysprop>xml.catalog.cacheEnabled</sysprop></simpara></listitem>
+<listitem><simpara>Property file properties <fprop>cache</fprop>, 
+<fprop>cache-under-home</fprop>,
+<fprop>cache-enabled</fprop>
 </simpara></listitem>
 </itemizedlist>
 
@@ -581,13 +627,16 @@ with respect to the current working directory.</para>
 <listitem>
 <simpara>Features <constant>ResolverFeature.CACHE</constant> (type: <type>ResourceCache</type>),
 <constant>ResolverFeature.CACHE_DIRECTORY</constant> (type: <type>string</type>),
-<constant>ResolverFeature.CACHE_UNDER_HOME</constant> (type: <type>bool</type>)</simpara>
+<constant>ResolverFeature.CACHE_UNDER_HOME</constant> (type: <type>bool</type>),
+<constant>ResolverFeature.CACHE_ENABLED</constant> (type: <type>bool</type>)
+</simpara>
 </listitem>
 <listitem><simpara>Environment variables
-<envar>XML_CATALOG_CACHE</envar> and <envar>XML_CATALOG_CACHE_UNDER_HOME</envar>.
+<envar>XML_CATALOG_CACHE</envar>, <envar>XML_CATALOG_CACHE_UNDER_HOME</envar>,
+<envar>XML_CATALOG_CACHE_ENABED</envar>.
 </simpara></listitem>
 <listitem><simpara>Property file properties <fprop>catalogCache</fprop>,
-<fprop>cacheUnderHome</fprop>
+<fprop>cacheUnderHome</fprop>, <fprop>catalogCacheEnabled</fprop>.
 </simpara></listitem>
 </itemizedlist>
 
@@ -596,6 +645,9 @@ should attempt to cache files that fail to resolve locally. If, instead,
 one of the “cache under home” properties is set, the cache directory will
 default to <filename>$HOME/.xmlresolver/cache</filename><indexterm type="envar">
 <primary>HOME</primary></indexterm>.</para>
+
+<para>If “cache enabled” is explicitly set to “false”, no attempt will be made
+to create or use a cache.</para>
 
 <para>If the <sysprop>xmlresolver.offline</sysprop> system property is
 set, no documents will expire from the cache, regardless of their
