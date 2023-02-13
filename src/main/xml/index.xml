@@ -545,6 +545,47 @@ enabled, the parser has to create a copy of the resolver configuration
 for every parse.)</para>
 
 </section>
+
+<section xml:id="xml.catalog.alwaysResolve">
+<title>Always resolve resources</title>
+
+<itemizedlist role="java">
+<listitem>
+<simpara>Feature <constant>ResolverFeature.ALWAYS_RESOLVE</constant> (type: <type>Boolean</type>)</simpara>
+</listitem>
+<listitem><simpara>System property <sysprop>xml.catalog.alwaysResolve</sysprop></simpara></listitem>
+<listitem><simpara>Property file property <fprop>always-resolve</fprop></simpara></listitem>
+</itemizedlist>
+
+<itemizedlist role="net">
+<listitem>
+<simpara>This setting has no equivalent on .NET</simpara>
+</listitem>
+</itemizedlist>
+
+<para>The standard contract for the Java resolver APIs is that they
+return <code>null</code> if the resolver doesn’t find a match. But on
+the modern web, lots of URIs redirect (from <code>http:</code> to
+<code>https:</code> especially), and some parsers don’t follow
+redirects. That causes the parse to fail in ways that may not be easy
+for the user to fix.</para>
+
+<para>Starting in version 5.0.0, the resolver will always resolve resources,
+follow redirects, and return a stream. This deprives the parser of the option to try
+something else, but means that redirects don’t cause the parse to file.</para>
+
+<para>This feature is <emphasis>enabled</emphasis> by default. If you
+set it to false, the resolver will return <code>null</code> if the
+resource isn’t found in the catalog.</para>
+
+<para>I don’t know of any parsers that try anything else after the
+resolver has failed except loading the resource, so I expect this to
+be an improvement for users. If your implementation wants to explicitly just
+check the catalog, at the Java API level, you can use the
+<code>CatalogManager</code> API. That’s the same API the
+resolver classes use to locate resources in the catalog.</para>
+</section>
+
 <section xml:id="relative-catalogs">
 <title>Support relative catalog paths</title>
 
