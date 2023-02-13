@@ -11,7 +11,7 @@
           uri="blocks.dtd"/>
 
   <system systemId="https://xmlresolver.org/ns/sample/blocks.dtd"
-          uri="sample.dtd"/>
+          uri="blocks.dtd"/>
 
   <uri name="https://xmlresolver.org/ns/sample/sample.rng"
        uri="sample.rng"/>
