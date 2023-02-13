@@ -427,7 +427,7 @@ be appended to the list instead of replacing the list entirely as setting
 
 <itemizedlist role="java">
 <listitem>
-<simpara>This setting has no equivalent on .NET</simpara>
+<simpara>This setting has no equivalent on Java.</simpara>
 </listitem>
 </itemizedlist>
 
@@ -440,6 +440,9 @@ be appended to the list instead of replacing the list entirely as setting
 <para>This setting can be used to load additional catalogs from other assemblies
 linked into your application.</para>
 
+<para>Starting in version 2.0.0, the assembly catalogs should be identified by their
+<code>AssemblyName</code>, not by the name of the DLL as previously.</para>
+
 </section>
 
 <section xml:id="xml.data.assembly">
@@ -447,7 +450,7 @@ linked into your application.</para>
 
 <itemizedlist role="java">
 <listitem>
-<simpara>This setting has no equivalent on .NET</simpara>
+<simpara>This setting has no equivalent on Java.</simpara>
 </listitem>
 </itemizedlist>
 
