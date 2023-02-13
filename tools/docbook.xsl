@@ -14,7 +14,7 @@
 
 <xsl:import href="https://cdn.docbook.org/release/xsltng/current/xslt/docbook.xsl"/>
 <!--
-<xsl:import href="/Users/ndw/Projects/docbook/xslTNG/build/xslt/docbook.xsl"/>
+<xsl:import href="/Volumes/Projects/docbook/xslTNG/build/xslt/docbook.xsl"/>
 -->
 
 <xsl:param name="persistent-toc" select="'true'"/>
@@ -22,9 +22,6 @@
 <xsl:param name="section-toc-depth" select="1"/>
 
 <xsl:param name="resource-base-uri" select="'/'"/>
-
-<xsl:param name="css-links"
-           select="'css/docbook.css css/docbook-screen.css css/resolver.css'"/>
 
 <xsl:variable name="v:user-title-properties" as="element()*">
   <title xpath="self::db:chapter"
@@ -46,6 +43,7 @@
 
 <xsl:template match="*" mode="m:html-head-links">
   <link rel="icon" href="/img/xr.png"/>
+  <link rel="stylesheet" href="css/resolver.css"/>
 </xsl:template>
 
 <xsl:template match="db:itemizedlist[@role='java']" mode="m:docbook" priority="10">
