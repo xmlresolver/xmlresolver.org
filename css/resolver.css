@@ -56,16 +56,17 @@ h2 {
     width: 100px;
 }    
 
+.bottom .narrow img {
+    display: none;
+    width: inherit;
+}
+
 .homepage .list-of-titles {
     display: none;
 }
 
 nav.tocopen span {
     display: none;
-}
-
-nav.tocopen:before {
-  content: "☰";
 }
 
 span.logo {
@@ -110,5 +111,9 @@ span.logo {
     .narrow img {
         display: block;
         position: relative;
+    }
+    .bottom .narrow img {
+        display: none;
+        width: inherit;
     }
 }
