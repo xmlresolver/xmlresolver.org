@@ -422,6 +422,64 @@ be appended to the list instead of replacing the list entirely as setting
 
 </section>
 
+<section xml:id="xml.catalog.accessExternalDocument">
+<title>Specify protocol(s) allowed for URI access</title>
+
+<itemizedlist role="java">
+<listitem>
+<simpara>Feature <constant>ResolverFeature.ACCESS_EXTERNAL_DOCUMENT</constant> (type: <type>String</type>)</simpara>
+</listitem>
+<listitem><simpara>System property <sysprop>xml.catalog.accessExternalDocument</sysprop></simpara></listitem>
+<listitem><simpara>Property file property <fprop>access-external-document</fprop></simpara></listitem>
+</itemizedlist>
+
+<itemizedlist role="net">
+<listitem>
+<simpara>This setting has no equivalent on .NET</simpara>
+</listitem>
+</itemizedlist>
+
+<para>This feature restricts the protocols that are allowed during URI
+resolution. If an attempt is made to resolve a document and the URI
+for that document uses a protocol not listed in this feature, the
+request is rejected. See JAXP 185.</para>
+
+<para>The keyword “<literal>all</literal>” allows all protocols. An
+empty string allows none.</para>
+
+<para>The default value for this feature is “<literal>all</literal>”.</para>
+
+</section>
+
+<section xml:id="xml.catalog.accessExternalEntity">
+<title>Specify protocol(s) allowed for entity access</title>
+
+<itemizedlist role="java">
+<listitem>
+<simpara>Feature <constant>ResolverFeature.ACCESS_EXTERNAL_ENTITY</constant> (type: <type>String</type>)</simpara>
+</listitem>
+<listitem><simpara>System property <sysprop>xml.catalog.accessExternalEntity</sysprop></simpara></listitem>
+<listitem><simpara>Property file property <fprop>access-external-entity</fprop></simpara></listitem>
+</itemizedlist>
+
+<itemizedlist role="net">
+<listitem>
+<simpara>This setting has no equivalent on .NET</simpara>
+</listitem>
+</itemizedlist>
+
+<para>This feature restricts the protocols that are allowed during entity
+resolution. If an attempt is made to resolve an entity and the URI
+for that entity uses a protocol not listed in this feature, the
+request is rejected. See JAXP 185.</para>
+
+<para>The keyword “<literal>all</literal>” allows all protocols. An
+empty string allows none.</para>
+
+<para>The default value for this feature is “<literal>all</literal>”.</para>
+
+</section>
+
 <section xml:id="xml.assembly.catalogs">
 <title>Catalogs to load from assemblies</title>
 
