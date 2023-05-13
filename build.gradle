@@ -22,15 +22,18 @@ buildscript {
 }
 
 plugins {
-  id 'com.nwalsh.gradle.saxon.saxon-gradle' version '0.9.3'
-  id 'com.nwalsh.gradle.relaxng.validate' version '0.0.8'
-  id 'com.nwalsh.gradle.docker.container' version '0.0.3'
+  id 'com.nwalsh.gradle.saxon.saxon-gradle' version '0.10.5'
+  id 'com.nwalsh.gradle.relaxng.validate' version '0.10.4'
+  id 'com.nwalsh.gradle.docker.container' version '0.0.5'
+  id "de.undercouch.download" version "5.4.0"
 }
 
 import com.nwalsh.gradle.saxon.SaxonXsltTask
 import com.nwalsh.gradle.relaxng.validate.RelaxNGValidateTask
 import com.nwalsh.gradle.relaxng.translate.RelaxNGTranslateTask
 import com.nwalsh.gradle.docker.DockerContainer
+
+import de.undercouch.gradle.tasks.download.Download
 
 repositories {
   mavenLocal()
@@ -74,13 +77,35 @@ docker_container.configure {
 
 defaultTasks 'website'
 
-saxon.configure {
-  classpath configurations.transform
-  entityResolverClass "org.xmlresolver.Resolver"
-  uriResolverClass "org.xmlresolver.Resolver"
-  sourceSaxParser "org.xmlresolver.tools.ResolvingXMLReader"
-  stylesheetSaxParser "org.xmlresolver.tools.ResolvingXMLReader"
-  initializer 'org.docbook.xsltng.extensions.Register'
+def xsltArgs = ['-init:org.docbook.xsltng.extensions.Register']
+def mavenBaseURI = "https://repo1.maven.org/maven2/org/xmlresolver/xmlresolver"
+def javadocJar = "xmlresolver-${xmlresolverVersion}-javadoc.jar"
+
+task downloadJavaDoc(type: Download) {
+  src "${mavenBaseURI}/${xmlresolverVersion}/${javadocJar}"
+  dest file("${buildDir}/${javadocJar}")
+
+  onlyIf { !file("${buildDir}/${javadocJar}").exists() }
+
+  doFirst {
+    mkdir(buildDir)
+  }
+}
+
+task publishJavaDoc(dependsOn: ["downloadJavaDoc"]) {
+  inputs.file "${buildDir}/${javadocJar}"
+  outputs.files fileTree("${buildDir}/website/javadoc")
+
+  doFirst {
+    delete "${buildDir}/website/javadoc"
+  }
+
+  doLast {
+    copy {
+      from zipTree("${buildDir}/${javadocJar}")
+      into "${buildDir}/website/javadoc"
+    }
+  }
 }
 
 task validate(type: RelaxNGValidateTask) {
@@ -102,7 +127,7 @@ task nsdoc_to_html(type: SaxonXsltTask, dependsOn: ["validatens"]) {
   input validatens.outputs.files.singleFile
   output "${buildDir}/tmp/ns/sample/index.html"
   stylesheet "${projectDir}/tools/rddl.xsl"
-  initializer 'org.docbook.xsltng.extensions.Register'
+  args xsltArgs
 }
 
 task nsdoc(type: SaxonXsltTask, dependsOn: ["nsdoc_to_html", "copyResources"]) {
@@ -117,12 +142,12 @@ task augment(type: SaxonXsltTask, dependsOn: ["validate"]) {
   stylesheet "${projectDir}/tools/augment.xsl"
 }
 
-task website(type: SaxonXsltTask, dependsOn: ["augment", "copyResources", "nsdoc"]) {
+task website(type: SaxonXsltTask, dependsOn: ["augment", "copyResources", "nsdoc", "publishJavaDoc"]) {
   inputs.file "${projectDir}/tools/docbook.xsl"
   input augment.outputs.files.singleFile
   output "${buildDir}/website/index.html"
   stylesheet "${projectDir}/tools/docbook.xsl"
-  initializer 'org.docbook.xsltng.extensions.Register'
+  args xsltArgs
   parameters (
     'local-conventions': "file:${projectDir}/tools/local-conventions.xsl",
     'mediaobject-input-base-uri': "file:${projectDir}/build/website/",
@@ -196,6 +221,12 @@ task dockerdown() {
 }
 
 // ======================================================================
+
+task clean() {
+  doLast {
+    delete buildDir
+  }
+}
 
 task helloWorld() {
   doLast {
