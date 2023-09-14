@@ -1,0 +1,1934 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+   <package>
+      <name>org.xmlresolver</name>
+      <class>
+         <name>org.xmlresolver.BuildConfig</name>
+         <field name="VERSION" type="java.lang.String"/>
+         <field name="appName" type="java.lang.String"/>
+      </class>
+      <class>
+         <name>org.xmlresolver.CatalogManager</name>
+         <method name="catalogs">
+            <return>java.util.List</return>
+         </method>
+         <method name="getCatalogLoader">
+            <return>org.xmlresolver.loaders.CatalogLoader</return>
+         </method>
+         <method name="getResolverConfiguration">
+            <return>org.xmlresolver.ResolverConfiguration</return>
+         </method>
+         <method name="loadCatalog">
+            <return>org.xmlresolver.catalog.entry.EntryCatalog</return>
+            <parameter name="catalog" type="java.net.URI"/>
+         </method>
+         <method name="loadCatalog">
+            <return>org.xmlresolver.catalog.entry.EntryCatalog</return>
+            <parameter name="catalog" type="java.net.URI"/>
+            <parameter name="source" type="org.xml.sax.InputSource"/>
+         </method>
+         <method name="loadCatalog">
+            <return>org.xmlresolver.catalog.entry.EntryCatalog</return>
+            <parameter name="catalog" type="java.net.URI"/>
+            <parameter name="producer" type="org.xmlresolver.utils.SaxProducer"/>
+         </method>
+         <method name="lookupDoctype">
+            <return>java.net.URI</return>
+            <parameter name="entityName" type="java.lang.String"/>
+            <parameter name="systemId" type="java.lang.String"/>
+            <parameter name="publicId" type="java.lang.String"/>
+         </method>
+         <method name="lookupDocument">
+            <return>java.net.URI</return>
+         </method>
+         <method name="lookupEntity">
+            <return>java.net.URI</return>
+            <parameter name="entityName" type="java.lang.String"/>
+            <parameter name="systemId" type="java.lang.String"/>
+            <parameter name="publicId" type="java.lang.String"/>
+         </method>
+         <method name="lookupNamespaceURI">
+            <return>java.net.URI</return>
+            <parameter name="uri" type="java.lang.String"/>
+            <parameter name="nature" type="java.lang.String"/>
+            <parameter name="purpose" type="java.lang.String"/>
+         </method>
+         <method name="lookupNotation">
+            <return>java.net.URI</return>
+            <parameter name="notationName" type="java.lang.String"/>
+            <parameter name="systemId" type="java.lang.String"/>
+            <parameter name="publicId" type="java.lang.String"/>
+         </method>
+         <method name="lookupPublic">
+            <return>java.net.URI</return>
+            <parameter name="systemId" type="java.lang.String"/>
+            <parameter name="publicId" type="java.lang.String"/>
+         </method>
+         <method name="lookupSystem">
+            <return>java.net.URI</return>
+            <parameter name="systemId" type="java.lang.String"/>
+         </method>
+         <method name="lookupURI">
+            <return>java.net.URI</return>
+            <parameter name="uri" type="java.lang.String"/>
+         </method>
+         <method name="normalizedForComparison">
+            <return>java.lang.String</return>
+            <parameter name="uri" type="java.lang.String"/>
+         </method>
+         <method name="setCatalogLoader">
+            <return>void</return>
+            <parameter name="loader" type="org.xmlresolver.loaders.CatalogLoader"/>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.CatalogResolver</name>
+         <field name="FOLLOW_REDIRECT_LIMIT" type=""/>
+         <constructor/>
+         <constructor>
+            <parameter name="conf" type="org.xmlresolver.XMLResolverConfiguration"/>
+         </constructor>
+         <method name="getConfiguration">
+            <return>org.xmlresolver.XMLResolverConfiguration</return>
+         </method>
+         <method name="resolveEntity">
+            <return>org.xmlresolver.ResolvedResource</return>
+            <parameter name="name" type="java.lang.String"/>
+            <parameter name="publicId" type="java.lang.String"/>
+            <parameter name="systemId" type="java.lang.String"/>
+            <parameter name="baseURI" type="java.lang.String"/>
+         </method>
+         <method name="resolveNamespace">
+            <return>org.xmlresolver.ResolvedResource</return>
+            <parameter name="uri" type="java.lang.String"/>
+            <parameter name="baseURI" type="java.lang.String"/>
+            <parameter name="nature" type="java.lang.String"/>
+            <parameter name="purpose" type="java.lang.String"/>
+         </method>
+         <method name="resolveURI">
+            <return>org.xmlresolver.ResolvedResource</return>
+            <parameter name="href" type="java.lang.String"/>
+            <parameter name="baseURI" type="java.lang.String"/>
+         </method>
+      </class>
+      <interface>
+         <name>org.xmlresolver.NamespaceResolver</name>
+         <method name="resolveNamespace">
+            <return>javax.xml.transform.Source</return>
+            <parameter name="uri" type="java.lang.String"/>
+            <parameter name="nature" type="java.lang.String"/>
+            <parameter name="purpose" type="java.lang.String"/>
+         </method>
+      </interface>
+      <class>
+         <name>org.xmlresolver.ResolvedResource</name>
+         <constructor/>
+         <method name="getContentType">
+            <return>java.lang.String</return>
+         </method>
+         <method name="getHeaders">
+            <return>java.util.Map</return>
+         </method>
+         <method name="getInputStream">
+            <return>java.io.InputStream</return>
+         </method>
+         <method name="getLocalURI">
+            <return>java.net.URI</return>
+         </method>
+         <method name="getResolvedURI">
+            <return>java.net.URI</return>
+         </method>
+         <method name="getStatusCode">
+            <return>int</return>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.ResolvedResourceImpl</name>
+         <constructor>
+            <parameter name="resolvedURI" type="java.net.URI"/>
+            <parameter name="localURI" type="java.net.URI"/>
+            <parameter name="stream" type="java.io.InputStream"/>
+            <parameter name="contentType" type="java.lang.String"/>
+         </constructor>
+         <constructor>
+            <parameter name="resolvedURI" type="java.net.URI"/>
+            <parameter name="localURI" type="java.net.URI"/>
+            <parameter name="stream" type="java.io.InputStream"/>
+            <parameter name="status" type=""/>
+            <parameter name="headers" type="java.util.Map"/>
+         </constructor>
+         <method name="getContentType">
+            <return>java.lang.String</return>
+         </method>
+         <method name="getHeader">
+            <return>java.lang.String</return>
+            <parameter name="headerName" type="java.lang.String"/>
+         </method>
+         <method name="getHeaders">
+            <return>java.util.Map</return>
+         </method>
+         <method name="getInputStream">
+            <return>java.io.InputStream</return>
+         </method>
+         <method name="getLocalURI">
+            <return>java.net.URI</return>
+         </method>
+         <method name="getResolvedURI">
+            <return>java.net.URI</return>
+         </method>
+         <method name="getStatusCode">
+            <return>int</return>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.Resolver</name>
+         <field name="NATURE_RELAX_NG" type="java.lang.String"/>
+         <field name="NATURE_XML_SCHEMA" type="java.lang.String"/>
+         <field name="NATURE_XML_SCHEMA_1_1" type="java.lang.String"/>
+         <field name="PURPOSE_SCHEMA_VALIDATION" type="java.lang.String"/>
+         <constructor/>
+         <constructor>
+            <parameter name="config" type="org.xmlresolver.XMLResolverConfiguration"/>
+         </constructor>
+         <constructor>
+            <parameter name="resolver" type="org.xmlresolver.CatalogResolver"/>
+         </constructor>
+         <method name="getCatalogResolver">
+            <return>org.xmlresolver.CatalogResolver</return>
+         </method>
+         <method name="getConfiguration">
+            <return>org.xmlresolver.XMLResolverConfiguration</return>
+         </method>
+         <method name="getExternalSubset">
+            <return>org.xml.sax.InputSource</return>
+            <parameter name="name" type="java.lang.String"/>
+            <parameter name="baseURI" type="java.lang.String"/>
+         </method>
+         <method name="resolve">
+            <return>javax.xml.transform.Source</return>
+            <parameter name="href" type="java.lang.String"/>
+            <parameter name="base" type="java.lang.String"/>
+         </method>
+         <method name="resolveEntity">
+            <return>org.xml.sax.InputSource</return>
+            <parameter name="name" type="java.lang.String"/>
+            <parameter name="publicId" type="java.lang.String"/>
+            <parameter name="baseURI" type="java.lang.String"/>
+            <parameter name="systemId" type="java.lang.String"/>
+         </method>
+         <method name="resolveEntity">
+            <return>org.xml.sax.InputSource</return>
+            <parameter name="publicId" type="java.lang.String"/>
+            <parameter name="systemId" type="java.lang.String"/>
+         </method>
+         <method name="resolveNamespace">
+            <return>javax.xml.transform.Source</return>
+            <parameter name="uri" type="java.lang.String"/>
+            <parameter name="nature" type="java.lang.String"/>
+            <parameter name="purpose" type="java.lang.String"/>
+         </method>
+         <method name="resolveResource">
+            <return>org.w3c.dom.ls.LSInput</return>
+            <parameter name="type" type="java.lang.String"/>
+            <parameter name="namespaceURI" type="java.lang.String"/>
+            <parameter name="publicId" type="java.lang.String"/>
+            <parameter name="systemId" type="java.lang.String"/>
+            <parameter name="baseURI" type="java.lang.String"/>
+         </method>
+         <method name="version">
+            <return>java.lang.String</return>
+         </method>
+      </class>
+      <interface>
+         <name>org.xmlresolver.ResolverConfiguration</name>
+         <method name="getFeature">
+            <return>T</return>
+            <parameter name="feature" type="org.xmlresolver.ResolverFeature"/>
+         </method>
+         <method name="getFeatures">
+            <return>java.util.Iterator</return>
+         </method>
+         <method name="setFeature">
+            <return>void</return>
+            <parameter name="feature" type="org.xmlresolver.ResolverFeature"/>
+            <parameter name="value" type=""/>
+         </method>
+      </interface>
+      <class>
+         <name>org.xmlresolver.ResolverConstants</name>
+         <field name="CATALOG_NS" type="java.lang.String"/>
+         <field name="HTML_NS" type="java.lang.String"/>
+         <field name="RDDL_NS" type="java.lang.String"/>
+         <field name="TR9401_NS" type="java.lang.String"/>
+         <field name="XLINK_NS" type="java.lang.String"/>
+         <field name="XMLRESOURCE_EXT_NS" type="java.lang.String"/>
+         <field name="XML_NS" type="java.lang.String"/>
+         <constructor/>
+      </class>
+      <class>
+         <name>org.xmlresolver.ResolverFeature</name>
+         <field name="ACCESS_EXTERNAL_DOCUMENT" type="org.xmlresolver.ResolverFeature"/>
+         <field name="ACCESS_EXTERNAL_ENTITY" type="org.xmlresolver.ResolverFeature"/>
+         <field name="ALLOW_CATALOG_PI" type="org.xmlresolver.ResolverFeature"/>
+         <field name="ALWAYS_RESOLVE" type="org.xmlresolver.ResolverFeature"/>
+         <field name="ARCHIVED_CATALOGS" type="org.xmlresolver.ResolverFeature"/>
+         <field name="CACHE" type="org.xmlresolver.ResolverFeature"/>
+         <field name="CACHE_DIRECTORY" type="org.xmlresolver.ResolverFeature"/>
+         <field name="CACHE_ENABLED" type="org.xmlresolver.ResolverFeature"/>
+         <field name="CACHE_UNDER_HOME" type="org.xmlresolver.ResolverFeature"/>
+         <field name="CATALOG_ADDITIONS" type="org.xmlresolver.ResolverFeature"/>
+         <field name="CATALOG_FILES" type="org.xmlresolver.ResolverFeature"/>
+         <field name="CATALOG_LOADER_CLASS" type="org.xmlresolver.ResolverFeature"/>
+         <field name="CATALOG_MANAGER" type="org.xmlresolver.ResolverFeature"/>
+         <field name="CLASSLOADER" type="org.xmlresolver.ResolverFeature"/>
+         <field name="CLASSPATH_CATALOGS" type="org.xmlresolver.ResolverFeature"/>
+         <field name="DEFAULT_LOGGER_LOG_LEVEL" type="org.xmlresolver.ResolverFeature"/>
+         <field name="FIX_WINDOWS_SYSTEM_IDENTIFIERS"
+                type="org.xmlresolver.ResolverFeature"/>
+         <field name="MASK_JAR_URIS" type="org.xmlresolver.ResolverFeature"/>
+         <field name="MERGE_HTTPS" type="org.xmlresolver.ResolverFeature"/>
+         <field name="PARSE_RDDL" type="org.xmlresolver.ResolverFeature"/>
+         <field name="PREFER_PROPERTY_FILE" type="org.xmlresolver.ResolverFeature"/>
+         <field name="PREFER_PUBLIC" type="org.xmlresolver.ResolverFeature"/>
+         <field name="RESOLVER_LOGGER" type="org.xmlresolver.ResolverFeature"/>
+         <field name="RESOLVER_LOGGER_CLASS" type="org.xmlresolver.ResolverFeature"/>
+         <field name="SAXPARSERFACTORY_CLASS" type="org.xmlresolver.ResolverFeature"/>
+         <field name="THROW_URI_EXCEPTIONS" type="org.xmlresolver.ResolverFeature"/>
+         <field name="URI_FOR_SYSTEM" type="org.xmlresolver.ResolverFeature"/>
+         <field name="XMLREADER_SUPPLIER" type="org.xmlresolver.ResolverFeature"/>
+         <method name="byName">
+            <return>org.xmlresolver.ResolverFeature</return>
+            <parameter name="name" type="java.lang.String"/>
+         </method>
+         <method name="getDefaultValue">
+            <return>T</return>
+         </method>
+         <method name="getName">
+            <return>java.lang.String</return>
+         </method>
+         <method name="getNames">
+            <return>java.util.Iterator</return>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.Resource</name>
+         <constructor>
+            <parameter name="stream" type="java.io.InputStream"/>
+            <parameter name="uri" type="java.net.URI"/>
+            <parameter name="localURI" type="java.net.URI"/>
+         </constructor>
+         <constructor>
+            <parameter name="stream" type="java.io.InputStream"/>
+            <parameter name="uri" type="java.net.URI"/>
+            <parameter name="localURI" type="java.net.URI"/>
+            <parameter name="contentType" type="java.lang.String"/>
+         </constructor>
+         <constructor>
+            <parameter name="href" type="java.lang.String"/>
+         </constructor>
+         <constructor>
+            <parameter name="config" type="org.xmlresolver.ResolverConfiguration"/>
+            <parameter name="href" type="java.lang.String"/>
+         </constructor>
+         <constructor>
+            <parameter name="href" type="java.net.URI"/>
+         </constructor>
+         <constructor>
+            <parameter name="config" type="org.xmlresolver.ResolverConfiguration"/>
+            <parameter name="href" type="java.net.URI"/>
+         </constructor>
+         <method name="body">
+            <return>java.io.InputStream</return>
+         </method>
+         <method name="contentType">
+            <return>java.lang.String</return>
+         </method>
+         <method name="localUri">
+            <return>java.net.URI</return>
+         </method>
+         <method name="uri">
+            <return>java.net.URI</return>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.ResourceConnection</name>
+         <constructor>
+            <parameter name="config" type="org.xmlresolver.ResolverConfiguration"/>
+            <parameter name="resolved" type="java.lang.String"/>
+         </constructor>
+         <constructor>
+            <parameter name="config" type="org.xmlresolver.ResolverConfiguration"/>
+            <parameter name="resolved" type="java.lang.String"/>
+            <parameter name="headOnly" type=""/>
+         </constructor>
+         <method name="close">
+            <return>void</return>
+         </method>
+         <method name="getContentType">
+            <return>java.lang.String</return>
+         </method>
+         <method name="getDate">
+            <return>long</return>
+         </method>
+         <method name="getEtag">
+            <return>java.lang.String</return>
+         </method>
+         <method name="getLastModified">
+            <return>long</return>
+         </method>
+         <method name="getRedirect">
+            <return>java.net.URI</return>
+         </method>
+         <method name="getStatusCode">
+            <return>int</return>
+         </method>
+         <method name="getStream">
+            <return>java.io.InputStream</return>
+         </method>
+         <method name="getUri">
+            <return>java.net.URI</return>
+         </method>
+      </class>
+      <interface>
+         <name>org.xmlresolver.ResourceResolver</name>
+         <method name="getConfiguration">
+            <return>org.xmlresolver.ResolverConfiguration</return>
+         </method>
+         <method name="resolveEntity">
+            <return>org.xmlresolver.ResolvedResource</return>
+            <parameter name="name" type="java.lang.String"/>
+            <parameter name="publicId" type="java.lang.String"/>
+            <parameter name="systemId" type="java.lang.String"/>
+            <parameter name="baseURI" type="java.lang.String"/>
+         </method>
+         <method name="resolveNamespace">
+            <return>org.xmlresolver.ResolvedResource</return>
+            <parameter name="href" type="java.lang.String"/>
+            <parameter name="base" type="java.lang.String"/>
+            <parameter name="nature" type="java.lang.String"/>
+            <parameter name="purpose" type="java.lang.String"/>
+         </method>
+         <method name="resolveURI">
+            <return>org.xmlresolver.ResolvedResource</return>
+            <parameter name="href" type="java.lang.String"/>
+            <parameter name="baseURI" type="java.lang.String"/>
+         </method>
+      </interface>
+      <class>
+         <name>org.xmlresolver.StAXResolver</name>
+         <constructor/>
+         <constructor>
+            <parameter name="config" type="org.xmlresolver.XMLResolverConfiguration"/>
+         </constructor>
+         <constructor>
+            <parameter name="resolver" type="org.xmlresolver.ResourceResolver"/>
+         </constructor>
+         <method name="getConfiguration">
+            <return>org.xmlresolver.ResolverConfiguration</return>
+         </method>
+         <method name="resolveEntity">
+            <return>java.lang.Object</return>
+            <parameter name="publicId" type="java.lang.String"/>
+            <parameter name="systemId" type="java.lang.String"/>
+            <parameter name="baseURI" type="java.lang.String"/>
+            <parameter name="namespace" type="java.lang.String"/>
+         </method>
+      </class>
+      <interface>
+         <name>org.xmlresolver.XMLCatalogResolver</name>
+         <method name="lookupDoctype">
+            <return>java.net.URI</return>
+            <parameter name="entityName" type="java.lang.String"/>
+            <parameter name="systemId" type="java.lang.String"/>
+            <parameter name="publicId" type="java.lang.String"/>
+         </method>
+         <method name="lookupDocument">
+            <return>java.net.URI</return>
+         </method>
+         <method name="lookupEntity">
+            <return>java.net.URI</return>
+            <parameter name="entityName" type="java.lang.String"/>
+            <parameter name="systemId" type="java.lang.String"/>
+            <parameter name="publicId" type="java.lang.String"/>
+         </method>
+         <method name="lookupNotation">
+            <return>java.net.URI</return>
+            <parameter name="notationName" type="java.lang.String"/>
+            <parameter name="systemId" type="java.lang.String"/>
+            <parameter name="publicId" type="java.lang.String"/>
+         </method>
+         <method name="lookupPublic">
+            <return>java.net.URI</return>
+            <parameter name="systemId" type="java.lang.String"/>
+            <parameter name="publicId" type="java.lang.String"/>
+         </method>
+         <method name="lookupSystem">
+            <return>java.net.URI</return>
+            <parameter name="systemId" type="java.lang.String"/>
+         </method>
+         <method name="lookupURI">
+            <return>java.net.URI</return>
+            <parameter name="uri" type="java.lang.String"/>
+         </method>
+      </interface>
+      <class>
+         <name>org.xmlresolver.XMLResolverConfiguration</name>
+         <constructor/>
+         <constructor>
+            <parameter name="catalogFiles" type="java.lang.String"/>
+         </constructor>
+         <constructor>
+            <parameter name="catalogFiles" type="java.util.List"/>
+         </constructor>
+         <constructor>
+            <parameter name="propertyFiles" type="java.util.List"/>
+            <parameter name="catalogFiles" type="java.util.List"/>
+         </constructor>
+         <constructor>
+            <parameter name="current" type="org.xmlresolver.XMLResolverConfiguration"/>
+         </constructor>
+         <method name="addCatalog">
+            <return>void</return>
+            <parameter name="catalog" type="java.lang.String"/>
+         </method>
+         <method name="addCatalog">
+            <return>void</return>
+            <parameter name="catalog" type="java.net.URI"/>
+            <parameter name="data" type="org.xml.sax.InputSource"/>
+         </method>
+         <method name="getFeature">
+            <return>T</return>
+            <parameter name="feature" type="org.xmlresolver.ResolverFeature"/>
+         </method>
+         <method name="getFeatures">
+            <return>java.util.Iterator</return>
+         </method>
+         <method name="removeCatalog">
+            <return>boolean</return>
+            <parameter name="catalog" type="java.lang.String"/>
+         </method>
+         <method name="setFeature">
+            <return>void</return>
+            <parameter name="feature" type="org.xmlresolver.ResolverFeature"/>
+            <parameter name="value" type=""/>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.XercesResolver</name>
+         <constructor/>
+         <constructor>
+            <parameter name="config" type="org.xmlresolver.XMLResolverConfiguration"/>
+         </constructor>
+         <constructor>
+            <parameter name="resolver" type="org.xmlresolver.CatalogResolver"/>
+         </constructor>
+         <method name="resolveEntity">
+            <return>org.apache.xerces.xni.parser.XMLInputSource</return>
+            <parameter name="resId" type="org.apache.xerces.xni.XMLResourceIdentifier"/>
+         </method>
+      </class>
+   </package>
+   <package>
+      <name>org.xmlresolver.cache</name>
+      <class>
+         <name>org.xmlresolver.cache.CacheEntry</name>
+         <field name="entry" type="org.xmlresolver.catalog.entry.Entry"/>
+         <field name="expired" type=""/>
+         <field name="file" type="java.io.File"/>
+         <field name="time" type=""/>
+         <field name="uri" type="java.net.URI"/>
+         <method name="contentType">
+            <return>java.lang.String</return>
+         </method>
+         <method name="etag">
+            <return>java.lang.String</return>
+         </method>
+         <method name="location">
+            <return>java.net.URI</return>
+         </method>
+         <method name="toString">
+            <return>java.lang.String</return>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.cache.CacheEntryCatalog</name>
+         <field name="cached" type="java.util.ArrayList"/>
+         <constructor>
+            <parameter name="config" type="org.xmlresolver.ResolverConfiguration"/>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+            <parameter name="prefer" type=""/>
+         </constructor>
+         <method name="xmlEscape">
+            <return>java.lang.String</return>
+            <parameter name="line" type="java.lang.String"/>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.cache.CacheInfo</name>
+         <field name="cache" type=""/>
+         <field name="cacheSize" type=""/>
+         <field name="cacheSpace" type=""/>
+         <field name="deleteWait" type=""/>
+         <field name="maxAge" type=""/>
+         <field name="pattern" type="java.lang.String"/>
+         <field name="uriPattern" type="java.util.regex.Pattern"/>
+         <method name="toString">
+            <return>java.lang.String</return>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.cache.CacheParser</name>
+         <constructor>
+            <parameter name="config" type="org.xmlresolver.ResolverConfiguration"/>
+         </constructor>
+         <method name="parseLong">
+            <return>long</return>
+            <parameter name="longStr" type="java.lang.String"/>
+            <parameter name="defVal" type=""/>
+         </method>
+         <method name="parseLong">
+            <return>long</return>
+            <parameter name="longStr" type="java.lang.String"/>
+            <parameter name="units" type=""/>
+            <parameter name="defVal" type=""/>
+         </method>
+         <method name="parseSizeLong">
+            <return>long</return>
+            <parameter name="longStr" type="java.lang.String"/>
+            <parameter name="defVal" type=""/>
+         </method>
+         <method name="parseTimeLong">
+            <return>long</return>
+            <parameter name="longStr" type="java.lang.String"/>
+            <parameter name="defVal" type=""/>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.cache.ResourceCache</name>
+         <field name="cacheSize" type=""/>
+         <field name="cacheSpace" type=""/>
+         <field name="defaultPattern" type="java.lang.String"/>
+         <field name="deleteWait" type=""/>
+         <field name="excludedPatterns" type=""/>
+         <field name="maxAge" type=""/>
+         <constructor>
+            <parameter name="config" type="org.xmlresolver.ResolverConfiguration"/>
+         </constructor>
+         <method name="addCacheInfo">
+            <return>org.xmlresolver.cache.CacheInfo</return>
+            <parameter name="pattern" type="java.lang.String"/>
+            <parameter name="cache" type=""/>
+         </method>
+         <method name="addCacheInfo">
+            <return>org.xmlresolver.cache.CacheInfo</return>
+            <parameter name="pattern" type="java.lang.String"/>
+            <parameter name="cache" type=""/>
+            <parameter name="deleteWait" type=""/>
+            <parameter name="cacheSize" type=""/>
+            <parameter name="cacheSpace" type=""/>
+            <parameter name="maxAge" type=""/>
+         </method>
+         <method name="cacheURI">
+            <return>boolean</return>
+            <parameter name="uri" type="java.lang.String"/>
+         </method>
+         <method name="cachedNamespaceUri">
+            <return>org.xmlresolver.cache.CacheEntry</return>
+            <parameter name="uri" type="java.net.URI"/>
+            <parameter name="nature" type="java.lang.String"/>
+            <parameter name="purpose" type="java.lang.String"/>
+         </method>
+         <method name="cachedSystem">
+            <return>org.xmlresolver.cache.CacheEntry</return>
+            <parameter name="systemId" type="java.net.URI"/>
+            <parameter name="publicId" type="java.lang.String"/>
+         </method>
+         <method name="cachedUri">
+            <return>org.xmlresolver.cache.CacheEntry</return>
+            <parameter name="uri" type="java.net.URI"/>
+         </method>
+         <method name="directory">
+            <return>java.lang.String</return>
+         </method>
+         <method name="entries">
+            <return>java.util.List</return>
+         </method>
+         <method name="expired">
+            <return>boolean</return>
+            <parameter name="local" type="java.net.URI"/>
+         </method>
+         <method name="getCacheInfo">
+            <return>org.xmlresolver.cache.CacheInfo</return>
+            <parameter name="pattern" type="java.lang.String"/>
+         </method>
+         <method name="getCacheInfoList">
+            <return>java.util.List</return>
+         </method>
+         <method name="getDefaultCacheInfo">
+            <return>org.xmlresolver.cache.CacheInfo</return>
+         </method>
+         <method name="lookupNamespaceURI">
+            <return>java.net.URI</return>
+            <parameter name="uri" type="java.lang.String"/>
+            <parameter name="nature" type="java.lang.String"/>
+            <parameter name="purpose" type="java.lang.String"/>
+         </method>
+         <method name="lookupPublic">
+            <return>java.net.URI</return>
+            <parameter name="systemId" type="java.lang.String"/>
+            <parameter name="publicId" type="java.lang.String"/>
+         </method>
+         <method name="lookupSystem">
+            <return>java.net.URI</return>
+            <parameter name="systemId" type="java.lang.String"/>
+         </method>
+         <method name="lookupURI">
+            <return>java.net.URI</return>
+            <parameter name="uri" type="java.lang.String"/>
+         </method>
+         <method name="removeCacheInfo">
+            <return>void</return>
+            <parameter name="pattern" type="java.lang.String"/>
+         </method>
+         <method name="reset">
+            <return>void</return>
+         </method>
+      </class>
+   </package>
+   <package>
+      <name>org.xmlresolver.catalog.entry</name>
+      <class>
+         <name>org.xmlresolver.catalog.entry.Entry</name>
+         <field name="NCNAME_RE" type="java.util.regex.Pattern"/>
+         <field name="baseURI" type="java.net.URI"/>
+         <field name="extra" type="java.util.HashMap"/>
+         <field name="id" type="java.lang.String"/>
+         <field name="rarr" type="java.lang.String"/>
+         <constructor>
+            <parameter name="config" type="org.xmlresolver.ResolverConfiguration"/>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+         </constructor>
+         <method name="getProperties">
+            <return>java.util.Map</return>
+         </method>
+         <method name="getProperty">
+            <return>java.lang.String</return>
+            <parameter name="name" type="java.lang.String"/>
+         </method>
+         <method name="getType">
+            <return>org.xmlresolver.catalog.entry.Entry.Type</return>
+         </method>
+         <method name="setProperties">
+            <return>void</return>
+            <parameter name="props" type="java.util.Map"/>
+         </method>
+         <method name="setProperty">
+            <return>void</return>
+            <parameter name="name" type="java.lang.String"/>
+            <parameter name="value" type="java.lang.String"/>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.catalog.entry.EntryCatalog</name>
+         <field name="preferPublic" type=""/>
+         <constructor>
+            <parameter name="config" type="org.xmlresolver.ResolverConfiguration"/>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+            <parameter name="prefer" type=""/>
+         </constructor>
+         <method name="addDelegatePublic">
+            <return>org.xmlresolver.catalog.entry.EntryDelegatePublic</return>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+            <parameter name="startString" type="java.lang.String"/>
+            <parameter name="catalog" type="java.lang.String"/>
+            <parameter name="prefer" type=""/>
+         </method>
+         <method name="addDelegateSystem">
+            <return>org.xmlresolver.catalog.entry.EntryDelegateSystem</return>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+            <parameter name="startString" type="java.lang.String"/>
+            <parameter name="catalog" type="java.lang.String"/>
+         </method>
+         <method name="addDelegateUri">
+            <return>org.xmlresolver.catalog.entry.EntryDelegateUri</return>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+            <parameter name="startString" type="java.lang.String"/>
+            <parameter name="catalog" type="java.lang.String"/>
+         </method>
+         <method name="addDoctype">
+            <return>org.xmlresolver.catalog.entry.EntryDoctype</return>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+            <parameter name="name" type="java.lang.String"/>
+            <parameter name="uri" type="java.lang.String"/>
+         </method>
+         <method name="addDocument">
+            <return>org.xmlresolver.catalog.entry.EntryDocument</return>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+            <parameter name="uri" type="java.lang.String"/>
+         </method>
+         <method name="addDtdDecl">
+            <return>org.xmlresolver.catalog.entry.EntryDtddecl</return>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+            <parameter name="publicId" type="java.lang.String"/>
+            <parameter name="uri" type="java.lang.String"/>
+         </method>
+         <method name="addEntity">
+            <return>org.xmlresolver.catalog.entry.EntryEntity</return>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+            <parameter name="name" type="java.lang.String"/>
+            <parameter name="uri" type="java.lang.String"/>
+         </method>
+         <method name="addGroup">
+            <return>org.xmlresolver.catalog.entry.EntryGroup</return>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+            <parameter name="prefer" type=""/>
+         </method>
+         <method name="addLinktype">
+            <return>org.xmlresolver.catalog.entry.EntryLinktype</return>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+            <parameter name="name" type="java.lang.String"/>
+            <parameter name="uri" type="java.lang.String"/>
+         </method>
+         <method name="addNextCatalog">
+            <return>org.xmlresolver.catalog.entry.EntryNextCatalog</return>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+            <parameter name="catalog" type="java.lang.String"/>
+         </method>
+         <method name="addNotation">
+            <return>org.xmlresolver.catalog.entry.EntryNotation</return>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+            <parameter name="name" type="java.lang.String"/>
+            <parameter name="uri" type="java.lang.String"/>
+         </method>
+         <method name="addPublic">
+            <return>org.xmlresolver.catalog.entry.EntryPublic</return>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+            <parameter name="publicId" type="java.lang.String"/>
+            <parameter name="uri" type="java.lang.String"/>
+            <parameter name="prefer" type=""/>
+         </method>
+         <method name="addRewriteSystem">
+            <return>org.xmlresolver.catalog.entry.EntryRewriteSystem</return>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+            <parameter name="startString" type="java.lang.String"/>
+            <parameter name="prefix" type="java.lang.String"/>
+         </method>
+         <method name="addRewriteUri">
+            <return>org.xmlresolver.catalog.entry.EntryRewriteUri</return>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+            <parameter name="start" type="java.lang.String"/>
+            <parameter name="prefix" type="java.lang.String"/>
+         </method>
+         <method name="addSgmlDecl">
+            <return>org.xmlresolver.catalog.entry.EntrySgmldecl</return>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+            <parameter name="uri" type="java.lang.String"/>
+         </method>
+         <method name="addSystem">
+            <return>org.xmlresolver.catalog.entry.EntrySystem</return>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+            <parameter name="systemId" type="java.lang.String"/>
+            <parameter name="uri" type="java.lang.String"/>
+         </method>
+         <method name="addSystemSuffix">
+            <return>org.xmlresolver.catalog.entry.EntrySystemSuffix</return>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+            <parameter name="suffix" type="java.lang.String"/>
+            <parameter name="uri" type="java.lang.String"/>
+         </method>
+         <method name="addUri">
+            <return>org.xmlresolver.catalog.entry.EntryUri</return>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+            <parameter name="name" type="java.lang.String"/>
+            <parameter name="uri" type="java.lang.String"/>
+            <parameter name="nature" type="java.lang.String"/>
+            <parameter name="purpose" type="java.lang.String"/>
+         </method>
+         <method name="addUriSuffix">
+            <return>org.xmlresolver.catalog.entry.EntryUriSuffix</return>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+            <parameter name="suffix" type="java.lang.String"/>
+            <parameter name="uri" type="java.lang.String"/>
+         </method>
+         <method name="entries">
+            <return>java.util.List</return>
+         </method>
+         <method name="entries">
+            <return>java.util.List</return>
+            <parameter name="type" type="org.xmlresolver.catalog.entry.Entry.Type"/>
+         </method>
+         <method name="getType">
+            <return>org.xmlresolver.catalog.entry.Entry.Type</return>
+         </method>
+         <method name="setLocator">
+            <return>void</return>
+            <parameter name="locator" type="org.xml.sax.Locator"/>
+         </method>
+         <method name="toString">
+            <return>java.lang.String</return>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.catalog.entry.EntryDelegatePublic</name>
+         <field name="catalog" type="java.net.URI"/>
+         <field name="preferPublic" type=""/>
+         <field name="publicIdStart" type="java.lang.String"/>
+         <constructor>
+            <parameter name="config" type="org.xmlresolver.ResolverConfiguration"/>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+            <parameter name="start" type="java.lang.String"/>
+            <parameter name="catalog" type="java.lang.String"/>
+            <parameter name="prefer" type=""/>
+         </constructor>
+         <method name="getType">
+            <return>org.xmlresolver.catalog.entry.Entry.Type</return>
+         </method>
+         <method name="toString">
+            <return>java.lang.String</return>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.catalog.entry.EntryDelegateSystem</name>
+         <field name="catalog" type="java.net.URI"/>
+         <field name="systemIdStart" type="java.lang.String"/>
+         <constructor>
+            <parameter name="config" type="org.xmlresolver.ResolverConfiguration"/>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+            <parameter name="start" type="java.lang.String"/>
+            <parameter name="catalog" type="java.lang.String"/>
+         </constructor>
+         <method name="getType">
+            <return>org.xmlresolver.catalog.entry.Entry.Type</return>
+         </method>
+         <method name="toString">
+            <return>java.lang.String</return>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.catalog.entry.EntryDelegateUri</name>
+         <field name="catalog" type="java.net.URI"/>
+         <field name="uriStart" type="java.lang.String"/>
+         <constructor>
+            <parameter name="config" type="org.xmlresolver.ResolverConfiguration"/>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+            <parameter name="start" type="java.lang.String"/>
+            <parameter name="catalog" type="java.lang.String"/>
+         </constructor>
+         <method name="getType">
+            <return>org.xmlresolver.catalog.entry.Entry.Type</return>
+         </method>
+         <method name="toString">
+            <return>java.lang.String</return>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.catalog.entry.EntryDoctype</name>
+         <field name="name" type="java.lang.String"/>
+         <field name="uri" type="java.net.URI"/>
+         <constructor>
+            <parameter name="config" type="org.xmlresolver.ResolverConfiguration"/>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+            <parameter name="name" type="java.lang.String"/>
+            <parameter name="uri" type="java.lang.String"/>
+         </constructor>
+         <method name="getType">
+            <return>org.xmlresolver.catalog.entry.Entry.Type</return>
+         </method>
+         <method name="toString">
+            <return>java.lang.String</return>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.catalog.entry.EntryDocument</name>
+         <constructor>
+            <parameter name="config" type="org.xmlresolver.ResolverConfiguration"/>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+            <parameter name="uri" type="java.lang.String"/>
+         </constructor>
+         <method name="getType">
+            <return>org.xmlresolver.catalog.entry.Entry.Type</return>
+         </method>
+         <method name="toString">
+            <return>java.lang.String</return>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.catalog.entry.EntryDtddecl</name>
+         <field name="publicId" type="java.lang.String"/>
+         <constructor>
+            <parameter name="config" type="org.xmlresolver.ResolverConfiguration"/>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+            <parameter name="publicId" type="java.lang.String"/>
+            <parameter name="uri" type="java.lang.String"/>
+         </constructor>
+         <method name="getType">
+            <return>org.xmlresolver.catalog.entry.Entry.Type</return>
+         </method>
+         <method name="toString">
+            <return>java.lang.String</return>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.catalog.entry.EntryEntity</name>
+         <field name="name" type="java.lang.String"/>
+         <constructor>
+            <parameter name="config" type="org.xmlresolver.ResolverConfiguration"/>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+            <parameter name="name" type="java.lang.String"/>
+            <parameter name="uri" type="java.lang.String"/>
+         </constructor>
+         <method name="getType">
+            <return>org.xmlresolver.catalog.entry.Entry.Type</return>
+         </method>
+         <method name="toString">
+            <return>java.lang.String</return>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.catalog.entry.EntryGroup</name>
+         <field name="preferPublic" type=""/>
+         <constructor>
+            <parameter name="config" type="org.xmlresolver.ResolverConfiguration"/>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+            <parameter name="prefer" type=""/>
+         </constructor>
+         <method name="getType">
+            <return>org.xmlresolver.catalog.entry.Entry.Type</return>
+         </method>
+         <method name="toString">
+            <return>java.lang.String</return>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.catalog.entry.EntryLinktype</name>
+         <field name="name" type="java.lang.String"/>
+         <constructor>
+            <parameter name="config" type="org.xmlresolver.ResolverConfiguration"/>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+            <parameter name="name" type="java.lang.String"/>
+            <parameter name="uri" type="java.lang.String"/>
+         </constructor>
+         <method name="getType">
+            <return>org.xmlresolver.catalog.entry.Entry.Type</return>
+         </method>
+         <method name="toString">
+            <return>java.lang.String</return>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.catalog.entry.EntryNextCatalog</name>
+         <field name="catalog" type="java.net.URI"/>
+         <constructor>
+            <parameter name="config" type="org.xmlresolver.ResolverConfiguration"/>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+            <parameter name="catalog" type="java.lang.String"/>
+         </constructor>
+         <method name="getType">
+            <return>org.xmlresolver.catalog.entry.Entry.Type</return>
+         </method>
+         <method name="toString">
+            <return>java.lang.String</return>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.catalog.entry.EntryNotation</name>
+         <field name="name" type="java.lang.String"/>
+         <constructor>
+            <parameter name="config" type="org.xmlresolver.ResolverConfiguration"/>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+            <parameter name="name" type="java.lang.String"/>
+            <parameter name="uri" type="java.lang.String"/>
+         </constructor>
+         <method name="getType">
+            <return>org.xmlresolver.catalog.entry.Entry.Type</return>
+         </method>
+         <method name="toString">
+            <return>java.lang.String</return>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.catalog.entry.EntryNull</name>
+         <constructor>
+            <parameter name="config" type="org.xmlresolver.ResolverConfiguration"/>
+         </constructor>
+         <method name="getType">
+            <return>org.xmlresolver.catalog.entry.Entry.Type</return>
+         </method>
+         <method name="toString">
+            <return>java.lang.String</return>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.catalog.entry.EntryPublic</name>
+         <field name="preferPublic" type=""/>
+         <field name="publicId" type="java.lang.String"/>
+         <constructor>
+            <parameter name="config" type="org.xmlresolver.ResolverConfiguration"/>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+            <parameter name="publicId" type="java.lang.String"/>
+            <parameter name="uri" type="java.lang.String"/>
+            <parameter name="prefer" type=""/>
+         </constructor>
+         <method name="getType">
+            <return>org.xmlresolver.catalog.entry.Entry.Type</return>
+         </method>
+         <method name="toString">
+            <return>java.lang.String</return>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.catalog.entry.EntryResource</name>
+         <field name="uri" type="java.net.URI"/>
+         <constructor>
+            <parameter name="config" type="org.xmlresolver.ResolverConfiguration"/>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+            <parameter name="uri" type="java.lang.String"/>
+         </constructor>
+      </class>
+      <class>
+         <name>org.xmlresolver.catalog.entry.EntryRewriteSystem</name>
+         <field name="rewritePrefix" type="java.net.URI"/>
+         <field name="systemIdStart" type="java.lang.String"/>
+         <constructor>
+            <parameter name="config" type="org.xmlresolver.ResolverConfiguration"/>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+            <parameter name="start" type="java.lang.String"/>
+            <parameter name="rewrite" type="java.lang.String"/>
+         </constructor>
+         <method name="getType">
+            <return>org.xmlresolver.catalog.entry.Entry.Type</return>
+         </method>
+         <method name="toString">
+            <return>java.lang.String</return>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.catalog.entry.EntryRewriteUri</name>
+         <field name="rewritePrefix" type="java.net.URI"/>
+         <field name="uriStart" type="java.lang.String"/>
+         <constructor>
+            <parameter name="config" type="org.xmlresolver.ResolverConfiguration"/>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+            <parameter name="start" type="java.lang.String"/>
+            <parameter name="rewrite" type="java.lang.String"/>
+         </constructor>
+         <method name="getType">
+            <return>org.xmlresolver.catalog.entry.Entry.Type</return>
+         </method>
+         <method name="toString">
+            <return>java.lang.String</return>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.catalog.entry.EntrySgmldecl</name>
+         <constructor>
+            <parameter name="config" type="org.xmlresolver.ResolverConfiguration"/>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+            <parameter name="uri" type="java.lang.String"/>
+         </constructor>
+         <method name="getType">
+            <return>org.xmlresolver.catalog.entry.Entry.Type</return>
+         </method>
+         <method name="toString">
+            <return>java.lang.String</return>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.catalog.entry.EntrySystem</name>
+         <field name="systemId" type="java.lang.String"/>
+         <constructor>
+            <parameter name="config" type="org.xmlresolver.ResolverConfiguration"/>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+            <parameter name="systemId" type="java.lang.String"/>
+            <parameter name="uri" type="java.lang.String"/>
+         </constructor>
+         <method name="getType">
+            <return>org.xmlresolver.catalog.entry.Entry.Type</return>
+         </method>
+         <method name="toString">
+            <return>java.lang.String</return>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.catalog.entry.EntrySystemSuffix</name>
+         <field name="systemIdSuffix" type="java.lang.String"/>
+         <field name="uri" type="java.net.URI"/>
+         <constructor>
+            <parameter name="config" type="org.xmlresolver.ResolverConfiguration"/>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+            <parameter name="suffix" type="java.lang.String"/>
+            <parameter name="uri" type="java.lang.String"/>
+         </constructor>
+         <method name="getType">
+            <return>org.xmlresolver.catalog.entry.Entry.Type</return>
+         </method>
+         <method name="toString">
+            <return>java.lang.String</return>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.catalog.entry.EntryUri</name>
+         <field name="name" type="java.lang.String"/>
+         <field name="nature" type="java.lang.String"/>
+         <field name="purpose" type="java.lang.String"/>
+         <constructor>
+            <parameter name="config" type="org.xmlresolver.ResolverConfiguration"/>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+            <parameter name="name" type="java.lang.String"/>
+            <parameter name="uri" type="java.lang.String"/>
+            <parameter name="nature" type="java.lang.String"/>
+            <parameter name="purpose" type="java.lang.String"/>
+         </constructor>
+         <method name="getType">
+            <return>org.xmlresolver.catalog.entry.Entry.Type</return>
+         </method>
+         <method name="toString">
+            <return>java.lang.String</return>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.catalog.entry.EntryUriSuffix</name>
+         <field name="uri" type="java.net.URI"/>
+         <field name="uriSuffix" type="java.lang.String"/>
+         <constructor>
+            <parameter name="config" type="org.xmlresolver.ResolverConfiguration"/>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="id" type="java.lang.String"/>
+            <parameter name="suffix" type="java.lang.String"/>
+            <parameter name="uri" type="java.lang.String"/>
+         </constructor>
+         <method name="getType">
+            <return>org.xmlresolver.catalog.entry.Entry.Type</return>
+         </method>
+         <method name="toString">
+            <return>java.lang.String</return>
+         </method>
+      </class>
+   </package>
+   <package>
+      <name>org.xmlresolver.catalog.query</name>
+      <class>
+         <name>org.xmlresolver.catalog.query.QueryCatalog</name>
+         <constructor/>
+         <method name="query">
+            <return>boolean</return>
+         </method>
+         <method name="search">
+            <return>org.xmlresolver.catalog.query.QueryResult</return>
+            <parameter name="manager" type="org.xmlresolver.CatalogManager"/>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.catalog.query.QueryDelegatePublic</name>
+         <constructor>
+            <parameter name="systemId" type="java.lang.String"/>
+            <parameter name="publicId" type="java.lang.String"/>
+            <parameter name="catalogs" type="java.util.List"/>
+         </constructor>
+         <method name="resolved">
+            <return>boolean</return>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.catalog.query.QueryDelegateSystem</name>
+         <constructor>
+            <parameter name="systemId" type="java.lang.String"/>
+            <parameter name="catalogs" type="java.util.List"/>
+         </constructor>
+         <method name="resolved">
+            <return>boolean</return>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.catalog.query.QueryDelegateUri</name>
+         <constructor>
+            <parameter name="uri" type="java.lang.String"/>
+            <parameter name="nature" type="java.lang.String"/>
+            <parameter name="purpose" type="java.lang.String"/>
+            <parameter name="catalogs" type="java.util.List"/>
+         </constructor>
+         <method name="resolved">
+            <return>boolean</return>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.catalog.query.QueryDoctype</name>
+         <field name="entityName" type="java.lang.String"/>
+         <field name="publicId" type="java.lang.String"/>
+         <field name="systemId" type="java.lang.String"/>
+         <constructor>
+            <parameter name="entityName" type="java.lang.String"/>
+            <parameter name="systemId" type="java.lang.String"/>
+            <parameter name="publicId" type="java.lang.String"/>
+         </constructor>
+      </class>
+      <class>
+         <name>org.xmlresolver.catalog.query.QueryDocument</name>
+         <constructor/>
+      </class>
+      <class>
+         <name>org.xmlresolver.catalog.query.QueryEntity</name>
+         <field name="entityName" type="java.lang.String"/>
+         <field name="publicId" type="java.lang.String"/>
+         <field name="systemId" type="java.lang.String"/>
+         <constructor>
+            <parameter name="entityName" type="java.lang.String"/>
+            <parameter name="systemId" type="java.lang.String"/>
+            <parameter name="publicId" type="java.lang.String"/>
+         </constructor>
+      </class>
+      <class>
+         <name>org.xmlresolver.catalog.query.QueryNotation</name>
+         <field name="notationName" type="java.lang.String"/>
+         <field name="publicId" type="java.lang.String"/>
+         <field name="systemId" type="java.lang.String"/>
+         <constructor>
+            <parameter name="notationName" type="java.lang.String"/>
+            <parameter name="systemId" type="java.lang.String"/>
+            <parameter name="publicId" type="java.lang.String"/>
+         </constructor>
+      </class>
+      <class>
+         <name>org.xmlresolver.catalog.query.QueryPublic</name>
+         <field name="publicId" type="java.lang.String"/>
+         <field name="systemId" type="java.lang.String"/>
+         <constructor>
+            <parameter name="systemId" type="java.lang.String"/>
+            <parameter name="publicId" type="java.lang.String"/>
+         </constructor>
+      </class>
+      <class>
+         <name>org.xmlresolver.catalog.query.QueryResult</name>
+         <field name="EMPTY_RESULT" type="org.xmlresolver.catalog.query.QueryResult"/>
+         <field name="FINAL_RESULT" type="org.xmlresolver.catalog.query.QueryResult"/>
+         <constructor>
+            <parameter name="uri" type="java.net.URI"/>
+         </constructor>
+         <method name="query">
+            <return>boolean</return>
+         </method>
+         <method name="resolved">
+            <return>boolean</return>
+         </method>
+         <method name="uri">
+            <return>java.net.URI</return>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.catalog.query.QuerySystem</name>
+         <field name="systemId" type="java.lang.String"/>
+         <constructor>
+            <parameter name="systemId" type="java.lang.String"/>
+         </constructor>
+         <method name="lookup">
+            <return>org.xmlresolver.catalog.query.QueryResult</return>
+            <parameter name="manager" type="org.xmlresolver.CatalogManager"/>
+            <parameter name="catalog" type="org.xmlresolver.catalog.entry.EntryCatalog"/>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.catalog.query.QueryUri</name>
+         <field name="nature" type="java.lang.String"/>
+         <field name="purpose" type="java.lang.String"/>
+         <field name="uri" type="java.lang.String"/>
+         <constructor>
+            <parameter name="uri" type="java.lang.String"/>
+            <parameter name="nature" type="java.lang.String"/>
+            <parameter name="purpose" type="java.lang.String"/>
+         </constructor>
+         <constructor>
+            <parameter name="uri" type="java.lang.String"/>
+         </constructor>
+      </class>
+   </package>
+   <package>
+      <name>org.xmlresolver.exceptions</name>
+      <class>
+         <name>org.xmlresolver.exceptions.CatalogInvalidException</name>
+         <constructor>
+            <parameter name="message" type="java.lang.String"/>
+         </constructor>
+      </class>
+      <class>
+         <name>org.xmlresolver.exceptions.CatalogUnavailableException</name>
+         <constructor>
+            <parameter name="message" type="java.lang.String"/>
+         </constructor>
+      </class>
+   </package>
+   <package>
+      <name>org.xmlresolver.loaders</name>
+      <interface>
+         <name>org.xmlresolver.loaders.CatalogLoader</name>
+         <method name="getArchivedCatalogs">
+            <return>boolean</return>
+         </method>
+         <method name="getEntityResolver">
+            <return>org.xml.sax.EntityResolver</return>
+         </method>
+         <method name="getPreferPublic">
+            <return>boolean</return>
+         </method>
+         <method name="loadCatalog">
+            <return>org.xmlresolver.catalog.entry.EntryCatalog</return>
+            <parameter name="catalog" type="java.net.URI"/>
+         </method>
+         <method name="loadCatalog">
+            <return>org.xmlresolver.catalog.entry.EntryCatalog</return>
+            <parameter name="catalog" type="java.net.URI"/>
+            <parameter name="source" type="org.xml.sax.InputSource"/>
+         </method>
+         <method name="loadCatalog">
+            <return>org.xmlresolver.catalog.entry.EntryCatalog</return>
+            <parameter name="catalog" type="java.net.URI"/>
+            <parameter name="producer" type="org.xmlresolver.utils.SaxProducer"/>
+         </method>
+         <method name="setArchivedCatalogs">
+            <return>void</return>
+            <parameter name="allow" type=""/>
+         </method>
+         <method name="setEntityResolver">
+            <return>void</return>
+            <parameter name="resolver" type="org.xml.sax.EntityResolver"/>
+         </method>
+         <method name="setPreferPublic">
+            <return>void</return>
+            <parameter name="prefer" type=""/>
+         </method>
+      </interface>
+      <class>
+         <name>org.xmlresolver.loaders.CatalogLoaderResolver</name>
+         <constructor/>
+         <method name="resolveEntity">
+            <return>org.xml.sax.InputSource</return>
+            <parameter name="publicId" type="java.lang.String"/>
+            <parameter name="systemId" type="java.lang.String"/>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.loaders.ValidatingXmlLoader</name>
+         <constructor>
+            <parameter name="config" type="org.xmlresolver.ResolverConfiguration"/>
+         </constructor>
+         <method name="getArchivedCatalogs">
+            <return>boolean</return>
+         </method>
+         <method name="getEntityResolver">
+            <return>org.xml.sax.EntityResolver</return>
+         </method>
+         <method name="getPreferPublic">
+            <return>boolean</return>
+         </method>
+         <method name="loadCatalog">
+            <return>org.xmlresolver.catalog.entry.EntryCatalog</return>
+            <parameter name="catalog" type="java.net.URI"/>
+         </method>
+         <method name="loadCatalog">
+            <return>org.xmlresolver.catalog.entry.EntryCatalog</return>
+            <parameter name="catalog" type="java.net.URI"/>
+            <parameter name="source" type="org.xml.sax.InputSource"/>
+         </method>
+         <method name="loadCatalog">
+            <return>org.xmlresolver.catalog.entry.EntryCatalog</return>
+            <parameter name="catalog" type="java.net.URI"/>
+            <parameter name="producer" type="org.xmlresolver.utils.SaxProducer"/>
+         </method>
+         <method name="setArchivedCatalogs">
+            <return>void</return>
+            <parameter name="allow" type=""/>
+         </method>
+         <method name="setEntityResolver">
+            <return>void</return>
+            <parameter name="resolver" type="org.xml.sax.EntityResolver"/>
+         </method>
+         <method name="setPreferPublic">
+            <return>void</return>
+            <parameter name="prefer" type=""/>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.loaders.XmlLoader</name>
+         <constructor>
+            <parameter name="config" type="org.xmlresolver.ResolverConfiguration"/>
+         </constructor>
+         <method name="getArchivedCatalogs">
+            <return>boolean</return>
+         </method>
+         <method name="getEntityResolver">
+            <return>org.xml.sax.EntityResolver</return>
+         </method>
+         <method name="getLoaderResolver">
+            <return>org.xmlresolver.Resolver</return>
+         </method>
+         <method name="getPreferPublic">
+            <return>boolean</return>
+         </method>
+         <method name="loadCatalog">
+            <return>org.xmlresolver.catalog.entry.EntryCatalog</return>
+            <parameter name="catalog" type="java.net.URI"/>
+         </method>
+         <method name="loadCatalog">
+            <return>org.xmlresolver.catalog.entry.EntryCatalog</return>
+            <parameter name="catalog" type="java.net.URI"/>
+            <parameter name="source" type="org.xml.sax.InputSource"/>
+         </method>
+         <method name="loadCatalog">
+            <return>org.xmlresolver.catalog.entry.EntryCatalog</return>
+            <parameter name="catalog" type="java.net.URI"/>
+            <parameter name="producer" type="org.xmlresolver.utils.SaxProducer"/>
+         </method>
+         <method name="setArchivedCatalogs">
+            <return>void</return>
+            <parameter name="allow" type=""/>
+         </method>
+         <method name="setEntityResolver">
+            <return>void</return>
+            <parameter name="resolver" type="org.xml.sax.EntityResolver"/>
+         </method>
+         <method name="setPreferPublic">
+            <return>void</return>
+            <parameter name="prefer" type=""/>
+         </method>
+      </class>
+   </package>
+   <package>
+      <name>org.xmlresolver.logging</name>
+      <class>
+         <name>org.xmlresolver.logging.AbstractLogger</name>
+         <field name="CACHE" type="java.lang.String"/>
+         <field name="CONFIG" type="java.lang.String"/>
+         <field name="ERROR" type="java.lang.String"/>
+         <field name="REQUEST" type="java.lang.String"/>
+         <field name="RESPONSE" type="java.lang.String"/>
+         <field name="TRACE" type="java.lang.String"/>
+         <field name="WARNING" type="java.lang.String"/>
+         <constructor/>
+         <method name="getCategory">
+            <return>java.lang.String</return>
+            <parameter name="cat" type="java.lang.String"/>
+         </method>
+         <method name="log">
+            <return>void</return>
+            <parameter name="cat" type="java.lang.String"/>
+            <parameter name="message" type="java.lang.String"/>
+            <parameter name="params" type=""/>
+         </method>
+         <method name="setCategory">
+            <return>void</return>
+            <parameter name="cat" type="java.lang.String"/>
+            <parameter name="level" type="java.lang.String"/>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.logging.DefaultLogger</name>
+         <constructor>
+            <parameter name="config" type="org.xmlresolver.ResolverConfiguration"/>
+         </constructor>
+         <method name="debug">
+            <return>void</return>
+            <parameter name="message" type="java.lang.String"/>
+         </method>
+         <method name="getLogLevel">
+            <return>java.lang.String</return>
+         </method>
+         <method name="info">
+            <return>void</return>
+            <parameter name="message" type="java.lang.String"/>
+         </method>
+         <method name="setLogLevel">
+            <return>void</return>
+            <parameter name="level" type="java.lang.String"/>
+         </method>
+         <method name="warn">
+            <return>void</return>
+            <parameter name="message" type="java.lang.String"/>
+         </method>
+      </class>
+      <interface>
+         <name>org.xmlresolver.logging.ResolverLogger</name>
+         <method name="debug">
+            <return>void</return>
+            <parameter name="message" type="java.lang.String"/>
+         </method>
+         <method name="getCategory">
+            <return>java.lang.String</return>
+            <parameter name="cat" type="java.lang.String"/>
+         </method>
+         <method name="info">
+            <return>void</return>
+            <parameter name="message" type="java.lang.String"/>
+         </method>
+         <method name="log">
+            <return>void</return>
+            <parameter name="cat" type="java.lang.String"/>
+            <parameter name="message" type="java.lang.String"/>
+            <parameter name="params" type=""/>
+         </method>
+         <method name="setCategory">
+            <return>void</return>
+            <parameter name="cat" type="java.lang.String"/>
+            <parameter name="level" type="java.lang.String"/>
+         </method>
+         <method name="warn">
+            <return>void</return>
+            <parameter name="message" type="java.lang.String"/>
+         </method>
+      </interface>
+      <class>
+         <name>org.xmlresolver.logging.SystemLogger</name>
+         <constructor>
+            <parameter name="config" type="org.xmlresolver.ResolverConfiguration"/>
+         </constructor>
+         <constructor>
+            <parameter name="log" type="java.util.logging.Logger"/>
+         </constructor>
+         <method name="debug">
+            <return>void</return>
+            <parameter name="message" type="java.lang.String"/>
+         </method>
+         <method name="info">
+            <return>void</return>
+            <parameter name="message" type="java.lang.String"/>
+         </method>
+         <method name="warn">
+            <return>void</return>
+            <parameter name="message" type="java.lang.String"/>
+         </method>
+      </class>
+   </package>
+   <package>
+      <name>org.xmlresolver.sources</name>
+      <class>
+         <name>org.xmlresolver.sources.ResolverInputSource</name>
+         <field name="resolvedURI" type="java.net.URI"/>
+         <constructor>
+            <parameter name="localURI" type="java.net.URI"/>
+            <parameter name="stream" type="java.io.InputStream"/>
+         </constructor>
+         <constructor>
+            <parameter name="rsrc" type="org.xmlresolver.ResolvedResource"/>
+         </constructor>
+         <method name="getHeader">
+            <return>java.lang.String</return>
+            <parameter name="headerName" type="java.lang.String"/>
+         </method>
+         <method name="getHeaders">
+            <return>java.util.Map</return>
+         </method>
+         <method name="getResolvedURI">
+            <return>java.net.URI</return>
+         </method>
+         <method name="getStatusCode">
+            <return>int</return>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.sources.ResolverLSInput</name>
+         <field name="resolvedURI" type="java.net.URI"/>
+         <constructor>
+            <parameter name="rsrc" type="org.xmlresolver.Resource"/>
+            <parameter name="publicId" type="java.lang.String"/>
+            <parameter name="systemId" type="java.lang.String"/>
+         </constructor>
+         <constructor>
+            <parameter name="rsrc" type="org.xmlresolver.ResolvedResource"/>
+            <parameter name="publicId" type="java.lang.String"/>
+         </constructor>
+         <method name="getBaseURI">
+            <return>java.lang.String</return>
+         </method>
+         <method name="getByteStream">
+            <return>java.io.InputStream</return>
+         </method>
+         <method name="getCertifiedText">
+            <return>boolean</return>
+         </method>
+         <method name="getCharacterStream">
+            <return>java.io.Reader</return>
+         </method>
+         <method name="getEncoding">
+            <return>java.lang.String</return>
+         </method>
+         <method name="getHeader">
+            <return>java.lang.String</return>
+            <parameter name="headerName" type="java.lang.String"/>
+         </method>
+         <method name="getHeaders">
+            <return>java.util.Map</return>
+         </method>
+         <method name="getPublicId">
+            <return>java.lang.String</return>
+         </method>
+         <method name="getResolvedURI">
+            <return>java.net.URI</return>
+         </method>
+         <method name="getStatusCode">
+            <return>int</return>
+         </method>
+         <method name="getStringData">
+            <return>java.lang.String</return>
+         </method>
+         <method name="getSystemId">
+            <return>java.lang.String</return>
+         </method>
+         <method name="setBaseURI">
+            <return>void</return>
+            <parameter name="string" type="java.lang.String"/>
+         </method>
+         <method name="setByteStream">
+            <return>void</return>
+            <parameter name="inputStream" type="java.io.InputStream"/>
+         </method>
+         <method name="setCertifiedText">
+            <return>void</return>
+            <parameter name="b" type=""/>
+         </method>
+         <method name="setCharacterStream">
+            <return>void</return>
+            <parameter name="reader" type="java.io.Reader"/>
+         </method>
+         <method name="setEncoding">
+            <return>void</return>
+            <parameter name="string" type="java.lang.String"/>
+         </method>
+         <method name="setPublicId">
+            <return>void</return>
+            <parameter name="string" type="java.lang.String"/>
+         </method>
+         <method name="setStringData">
+            <return>void</return>
+            <parameter name="string" type="java.lang.String"/>
+         </method>
+         <method name="setSystemId">
+            <return>void</return>
+            <parameter name="string" type="java.lang.String"/>
+         </method>
+      </class>
+      <interface>
+         <name>org.xmlresolver.sources.ResolverResourceInfo</name>
+         <method name="getHeader">
+            <return>java.lang.String</return>
+            <parameter name="headerName" type="java.lang.String"/>
+         </method>
+         <method name="getHeaders">
+            <return>java.util.Map</return>
+         </method>
+         <method name="getResolvedURI">
+            <return>java.net.URI</return>
+         </method>
+         <method name="getStatusCode">
+            <return>int</return>
+         </method>
+      </interface>
+      <class>
+         <name>org.xmlresolver.sources.ResolverSAXSource</name>
+         <field name="resolvedURI" type="java.net.URI"/>
+         <constructor>
+            <parameter name="localURI" type="java.net.URI"/>
+            <parameter name="source" type="org.xml.sax.InputSource"/>
+         </constructor>
+         <constructor>
+            <parameter name="rsrc" type="org.xmlresolver.ResolvedResource"/>
+         </constructor>
+         <method name="getHeader">
+            <return>java.lang.String</return>
+            <parameter name="headerName" type="java.lang.String"/>
+         </method>
+         <method name="getHeaders">
+            <return>java.util.Map</return>
+         </method>
+         <method name="getResolvedURI">
+            <return>java.net.URI</return>
+         </method>
+         <method name="getStatusCode">
+            <return>int</return>
+         </method>
+      </class>
+   </package>
+   <package>
+      <name>org.xmlresolver.tools</name>
+      <class>
+         <name>org.xmlresolver.tools.ResolvingXMLFilter</name>
+         <constructor/>
+         <constructor>
+            <parameter name="resolver" type="org.xmlresolver.Resolver"/>
+         </constructor>
+         <constructor>
+            <parameter name="parent" type="org.xml.sax.XMLReader"/>
+            <parameter name="resolver" type="org.xmlresolver.Resolver"/>
+         </constructor>
+         <method name="getResolver">
+            <return>org.xmlresolver.Resolver</return>
+         </method>
+         <method name="notationDecl">
+            <return>void</return>
+            <parameter name="name" type="java.lang.String"/>
+            <parameter name="publicId" type="java.lang.String"/>
+            <parameter name="systemId" type="java.lang.String"/>
+         </method>
+         <method name="parse">
+            <return>void</return>
+            <parameter name="input" type="org.xml.sax.InputSource"/>
+         </method>
+         <method name="parse">
+            <return>void</return>
+            <parameter name="systemId" type="java.lang.String"/>
+         </method>
+         <method name="processingInstruction">
+            <return>void</return>
+            <parameter name="target" type="java.lang.String"/>
+            <parameter name="pidata" type="java.lang.String"/>
+         </method>
+         <method name="resolveEntity">
+            <return>org.xml.sax.InputSource</return>
+            <parameter name="publicId" type="java.lang.String"/>
+            <parameter name="systemId" type="java.lang.String"/>
+         </method>
+         <method name="resolveEntity">
+            <return>org.xml.sax.InputSource</return>
+            <parameter name="name" type="java.lang.String"/>
+            <parameter name="publicId" type="java.lang.String"/>
+            <parameter name="baseURI" type="java.lang.String"/>
+            <parameter name="systemId" type="java.lang.String"/>
+         </method>
+         <method name="startElement">
+            <return>void</return>
+            <parameter name="uri" type="java.lang.String"/>
+            <parameter name="localName" type="java.lang.String"/>
+            <parameter name="qName" type="java.lang.String"/>
+            <parameter name="atts" type="org.xml.sax.Attributes"/>
+         </method>
+         <method name="unparsedEntityDecl">
+            <return>void</return>
+            <parameter name="name" type="java.lang.String"/>
+            <parameter name="publicId" type="java.lang.String"/>
+            <parameter name="systemId" type="java.lang.String"/>
+            <parameter name="notationName" type="java.lang.String"/>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.tools.ResolvingXMLReader</name>
+         <constructor/>
+         <constructor>
+            <parameter name="factory" type="javax.xml.parsers.SAXParserFactory"/>
+         </constructor>
+         <constructor>
+            <parameter name="resolver" type="org.xmlresolver.Resolver"/>
+         </constructor>
+         <constructor>
+            <parameter name="factory" type="javax.xml.parsers.SAXParserFactory"/>
+            <parameter name="resolver" type="org.xmlresolver.Resolver"/>
+         </constructor>
+      </class>
+   </package>
+   <package>
+      <name>org.xmlresolver.utils</name>
+      <class>
+         <name>org.xmlresolver.utils.PublicId</name>
+         <method name="decodeURN">
+            <return>java.lang.String</return>
+            <parameter name="urn" type="java.lang.String"/>
+         </method>
+         <method name="encodeURN">
+            <return>java.net.URI</return>
+            <parameter name="publicId" type="java.lang.String"/>
+         </method>
+         <method name="normalize">
+            <return>java.lang.String</return>
+            <parameter name="publicId" type="java.lang.String"/>
+         </method>
+      </class>
+      <class>
+         <name>org.xmlresolver.utils.RsrcUtils</name>
+         <constructor/>
+         <method name="getHeader">
+            <return>java.lang.String</return>
+            <parameter name="headerName" type="java.lang.String"/>
+            <parameter name="headers" type="java.util.Map"/>
+         </method>
+      </class>
+      <interface>
+         <name>org.xmlresolver.utils.SaxProducer</name>
+         <method name="adaptForJing">
+            <return>com.thaiopensource.validate.ValidationDriver.SaxProducer</return>
+            <parameter name="saxProducer" type="org.xmlresolver.utils.SaxProducer"/>
+         </method>
+         <method name="produce">
+            <return>void</return>
+            <parameter name="contentHandler" type="org.xml.sax.ContentHandler"/>
+            <parameter name="dtdHandler" type="org.xml.sax.DTDHandler"/>
+            <parameter name="errorHandler" type="org.xml.sax.ErrorHandler"/>
+         </method>
+      </interface>
+      <class>
+         <name>org.xmlresolver.utils.URIUtils</name>
+         <constructor/>
+         <method name="cwd">
+            <return>java.net.URI</return>
+         </method>
+         <method name="forbidAccess">
+            <return>boolean</return>
+            <parameter name="allowed" type="java.lang.String"/>
+            <parameter name="uri" type="java.lang.String"/>
+            <parameter name="mergeHttps" type=""/>
+         </method>
+         <method name="isWindows">
+            <return>boolean</return>
+         </method>
+         <method name="newURI">
+            <return>java.net.URI</return>
+            <parameter name="href" type="java.lang.String"/>
+         </method>
+         <method name="normalizeURI">
+            <return>java.lang.String</return>
+            <parameter name="uriref" type="java.lang.String"/>
+         </method>
+         <method name="resolve">
+            <return>java.net.URI</return>
+            <parameter name="baseURI" type="java.net.URI"/>
+            <parameter name="uri" type="java.lang.String"/>
+         </method>
+      </class>
+   </package>
+</doc>

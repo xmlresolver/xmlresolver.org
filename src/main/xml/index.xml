@@ -13,6 +13,7 @@
 </imageobject>
 </inlinemediaobject></title>
 <abstract>
+<para role="preview">Preview <link xlink:href="6x-snapshot">XML Resolver version 6</link>!</para>
 <para>Welcome! This is the home page for a family of resolver projects,
 including implementations in
 <link xlink:href="https://github.com/xmlresolver/xmlresolver">Java</link>
