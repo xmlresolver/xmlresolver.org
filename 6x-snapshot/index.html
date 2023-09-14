@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" class="no-js">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
+<title>The XML Resolver 6.x SNAPSHOT</title>
+<link href="/css/pygments.css" rel="stylesheet"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link href="https://purl.org/dc/elements/1.1/" rel="schema.dc"/>
+<link href="/css/docbook-toc.css" rel="stylesheet"/>
+<link href="/css/docbook.css" rel="stylesheet" media="screen"/>
+<link xmlns="" rel="icon" href="/img/xr.png"/>
+<link xmlns="" rel="stylesheet" href="css/resolver.css"/>
+<style>main {padding-bottom: 3rem;}</style>
+</head>
+<body>
+<nav class="top">
+</nav>
+<main>
+<article class="book division homepage">
+<header>
+<h1>XML Resolver 6.x SNAPSHOT</h1>
+</header>
+<p>This page is a preview of the upcoming XML Resolver 6.0.0 release.
+(At the moment, this release is only available for Java; a C# version is expected
+in the near future.)</p>
+<section>
+<h2>Why?</h2>
+<p>This major version update is motivated by two factors:</p>
+<ol>
+<li><p>Several use cases have highlighted the fact that the current API
+doesn’t provide any way to interrogate the catalog without retrieving
+a resource. Refactoring the API to support that use case is an
+opportunity to further normalize and simplify the API.</p></li>
+<li><p>The only interface that supports resolution with a nature and a purpose is the
+<code>NamespaceResolver</code>:</p>
+<pre>Source resolveNamespace(String uri, String nature, String purpose);</pre>
+<p>Unfortunately, that’s a fundamentally broken API for returning any resource
+other than an XML document. For example, returning a plain text document through that
+API is a violation of the meaning of <code>Source</code>.</p>
+<p>(I’ve banged my head squarely into this one twice.)</p>
+</li>
+</ol>
+</section>
+<section>
+<h2>What?</h2>
+
+<p>The new design for the underlying API is based around the idea of
+constructing a request object and getting back a response object.
+(There is something like this in parts of the 5.x API, but this is
+made more complete and uniform in 6.x)</p>
+
+<p>The new API aims to be backwards compatible. That limits the design
+choices somewhat, for example it means that existing resolver methods
+have to return null where it would be more consistent to have them
+return a non-null response object that indicated the request was
+unsuccessful. But the hit of making the API backwards incompatible
+seems too large at this point.</p>
+
+<p>The following list summarizes the significant, public facing changes.
+It doesn’t detail every change.</p>
+
+<ol>
+<li><p>A new <code>ResourceRequest</code> object encapsulates all of the possible
+aspects of a request (URI, base URI, nature, purpose, etc.).</p></li>
+
+<li><p>There’s a new <code>CatalogQuerier</code> API. (suggestions for
+better names happily accepted). The querier API will interrogate the
+catalogs and indicate what resolved URI was found without attempting
+to open or retrieve it.</p>
+<p>The <code>CatalogQuerier</code> returns <code>CatalogResponse</code> objects.</p>
+</li>
+
+<li><p>There are new methods on <code>ResolvedResource</code>:</p>
+<dl>
+<div>
+<dt><code>getEncoding()</code></dt>
+<dd>returns the resource encoding, if it’s known.</dd>
+</div>
+<div>
+<dt><code>getHeader(String name)</code></dt>
+<dd>returns the first header with the matching name.</dd>
+</div>
+<div>
+<dt><code>getRequest()</code></dt>
+<dd>returns the request to which this is a response.</dd>
+</div>
+<div>
+<dt><code>isResolved()</code></dt>
+<dd>returns true if the request was successfully resolved.</dd>
+</div>
+</dl>
+</li>
+<li><p>The <code>Resolver</code> gains several new methods for
+constructing request objects and a new method for resolving a request
+object into a response.</p>
+<p>The response is an instance of the new <code>ResourceResponse</code> object.
+</p>
+</li>
+<li><p>The entire caching mechanism has been pulled out and discarded. That’s probably the
+only significant backwards incompatible change.</p>
+<ol>
+<li>An integrated cache seemed like a good idea, but it was problematic. Users were surprised by it and
+applications embedding the resolver suddenly had to worry about where the cache would be
+stored and when it was accessed.</li>
+<li>Eventually, it was disabled by default. Consequently, almost no on ever uses it.</li>
+<li>It was a burdonsome complexity in the resolver that didn’t seem justified any longer.</li>
+</ol>
+<p>If anyone misses it, it would be possible to build a caching resolver layer on top
+of the resolver.</p>
+</li>
+</ol>
+
+<p>To get more insite into the new API, see the
+<a href="javadoc/">Javadoc</a>.</p>
+
+<p>To compare the two APIs, you may find it useful to “diff” an XML representation 
+of the <a href="5.2.1.xml">old API</a> against a representation of
+<a href="6.0.3-SNAPSHOT.xml">new API</a>.</p>
+</section>
+<section>
+<h2>Where?</h2>
+
+<p>You can get the new API from the
+<a href="https://github.com/ndw/xmlresolver/releases/tag/6.0.3-SNAPSHOT">release page</a>
+or via the Maven Sonatype snapshot repository:</p>
+
+<pre>https://oss.sonatype.org/content/repositories/snapshots/</pre>
+
+<p>Using the coordinates <code>org.xmlresolver:xmlresolver:6.0.3-SNAPSHOT</code>.</p>
+</section>
+<section>
+<h2>Feedback!</h2>
+<p>Please kick the tires (or tyres, if you prefer). Try it in your projects. Report
+any problems you encounter by <a href="https://github.com/xmlresolver/xmlresolver/issues">opening an
+issue</a>.</p>
+</article>
+</main>
+</body>
+</html>
+

@@ -31,6 +31,11 @@ article.book .abstract {
     text-align: left;
 }
 
+.preview {
+    font-weight: bold;
+    text-align: center;
+}
+
 h1 {
     font-size: 3.4rem;
 }
