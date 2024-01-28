@@ -13,7 +13,13 @@
 </imageobject>
 </inlinemediaobject></title>
 <abstract>
-<para role="preview">Preview <link xlink:href="6x-snapshot">XML Resolver version 6</link>!</para>
+<important role="vernote">
+<para>This is the documentation for <citetitle>XML Resolver</citetitle> version 6.x,
+released in January, 2024. This version is not backwards compatible with version 5.x.
+Documentation for the <link xlink:href="/legacy_v5/">legacy v5.x releases</link> is
+still available.</para>
+</important>
+
 <para>Welcome! This is the home page for a family of resolver projects,
 including implementations in
 <link xlink:href="https://github.com/xmlresolver/xmlresolver">Java</link>
