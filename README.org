@@ -1,5 +1,10 @@
 #+title: README.org
 #+options: toc:nil
-#+date: 2022-02-11
+#+date: 2024-01-28
 
 This repository contains the sources for [[xmlresolver.org]].
+
+This branch generates the ~/legacy_v5/~ documentation for XML Resolver 5.x.
+
+For convenience, the formatted version of this branch is stored in the
+resources of the main branch.

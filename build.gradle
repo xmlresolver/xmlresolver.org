@@ -94,16 +94,16 @@ task downloadJavaDoc(type: Download) {
 
 task publishJavaDoc(dependsOn: ["downloadJavaDoc"]) {
   inputs.file "${buildDir}/${javadocJar}"
-  outputs.files fileTree("${buildDir}/website/javadoc")
+  outputs.files fileTree("${buildDir}/website/legacy_v5/javadoc")
 
   doFirst {
-    delete "${buildDir}/website/javadoc"
+    delete "${buildDir}/website/legacy_v5/javadoc"
   }
 
   doLast {
     copy {
       from zipTree("${buildDir}/${javadocJar}")
-      into "${buildDir}/website/javadoc"
+      into "${buildDir}/website/legacy_v5/javadoc"
     }
   }
 }
@@ -132,7 +132,7 @@ task nsdoc_to_html(type: SaxonXsltTask, dependsOn: ["validatens"]) {
 
 task nsdoc(type: SaxonXsltTask, dependsOn: ["nsdoc_to_html", "copyResources"]) {
   input nsdoc_to_html.outputs.files.singleFile
-  output "${buildDir}/website/ns/sample/index.html"
+  output "${buildDir}/website/legacy_v5/ns/sample/index.html"
   stylesheet "${projectDir}/tools/rddl-cleanup.xsl"
 }
 
@@ -145,15 +145,15 @@ task augment(type: SaxonXsltTask, dependsOn: ["validate"]) {
 task website(type: SaxonXsltTask, dependsOn: ["augment", "copyResources", "nsdoc", "publishJavaDoc"]) {
   inputs.file "${projectDir}/tools/docbook.xsl"
   input augment.outputs.files.singleFile
-  output "${buildDir}/website/index.html"
+  output "${buildDir}/website/legacy_v5/index.html"
   stylesheet "${projectDir}/tools/docbook.xsl"
   args xsltArgs
   parameters (
     'local-conventions': "file:${projectDir}/tools/local-conventions.xsl",
-    'mediaobject-input-base-uri': "file:${projectDir}/build/website/",
-    'mediaobject-output-base-uri': "/",
+    'mediaobject-input-base-uri': "file:${buildDir}/website/legacy_v5/",
+    'mediaobject-output-base-uri': "/legacy_v5/",
     'chunk': 'index.html',
-    'chunk-output-base-uri': "${projectDir}/build/website/"
+    'chunk-output-base-uri': "${buildDir}/website/legacy_v5/"
   )
 }
 
@@ -167,7 +167,7 @@ task copyResources() {
 
   doFirst {
     copy {
-      into "${buildDir}/website"
+      into "${buildDir}/website/legacy_v5"
       from ("${projectDir}/src/main/resources") {
         exclude ".htaccess" // no longer relevant?
       }
@@ -179,7 +179,7 @@ task copyResources() {
       throw new GradleException("Failed to locate DocBook xslTNG jar file")
     }
     copy {
-      into "${buildDir}/website"
+      into "${buildDir}/website/legacy_v5"
       from ({ zipTree(dbjar.toString()) }) {
         include "org/docbook/xsltng/resources/**"
       }
@@ -191,7 +191,7 @@ task copyResources() {
   }
 
   doLast {
-    delete "${buildDir}/website/org"
+    delete "${buildDir}/website/legacy_v5/org"
   }
 }
 

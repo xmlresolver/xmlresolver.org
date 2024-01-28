@@ -21,7 +21,7 @@
 
 <xsl:param name="section-toc-depth" select="1"/>
 
-<xsl:param name="resource-base-uri" select="'/'"/>
+<xsl:param name="resource-base-uri" select="'/legacy_v5/'"/>
 
 <xsl:variable name="v:user-title-properties" as="element()*">
   <title xpath="self::db:chapter"
@@ -42,14 +42,14 @@
 </xsl:template>
 
 <xsl:template match="*" mode="m:html-head-links">
-  <link rel="icon" href="/img/xr.png"/>
+  <link rel="icon" href="img/xr.png"/>
   <link rel="stylesheet" href="css/resolver.css"/>
 </xsl:template>
 
 <xsl:template match="db:itemizedlist[@role='java']" mode="m:docbook" priority="10">
   <div class="proptable java">
     <div class="listnav">
-      <span class="logo"><img src="/img/java.png" alt="Java logo"/></span>
+      <span class="logo"><img src="/legacy_v5/img/java.png" alt="Java logo"/></span>
       <h3>Configuration on Java</h3>
     </div>
     <xsl:next-match/>
@@ -59,7 +59,7 @@
 <xsl:template match="db:itemizedlist[@role='net']" mode="m:docbook" priority="10">
   <div class="proptable net">
     <div class="listnav">
-      <span class="logo"><img src="/img/dotNET.png" alt=".NET logo"/></span>
+      <span class="logo"><img src="/legacy_v5/img/dotNET.png" alt=".NET logo"/></span>
       <h3>Configuration on .NET</h3>
     </div>
     <xsl:next-match/>

@@ -5,15 +5,20 @@
 <info>
 <title><inlinemediaobject role="narrow">
 <imageobject>
-<imagedata fileref="../website/img/xr.png"/>
+<imagedata fileref="../legacy_v5/img/xr.png"/>
 </imageobject>
-</inlinemediaobject>The XML Resolver Project<inlinemediaobject>
+</inlinemediaobject>The XML Resolver Project (5.x)<inlinemediaobject>
 <imageobject role="margin">
-<imagedata fileref="../website/img/xr.png"/>
+<imagedata fileref="../legacy_v5/img/xr.png"/>
 </imageobject>
 </inlinemediaobject></title>
 <abstract>
-<para role="preview">Preview <link xlink:href="6x-snapshot">XML Resolver version 6</link>!</para>
+<important role="vernote"><para>This is the documentation for
+<citetitle>XML Resolver</citetitle> version 5.x. In January, 2024, XML
+Resolver version 6.0 was released. If you’re using version 6.0 or
+later, see the <link xlink:href="/">main site</link>.
+</para>
+</important>
 <para>Welcome! This is the home page for a family of resolver projects,
 including implementations in
 <link xlink:href="https://github.com/xmlresolver/xmlresolver">Java</link>

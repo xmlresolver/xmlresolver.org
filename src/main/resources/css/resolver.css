@@ -31,9 +31,8 @@ article.book .abstract {
     text-align: left;
 }
 
-.preview {
-    font-weight: bold;
-    text-align: center;
+.vernote {
+    margin-bottom: 3rem;
 }
 
 h1 {
