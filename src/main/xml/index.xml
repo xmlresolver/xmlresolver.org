@@ -1,7 +1,7 @@
 <book xmlns="http://docbook.org/ns/docbook"
-         xmlns:xlink="http://www.w3.org/1999/xlink"
-         role="homepage"
-         version="5.2">
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      role="homepage"
+      version="5.2">
 <info>
 <title><inlinemediaobject role="narrow">
 <imageobject>
@@ -235,7 +235,7 @@ instantiate a resolver configuration:</para>
 
 <para>Set the features as you wish:</para>
 
-<programlisting language="java"><![CDATA[config.setFeature(ResolverFeature.CACHE_UNDER_HOME, false);
+<programlisting language="java"><![CDATA[config.setFeature(ResolverFeature.DEFAULT_LOGGER_LOG_LEVEL, "info");
 
 if (validateCatalogs) {
     config.setFeature(ResolverFeature.CATALOG_LOADER_CLASS,
@@ -783,6 +783,45 @@ If you’d prefer to have the property file take precedence (as was the case in 
 earlier versions), set the “prefer property file” property to true.</para>
 
 </section>
+
+<section xml:id="xml.catalog.saxParserFactoryClass">
+<title>The SAX parser factory class</title>
+
+<itemizedlist role="java">
+<listitem>
+<simpara>Feature <constant>ResolverFeature.SAXPARSERFACTORY_CLASS</constant> (type: <type>String</type>)</simpara>
+</listitem>
+<listitem><simpara>System property <sysprop>xml.catalog.saxParserFactoryClass</sysprop></simpara></listitem>
+<listitem><simpara>Property file property <fprop>saxparserfactory-class</fprop></simpara></listitem>
+</itemizedlist>
+<itemizedlist role="net">
+<listitem>
+<simpara>This setting has no equivalent on .NET</simpara>
+</listitem>
+</itemizedlist>
+
+<para>By default, parsers are created with the
+<link linkend="xmlreader_supplier">XMLREADER_SUPPLIER</link>.</para>
+
+<para>This feature and the
+<link linkend="xmlreader_supplier">XMLREADER_SUPPLIER</link> are different
+mechanisms for configuring the same underlying feature: how does the
+resolver get an XML parser if it needs one? (For example, for the <code>ResolvingXMLFilter</code> and
+<code>ResolvingXMLReader</code> classes.)</para>
+
+<para>The <code>SAXPARSERFACTORY_CLASS</code> is initially
+<code>null</code> and the <code>XMLREADER_SUPPLIER</code> is used. The
+purpose of the <code>SAXPARSERFACTORY_CLASS</code> is to allow the
+factory to be configured with a property since the
+<code>XMLREADER_SUPPLIER</code> cannot.</para>
+
+<para>If a <code>SAXPARSERFACTORY_CLASS</code> is specified, it will
+be used in favor of the default <code>XMLREADER_SUPPLIER.</code> If an
+<code>XMLREADER_SUPPLIER</code> is explicitly set after the
+configuration is initialized, it will set this feature to
+<code>null</code> and take precedence.</para>
+</section>
+
 <section xml:id="xml.catalog.uriForSystem">
 <title>Use URI entries for system resolution</title>
 
@@ -884,7 +923,7 @@ more complete catalog, but it will avoid a situation which is guaranteed to fail
 
 <sidebar>
 <para>On .NET, a similar feature could be imagined for “pack:” scheme URIs, but in
-practice, the way the <classname>System.XmlResolver</classname> works, it doesn’t
+practice, the way the <classname>System.XmlResolver</classname> works, it wouldn’t
 serve any useful purpose.
 </para>
 </sidebar>
@@ -984,6 +1023,67 @@ class loader, you can specify an alternate loader with this feature.
 </para>
 </section>
 
+<section xml:id="xmlreader_supplier">
+<title>Configure the XML Reader</title>
+
+<itemizedlist role="java">
+<listitem>
+<simpara>Feature <constant>ResolverFeature.XMLREADER_SUPPLIER</constant>
+(type: <type>Supplier&lt;XMLReader&gt;</type>)</simpara>
+</listitem>
+</itemizedlist>
+
+<itemizedlist role="net">
+<listitem>
+<simpara>This setting has no equivalent on .NET</simpara>
+</listitem>
+</itemizedlist>
+
+<para>The default supplier is obtained with <code>SAXParserFactory.newInstance()</code> and
+the global mechanisms that it uses.</para>
+
+<para>This feature and the <link linkend="xml.catalog.saxParserFactoryClass">SAXPARSERFACTORY_CLASS</link>
+are different mechanisms for
+configuring the same underlying feature: how does the resolver get an XML parser if it needs one?
+(For example, for the <code>ResolvingXMLFilter</code> and
+<code>ResolvingXMLReader</code> classes.)
+</para>
+
+<para>The
+<link linkend="xml.catalog.saxParserFactoryClass">SAXPARSERFACTORY_CLASS</link>
+is initially <code>null</code> and the <code>XMLREADER_SUPPLIER</code>
+is used. The purpose of the <code>SAXPARSERFACTORY_CLASS</code> is to
+allow the factory to be configured with a property since the
+<code>XMLREADER_SUPPLIER</code> cannot.</para>
+
+<para>If a <code>SAXPARSERFACTORY_CLASS</code> is specified, it will be used in favor of the default
+<code>XMLREADER_SUPPLIER.</code> If an <code>XMLREADER_SUPPLIER</code> is explicitly set after the
+configuration is initialized, it will set this feature to <code>null</code> and take precedence.</para>
+</section>
+
+<section xml:id="xml.catalog.throwUriExceptions">
+<title>Throw URI exceptions?</title>
+
+<itemizedlist role="java">
+<listitem>
+<simpara>Feature <constant>ResolverFeature.THROW_URI_EXCEPTIONS</constant>
+(type: <type>Boolean</type>)</simpara>
+</listitem>
+<listitem><simpara>System property <sysprop>xml.catalog.throwUriExceptions</sysprop></simpara></listitem>
+<listitem><simpara>Property file property <fprop>throw-uri-exceptions</fprop></simpara></listitem>
+</itemizedlist>
+
+<itemizedlist role="net">
+<listitem>
+<simpara>This setting has no equivalent on .NET</simpara>
+</listitem>
+</itemizedlist>
+
+<para>If this setting is true, errors in URIs that raise illegal argument exceptions,
+malformed URI exceptions, or URI syntax exceptions will be thrown. If it’s false,
+<code>null</code> is returned and the exception is ignored.</para>
+</section>
+
 <section xml:id="xml.catalog.archivedCatalogs" role="since-3.1.0">
 <title>Support catalog files in ZIP archives</title>
 
@@ -1068,7 +1168,7 @@ or where more control is desired. If the system logger is used, it uses the
 your environment with an appropriate logging backend.</para>
 
 <para>A third option, available only at the API level, is to instantiate the
-<classname>SystemLogger</classname> yourself and pass in the
+<classname>org.xmlresolver.logging.SystemLogger</classname> yourself and pass in the
 <classname>java.util.logging.Logger</classname> class that you would like it to use.
 </para>
 </section>
