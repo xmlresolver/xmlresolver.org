@@ -1,7 +1,8 @@
 <book xmlns="http://docbook.org/ns/docbook"
-         xmlns:xlink="http://www.w3.org/1999/xlink"
-         role="homepage"
-         version="5.2">
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      xmlns:xi='http://www.w3.org/2001/XInclude'
+      role="homepage"
+      version="5.2">
 <info>
 <title><inlinemediaobject role="narrow">
 <imageobject>
@@ -13,7 +14,6 @@
 </imageobject>
 </inlinemediaobject></title>
 <abstract>
-<para role="preview">Preview <link xlink:href="6x-snapshot">XML Resolver version 6</link>!</para>
 <para>Welcome! This is the home page for a family of resolver projects,
 including implementations in
 <link xlink:href="https://github.com/xmlresolver/xmlresolver">Java</link>
@@ -43,6 +43,12 @@ organization at
 <para><link linkend="config-settings">What can I configure?</link></para>
 </listitem>
 </itemizedlist>
+<important role="vernote">
+<para>This is the documentation for <citetitle>XML Resolver</citetitle> version 6.x,
+released in January, 2024. This version is not backwards compatible with version 5.x.
+Documentation for the <link xlink:href="/legacy_v5/">legacy v5.x releases</link> is
+still available.</para>
+</important>
 </abstract>
 </info>
 
@@ -101,7 +107,7 @@ locally.</para>
 
 <para>There are basically two approaches to local caching: you can
 setup a proxy server and have it cache things for you, or you can use
-<link xlink:href="https://xmlcatalogs.org">XML Catalogs</link>. Oh, I
+<link xlink:href="https://xmlcatalogs.org">XML Catalogs</link>. I
 don’t dispute there might be other approaches, but those are the two
 common, obvious ones.</para>
 
@@ -114,8 +120,7 @@ it together with your corporate caching proxy. You also have to
 configure the criteria for local caching. I find its advantages are a
 lot more theoretical than practical.</para>
 
-<para>The XML Resolver project is about doing it with catalogs, but it
-will also cache resources for you!</para>
+<para>The XML Resolver project is about doing it with catalogs.</para>
 
 <para>
 <link xlink:href="https://xmlcatalogs.org">XML Catalogs</link>
@@ -151,20 +156,19 @@ or you can get it from Maven with coordinates like these:</para>
 <programlisting language="xml"><![CDATA[<dependency>
   <groupId>org.xmlresolver</groupId>
   <artifactId>xmlresolver</artifactId>
-  <version>3.1.6</version>
+  <version>]]><?resolver-version?><![CDATA[</version>
 </dependency>
 
 <dependency>
   <groupId>org.xmlresolver</groupId>
   <artifactId>xmlresolver</artifactId>
-  <version>3.1.6</version>
+  <version>]]><?resolver-version?><![CDATA[</version>
   <classifier>data</classifier>
 </dependency>]]></programlisting>
 
 <para>Place the XML Resolver jar file on your classpath to use the resolver.
 If you also place the “data” jar file on your classpath, you will automatically
-get local resolution of a large number of open source schemas and DTDs. (These are
-mostly from the W3C for the reasons described above.)</para>
+get local resolution of a large number of open source schemas and DTDs.</para>
 
 <para>Other distributions can also take advantage of this automatic
 behavior by placing a catalog file at
@@ -176,6 +180,23 @@ Simply placing those jar files in your classpath will make catalog resolution of
 the standard URIs quick and efficient.
 </para>
 
+<section>
+<title>What’s in the “data” jar?</title>
+
+<para>The data artifact (a separate <code>.jar</code> file on Java, a separate assembly on C#)
+contains the following resources and a catalog that maps to local copies of them stored
+in the data artifact:</para>
+
+<xi:include href="datalist.xml"/>
+
+<para>The data artifact is maintained separately; for the most up-to-date information
+about what it contains, see <link xlink:href="https://github.com/xmlresolver/xmlresolverdata"/>
+for the Java release and
+<link xlink:href="https://github.com/xmlresolver/xmlresolvercsdata"/> for the C# release.
+</para>
+
+</section>
+
 </chapter>
 <chapter xml:id="using">
 <info>
@@ -183,43 +204,41 @@ the standard URIs quick and efficient.
 </info>
 
 <para>The simplest possible thing you can do is instantiate an instance of
-<classname>org.xmlresolver.Resolver</classname> and use it as the resolver for your parser.
-The <classname role="org.xmlresolver">Resolver</classname> class implements the following resolvers:</para>
+<classname>org.xmlresolver.XMLResolver</classname> and use it to obtain a resolver
+for each of the XML parsing APIs that you are using.</para>
 
-<itemizedlist>
-<listitem>
-<para><interfacename>org.xml.sax.EntityResolver</interfacename> the SAX1 interface used to load XML entities
-</para>
-</listitem>
-<listitem>
-<para><interfacename>org.xml.sax.ext.EntityResolver2</interfacename>
-the SAX2 interface used to load XML entities
-</para>
-</listitem>
-<listitem>
-<para><interfacename>javax.xml.transform.URIResolver</interfacename> used to load XSLT resources
-</para>
-</listitem>
-<listitem>
-<para><interfacename>org.w3c.dom.ls.LSResourceResolver</interfacename> used by the DOM to load resources
-</para>
-</listitem>
-<listitem>
-<para><interfacename>org.xmlresolver.NamespaceResolver</interfacename> an interface for loading namespace-based
-resources based on <link xlink:href="https://en.wikipedia.org/wiki/RDDL(RDDL)">RDDL</link>
-that never really took off, but there you go.
-</para>
-</listitem>
-<listitem>
-<para><interfacename>javax.xml.stream.XMLResolver</interfacename>
-the StAX interface used to load XML entities.
-(This interface is actually supported by the <classname>org.xmlresolver.StAXResolver</classname> class
-because the StAX <interfacename role="javax.xml.stream">XMLResolver</interfacename>
-API and the SAX <interfacename role="org.xml.sax.ext">EntityResolver2</interfacename> APIs are
-incompatible.)
-</para>
-</listitem>
-</itemizedlist>
+<informaltable frame="all">
+<tgroup cols="2" colsep="1" rowsep="1">
+<thead>
+<row>
+<entry>Call this method:</entry>
+<entry>To obtain:</entry>
+</row>
+</thead>
+<tbody>
+<row>
+  <entry><methodname>getEntityResolver()</methodname></entry>
+  <entry>A SAX1 <interfacename>org.xml.sax.EntityResolver</interfacename></entry>
+</row>
+<row>
+  <entry><methodname>getEntityResolver2()</methodname></entry>
+  <entry>A SAX2 <interfacename>org.xml.sax.ext.EntityResolver2</interfacename></entry>
+</row>
+<row>
+  <entry><methodname>getURIResolver()</methodname></entry>
+  <entry>A JAXP <interfacename>javax.xml.transform.URIResolver</interfacename></entry>
+</row>
+<row>
+  <entry><methodname>getLSResourceResolver()</methodname></entry>
+  <entry>A W3C DOM <interfacename>org.w3c.dom.ls.LSResourceResolver</interfacename></entry>
+</row>
+<row>
+  <entry><methodname>getXMLResolver()</methodname></entry>
+  <entry>A StAX <interfacename>javax.xml.stream.XMLResolver</interfacename></entry>
+</row>
+</tbody>
+</tgroup>
+</informaltable>
 
 <para>Another simple integration point is to instantiate
 <classname>org.xmlresolver.tools.ResolvingXMLReader</classname> as your XML parser.</para>
@@ -235,18 +254,20 @@ instantiate a resolver configuration:</para>
 
 <para>Set the features as you wish:</para>
 
-<programlisting language="java"><![CDATA[config.setFeature(ResolverFeature.CACHE_UNDER_HOME, false);
+<programlisting language="java"><![CDATA[config.setFeature(ResolverFeature.DEFAULT_LOGGER_LOG_LEVEL, "info");
 
 if (validateCatalogs) {
     config.setFeature(ResolverFeature.CATALOG_LOADER_CLASS,
                       "org.xmlresolver.loaders.ValidatingXmlLoader");
 }]]></programlisting>
 
-<para>Then instantiate a resolver:</para>
+<para>Then instantiate an XML Resolver:</para>
 
-<programlisting language="java"><![CDATA[Resolver resolver = new Resolver(config);]]></programlisting>
+<programlisting language="java"><![CDATA[XMLResolver resolver = new XMLResolver(config);]]></programlisting>
 
 <para>and use that resolver in your parsing and URI retrieval.</para>
+
+<programlisting language="java"><![CDATA[myXmlReader.setEntityResolver(resolver.getEntityResolver2());]]></programlisting>
 
 <para>For additional APIs, consult the <link xlink:href="javadoc/index.html">JavaDoc</link>.</para>
 </section>
@@ -306,7 +327,6 @@ relative-catalogs=yes
 catalogs=./catalog.xml;/Users/ndw/Documents/catalog.xml
 
 prefer=public
-cache=/Users/ndw/Library/Caches/xmlresolver.org/cache
 allow-oasis-xml-catalog-pi=no
 prefer-property-file=false</programlisting>
 </section>
@@ -330,8 +350,6 @@ might look like this:</para>
                catalogs="./catalog.xml;/Users/userid/Documents/catalog.xml"
                prefer="public"
                allowOasisXmlCatalogPi="yes"
-               cache="/Users/userid/Library/Caches/xmlresolver.org/cache"
-               cacheUnderHome="false"
                preferPropertyFile="no"/>
 </configuration>]]></programlisting>
 
@@ -345,8 +363,6 @@ it might look like this:</para>
     "catalogs": "./catalog.xml;/Users/userid/Documents/catalog.xml",
     "prefer": "public",
     "allowOasisXmlCatalogPi": "yes",
-    "cache": "/Users/userid/Library/Caches/xmlresolver.org/cache",
-    "cacheUnderHome": "false",
     "preferPropertyFile": "no"
   }
 }</programlisting>
@@ -436,8 +452,10 @@ be appended to the list instead of replacing the list entirely as setting
 
 <itemizedlist role="net">
 <listitem>
-<simpara>This setting has no equivalent on .NET</simpara>
+<simpara>Feature <constant>ResolverFeature.ACCESS_EXTERNAL_DOCUMENT</constant> (type: <type>string</type>)</simpara>
 </listitem>
+<listitem><simpara>Environment variable <envar>XML_CATALOG_ACCESS_EXTERNAL_DOCUMENT</envar></simpara></listitem>
+<listitem><simpara>Property file property <fprop>accessExternalDocument</fprop></simpara></listitem>
 </itemizedlist>
 
 <para>This feature restricts the protocols that are allowed during URI
@@ -465,8 +483,10 @@ empty string allows none.</para>
 
 <itemizedlist role="net">
 <listitem>
-<simpara>This setting has no equivalent on .NET</simpara>
+<simpara>Feature <constant>ResolverFeature.ACCESS_EXTERNAL_ENTITY</constant> (type: <type>string</type>)</simpara>
 </listitem>
+<listitem><simpara>Environment variable <envar>XML_CATALOG_ACCESS_EXTERNAL_ENTITY</envar></simpara></listitem>
+<listitem><simpara>Property file property <fprop>accessExternalEntity</fprop></simpara></listitem>
 </itemizedlist>
 
 <para>This feature restricts the protocols that are allowed during entity
@@ -706,57 +726,6 @@ attempted.</para>
 
 </section>
 
-<section xml:id="xml.catalog.cache">
-<title>Cache documents</title>
-
-<itemizedlist role="java">
-<listitem>
-<simpara>Features <constant>ResolverFeature.CACHE</constant> (type: <type>ResourceCache</type>),
-<constant>ResolverFeature.CACHE_DIRECTORY</constant> (type: <type>String</type>),
-<constant>ResolverFeature.CACHE_UNDER_HOME</constant> (type: <type>Boolean</type>),
-<constant>ResolverFeature.CACHE_ENABLED</constant> (type: <type>Boolean</type>)
-</simpara>
-</listitem>
-<listitem><simpara>System properties <sysprop>xml.catalog.cache</sysprop>,
-<sysprop>xml.catalog.cacheUnderHome</sysprop>,
-<sysprop>xml.catalog.cacheEnabled</sysprop></simpara></listitem>
-<listitem><simpara>Property file properties <fprop>cache</fprop>, 
-<fprop>cache-under-home</fprop>,
-<fprop>cache-enabled</fprop>
-</simpara></listitem>
-</itemizedlist>
-
-<itemizedlist role="net">
-<listitem>
-<simpara>Features <constant>ResolverFeature.CACHE</constant> (type: <type>ResourceCache</type>),
-<constant>ResolverFeature.CACHE_DIRECTORY</constant> (type: <type>string</type>),
-<constant>ResolverFeature.CACHE_UNDER_HOME</constant> (type: <type>bool</type>),
-<constant>ResolverFeature.CACHE_ENABLED</constant> (type: <type>bool</type>)
-</simpara>
-</listitem>
-<listitem><simpara>Environment variables
-<envar>XML_CATALOG_CACHE</envar>, <envar>XML_CATALOG_CACHE_UNDER_HOME</envar>,
-<envar>XML_CATALOG_CACHE_ENABED</envar>.
-</simpara></listitem>
-<listitem><simpara>Property file properties <fprop>catalogCache</fprop>,
-<fprop>cacheUnderHome</fprop>, <fprop>catalogCacheEnabled</fprop>.
-</simpara></listitem>
-</itemizedlist>
-
-<para>The <fprop>cache</fprop> properties specify the directory in which the XML Resolver
-should attempt to cache files that fail to resolve locally. If, instead,
-one of the “cache under home” properties is set, the cache directory will
-default to <filename>$HOME/.xmlresolver/cache</filename><indexterm type="envar">
-<primary>HOME</primary></indexterm>.</para>
-
-<para>If “cache enabled” is explicitly set to “false”, no attempt will be made
-to create or use a cache.</para>
-
-<para>If the <sysprop>xmlresolver.offline</sysprop> system property is
-set, no documents will expire from the cache, regardless of their
-age.</para>
-
-</section>
 <section xml:id="xml.catalog.preferPropertyFile">
 <title>Prefer property file values</title>
 
@@ -783,6 +752,45 @@ If you’d prefer to have the property file take precedence (as was the case in 
 earlier versions), set the “prefer property file” property to true.</para>
 
 </section>
+
+<section xml:id="xml.catalog.saxParserFactoryClass">
+<title>The SAX parser factory class</title>
+
+<itemizedlist role="java">
+<listitem>
+<simpara>Feature <constant>ResolverFeature.SAXPARSERFACTORY_CLASS</constant> (type: <type>String</type>)</simpara>
+</listitem>
+<listitem><simpara>System property <sysprop>xml.catalog.saxParserFactoryClass</sysprop></simpara></listitem>
+<listitem><simpara>Property file property <fprop>saxparserfactory-class</fprop></simpara></listitem>
+</itemizedlist>
+<itemizedlist role="net">
+<listitem>
+<simpara>This setting has no equivalent on .NET</simpara>
+</listitem>
+</itemizedlist>
+
+<para>By default, parsers are created with the
+<link linkend="xmlreader_supplier">XMLREADER_SUPPLIER</link>.</para>
+
+<para>This feature and the
+<link linkend="xmlreader_supplier">XMLREADER_SUPPLIER</link> are different
+mechanisms for configuring the same underlying feature: how does the
+resolver get an XML parser if it needs one? (For example, for the <code>ResolvingXMLFilter</code> and
+<code>ResolvingXMLReader</code> classes.)</para>
+
+<para>The <code>SAXPARSERFACTORY_CLASS</code> is initially
+<code>null</code> and the <code>XMLREADER_SUPPLIER</code> is used. The
+purpose of the <code>SAXPARSERFACTORY_CLASS</code> is to allow the
+factory to be configured with a property since the
+<code>XMLREADER_SUPPLIER</code> cannot.</para>
+
+<para>If a <code>SAXPARSERFACTORY_CLASS</code> is specified, it will
+be used in favor of the default <code>XMLREADER_SUPPLIER.</code> If an
+<code>XMLREADER_SUPPLIER</code> is explicitly set after the
+configuration is initialized, it will set this feature to
+<code>null</code> and take precedence.</para>
+</section>
+
 <section xml:id="xml.catalog.uriForSystem">
 <title>Use URI entries for system resolution</title>
 
@@ -884,7 +892,7 @@ more complete catalog, but it will avoid a situation which is guaranteed to fail
 
 <sidebar>
 <para>On .NET, a similar feature could be imagined for “pack:” scheme URIs, but in
-practice, the way the <classname>System.XmlResolver</classname> works, it doesn’t
+practice, the way the <classname>System.XmlResolver</classname> works, it wouldn’t
 serve any useful purpose.
 </para>
 </sidebar>
@@ -984,6 +992,67 @@ class loader, you can specify an alternate loader with this feature.
 </para>
 </section>
 
+<section xml:id="xmlreader_supplier">
+<title>Configure the XML Reader</title>
+
+<itemizedlist role="java">
+<listitem>
+<simpara>Feature <constant>ResolverFeature.XMLREADER_SUPPLIER</constant>
+(type: <type>Supplier&lt;XMLReader&gt;</type>)</simpara>
+</listitem>
+</itemizedlist>
+
+<itemizedlist role="net">
+<listitem>
+<simpara>This setting has no equivalent on .NET</simpara>
+</listitem>
+</itemizedlist>
+
+<para>The default supplier is obtained with <code>SAXParserFactory.newInstance()</code> and
+the global mechanisms that it uses.</para>
+
+<para>This feature and the <link linkend="xml.catalog.saxParserFactoryClass">SAXPARSERFACTORY_CLASS</link>
+are different mechanisms for
+configuring the same underlying feature: how does the resolver get an XML parser if it needs one?
+(For example, for the <code>ResolvingXMLFilter</code> and
+<code>ResolvingXMLReader</code> classes.)
+</para>
+
+<para>The
+<link linkend="xml.catalog.saxParserFactoryClass">SAXPARSERFACTORY_CLASS</link>
+is initially <code>null</code> and the <code>XMLREADER_SUPPLIER</code>
+is used. The purpose of the <code>SAXPARSERFACTORY_CLASS</code> is to
+allow the factory to be configured with a property since the
+<code>XMLREADER_SUPPLIER</code> cannot.</para>
+
+<para>If a <code>SAXPARSERFACTORY_CLASS</code> is specified, it will be used in favor of the default
+<code>XMLREADER_SUPPLIER.</code> If an <code>XMLREADER_SUPPLIER</code> is explicitly set after the
+configuration is initialized, it will set this feature to <code>null</code> and take precedence.</para>
+</section>
+
+<section xml:id="xml.catalog.throwUriExceptions">
+<title>Throw URI exceptions?</title>
+
+<itemizedlist role="java">
+<listitem>
+<simpara>Feature <constant>ResolverFeature.THROW_URI_EXCEPTIONS</constant>
+(type: <type>Boolean</type>)</simpara>
+</listitem>
+<listitem><simpara>System property <sysprop>xml.catalog.throwUriExceptions</sysprop></simpara></listitem>
+<listitem><simpara>Property file property <fprop>throw-uri-exceptions</fprop></simpara></listitem>
+</itemizedlist>
+
+<itemizedlist role="net">
+<listitem>
+<simpara>This setting has no equivalent on .NET</simpara>
+</listitem>
+</itemizedlist>
+
+<para>If this setting is true, errors in URIs that raise illegal argument exceptions,
+malformed URI exceptions, or URI syntax exceptions will be thrown. If it’s false,
+<code>null</code> is returned and the exception is ignored.</para>
+</section>
+
 <section xml:id="xml.catalog.archivedCatalogs" role="since-3.1.0">
 <title>Support catalog files in ZIP archives</title>
 
@@ -1068,7 +1137,7 @@ or where more control is desired. If the system logger is used, it uses the
 your environment with an appropriate logging backend.</para>
 
 <para>A third option, available only at the API level, is to instantiate the
-<classname>SystemLogger</classname> yourself and pass in the
+<classname>org.xmlresolver.logging.SystemLogger</classname> yourself and pass in the
 <classname>java.util.logging.Logger</classname> class that you would like it to use.
 </para>
 </section>
@@ -1094,15 +1163,8 @@ your environment with an appropriate logging backend.</para>
 allows you to change the logging level for categories
 selectively.</para>
 
-<para>Suppose, for example, you want to know more about how the cache
-is being managed. At the level of logging configuration, change how
-<classname>org.xmlresolver.cache.ResourceCache</classname> log messages are
-presented. If you can’t easily do that, change how the resolver logs
-messages related to caching: make them into warning messages instead
-of info messages, for example.</para>
-
 <para>The log categories aren’t as fine grained as the class hierarchy.
-There are six categories:</para>
+There are five categories:</para>
 
 <variablelist>
 <varlistentry><term><literal>request</literal></term>
@@ -1120,12 +1182,6 @@ There are six categories:</para>
 <varlistentry><term><literal>config</literal></term>
 <listitem>
 <para>Information related to configuration.
-</para>
-</listitem>
-</varlistentry>
-<varlistentry><term><literal>cache</literal></term>
-<listitem>
-<para>Information related to caching.
 </para>
 </listitem>
 </varlistentry>
@@ -1147,7 +1203,7 @@ There are six categories:</para>
 “warn” logging messages. This is configured with the system property
 <sysprop>xml.catalog.logging</sysprop>. That property is interpreted as a comma
 delimited list of <replaceable>category</replaceable>:<replaceable>level</replaceable>
-pairs: for example, <code>cache:warn,response:info</code>, would log cache
+pairs: for example, <code>request:warn,response:info</code>, would log request
 messages as warnings and response messages as info.</para>
 
 <para>If you prefer to specify this in a configuration file, use the

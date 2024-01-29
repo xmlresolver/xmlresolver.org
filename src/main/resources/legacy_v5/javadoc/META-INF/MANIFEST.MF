@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Built-By: Norman Walsh
+Implementation-Vendor: Norman Walsh
+Implementation-Title: XML Resolver API documentation
+Implementation-Version: 5.2.3
+Automatic-Module-Name: org.xmlresolver.xmlresolver_javadoc
+

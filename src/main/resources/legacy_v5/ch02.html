@@ -1,0 +1,35 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" class="no-js"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script><title>Chapter 2. Why use a resolver?</title><link href="/legacy_v5/css/pygments.css" rel="stylesheet"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link href="https://purl.org/dc/elements/1.1/" rel="schema.dc"/><meta name="dc.modified" content="2024-01-28T13:44:10Z"/><meta name="generator" content="DocBook xslTNG version 2.1.2 / c75a917 / SAXON HE 11.5"/><link href="/legacy_v5/css/docbook-toc.css" rel="stylesheet"/><link href="/legacy_v5/css/docbook.css" rel="stylesheet" media="screen"/><link xmlns="" rel="icon" href="img/xr.png"/><link xmlns="" rel="stylesheet" href="css/resolver.css"/><link rel="prev" href="ch01.html"/><link rel="next" href="ch03.html"/><link rel="up" href="index.html"/><link rel="home" href="index.html"/><script src="/legacy_v5/js/persistent-toc.js" defer="defer"></script><script src="/legacy_v5/js/copy-verbatim.js" defer="defer"></script><script src="/legacy_v5/js/chunk-nav.js" defer="defer"></script></head><body><nav class="top"><div><a href="index.html">Home</a> <a href="index.html">Up</a> <a href="ch03.html">Next</a> <a href="ch01.html">Previous</a></div></nav><main><section id="why" db-chunk="ch02.html" db-id="d96e83" class="chapter component"><header><h2>Chapter <span class="label">2</span><span class="sep">. </span>Why use a resolver?</h2></header><p>I chose the preceding DTD example with care. Even though DTDs
+are no longer fashionable in many circles, it’s a popular, effectively
+immutable resource served up by the W3C. The W3C web server gets
+<em>so many</em> requests for the XHTML DTD that it sometimes goes
+out of its way to make retrieving it painful.</p><p>You may have noticed that downloading resources (schemas, DTDs,
+etc., not the specifications, generally) from the W3C is sometimes
+very slow. This is a kind of rate limiting effect to save bandwidth.
+It discourages developers from pounding on their servers. If you don’t
+take the hint, they’ll even lock you out for a period of time.</p><p>Even if the servers you frequently access don’t discourage you
+from repeatedly downloading the same resources, you (or your
+customers!) may sometimes have limited connectivity.</p><p>Point being: there are lots of URIs which you can usefully cache
+locally.</p><p>There are basically two approaches to local caching: you can
+setup a proxy server and have it cache things for you, or you can use
+<a href="https://xmlcatalogs.org" class="link">XML Catalogs</a>. Oh, I
+don’t dispute there might be other approaches, but those are the two
+common, obvious ones.</p><p>The advantage of the local caching proxy is that it’s automatic. It
+caches the resources you request according to whatever criteria you
+establish, it works transparently in the background. No muss, no fuss.
+Well, except for the fact that you have to install and setup a local
+caching proxy. You have to use it everywhere. You might have to chain
+it together with your corporate caching proxy. You also have to
+configure the criteria for local caching. I find its advantages are a
+lot more theoretical than practical.</p><p>The XML Resolver project is about doing it with catalogs, but it
+will also cache resources for you!</p><p>
+<a href="https://xmlcatalogs.org" class="link">XML Catalogs</a>
+are straightforward; you provide an XML document that has
+mappings from identifiers that might appear in documents to local
+resources that should be returned for those identifiers.</p><p>Here’s an example:</p><div class="pre-wrap highlight" db-startinglinenumber="1" db-numberoflines="4"><pre class="language-xml numbered programlisting verbatim verblines"><span class="line" db-line="1"><span class="ln">  <span class="nsep">|</span></span><span class="ld"><code><span class="nt">&lt;catalog</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">"urn:oasis:names:tc:entity:xmlns:xml:catalog"</span><span class="nt">&gt;</span></code></span></span>
+<span class="line" db-line="2"><span class="ln">  <span class="nsep">|</span></span><span class="ld"><code><span class="w">  </span><span class="nt">&lt;system</span><span class="w"> </span><span class="na">systemId=</span><span class="s">"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"</span></code></span></span>
+<span class="line" db-line="3"><span class="ln">  <span class="nsep">|</span></span><span class="ld"><code><span class="w">          </span><span class="na">uri=</span><span class="s">"/share/dtds/xhtml1-strict.dtd"</span><span class="nt">/&gt;</span></code></span></span>
+<span class="line" db-line="4"><span class="ln">  <span class="nsep">|</span></span><span class="ld"><code><span class="nt">&lt;/catalog&gt;</span></code></span></span>
+</pre></div><p>If you load that catalog, attempts to obtain the XHTML DTD from the W3C
+will be satisfied by a local copy of the DTD obtained from the
+<code class="filename">/share/dtds/xhtml1-strict.dtd</code>.</p><p>You can write catalogs that suit your resources, and they can be chained
+together to work with and across multiple projects.</p></section></main><nav class="bottom"><table><tr><td class="previous"><a href="ch01.html">Previous</a></td><td class="up"><a href="index.html">Up</a></td><td class="next"><a href="ch03.html">Next</a></td></tr><tr><td class="previous">Chapter <span class="label">1</span><span class="sep">. </span>What is a resolver?</td><td class="up"><a href="index.html">Home</a></td><td class="next">Chapter <span class="label">3</span><span class="sep">. </span>Getting an XML Resolver</td></tr></table><nav class="tocopen"></nav><nav class="toc"></nav><!-- Hide ToC details from user agents that don’t support JS --><script type="text/html" class="tocopen"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABYlAAAWJQFJUiTwAAABDklEQVQ4je2UUW3EMAyGv0wDUAhlkDBIyuAYXCEclEJoGZRBUgYOgzJoGHgPW6o7rWq35+2TIkWW9duW7N+oKuM46jiOGGMAaNsW5xzee5xzn8EvRESXZUFEWNcVAFWl73v6vjcGUIAYIyEEANZ1RUSY55lSCo/HA4BhGGiahtvthnOOtm0BSCnRdd1eVAGNMeoR27aptVattbpt22FOjFGrzjsX1I7q/4q3y4xf8i/4FwT3Pcw5Y4zBWvujfQMopZBzJuf8XbCeVyWEgHOO+/2+x0SEaZpIKSEih0X2Wz6jdlxKuezaqL7qpZS0lLKbw/M4ANba3RyapiGE8OJGqOrpizGq916999VATvM/AGFn1sxsVjL5AAAAAElFTkSuQmCC" alt="[toc]"/></script><script type="text/html" class="toc"><header><span>Table of Contents</span><span class="close"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAtklEQVQ4jaWT0Q3DIAxEz52AEbyB2cDZhBEY3SNcPyqqBEwqpZaQAHNP5jBCEiJCPAiSIgAeiUe8zoveO9x9e9jd0XtfKwHA1hpHtNY49rO8u59zn4mqMiJSyFkcEVTVFQCAtdYFMotrrXN111JnyA/xCsggN2JeXmGEmaGU8l2XUmBm29fZuh0RW2PTK2SGZcamADPb3nmGmNkKOI7j1rAzJG2kcWhqkstQ1QX+/2ciKU/FJOUN6JFZYWpmK3sAAAAASUVORK5CYII=" alt="X"/></span><p class="ptoc-search"><input class="ptoc-search" placeholder="Search" style="width: 80%"/></p></header><div db-persistent-toc="persistent-toc.html" db-prefix="">Loading…</div></script></nav></body></html>
