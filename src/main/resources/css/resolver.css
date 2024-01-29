@@ -32,6 +32,7 @@ article.book .abstract {
 }
 
 .vernote {
+    margin-top: 3rem;
     margin-bottom: 3rem;
 }
 
@@ -97,6 +98,18 @@ span.logo {
     position: absolute;
     top: 0;
     left: -80px;
+}
+
+ul.manifest li {
+    border: 1px solid #aaaaaa;
+    border-radius: 6px;
+    padding-left: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+ul.manifest li .simpara {
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 @media screen and (max-width: 1400px) {

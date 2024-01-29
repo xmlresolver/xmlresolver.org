@@ -8,6 +8,8 @@
 
 <xsl:output method="xml" encoding="utf-8" indent="no"/>
 
+<xsl:param name="resolver-version" required="yes" as="xs:string"/>
+
 <xsl:template match="element()">
   <xsl:copy>
     <xsl:apply-templates select="@*,node()"/>
@@ -125,6 +127,10 @@
       </indexterm>
     </xsl:otherwise>
   </xsl:choose>
+</xsl:template>
+
+<xsl:template match="processing-instruction('resolver-version')" priority="10">
+  <xsl:sequence select="$resolver-version"/>
 </xsl:template>
 
 </xsl:stylesheet>

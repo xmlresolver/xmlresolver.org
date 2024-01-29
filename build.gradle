@@ -108,8 +108,16 @@ task publishJavaDoc(dependsOn: ["downloadJavaDoc"]) {
   }
 }
 
-task validate(type: RelaxNGValidateTask) {
+task xinclude(type: SaxonXsltTask) {
+  inputs.dir "${projectDir}/src/main/xml"
   input "${projectDir}/src/main/xml/index.xml"
+  output "${buildDir}/tmp/index.xml"
+  stylesheet "${projectDir}/tools/xinclude.xsl"
+  args xsltArgs
+}
+
+task validate(type: RelaxNGValidateTask, dependsOn: ["xinclude"]) {
+  input "${buildDir}/tmp/index.xml"
   output "${buildDir}/xml/index.xml"
   schema "${projectDir}/tools/dbextension.rnc"
   compact true
@@ -140,6 +148,9 @@ task augment(type: SaxonXsltTask, dependsOn: ["validate"]) {
   input validate.outputs.files.singleFile
   output "${buildDir}/aug/index.xml"
   stylesheet "${projectDir}/tools/augment.xsl"
+  parameters (
+    'resolver-version': xmlresolverVersion
+  )
 }
 
 task website(type: SaxonXsltTask, dependsOn: ["augment", "copyResources", "nsdoc", "publishJavaDoc"]) {
