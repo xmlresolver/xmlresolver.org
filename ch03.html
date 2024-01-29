@@ -1,21 +1,20 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" class="no-js"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script><title>Chapter 3. Getting an XML Resolver</title><link href="/css/pygments.css" rel="stylesheet"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link href="https://purl.org/dc/elements/1.1/" rel="schema.dc"/><meta name="dc.modified" content="2023-09-14T13:19:34Z"/><meta name="generator" content="DocBook xslTNG version 2.1.2 / c75a917 / SAXON HE 11.5"/><link href="/css/docbook-toc.css" rel="stylesheet"/><link href="/css/docbook.css" rel="stylesheet" media="screen"/><link xmlns="" rel="icon" href="/img/xr.png"/><link xmlns="" rel="stylesheet" href="css/resolver.css"/><link rel="prev" href="ch02.html"/><link rel="next" href="ch04.html"/><link rel="up" href="index.html"/><link rel="home" href="index.html"/><script src="/js/persistent-toc.js" defer="defer"></script><script src="/js/copy-verbatim.js" defer="defer"></script><script src="/js/chunk-nav.js" defer="defer"></script></head><body><nav class="top"><div><a href="index.html">Home</a> <a href="index.html">Up</a> <a href="ch04.html">Next</a> <a href="ch02.html">Previous</a></div></nav><main><section id="getting" db-chunk="ch03.html" db-id="d95e108" class="chapter component"><header><h2>Chapter <span class="label">3</span><span class="sep">. </span>Getting an XML Resolver</h2></header><p>The XML Resolver is distributed in two ways: you can get it as a release
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" class="no-js"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script><title>Chapter 3. Getting an XML Resolver</title><link href="/css/pygments.css" rel="stylesheet"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link href="https://purl.org/dc/elements/1.1/" rel="schema.dc"/><meta name="dc.modified" content="2024-01-29T14:21:59Z"/><meta name="generator" content="DocBook xslTNG version 2.1.9 / 4a661f6 / SAXON HE 12.4"/><link href="/css/docbook-toc.css" rel="stylesheet"/><link href="/css/docbook.css" rel="stylesheet" media="screen"/><link xmlns="" rel="icon" href="/img/xr.png"/><link xmlns="" rel="stylesheet" href="css/resolver.css"/><link rel="prev" href="ch02.html"/><link rel="next" href="ch04.html"/><link rel="up" href="index.html"/><link rel="home" href="index.html"/><script src="/js/persistent-toc.js" defer="defer"></script><script src="/js/copy-verbatim.js" defer="defer"></script><script src="/js/chunk-nav.js" defer="defer"></script></head><body class="chapter component"><nav class="top"><div><a href="index.html">Home</a> <a href="index.html">Up</a> <a href="ch04.html">Next</a> <a href="ch02.html">Prev</a></div></nav><main><section id="getting" db-chunk="ch03.html" db-id="d92e114" class="chapter component"><header><h2>Chapter <span class="label">3</span><span class="sep">. </span>Getting an XML Resolver</h2></header><p>The XML Resolver is distributed in two ways: you can get it as a release
 from <a href="https://github.com/xmlresolver/xmlresolver/releases" class="link">GitHub</a>,
 or you can get it from Maven with coordinates like these:</p><div class="pre-wrap highlight" db-startinglinenumber="1" db-numberoflines="12"><pre class="language-xml long numbered programlisting verbatim verblines"><span class="line" db-line="1"><span class="ln"> 1 <span class="nsep">|</span></span><span class="ld"><code><span class="nt">&lt;dependency&gt;</span></code></span></span>
 <span class="line" db-line="2"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>  <span class="nt">&lt;groupId&gt;</span>org.xmlresolver<span class="nt">&lt;/groupId&gt;</span></code></span></span>
 <span class="line" db-line="3"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>  <span class="nt">&lt;artifactId&gt;</span>xmlresolver<span class="nt">&lt;/artifactId&gt;</span></code></span></span>
-<span class="line" db-line="4"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>  <span class="nt">&lt;version&gt;</span>3.1.6<span class="nt">&lt;/version&gt;</span></code></span></span>
+<span class="line" db-line="4"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>  <span class="nt">&lt;version&gt;</span>5.2.3<span class="nt">&lt;/version&gt;</span></code></span></span>
 <span class="line" db-line="5"><span class="ln"> 5 <span class="nsep">|</span></span><span class="ld"><code><span class="nt">&lt;/dependency&gt;</span></code></span></span>
 <span class="line" db-line="6"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code> </code></span></span>
 <span class="line" db-line="7"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code><span class="nt">&lt;dependency&gt;</span></code></span></span>
 <span class="line" db-line="8"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>  <span class="nt">&lt;groupId&gt;</span>org.xmlresolver<span class="nt">&lt;/groupId&gt;</span></code></span></span>
 <span class="line" db-line="9"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>  <span class="nt">&lt;artifactId&gt;</span>xmlresolver<span class="nt">&lt;/artifactId&gt;</span></code></span></span>
-<span class="line" db-line="10"><span class="ln">10 <span class="nsep">|</span></span><span class="ld"><code>  <span class="nt">&lt;version&gt;</span>3.1.6<span class="nt">&lt;/version&gt;</span></code></span></span>
+<span class="line" db-line="10"><span class="ln">10 <span class="nsep">|</span></span><span class="ld"><code>  <span class="nt">&lt;version&gt;</span>5.2.3<span class="nt">&lt;/version&gt;</span></code></span></span>
 <span class="line" db-line="11"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>  <span class="nt">&lt;classifier&gt;</span>data<span class="nt">&lt;/classifier&gt;</span></code></span></span>
 <span class="line" db-line="12"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code><span class="nt">&lt;/dependency&gt;</span></code></span></span>
 </pre></div><p>Place the XML Resolver jar file on your classpath to use the resolver.
 If you also place the “data” jar file on your classpath, you will automatically
-get local resolution of a large number of open source schemas and DTDs. (These are
-mostly from the W3C for the reasons described above.)</p><p>Other distributions can also take advantage of this automatic
+get local resolution of a large number of open source schemas and DTDs.</p><p>Other distributions can also take advantage of this automatic
 behavior by placing a catalog file at
 <code class="literal">org/xmlresolver/catalog.xml</code> in the jar file. For example, the
 <a href="https://github.com/docbook/docbook" class="link">DocBook schemas</a>
@@ -23,4 +22,627 @@ and
 <a href="https://github.com/docbook/xslTNG" class="link">xslTNG</a> releases do this.
 Simply placing those jar files in your classpath will make catalog resolution of
 the standard URIs quick and efficient.
-</p></section></main><nav class="bottom"><table><tr><td class="previous"><a href="ch02.html">Previous</a></td><td class="up"><a href="index.html">Up</a></td><td class="next"><a href="ch04.html">Next</a></td></tr><tr><td class="previous">Chapter <span class="label">2</span><span class="sep">. </span>Why use a resolver?</td><td class="up"><a href="index.html">Home</a></td><td class="next">Chapter <span class="label">4</span><span class="sep">. </span>Using an XML Resolver</td></tr></table><nav class="tocopen"></nav><nav class="toc"></nav><!-- Hide ToC details from user agents that don’t support JS --><script type="text/html" class="tocopen"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABYlAAAWJQFJUiTwAAABDklEQVQ4je2UUW3EMAyGv0wDUAhlkDBIyuAYXCEclEJoGZRBUgYOgzJoGHgPW6o7rWq35+2TIkWW9duW7N+oKuM46jiOGGMAaNsW5xzee5xzn8EvRESXZUFEWNcVAFWl73v6vjcGUIAYIyEEANZ1RUSY55lSCo/HA4BhGGiahtvthnOOtm0BSCnRdd1eVAGNMeoR27aptVattbpt22FOjFGrzjsX1I7q/4q3y4xf8i/4FwT3Pcw5Y4zBWvujfQMopZBzJuf8XbCeVyWEgHOO+/2+x0SEaZpIKSEih0X2Wz6jdlxKuezaqL7qpZS0lLKbw/M4ANba3RyapiGE8OJGqOrpizGq916999VATvM/AGFn1sxsVjL5AAAAAElFTkSuQmCC" alt="[toc]"/></script><script type="text/html" class="toc"><header><span>Table of Contents</span><span class="close"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAtklEQVQ4jaWT0Q3DIAxEz52AEbyB2cDZhBEY3SNcPyqqBEwqpZaQAHNP5jBCEiJCPAiSIgAeiUe8zoveO9x9e9jd0XtfKwHA1hpHtNY49rO8u59zn4mqMiJSyFkcEVTVFQCAtdYFMotrrXN111JnyA/xCsggN2JeXmGEmaGU8l2XUmBm29fZuh0RW2PTK2SGZcamADPb3nmGmNkKOI7j1rAzJG2kcWhqkstQ1QX+/2ciKU/FJOUN6JFZYWpmK3sAAAAASUVORK5CYII=" alt="X"/></span><p class="ptoc-search"><input class="ptoc-search" placeholder="Search" style="width: 80%"/></p></header><div db-persistent-toc="persistent-toc.html" db-prefix="">Loading…</div></script></nav></body></html>
+</p><section id="getting_s1" class="section"><header><h2><span class="label">1</span><span class="sep">. </span>What’s in the “data” jar?</h2></header><p>The data artifact (a separate <code>.jar</code> file on Java, a separate assembly on C#)
+contains the following resources and a catalog that maps to local copies of them stored
+in the data artifact:</p><ul class="itemizedlist manifest"><li><p class="simpara">System identifier: <code class="uri">http://www.oasis-open.org/committees/entity/release/1.1/catalog.dtd</code>
+      </p><p class="simpara">Public identifier: <code>-//OASIS//DTD XML Catalogs V1.1//EN</code>
+      </p><p class="simpara">Namespace: <code class="uri">urn:oasis:names:tc:entity:xmlns:xml:catalog</code>
+      </p><p class="simpara">RDDL nature: <code class="uri">https://www.iana.org/assignments/media-types/application/xml-dtd</code>
+      </p><p class="simpara">RDDL purpose: <code class="uri">http://www.rddl.org/purposes#validation</code>
+      </p></li><li><p class="simpara">URI: <code class="uri">http://www.oasis-open.org/committees/entity/release/1.1/catalog.rng</code>
+      </p><p class="simpara">Namespace: <code class="uri">urn:oasis:names:tc:entity:xmlns:xml:catalog</code>
+      </p><p class="simpara">RDDL nature: <code class="uri">http://relaxng.org/ns/structure/1.0</code>
+      </p><p class="simpara">RDDL purpose: <code class="uri">http://www.rddl.org/purposes#validation</code>
+      </p></li><li><p class="simpara">URI: <code class="uri">http://www.oasis-open.org/committees/entity/release/1.1/catalog.xsd</code>
+      </p><p class="simpara">Namespace: <code class="uri">urn:oasis:names:tc:entity:xmlns:xml:catalog</code>
+      </p><p class="simpara">RDDL nature: <code class="uri">http://www.w3.org/2001/XMLSchema</code>
+      </p><p class="simpara">RDDL purpose: <code class="uri">http://www.rddl.org/purposes#validation</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">http://www.rddl.org/rddl-qname-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//XML-DEV//ENTITIES RDDL QName Module 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">http://www.rddl.org/rddl-resource-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//XML-DEV//ELEMENTS RDDL Resource 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">http://www.rddl.org/rddl-xhtml.dtd</code>
+      </p><p class="simpara">Public identifier: <code>-//XML-DEV//DTD XHTML RDDL 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">http://www.rddl.org/xhtml-arch-1.mod</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">http://www.rddl.org/xhtml-attribs-1.mod</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">http://www.rddl.org/xhtml-base-1.mod</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">http://www.rddl.org/xhtml-basic-form-1.mod</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">http://www.rddl.org/xhtml-basic-table-1.mod</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">http://www.rddl.org/xhtml-blkphras-1.mod</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">http://www.rddl.org/xhtml-blkstruct-1.mod</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">http://www.rddl.org/xhtml-charent-1.mod</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">http://www.rddl.org/xhtml-datatypes-1.mod</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">http://www.rddl.org/xhtml-events-1.mod</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">http://www.rddl.org/xhtml-framework-1.mod</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">http://www.rddl.org/xhtml-hypertext-1.mod</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">http://www.rddl.org/xhtml-image-1.mod</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">http://www.rddl.org/xhtml-inlphras-1.mod</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">http://www.rddl.org/xhtml-inlstruct-1.mod</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">http://www.rddl.org/xhtml-lat1.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">http://www.rddl.org/xhtml-link-1.mod</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">http://www.rddl.org/xhtml-list-1.mod</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">http://www.rddl.org/xhtml-meta-1.mod</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">http://www.rddl.org/xhtml-notations-1.mod</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">http://www.rddl.org/xhtml-object-1.mod</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">http://www.rddl.org/xhtml-param-1.mod</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">http://www.rddl.org/xhtml-qname-1.mod</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">http://www.rddl.org/xhtml-rddl-model-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//XML-DEV//ENTITIES RDDL Document Model 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">http://www.rddl.org/xhtml-special.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">http://www.rddl.org/xhtml-struct-1.mod</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">http://www.rddl.org/xhtml-symbol.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">http://www.rddl.org/xhtml-text-1.mod</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">http://www.rddl.org/xhtml11.dtd</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">http://www.rddl.org/xlink-module-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//XML-DEV//ENTITIES XLink Module 1.0//EN</code>
+      </p></li><li><p class="simpara">URI: <code class="uri">https://www.w3.org/1999/xlink.xsd</code>
+      </p><p class="simpara">Namespace: <code class="uri">https://www.w3.org/1999/xlink</code>
+      </p><p class="simpara">RDDL nature: <code class="uri">http://www.w3.org/2001/XMLSchema</code>
+      </p><p class="simpara">RDDL purpose: <code class="uri">http://www.rddl.org/purposes#validation</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2001/XMLSchema.dtd</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//DTD XMLSCHEMA 200102//EN</code>
+      </p></li><li><p class="simpara">URI: <code class="uri">https://www.w3.org/2001/XMLSchema.xsd</code>
+      </p><p class="simpara">Namespace: <code class="uri">http://www.w3.org/2001/XMLSchema</code>
+      </p><p class="simpara">RDDL nature: <code class="uri">http://www.w3.org/2001/XMLSchema</code>
+      </p><p class="simpara">RDDL purpose: <code class="uri">http://www.rddl.org/purposes#validation</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2001/datatypes.dtd</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//DTD XSD 1.0 Datatypes//EN</code>
+      </p></li><li><p class="simpara">URI: <code class="uri">https://www.w3.org/2001/xml.xsd</code>
+      </p><p class="simpara">Namespace: <code class="uri">https://www.w3.org/XML/1998/namespace</code>
+      </p><p class="simpara">RDDL nature: <code class="uri">http://www.w3.org/2001/XMLSchema</code>
+      </p><p class="simpara">RDDL purpose: <code class="uri">http://www.rddl.org/purposes#validation</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2002/xmlspec/dtd/2.10/xmlspec.dtd</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//DTD Specification V2.10//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/2007/html5-uppercase.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES uppercase aliases for HTML//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/2007/htmlmathml-f.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES HTML MathML Set//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/2007/htmlmathml.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES HTML MathML Set//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/2007/isoamsa.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Added Math Symbols: Arrow Relations//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/2007/isoamsb.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Added Math Symbols: Binary Operators//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/2007/isoamsc.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Added Math Symbols: Delimiters//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/2007/isoamsn.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Added Math Symbols: Negated Relations//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/2007/isoamso.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Added Math Symbols: Ordinary//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/2007/isoamsr.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Added Math Symbols: Relations//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/2007/isobox.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Box and Line Drawing//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/2007/isocyr1.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Russian Cyrillic//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/2007/isocyr2.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Non-Russian Cyrillic//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/2007/isodia.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Diacritical Marks//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/2007/isogrk1.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Greek Letters//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/2007/isogrk2.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Monotoniko Greek//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/2007/isogrk3.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Greek Symbols//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/2007/isogrk4.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Alternative Greek Symbols//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/2007/isolat1.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Added Latin 1//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/2007/isolat2.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Added Latin 2//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/2007/isomfrk.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Math Alphabets: Fraktur//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/2007/isomopf.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Math Alphabets: Open Face//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/2007/isomscr.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Math Alphabets: Script//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/2007/isonum.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Numeric and Special Graphic//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/2007/isopub.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Publishing//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/2007/isotech.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES General Technical//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/2007/mmlalias.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES MathML Aliases//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/2007/mmlextra.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Additional MathML Symbols//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/2007/predefined.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Predefined XML//EN///XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/2007/w3centities-f.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Combined Set//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/2007/w3centities.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Combined Set//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/2007/xhtml1-lat1.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Latin for HTML//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/2007/xhtml1-special.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Special for HTML//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/2007/xhtml1-symbol.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Symbol for HTML//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/iso8879/isoamsa.ent</code>
+      </p><p class="simpara">Public identifier: <code>ISO 8879:1986//ENTITIES Added Math Symbols: Arrow Relations//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/iso8879/isoamsb.ent</code>
+      </p><p class="simpara">Public identifier: <code>ISO 8879:1986//ENTITIES Added Math Symbols: Binary Operators//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/iso8879/isoamsc.ent</code>
+      </p><p class="simpara">Public identifier: <code>ISO 8879:1986//ENTITIES Added Math Symbols: Delimiters//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/iso8879/isoamsn.ent</code>
+      </p><p class="simpara">Public identifier: <code>ISO 8879:1986//ENTITIES Added Math Symbols: Negated Relations//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/iso8879/isoamso.ent</code>
+      </p><p class="simpara">Public identifier: <code>ISO 8879:1986//ENTITIES Added Math Symbols: Ordinary//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/iso8879/isoamsr.ent</code>
+      </p><p class="simpara">Public identifier: <code>ISO 8879:1986//ENTITIES Added Math Symbols: Relations//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/iso8879/isobox.ent</code>
+      </p><p class="simpara">Public identifier: <code>ISO 8879:1986//ENTITIES Box and Line Drawing//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/iso8879/isocyr1.ent</code>
+      </p><p class="simpara">Public identifier: <code>ISO 8879:1986//ENTITIES Russian Cyrillic//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/iso8879/isocyr2.ent</code>
+      </p><p class="simpara">Public identifier: <code>ISO 8879:1986//ENTITIES Non-Russian Cyrillic//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/iso8879/isodia.ent</code>
+      </p><p class="simpara">Public identifier: <code>ISO 8879:1986//ENTITIES Diacritical Marks//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/iso8879/isogrk1.ent</code>
+      </p><p class="simpara">Public identifier: <code>ISO 8879:1986//ENTITIES Greek Letters//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/iso8879/isogrk2.ent</code>
+      </p><p class="simpara">Public identifier: <code>ISO 8879:1986//ENTITIES Monotoniko Greek//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/iso8879/isogrk3.ent</code>
+      </p><p class="simpara">Public identifier: <code>ISO 8879:1986//ENTITIES Greek Symbols//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/iso8879/isogrk4.ent</code>
+      </p><p class="simpara">Public identifier: <code>ISO 8879:1986//ENTITIES Alternative Greek Symbols//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/iso8879/isolat1.ent</code>
+      </p><p class="simpara">Public identifier: <code>ISO 8879:1986//ENTITIES Added Latin 1//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/iso8879/isolat2.ent</code>
+      </p><p class="simpara">Public identifier: <code>ISO 8879:1986//ENTITIES Added Latin 2//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/iso8879/isonum.ent</code>
+      </p><p class="simpara">Public identifier: <code>ISO 8879:1986//ENTITIES Numeric and Special Graphic//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/iso8879/isopub.ent</code>
+      </p><p class="simpara">Public identifier: <code>ISO 8879:1986//ENTITIES Publishing//EN//XML</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2003/entities/iso8879/isotech.ent</code>
+      </p><p class="simpara">Public identifier: <code>ISO 8879:1986//ENTITIES General Technical//EN//XML</code>
+      </p></li><li><p class="simpara">URI: <code class="uri">https://www.w3.org/2007/schema-for-xslt20.xsd</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2009/XMLSchema/XMLSchema.dtd</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//DTD XSD 1.1//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/2009/XMLSchema/datatypes.dtd</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//DTD XSD 1.1 Datatypes//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-animation.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS SVG 1.1 Animation//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-animevents-attrib.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES SVG 1.1 Animation Events Attribute//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-basic-clip.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS SVG 1.1 Basic Clip//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-basic-filter.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS SVG 1.1 Basic Filter//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-basic-font.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS SVG 1.1 Basic Font//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-basic-graphics-attrib.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES SVG 1.1 Basic Graphics Attribute//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-basic-paint-attrib.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES SVG 1.1 Basic Paint Attribute//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-basic-structure.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS SVG 1.1 Basic Structure//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-basic-text.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS SVG 1.1 Basic Text//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-clip.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS SVG 1.1 Clip//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-conditional.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS SVG 1.1 Conditional Processing//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-container-attrib.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES SVG 1.1 Container Attribute//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-core-attrib.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES SVG 1.1 Core Attribute//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-cursor.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS SVG 1.1 Cursor//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-datatypes.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES SVG 1.1 Datatypes//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-docevents-attrib.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES SVG 1.1 Document Events Attribute//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-extensibility.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS SVG 1.1 Extensibility//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-extresources-attrib.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES SVG 1.1 External Resources Attribute//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-filter.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS SVG 1.1 Filter//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-font.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS SVG 1.1 Font//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-framework.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES SVG 1.1 Modular Framework//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-gradient.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS SVG 1.1 Gradient//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-graphevents-attrib.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES SVG 1.1 Graphical Element Events Attribute//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-graphics-attrib.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES SVG 1.1 Graphics Attribute//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-hyperlink.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS SVG 1.1 Hyperlinking//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-image.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS SVG 1.1 Image//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-marker.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS SVG 1.1 Marker//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-mask.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS SVG 1.1 Mask//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-opacity-attrib.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES SVG 1.1 Paint Opacity Attribute//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-paint-attrib.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES SVG 1.1 Paint Attribute//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-pattern.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS SVG 1.1 Pattern//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-profile.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS SVG 1.1 Color Profile//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-qname.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES SVG 1.1 Qualified Name//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-script.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS SVG 1.1 Scripting//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-shape.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS SVG 1.1 Shape//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-structure.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS SVG 1.1 Structure//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-style.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS SVG 1.1 Style//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-template-qname.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES SVG Template Qualified Name//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-template.mod</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-text.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS SVG 1.1 Text//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-view.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS SVG 1.1 View//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-viewport-attrib.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES SVG 1.1 Viewport Attribute//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg-xlink-attrib.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES SVG 1.1 XLink Attribute//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg11-attribs.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES SVG 1.1 Attribute Collection//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg11-basic-attribs.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES SVG 1.1 Basic Attribute Collection//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg11-basic-flat.dtd</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg11-basic-model.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES SVG 1.1 Basic Document Model//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg11-basic.dtd</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//DTD SVG 1.1 Basic//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg11-flat-20030114.dtd</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg11-flat.dtd</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg11-model.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES SVG 1.1 Document Model//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg11-template.dtd</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//DTD SVG 1.1 Template//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny-attribs.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES SVG 1.1 Tiny Attribute Collection//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny-flat.dtd</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny-model.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES SVG 1.1 Tiny Document Model//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny.dtd</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//DTD SVG 1.1 Tiny//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//DTD SVG 1.1//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-access-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Access Element 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-access-qname-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES XHTML Access Attribute Qnames 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-applet-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Java Applets 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-arch-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Base Architecture 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-attribs-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES XHTML Common Attributes 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-base-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Base Element 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-basic-form-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Basic Forms 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-basic-table-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Basic Tables 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-basic10-model-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES XHTML Basic 1.0 Document Model 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-basic11-model-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES XHTML Basic 1.1 Document Model 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-basic11.dtd</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//DTD XHTML Basic 1.1//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-bdo-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML BIDI Override Element 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-blkphras-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Block Phrasal 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-blkpres-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Block Presentation 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-blkstruct-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Block Structural 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-charent-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES XHTML Character Entities 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-csismap-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Client-side Image Maps 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-datatypes-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES XHTML Datatypes 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-edit-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Editing Elements 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-events-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES XHTML Intrinsic Events 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-form-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Forms 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-frames-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Frames 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-framework-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES XHTML Modular Framework 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-hyperAttributes-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES XHTML HyperAttributes 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-hypertext-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Hypertext 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-iframe-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Inline Frame Element 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-image-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Images 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-inlphras-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Inline Phrasal 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-inlpres-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Inline Presentation 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-inlstruct-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Inline Structural 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-inlstyle-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Inline Style 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-inputmode-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Inputmode 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-lat1.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-legacy-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Legacy MarkUp 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-legacy-redecl-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Legacy Redeclarations 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-link-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Link Element 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-list-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Lists 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-meta-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Metainformation 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-meta-2.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Metainformation 2.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-metaAttributes-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES XHTML MetaAttributes 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-nameident-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Name Identifier 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-notations-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//NOTATIONS XHTML Notations 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-object-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Embedded Object 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-param-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Param Element 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-pres-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Presentation 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-print10-model-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES XHTML-Print 1.0 Document Model 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-qname-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES XHTML Qualified Names 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-rdfa-model-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES XHTML+RDFa Document Model 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-rdfa-qname-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES XHTML RDFa Attribute Qnames 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-role-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES XHTML Role Attribute 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-role-qname-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES XHTML Role Attribute Qnames 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-ruby-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Ruby 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-script-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Scripting 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-special.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-ssismap-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Server-side Image Maps 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-struct-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Document Structure 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-style-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Style Sheets 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-symbol.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-table-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Tables 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-target-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Target 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml-text-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Text 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml1-frameset.dtd</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//DTD XHTML 1.0 Frameset//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml1-strict.dtd</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//DTD XHTML 1.0 Strict//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml1-transitional.dtd</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//DTD XHTML 1.0 Transitional//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml11-model-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES XHTML 1.1 Document Model 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/MarkUp/DTD/xhtml11.dtd</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//DTD XHTML 1.1//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml1/isoamsa.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml1/isoamsb.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml1/isoamsc.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml1/isoamsn.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml1/isoamso.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml1/isoamsr.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml1/isobox.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml1/isocyr1.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml1/isocyr2.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml1/isodia.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml1/isogrk1.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml1/isogrk2.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml1/isogrk3.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml1/isogrk4.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml1/isolat1.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml1/isolat2.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml1/isomfrk.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml1/isomopf.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml1/isomscr.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml1/isonum.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml1/isopub.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml1/isotech.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml1/mathml.dtd</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml1/mmlalias.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml1/mmlextra.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/html/lat1.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/html/special.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/html/symbol.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/iso8879/isoamsa.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/iso8879/isoamsb.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/iso8879/isoamsc.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/iso8879/isoamsn.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/iso8879/isoamso.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/iso8879/isoamsr.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/iso8879/isobox.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Box and Line Drawing for MathML 2.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/iso8879/isocyr1.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Russian Cyrillic for MathML 2.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/iso8879/isocyr2.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Non-Russian Cyrillic for MathML 2.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/iso8879/isodia.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Diacritical Marks for MathML 2.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/iso8879/isogrk1.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/iso8879/isogrk2.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/iso8879/isogrk3.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/iso8879/isogrk4.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/iso8879/isolat1.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Added Latin 1 for MathML 2.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/iso8879/isolat2.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Added Latin 2 for MathML 2.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/iso8879/isonum.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Numeric and Special Graphic for MathML 2.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/iso8879/isopub.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Publishing for MathML 2.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/iso8879/isotech.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/iso9573-13/isoamsa.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Added Math Symbols: Arrow Relations for MathML 2.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/iso9573-13/isoamsb.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Added Math Symbols: Binary Operators for MathML 2.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/iso9573-13/isoamsc.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Added Math Symbols: Delimiters for MathML 2.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/iso9573-13/isoamsn.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Added Math Symbols: Negated Relations for MathML 2.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/iso9573-13/isoamso.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Added Math Symbols: Ordinary for MathML 2.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/iso9573-13/isoamsr.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Added Math Symbols: Relations for MathML 2.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/iso9573-13/isogrk3.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Greek Symbols for MathML 2.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/iso9573-13/isogrk4.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/iso9573-13/isomfrk.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Math Alphabets: Fraktur for MathML 2.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/iso9573-13/isomopf.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Math Alphabets: Open Face for MathML 2.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/iso9573-13/isomscr.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Math Alphabets: Script for MathML 2.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/iso9573-13/isotech.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES General Technical for MathML 2.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/isoamsa.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/isoamsb.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/isoamsc.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/isoamsn.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/isoamso.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/isoamsr.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/isobox.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/isocyr1.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/isocyr2.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/isodia.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/isogrk3.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/isolat1.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/isolat2.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/isomfrk.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/isomopf.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/isomscr.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/isonum.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/isopub.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/isotech.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/mathml/mmlalias.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Aliases for MathML 2.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/mathml/mmlextra.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Extra for MathML 2.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/mathml2-a.dtd</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/mathml2-qname-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES MathML 2.0 Qualified Names 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/mathml2.dtd</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//DTD MathML 2.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/mmlalias.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/mmlextra.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/xhtml-math11-f-a.dtd</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/xhtml-math11-f.dtd</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml2/xhtml-math11.dtd</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml3/isoamsa.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml3/isoamsb.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml3/isoamsc.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml3/isoamsn.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml3/isoamso.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml3/isoamsr.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml3/isobox.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml3/isocyr1.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml3/isocyr2.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml3/isodia.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml3/isogrk3.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml3/isolat1.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml3/isolat2.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml3/isomfrk.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml3/isomopf.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml3/isomscr.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml3/isonum.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml3/isopub.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml3/isotech.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml3/mathml3-qname.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES MathML 3.0 Qualified Names 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml3/mathml3.dtd</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml3/mmlalias.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/Math/DTD/mathml3/mmlextra.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//DTD SVG 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/TR/ruby/xhtml-ruby-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Ruby 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/TR/xhtml-basic/xhtml-basic10.dtd</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//DTD XHTML Basic 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/TR/xhtml-modularization/DTD/xhtml-bdo-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML BIDI Override Element 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/TR/xhtml-modularization/DTD/xhtml-csismap-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Client-side Image Maps 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/TR/xhtml-modularization/DTD/xhtml-edit-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Editing Elements 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/TR/xhtml-modularization/DTD/xhtml-lat1.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Latin 1 for XHTML//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/TR/xhtml-modularization/DTD/xhtml-legacy-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Legacy MarkUp 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/TR/xhtml-modularization/DTD/xhtml-special.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Symbols for XHTML//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/TR/xhtml-modularization/DTD/xhtml-ssismap-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Server-side Image Maps 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/TR/xhtml-modularization/DTD/xhtml-symbol.ent</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ENTITIES Special for XHTML//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/TR/xhtml-modularization/DTD/xhtml-table-1.mod</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//ELEMENTS XHTML Tables 1.0//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/TR/xhtml1/DTD/xhtml-lat1.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/TR/xhtml1/DTD/xhtml-special.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/TR/xhtml1/DTD/xhtml-symbol.ent</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//DTD XHTML 1.0 Frameset//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//DTD XHTML 1.0 Strict//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//DTD XHTML 1.0 Transitional//EN</code>
+      </p></li><li><p class="simpara">URI: <code class="uri">https://www.w3.org/TR/xmlschema-1/XMLSchema.xsd</code>
+      </p></li><li><p class="simpara">URI: <code class="uri">https://www.w3.org/TR/xmlschema-2/datatypes.xsd</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/TR/xmlschema11-1/XMLSchema.dtd</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//DTD XSD 1.1//EN</code>
+      </p></li><li><p class="simpara">URI: <code class="uri">https://www.w3.org/TR/xmlschema11-1/XMLSchema.xsd</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/TR/xmlschema11-1/datatypes.dtd</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//DTD XSD 1.1 Datatypes//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/TR/xmlschema11-2/XMLSchema.dtd</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//DTD XSD 1.1//EN</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://www.w3.org/TR/xmlschema11-2/datatypes.dtd</code>
+      </p><p class="simpara">Public identifier: <code>-//W3C//DTD XSD 1.1 Datatypes//EN</code>
+      </p></li><li><p class="simpara">URI: <code class="uri">https://www.w3.org/TR/xmlschema11-2/datatypes.xsd</code>
+      </p></li><li><p class="simpara">URI: <code class="uri">https://www.w3.org/TR/xslt-30/schema-for-json.xsd</code>
+      </p></li><li><p class="simpara">URI: <code class="uri">https://www.w3.org/TR/xslt-30/schema-for-xslt30.rnc</code>
+      </p></li><li><p class="simpara">URI: <code class="uri">https://www.w3.org/TR/xslt-30/schema-for-xslt30.rng</code>
+      </p></li><li><p class="simpara">URI: <code class="uri">https://www.w3.org/TR/xslt-30/schema-for-xslt30.xsd</code>
+      </p></li><li><p class="simpara">URI: <code class="uri">https://www.w3.org/TR/xslt-30/xml-to-json.xsl</code>
+      </p></li><li><p class="simpara">URI: <code class="uri">https://www.w3.org/XML/2008/06/xlink.xsd</code>
+      </p></li><li><p class="simpara">System identifier: <code class="uri">https://xmlcatalogs.org/schema/1.1/catalog.dtd</code>
+      </p><p class="simpara">Public identifier: <code>-//OASIS//DTD XML Catalogs V1.1//EN</code>
+      </p><p class="simpara">Namespace: <code class="uri">urn:oasis:names:tc:entity:xmlns:xml:catalog</code>
+      </p><p class="simpara">RDDL nature: <code class="uri">https://www.iana.org/assignments/media-types/application/xml-dtd</code>
+      </p><p class="simpara">RDDL purpose: <code class="uri">http://www.rddl.org/purposes#validation</code>
+      </p></li><li><p class="simpara">URI: <code class="uri">https://xmlcatalogs.org/schema/1.1/catalog.rnc</code>
+      </p></li><li><p class="simpara">URI: <code class="uri">https://xmlcatalogs.org/schema/1.1/catalog.rng</code>
+      </p><p class="simpara">Namespace: <code class="uri">urn:oasis:names:tc:entity:xmlns:xml:catalog</code>
+      </p><p class="simpara">RDDL nature: <code class="uri">http://relaxng.org/ns/structure/1.0</code>
+      </p><p class="simpara">RDDL purpose: <code class="uri">http://www.rddl.org/purposes#validation</code>
+      </p></li><li><p class="simpara">URI: <code class="uri">https://xmlcatalogs.org/schema/1.1/catalog.xsd</code>
+      </p><p class="simpara">Namespace: <code class="uri">urn:oasis:names:tc:entity:xmlns:xml:catalog</code>
+      </p><p class="simpara">RDDL nature: <code class="uri">http://www.w3.org/2001/XMLSchema</code>
+      </p><p class="simpara">RDDL purpose: <code class="uri">http://www.rddl.org/purposes#validation</code>
+      </p></li><li><p class="simpara">URI: <code class="uri">https://xmlresolver.org/data/resolver/succeeded/test/check.xml</code>
+      </p></li></ul><p>The data artifact is maintained separately; for the most up-to-date information
+about what it contains, see <a href="https://github.com/xmlresolver/xmlresolverdata" class="link">https://github.com/xmlresolver/xmlresolverdata</a>
+for the Java release and
+<a href="https://github.com/xmlresolver/xmlresolvercsdata" class="link">https://github.com/xmlresolver/xmlresolvercsdata</a> for the C# release.
+</p></section></section></main><nav class="bottom"><table><tr><td class="previous"><a href="ch02.html">Prev</a></td><td class="up"><a href="index.html">Up</a></td><td class="next"><a href="ch04.html">Next</a></td></tr><tr><td class="previous">Chapter <span class="label">2</span><span class="sep">. </span>Why use a resolver?</td><td class="up"><a href="index.html">Home</a></td><td class="next">Chapter <span class="label">4</span><span class="sep">. </span>Using an XML Resolver</td></tr></table><nav class="tocopen"></nav><nav class="toc"></nav><!-- Hide ToC details from user agents that don’t support JS --><script type="text/html" class="tocopen"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABYlAAAWJQFJUiTwAAABDklEQVQ4je2UUW3EMAyGv0wDUAhlkDBIyuAYXCEclEJoGZRBUgYOgzJoGHgPW6o7rWq35+2TIkWW9duW7N+oKuM46jiOGGMAaNsW5xzee5xzn8EvRESXZUFEWNcVAFWl73v6vjcGUIAYIyEEANZ1RUSY55lSCo/HA4BhGGiahtvthnOOtm0BSCnRdd1eVAGNMeoR27aptVattbpt22FOjFGrzjsX1I7q/4q3y4xf8i/4FwT3Pcw5Y4zBWvujfQMopZBzJuf8XbCeVyWEgHOO+/2+x0SEaZpIKSEih0X2Wz6jdlxKuezaqL7qpZS0lLKbw/M4ANba3RyapiGE8OJGqOrpizGq916999VATvM/AGFn1sxsVjL5AAAAAElFTkSuQmCC" alt="[toc]"/></script><script type="text/html" class="toc"><header><span>Table of Contents</span><span class="close"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAtklEQVQ4jaWT0Q3DIAxEz52AEbyB2cDZhBEY3SNcPyqqBEwqpZaQAHNP5jBCEiJCPAiSIgAeiUe8zoveO9x9e9jd0XtfKwHA1hpHtNY49rO8u59zn4mqMiJSyFkcEVTVFQCAtdYFMotrrXN111JnyA/xCsggN2JeXmGEmaGU8l2XUmBm29fZuh0RW2PTK2SGZcamADPb3nmGmNkKOI7j1rAzJG2kcWhqkstQ1QX+/2ciKU/FJOUN6JFZYWpmK3sAAAAASUVORK5CYII=" alt="X"/></span><p class="ptoc-search"><input class="ptoc-search" placeholder="Search" style="width: 80%"/></p></header><div db-persistent-toc="persistent-toc.html" db-prefix="">Loading…</div></script></nav></body></html>

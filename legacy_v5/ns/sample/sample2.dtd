@@ -1,0 +1,25 @@
+<!-- sample2.dtd is mostly the same as sample.dtd, but it isn’t in a catalog.
+     Its reference to blocks2.dtd doesn’t use a public identifier.  -->
+<!ELEMENT book (title,(article+|chapter+))>
+<!ATTLIST book
+  xmlns              CDATA #FIXED 'http://xmlresolver.com/ns/sample'
+  xmlns:xsi          CDATA #FIXED 'http://www.w3.org/2001/XMLSchema-instance'
+  xsi:schemaLocation CDATA #IMPLIED>
+
+<!ELEMENT article (title?,p+)>
+<!ATTLIST article
+  xmlns              CDATA #FIXED 'http://xmlresolver.com/ns/sample'
+  xmlns:xsi          CDATA #FIXED 'http://www.w3.org/2001/XMLSchema-instance'
+  xsi:schemaLocation CDATA #IMPLIED>
+
+<!ELEMENT chapter (title,p+)>
+<!ATTLIST chapter
+  xmlns CDATA #FIXED 'http://xmlresolver.com/ns/sample'>
+
+<!ELEMENT title (#PCDATA)>
+<!ATTLIST title
+  xmlns CDATA #FIXED 'http://xmlresolver.com/ns/sample'>
+
+<!-- blocks is explicitly referenced with an http URI. -->
+<!ENTITY % blocks SYSTEM "http://xmlresolver.org/ns/sample/blocks2.dtd">
+%blocks;
