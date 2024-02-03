@@ -196,35 +196,6 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>static <a href="ResolverFeature.html" title="class in org.xmlresolver">ResolverFeature</a>&lt;<a href="cache/ResourceCache.html" title="class in org.xmlresolver.cache">ResourceCache</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#CACHE">CACHE</a></span></code></th>
-<td class="colLast">
-<div class="block">Provides access to the <a href="cache/ResourceCache.html" title="class in org.xmlresolver.cache"><code>ResourceCache</code></a> that the resolver is using.</div>
-</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static <a href="ResolverFeature.html" title="class in org.xmlresolver">ResolverFeature</a>&lt;java.lang.String&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#CACHE_DIRECTORY">CACHE_DIRECTORY</a></span></code></th>
-<td class="colLast">
-<div class="block">Sets the location of the cache directory.</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static <a href="ResolverFeature.html" title="class in org.xmlresolver">ResolverFeature</a>&lt;java.lang.Boolean&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#CACHE_ENABLED">CACHE_ENABLED</a></span></code></th>
-<td class="colLast">
-<div class="block">Is the cache enabled?</div>
-</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static <a href="ResolverFeature.html" title="class in org.xmlresolver">ResolverFeature</a>&lt;java.lang.Boolean&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#CACHE_UNDER_HOME">CACHE_UNDER_HOME</a></span></code></th>
-<td class="colLast">
-<div class="block">Determines if a default cache location of <code>.xmlresolver.org/cache</code>
- under the users home directory should be used for the cache.</div>
-</td>
-</tr>
-<tr class="rowColor">
 <td class="colFirst"><code>static <a href="ResolverFeature.html" title="class in org.xmlresolver">ResolverFeature</a>&lt;java.util.List&lt;java.lang.String&gt;&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#CATALOG_ADDITIONS">CATALOG_ADDITIONS</a></span></code></th>
 <td class="colLast">
@@ -314,7 +285,7 @@ extends java.lang.Object</pre>
 <td class="colFirst"><code>static <a href="ResolverFeature.html" title="class in org.xmlresolver">ResolverFeature</a>&lt;java.lang.Boolean&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#PREFER_PUBLIC">PREFER_PUBLIC</a></span></code></th>
 <td class="colLast">
-<div class="block">Determines whether or not public IDs are preferred..</div>
+<div class="block">Determines whether public IDs are preferred.</div>
 </td>
 </tr>
 <tr class="altColor">
@@ -349,7 +320,7 @@ extends java.lang.Object</pre>
 <td class="colFirst"><code>static <a href="ResolverFeature.html" title="class in org.xmlresolver">ResolverFeature</a>&lt;java.lang.Boolean&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#URI_FOR_SYSTEM">URI_FOR_SYSTEM</a></span></code></th>
 <td class="colLast">
-<div class="block">Determines whether or not <code>uri</code> catalog entries
+<div class="block">Determines whether <code>uri</code> catalog entries
  can be used to resolve external identifiers.</div>
 </td>
 </tr>
@@ -403,7 +374,7 @@ extends java.lang.Object</pre>
 <td class="colFirst"><code>static java.util.Iterator&lt;java.lang.String&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getNames()">getNames</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Iterates over all of the known feature names.</div>
+<div class="block">Iterates over the known feature names.</div>
 </td>
 </tr>
 </table>
@@ -457,7 +428,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>PREFER_PUBLIC</h4>
 <pre>public static final&nbsp;<a href="ResolverFeature.html" title="class in org.xmlresolver">ResolverFeature</a>&lt;java.lang.Boolean&gt; PREFER_PUBLIC</pre>
-<div class="block">Determines whether or not public IDs are preferred..</div>
+<div class="block">Determines whether public IDs are preferred.</div>
 </li>
 </ul>
 <a id="PREFER_PROPERTY_FILE">
@@ -508,44 +479,6 @@ extends java.lang.Object</pre>
  something, so there's that.</p></div>
 </li>
 </ul>
-<a id="CACHE_DIRECTORY">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>CACHE_DIRECTORY</h4>
-<pre>public static final&nbsp;<a href="ResolverFeature.html" title="class in org.xmlresolver">ResolverFeature</a>&lt;java.lang.String&gt; CACHE_DIRECTORY</pre>
-<div class="block">Sets the location of the cache directory.
-
- <p>If the value
- is <code>null</code>, and <code>CACHE_UNDER_HOME</code> is <code>false</code>, no cache will
- be used.</p></div>
-</li>
-</ul>
-<a id="CACHE_UNDER_HOME">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>CACHE_UNDER_HOME</h4>
-<pre>public static final&nbsp;<a href="ResolverFeature.html" title="class in org.xmlresolver">ResolverFeature</a>&lt;java.lang.Boolean&gt; CACHE_UNDER_HOME</pre>
-<div class="block">Determines if a default cache location of <code>.xmlresolver.org/cache</code>
- under the users home directory should be used for the cache.
-
- <p>This only applies if <code>CATALOG_CACHE</code>
- is <code>null</code>.</p></div>
-</li>
-</ul>
-<a id="CACHE">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>CACHE</h4>
-<pre>public static final&nbsp;<a href="ResolverFeature.html" title="class in org.xmlresolver">ResolverFeature</a>&lt;<a href="cache/ResourceCache.html" title="class in org.xmlresolver.cache">ResourceCache</a>&gt; CACHE</pre>
-<div class="block">Provides access to the <a href="cache/ResourceCache.html" title="class in org.xmlresolver.cache"><code>ResourceCache</code></a> that the resolver is using.</div>
-</li>
-</ul>
 <a id="CATALOG_MANAGER">
 <!--   -->
 </a>
@@ -564,7 +497,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>URI_FOR_SYSTEM</h4>
 <pre>public static final&nbsp;<a href="ResolverFeature.html" title="class in org.xmlresolver">ResolverFeature</a>&lt;java.lang.Boolean&gt; URI_FOR_SYSTEM</pre>
-<div class="block">Determines whether or not <code>uri</code> catalog entries
+<div class="block">Determines whether <code>uri</code> catalog entries
  can be used to resolve external identifiers.
 
  <p>This only applies if resolution fails through
@@ -824,18 +757,6 @@ extends java.lang.Object</pre>
  <p>The keyword "all" allows all protocols. An empty list allows none.</p></div>
 </li>
 </ul>
-<a id="CACHE_ENABLED">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>CACHE_ENABLED</h4>
-<pre>public static final&nbsp;<a href="ResolverFeature.html" title="class in org.xmlresolver">ResolverFeature</a>&lt;java.lang.Boolean&gt; CACHE_ENABLED</pre>
-<div class="block">Is the cache enabled?
-
- <p>If the cache <em>is not</em> enabled, no attempt will be made to create or use a cache.</p></div>
-</li>
-</ul>
 <a id="SAXPARSERFACTORY_CLASS">
 <!--   -->
 </a>
@@ -897,7 +818,7 @@ extends java.lang.Object</pre>
 <div class="block">Fix backslashes in system identifiers on Windows?
  <p>System identifiers are URIs and URIs may not contain un-escaped backslashes. However, Windows
  uses the backslash as the path separator and it's not uncommon for filenames to appear in system
- identifiers. If this flag is set, the resolver will coerce backslashes into forward slashes in
+ identifiers. If this flag is set, the resolver will replace backslashes with forward slashes in
  system identifiers.</p></div>
 </li>
 </ul>
@@ -962,7 +883,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getNames</h4>
 <pre class="methodSignature">public static&nbsp;java.util.Iterator&lt;java.lang.String&gt;&nbsp;getNames()</pre>
-<div class="block">Iterates over all of the known feature names.</div>
+<div class="block">Iterates over the known feature names.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>An iterator over the feature names.</dd>

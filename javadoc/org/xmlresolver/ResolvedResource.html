@@ -27,8 +27,8 @@
     catch(err) {
     }
 //-->
-var data = {"i0":6,"i1":10,"i2":6,"i3":6,"i4":6,"i5":10};
-var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"]};
+var data = {"i0":42,"i1":42,"i2":42,"i3":42,"i4":42,"i5":42};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"],32:["t6","Deprecated Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -130,57 +130,13 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <div class="description">
 <ul class="blockList">
 <li class="blockList">
-<dl>
-<dt>All Implemented Interfaces:</dt>
-<dd><code><a href="sources/ResolverResourceInfo.html" title="interface in org.xmlresolver.sources">ResolverResourceInfo</a></code></dd>
-</dl>
 <hr>
-<pre>public abstract class <span class="typeNameLabel">ResolvedResource</span>
-extends java.lang.Object
-implements <a href="sources/ResolverResourceInfo.html" title="interface in org.xmlresolver.sources">ResolverResourceInfo</a></pre>
-<div class="block">A resolved resource represents a successfully resolved resource.
-
- <p>While the <a href="XMLCatalogResolver.html" title="interface in org.xmlresolver"><code>XMLCatalogResolver</code></a> interface simply maps from request parameters to URIs,
- the resolver interfaces defined by SAX, DOM, etc. expect open streams to be returned. This
- abstract class provides the information necessary to support those APIs.</p>
-
- <p>The "local" URI is always the URI returned by catalog resolution.
- The "resolved" URI is <i>almost always</i> the same.
- They can be different when catalog resolution returns a <code>jar:</code> or
- <code>classpath:</code> URI. Those schemes are not supported by the <code>URI</code> class in a useful way. This will cause problems if the
- document returned contains relative URI references. Consider this
- XSLT stylesheet:</p>
-
- <pre>&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                 version="3.0"&gt;
-
- &lt;xsl:import href="module.xsl"/&gt;
-
- &lt;/xsl:stylesheet&gt;</pre>
-
- <p>Suppose that it is referenced with the URI <code>http://example.com/xsl/style.xsl</code>
- and the catalog contains this matching entry:
-
- <pre>&lt;uri name="http://example.com/xsl/style.xsl"
-      uri="classpath:xsl/style.xsl"/&gt;</pre>
-
- <p>(An explicit <code>classpath:</code> URI is not the only way for this to arise, if
- the URI was simply relative to the catalog and the catalog happened to
- be found with a <code>jar:</code> or <code>classpath:</code> URI, that would have the same
- effect.)</p>
-
- <p>If <code>classpath:xsl/style.xsl</code> is returned as the resolved URI, the XSLT
- processor will attempt to resolve <code>module.xsl</code> against that as the base
- URI. If this is done with just the <code>resolve()</code> method on <code>URI</code>, it won’t
- work. <code>URI</code> doesn’t recognize <code>classpath:</code> as a relative
- URI scheme. The situation is even worse with <code>jar:</code> URIs which have a
- syntax that is possibly not even sanctioned by the relevant RFCs.</p>
-
- <p>In this case, the resolver might choose to return
- <code>http://example.com/xsl/style.xsl</code> as the resolved URI. The XSLT processor
- will then form <code>http://example.com/xsl/module.xsl</code> as the URI of the module
- and, if the catalog author provided an entry for that as well, processing
- can continue with all of the URIs resolved locally.</p></div>
+<pre>public class <span class="typeNameLabel">ResolvedResource</span>
+extends java.lang.Object</pre>
+<div class="deprecationBlock"><span class="deprecatedLabel">Deprecated.</span>
+<div class="deprecationComment">6.0.0</div>
+</div>
+<div class="block">This class is a shim that provides a degree of compatibility with XML Resolver 5.0.</div>
 </li>
 </ul>
 </div>
@@ -201,8 +157,10 @@ implements <a href="sources/ResolverResourceInfo.html" title="interface in org.x
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E()">ResolvedResource</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(org.xmlresolver.ResourceResponse)">ResolvedResource</a></span>&#8203;(<a href="ResourceResponse.html" title="class in org.xmlresolver">ResourceResponse</a>&nbsp;response)</code></th>
+<td class="colLast">
+<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
+&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -216,53 +174,53 @@ implements <a href="sources/ResolverResourceInfo.html" title="interface in org.x
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t6" class="tableTab"><span><a href="javascript:show(32);">Deprecated Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colSecond" scope="col">Method</th>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>abstract java.lang.String</code></td>
+<td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getContentType()">getContentType</a></span>()</code></th>
 <td class="colLast">
-<div class="block">The content type of the resource.</div>
-</td>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
+&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>java.util.Map&lt;java.lang.String,&#8203;java.util.List&lt;java.lang.String&gt;&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getHeaders()">getHeaders</a></span>()</code></th>
 <td class="colLast">
-<div class="block">The headers.</div>
-</td>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
+&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code>abstract java.io.InputStream</code></td>
+<td class="colFirst"><code>java.io.InputStream</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getInputStream()">getInputStream</a></span>()</code></th>
 <td class="colLast">
-<div class="block">The input stream.</div>
-</td>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
+&nbsp;</td>
 </tr>
 <tr id="i3" class="rowColor">
-<td class="colFirst"><code>abstract java.net.URI</code></td>
+<td class="colFirst"><code>java.net.URI</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getLocalURI()">getLocalURI</a></span>()</code></th>
 <td class="colLast">
-<div class="block">The local URI.</div>
-</td>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
+&nbsp;</td>
 </tr>
 <tr id="i4" class="altColor">
-<td class="colFirst"><code>abstract java.net.URI</code></td>
+<td class="colFirst"><code>java.net.URI</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getResolvedURI()">getResolvedURI</a></span>()</code></th>
 <td class="colLast">
-<div class="block">The resolved URI.</div>
-</td>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
+&nbsp;</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getStatusCode()">getStatusCode</a></span>()</code></th>
 <td class="colLast">
-<div class="block">The status code.</div>
-</td>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
+&nbsp;</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -271,13 +229,6 @@ implements <a href="sources/ResolverResourceInfo.html" title="interface in org.x
 </a>
 <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
 <code>equals, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></li>
-</ul>
-<ul class="blockList">
-<li class="blockList"><a id="methods.inherited.from.class.org.xmlresolver.sources.ResolverResourceInfo">
-<!--   -->
-</a>
-<h3>Methods inherited from interface&nbsp;org.xmlresolver.sources.<a href="sources/ResolverResourceInfo.html" title="interface in org.xmlresolver.sources">ResolverResourceInfo</a></h3>
-<code><a href="sources/ResolverResourceInfo.html#getHeader(java.lang.String)">getHeader</a></code></li>
 </ul>
 </li>
 </ul>
@@ -295,13 +246,14 @@ implements <a href="sources/ResolverResourceInfo.html" title="interface in org.x
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a id="&lt;init&gt;()">
+<a id="&lt;init&gt;(org.xmlresolver.ResourceResponse)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>ResolvedResource</h4>
-<pre>public&nbsp;ResolvedResource()</pre>
+<pre>public&nbsp;ResolvedResource&#8203;(<a href="ResourceResponse.html" title="class in org.xmlresolver">ResourceResponse</a>&nbsp;response)</pre>
+<div class="deprecationBlock"><span class="deprecatedLabel">Deprecated.</span></div>
 </li>
 </ul>
 </li>
@@ -320,16 +272,8 @@ implements <a href="sources/ResolverResourceInfo.html" title="interface in org.x
 <ul class="blockList">
 <li class="blockList">
 <h4>getResolvedURI</h4>
-<pre class="methodSignature">public abstract&nbsp;java.net.URI&nbsp;getResolvedURI()</pre>
-<div class="block">The resolved URI.
-
- <p>This is the URI that should be reported as the resolved URI.</p></div>
-<dl>
-<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="sources/ResolverResourceInfo.html#getResolvedURI()">getResolvedURI</a></code>&nbsp;in interface&nbsp;<code><a href="sources/ResolverResourceInfo.html" title="interface in org.xmlresolver.sources">ResolverResourceInfo</a></code></dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>The resolved URI.</dd>
-</dl>
+<pre class="methodSignature">public&nbsp;java.net.URI&nbsp;getResolvedURI()</pre>
+<div class="deprecationBlock"><span class="deprecatedLabel">Deprecated.</span></div>
 </li>
 </ul>
 <a id="getLocalURI()">
@@ -338,15 +282,8 @@ implements <a href="sources/ResolverResourceInfo.html" title="interface in org.x
 <ul class="blockList">
 <li class="blockList">
 <h4>getLocalURI</h4>
-<pre class="methodSignature">public abstract&nbsp;java.net.URI&nbsp;getLocalURI()</pre>
-<div class="block">The local URI.
-
- <p>This is the URI that was used to retrieve the resource (to open the input stream). This
- is usually, but not necessarily always, the same as the resolved URI.</p></div>
-<dl>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>The local URI.</dd>
-</dl>
+<pre class="methodSignature">public&nbsp;java.net.URI&nbsp;getLocalURI()</pre>
+<div class="deprecationBlock"><span class="deprecatedLabel">Deprecated.</span></div>
 </li>
 </ul>
 <a id="getInputStream()">
@@ -355,15 +292,8 @@ implements <a href="sources/ResolverResourceInfo.html" title="interface in org.x
 <ul class="blockList">
 <li class="blockList">
 <h4>getInputStream</h4>
-<pre class="methodSignature">public abstract&nbsp;java.io.InputStream&nbsp;getInputStream()</pre>
-<div class="block">The input stream.
-
- <p>This is the input stream containing the resolved resource. This may return null, in which
- case it is the application's responsibily to access the resource through its resolved URI.</p></div>
-<dl>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>The input stream that will return the content of the resolved resource.</dd>
-</dl>
+<pre class="methodSignature">public&nbsp;java.io.InputStream&nbsp;getInputStream()</pre>
+<div class="deprecationBlock"><span class="deprecatedLabel">Deprecated.</span></div>
 </li>
 </ul>
 <a id="getContentType()">
@@ -372,15 +302,8 @@ implements <a href="sources/ResolverResourceInfo.html" title="interface in org.x
 <ul class="blockList">
 <li class="blockList">
 <h4>getContentType</h4>
-<pre class="methodSignature">public abstract&nbsp;java.lang.String&nbsp;getContentType()</pre>
-<div class="block">The content type of the resource.
-
- <p>If the resolver knows the content type of the resource
- (for example <code>application/xml</code>), it will be provided here.</p></div>
-<dl>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>The content type, possibly null.</dd>
-</dl>
+<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getContentType()</pre>
+<div class="deprecationBlock"><span class="deprecatedLabel">Deprecated.</span></div>
 </li>
 </ul>
 <a id="getStatusCode()">
@@ -390,16 +313,7 @@ implements <a href="sources/ResolverResourceInfo.html" title="interface in org.x
 <li class="blockList">
 <h4>getStatusCode</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;getStatusCode()</pre>
-<div class="block">The status code.
-
- <p>This is the status code for this resource. For http: requests, it should be the
- code returned. For other resource types, it defaults to 200 for convenience.</p></div>
-<dl>
-<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="sources/ResolverResourceInfo.html#getStatusCode()">getStatusCode</a></code>&nbsp;in interface&nbsp;<code><a href="sources/ResolverResourceInfo.html" title="interface in org.xmlresolver.sources">ResolverResourceInfo</a></code></dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>The status code of the (final) request.</dd>
-</dl>
+<div class="deprecationBlock"><span class="deprecatedLabel">Deprecated.</span></div>
 </li>
 </ul>
 <a id="getHeaders()">
@@ -409,17 +323,7 @@ implements <a href="sources/ResolverResourceInfo.html" title="interface in org.x
 <li class="blockList">
 <h4>getHeaders</h4>
 <pre class="methodSignature">public&nbsp;java.util.Map&lt;java.lang.String,&#8203;java.util.List&lt;java.lang.String&gt;&gt;&nbsp;getHeaders()</pre>
-<div class="block">The headers.
-
- <p>This is the set of headers returned for the resolved resource. This may be empty, for example,
- if the URI was a file: URI. The headers are returned unchanged from the <code>URLConnection</code>,
- so accessing them has to consider the case-insensitive nature of header names.</p></div>
-<dl>
-<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="sources/ResolverResourceInfo.html#getHeaders()">getHeaders</a></code>&nbsp;in interface&nbsp;<code><a href="sources/ResolverResourceInfo.html" title="interface in org.xmlresolver.sources">ResolverResourceInfo</a></code></dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>The headers associated with a resource.</dd>
-</dl>
+<div class="deprecationBlock"><span class="deprecatedLabel">Deprecated.</span></div>
 </li>
 </ul>
 </li>

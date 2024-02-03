@@ -27,8 +27,8 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10};
-var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
+var data = {"i0":42,"i1":42,"i2":42,"i3":42,"i4":42};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"],32:["t6","Deprecated Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -89,13 +89,13 @@ loadScripts(document, 'script');</script>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -130,47 +130,19 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <div class="description">
 <ul class="blockList">
 <li class="blockList">
-<dl>
-<dt>All Implemented Interfaces:</dt>
-<dd><code><a href="ResourceResolver.html" title="interface in org.xmlresolver">ResourceResolver</a></code></dd>
-</dl>
 <hr>
 <pre>public class <span class="typeNameLabel">CatalogResolver</span>
-extends java.lang.Object
-implements <a href="ResourceResolver.html" title="interface in org.xmlresolver">ResourceResolver</a></pre>
-<div class="block">The CatalogResolver returns resolved resources in a uniform way.
-
- The various resolver APIs want different return results. This class wraps those up in a
- uniform interface so that the details about resolution are more readily available.g</div>
+extends java.lang.Object</pre>
+<div class="deprecationBlock"><span class="deprecatedLabel">Deprecated.</span>
+<div class="deprecationComment">6.0.0</div>
+</div>
+<div class="block">This class is a shim that provides a degree of compatibility with XML Resolver 5.0.</div>
 </li>
 </ul>
 </div>
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
-<!-- =========== FIELD SUMMARY =========== -->
-<section>
-<ul class="blockList">
-<li class="blockList"><a id="field.summary">
-<!--   -->
-</a>
-<h3>Field Summary</h3>
-<table class="memberSummary">
-<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colSecond" scope="col">Field</th>
-<th class="colLast" scope="col">Description</th>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static int</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#FOLLOW_REDIRECT_LIMIT">FOLLOW_REDIRECT_LIMIT</a></span></code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-</table>
-</li>
-</ul>
-</section>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <section>
 <ul class="blockList">
@@ -187,14 +159,14 @@ implements <a href="ResourceResolver.html" title="interface in org.xmlresolver">
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E()">CatalogResolver</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Creates a new instance of ResourceResolver using a default configuration.</div>
-</td>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
+&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(org.xmlresolver.XMLResolverConfiguration)">CatalogResolver</a></span>&#8203;(<a href="XMLResolverConfiguration.html" title="class in org.xmlresolver">XMLResolverConfiguration</a>&nbsp;conf)</code></th>
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(org.xmlresolver.XMLResolverConfiguration)">CatalogResolver</a></span>&#8203;(<a href="XMLResolverConfiguration.html" title="class in org.xmlresolver">XMLResolverConfiguration</a>&nbsp;config)</code></th>
 <td class="colLast">
-<div class="block">Creates a new instance of ResourceResolver with the specified resolver configuration.</div>
-</td>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
+&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -208,7 +180,7 @@ implements <a href="ResourceResolver.html" title="interface in org.xmlresolver">
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t6" class="tableTab"><span><a href="javascript:show(32);">Deprecated Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colSecond" scope="col">Method</th>
@@ -218,36 +190,44 @@ implements <a href="ResourceResolver.html" title="interface in org.xmlresolver">
 <td class="colFirst"><code><a href="XMLResolverConfiguration.html" title="class in org.xmlresolver">XMLResolverConfiguration</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getConfiguration()">getConfiguration</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Returns the <a href="XMLResolverConfiguration.html" title="class in org.xmlresolver"><code>XMLResolverConfiguration</code></a> used by this ResourceResolver.</div>
-</td>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
+&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
+<td class="colFirst"><code><a href="ResolvedResource.html" title="class in org.xmlresolver">ResolvedResource</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#resolveDoctype(java.lang.String,java.lang.String)">resolveDoctype</a></span>&#8203;(java.lang.String&nbsp;name,
+              java.lang.String&nbsp;baseURI)</code></th>
+<td class="colLast">
+<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
+&nbsp;</td>
+</tr>
+<tr id="i2" class="altColor">
 <td class="colFirst"><code><a href="ResolvedResource.html" title="class in org.xmlresolver">ResolvedResource</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#resolveEntity(java.lang.String,java.lang.String,java.lang.String,java.lang.String)">resolveEntity</a></span>&#8203;(java.lang.String&nbsp;name,
              java.lang.String&nbsp;publicId,
              java.lang.String&nbsp;systemId,
              java.lang.String&nbsp;baseURI)</code></th>
 <td class="colLast">
-<div class="block">Resolve external identifiers and other entity-like resources.</div>
-</td>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
+&nbsp;</td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code><a href="ResolvedResource.html" title="class in org.xmlresolver">ResolvedResource</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#resolveNamespace(java.lang.String,java.lang.String,java.lang.String,java.lang.String)">resolveNamespace</a></span>&#8203;(java.lang.String&nbsp;uri,
                 java.lang.String&nbsp;baseURI,
                 java.lang.String&nbsp;nature,
                 java.lang.String&nbsp;purpose)</code></th>
 <td class="colLast">
-<div class="block">Resolve a Namespace URI.</div>
-</td>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
+&nbsp;</td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code><a href="ResolvedResource.html" title="class in org.xmlresolver">ResolvedResource</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#resolveURI(java.lang.String,java.lang.String)">resolveURI</a></span>&#8203;(java.lang.String&nbsp;href,
           java.lang.String&nbsp;baseURI)</code></th>
 <td class="colLast">
-<div class="block">Resolve a URI.</div>
-</td>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
+&nbsp;</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -266,29 +246,6 @@ implements <a href="ResourceResolver.html" title="interface in org.xmlresolver">
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
-<!-- ============ FIELD DETAIL =========== -->
-<section>
-<ul class="blockList">
-<li class="blockList"><a id="field.detail">
-<!--   -->
-</a>
-<h3>Field Detail</h3>
-<a id="FOLLOW_REDIRECT_LIMIT">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>FOLLOW_REDIRECT_LIMIT</h4>
-<pre>public static final&nbsp;int FOLLOW_REDIRECT_LIMIT</pre>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../constant-values.html#org.xmlresolver.CatalogResolver.FOLLOW_REDIRECT_LIMIT">Constant Field Values</a></dd>
-</dl>
-</li>
-</ul>
-</li>
-</ul>
-</section>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <section>
 <ul class="blockList">
@@ -303,7 +260,7 @@ implements <a href="ResourceResolver.html" title="interface in org.xmlresolver">
 <li class="blockList">
 <h4>CatalogResolver</h4>
 <pre>public&nbsp;CatalogResolver()</pre>
-<div class="block">Creates a new instance of ResourceResolver using a default configuration.</div>
+<div class="deprecationBlock"><span class="deprecatedLabel">Deprecated.</span></div>
 </li>
 </ul>
 <a id="&lt;init&gt;(org.xmlresolver.XMLResolverConfiguration)">
@@ -312,14 +269,8 @@ implements <a href="ResourceResolver.html" title="interface in org.xmlresolver">
 <ul class="blockListLast">
 <li class="blockList">
 <h4>CatalogResolver</h4>
-<pre>public&nbsp;CatalogResolver&#8203;(<a href="XMLResolverConfiguration.html" title="class in org.xmlresolver">XMLResolverConfiguration</a>&nbsp;conf)</pre>
-<div class="block">Creates a new instance of ResourceResolver with the specified resolver configuration.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>conf</code> - The <a href="XMLResolverConfiguration.html" title="class in org.xmlresolver"><code>XMLResolverConfiguration</code></a> to use.</dd>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.NullPointerException</code> - if the configuration is null.</dd>
-</dl>
+<pre>public&nbsp;CatalogResolver&#8203;(<a href="XMLResolverConfiguration.html" title="class in org.xmlresolver">XMLResolverConfiguration</a>&nbsp;config)</pre>
+<div class="deprecationBlock"><span class="deprecatedLabel">Deprecated.</span></div>
 </li>
 </ul>
 </li>
@@ -339,13 +290,7 @@ implements <a href="ResourceResolver.html" title="interface in org.xmlresolver">
 <li class="blockList">
 <h4>getConfiguration</h4>
 <pre class="methodSignature">public&nbsp;<a href="XMLResolverConfiguration.html" title="class in org.xmlresolver">XMLResolverConfiguration</a>&nbsp;getConfiguration()</pre>
-<div class="block">Returns the <a href="XMLResolverConfiguration.html" title="class in org.xmlresolver"><code>XMLResolverConfiguration</code></a> used by this ResourceResolver.</div>
-<dl>
-<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="ResourceResolver.html#getConfiguration()">getConfiguration</a></code>&nbsp;in interface&nbsp;<code><a href="ResourceResolver.html" title="interface in org.xmlresolver">ResourceResolver</a></code></dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>The configuration.</dd>
-</dl>
+<div class="deprecationBlock"><span class="deprecatedLabel">Deprecated.</span></div>
 </li>
 </ul>
 <a id="resolveURI(java.lang.String,java.lang.String)">
@@ -356,23 +301,7 @@ implements <a href="ResourceResolver.html" title="interface in org.xmlresolver">
 <h4>resolveURI</h4>
 <pre class="methodSignature">public&nbsp;<a href="ResolvedResource.html" title="class in org.xmlresolver">ResolvedResource</a>&nbsp;resolveURI&#8203;(java.lang.String&nbsp;href,
                                    java.lang.String&nbsp;baseURI)</pre>
-<div class="block">Resolve a URI.
-
- <p>The catalog is interrogated for the specified <code>href</code>. If it is found, its mapping is returned.
- Otherwise, the <code>href</code> is made absolute with respect to the specified
- <code>base</code> and the catalog is interrogated for the resulting absolute URI. If it is found,
- its mapping is returned.</p></div>
-<dl>
-<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="ResourceResolver.html#resolveURI(java.lang.String,java.lang.String)">resolveURI</a></code>&nbsp;in interface&nbsp;<code><a href="ResourceResolver.html" title="interface in org.xmlresolver">ResourceResolver</a></code></dd>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>href</code> - The URI of the resource</dd>
-<dd><code>baseURI</code> - The base URI against which <code>href</code> should be made absolute, if necessary.</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>The resolved resource or null if no resolution was possible.</dd>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.IllegalArgumentException</code> - if the THROW_URI_EXCEPTIONS feature is true and an exception occurs resolving a URI.</dd>
-</dl>
+<div class="deprecationBlock"><span class="deprecatedLabel">Deprecated.</span></div>
 </li>
 </ul>
 <a id="resolveEntity(java.lang.String,java.lang.String,java.lang.String,java.lang.String)">
@@ -385,37 +314,18 @@ implements <a href="ResourceResolver.html" title="interface in org.xmlresolver">
                                       java.lang.String&nbsp;publicId,
                                       java.lang.String&nbsp;systemId,
                                       java.lang.String&nbsp;baseURI)</pre>
-<div class="block">Resolve external identifiers and other entity-like resources.
-
- <p>If the systemId is null and the baseURI is not, the systemId is taken to be the baseURI
- and the baseURI is treated as if it were null.
-
- <p>If name, publicId and systemId are all null, null is returned.</p>
-
- <p>If systemId or publicId are not null, the method attempts to resolve an external identifier with
- the specified external identifier and the (possibly null) name and publicId. (Because public
- identifiers can be encoded in URNs, it's possible for this method to receive a publicId and
- not a systemId, even in XML systems.)</p>
-
- <p>If name is not null, but systemId is, name is assumed to be document type name and
- the method attempts to resolve an external identifier that matches. A <code>doctype</code> catalog
- entry, for example.</p>
-
- <p>If the systemId is relative, resolution fails, and baseURI is not null, the systemId
- is made absolute with respect to the baseURI and resolution is attempted a second time.</p></div>
-<dl>
-<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="ResourceResolver.html#resolveEntity(java.lang.String,java.lang.String,java.lang.String,java.lang.String)">resolveEntity</a></code>&nbsp;in interface&nbsp;<code><a href="ResourceResolver.html" title="interface in org.xmlresolver">ResourceResolver</a></code></dd>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>name</code> - The possibly null entity (or document type) name.</dd>
-<dd><code>publicId</code> - The possibly null public identifier.</dd>
-<dd><code>systemId</code> - The possibly relative system identifier to resolve.</dd>
-<dd><code>baseURI</code> - The possibly null base URI to use if systemId is relative and not resolved.</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>The resolved resource or null if no resolution was possible.</dd>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.IllegalArgumentException</code> - if the THROW_URI_EXCEPTIONS feature is true and an exception occurs resolving a URI.</dd>
-</dl>
+<div class="deprecationBlock"><span class="deprecatedLabel">Deprecated.</span></div>
+</li>
+</ul>
+<a id="resolveDoctype(java.lang.String,java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>resolveDoctype</h4>
+<pre class="methodSignature">public&nbsp;<a href="ResolvedResource.html" title="class in org.xmlresolver">ResolvedResource</a>&nbsp;resolveDoctype&#8203;(java.lang.String&nbsp;name,
+                                       java.lang.String&nbsp;baseURI)</pre>
+<div class="deprecationBlock"><span class="deprecatedLabel">Deprecated.</span></div>
 </li>
 </ul>
 <a id="resolveNamespace(java.lang.String,java.lang.String,java.lang.String,java.lang.String)">
@@ -428,27 +338,7 @@ implements <a href="ResourceResolver.html" title="interface in org.xmlresolver">
                                          java.lang.String&nbsp;baseURI,
                                          java.lang.String&nbsp;nature,
                                          java.lang.String&nbsp;purpose)</pre>
-<div class="block">Resolve a Namespace URI.
-
- <p>The catalog is interrogated for the specified namespace. If it is found, it is returned.</p>
-
- <p>The resolver attempts to parse the resource as an XML document. If it finds RDDL 1.0 markup,
- it will attempt to locate the resource with the specified nature and purpose. That resource will
- be downloaded and returned. If it cannot parse the document or cannot find the markup that
- it is looking for, it will return the resource that represents the namespace URI.</p></div>
-<dl>
-<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="ResourceResolver.html#resolveNamespace(java.lang.String,java.lang.String,java.lang.String,java.lang.String)">resolveNamespace</a></code>&nbsp;in interface&nbsp;<code><a href="ResourceResolver.html" title="interface in org.xmlresolver">ResourceResolver</a></code></dd>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>uri</code> - The namespace URI.</dd>
-<dd><code>baseURI</code> - The base URI of the resource.</dd>
-<dd><code>nature</code> - The RDDL nature of the resource.</dd>
-<dd><code>purpose</code> - The RDDL purpose of the resource.</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>The resolved resource or null if no resolution was possible.</dd>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.IllegalArgumentException</code> - if the THROW_URI_EXCEPTIONS feature is true and an exception occurs resolving a URI.</dd>
-</dl>
+<div class="deprecationBlock"><span class="deprecatedLabel">Deprecated.</span></div>
 </li>
 </ul>
 </li>
@@ -503,13 +393,13 @@ implements <a href="ResourceResolver.html" title="interface in org.xmlresolver">
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>

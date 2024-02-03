@@ -1,5 +1,5 @@
 org.xmlresolver
-org.xmlresolver.cache
+org.xmlresolver.adapters
 org.xmlresolver.exceptions
 org.xmlresolver.loaders
 org.xmlresolver.logging

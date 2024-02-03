@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":2,"i1":2,"i2":2,"i3":2,"i4":8,"i5":1,"i6":2,"i7":2,"i8":2,"i9":8,"i10":2,"i11":1,"i12":2,"i13":2,"i14":1,"i15":2,"i16":2,"i17":2,"i18":1,"i19":2,"i20":1,"i21":2,"i22":2,"i23":2,"i24":2,"i25":2,"i26":1,"i27":2,"i28":2,"i29":2,"i30":2,"i31":1,"i32":2,"i33":2};
+var data = {"i0":2,"i1":8,"i2":1,"i3":2,"i4":2,"i5":2,"i6":8,"i7":2,"i8":2,"i9":2,"i10":2,"i11":1,"i12":2,"i13":2,"i14":2,"i15":1,"i16":2,"i17":1,"i18":2,"i19":2,"i20":2,"i21":2,"i22":2,"i23":2,"i24":2,"i25":2,"i26":2,"i27":2,"i28":1,"i29":2,"i30":2,"i31":2,"i32":2};
 var tabs = {65535:["t0","All Classes"],1:["t1","Interface Summary"],2:["t2","Class Summary"],8:["t4","Exception Summary"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -118,202 +118,197 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </th>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><a href="org/xmlresolver/cache/CacheEntry.html" title="class in org.xmlresolver.cache">CacheEntry</a></td>
-<th class="colLast" scope="row">
-<div class="block">An entry in the cache.</div>
-</th>
-</tr>
-<tr id="i2" class="altColor">
-<td class="colFirst"><a href="org/xmlresolver/cache/CacheInfo.html" title="class in org.xmlresolver.cache">CacheInfo</a></td>
-<th class="colLast" scope="row">
-<div class="block">Information about cached URIs.</div>
-</th>
-</tr>
-<tr id="i3" class="rowColor">
-<td class="colFirst"><a href="org/xmlresolver/cache/CacheParser.html" title="class in org.xmlresolver.cache">CacheParser</a></td>
-<th class="colLast" scope="row">
-<div class="block">Parse user-supplied strings into cache info values</div>
-</th>
-</tr>
-<tr id="i4" class="altColor">
 <td class="colFirst"><a href="org/xmlresolver/exceptions/CatalogInvalidException.html" title="class in org.xmlresolver.exceptions">CatalogInvalidException</a></td>
 <th class="colLast" scope="row">
 <div class="block">An invalid catalog exception.</div>
 </th>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i2" class="altColor">
 <td class="colFirst"><a href="org/xmlresolver/loaders/CatalogLoader.html" title="interface in org.xmlresolver.loaders">CatalogLoader</a></td>
 <th class="colLast" scope="row">
 <div class="block">The catalog loader interface.</div>
 </th>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><a href="org/xmlresolver/loaders/CatalogLoaderResolver.html" title="class in org.xmlresolver.loaders">CatalogLoaderResolver</a></td>
 <th class="colLast" scope="row">
 <div class="block">An entity resolver for the catalog loader</div>
 </th>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><a href="org/xmlresolver/CatalogManager.html" title="class in org.xmlresolver">CatalogManager</a></td>
 <th class="colLast" scope="row">
 <div class="block">The <code>CatalogManager</code> manages a list of OASIS XML Catalogs
  and performs lookup operations on those catalogs.</div>
 </th>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><a href="org/xmlresolver/CatalogResolver.html" title="class in org.xmlresolver">CatalogResolver</a></td>
-<th class="colLast" scope="row">
-<div class="block">The CatalogResolver returns resolved resources in a uniform way.</div>
+<th class="colLast" scope="row">Deprecated.
+<div class="deprecationComment">6.0.0</div>
 </th>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><a href="org/xmlresolver/exceptions/CatalogUnavailableException.html" title="class in org.xmlresolver.exceptions">CatalogUnavailableException</a></td>
 <th class="colLast" scope="row">
 <div class="block">An unavailable catalog exception.</div>
 </th>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><a href="org/xmlresolver/logging/DefaultLogger.html" title="class in org.xmlresolver.logging">DefaultLogger</a></td>
 <th class="colLast" scope="row">
 <div class="block">The default logger logs to <code>System.err</code>.</div>
 </th>
 </tr>
-<tr id="i11" class="rowColor">
-<td class="colFirst"><a href="org/xmlresolver/NamespaceResolver.html" title="interface in org.xmlresolver">NamespaceResolver</a></td>
+<tr id="i8" class="altColor">
+<td class="colFirst"><a href="org/xmlresolver/adapters/LSResourceAdapter.html" title="class in org.xmlresolver.adapters">LSResourceAdapter</a></td>
 <th class="colLast" scope="row">
-<div class="block">Interface for resolving namespace URIs.</div>
+<div class="block">This class implements the <code>LSResourceResolver</code> API.</div>
 </th>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><a href="org/xmlresolver/ResolvedResource.html" title="class in org.xmlresolver">ResolvedResource</a></td>
-<th class="colLast" scope="row">
-<div class="block">A resolved resource represents a successfully resolved resource.</div>
+<th class="colLast" scope="row">Deprecated.
+<div class="deprecationComment">6.0.0</div>
 </th>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><a href="org/xmlresolver/Resolver.html" title="class in org.xmlresolver">Resolver</a></td>
-<th class="colLast" scope="row">
-<div class="block">An implementation of many resolver interfaces.</div>
+<th class="colLast" scope="row">Deprecated.
+<div class="deprecationComment">6.0.0</div>
 </th>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><a href="org/xmlresolver/ResolverConfiguration.html" title="interface in org.xmlresolver">ResolverConfiguration</a></td>
 <th class="colLast" scope="row">
 <div class="block">Interface for configuring the resolver.</div>
 </th>
 </tr>
-<tr id="i15" class="rowColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><a href="org/xmlresolver/ResolverConstants.html" title="class in org.xmlresolver">ResolverConstants</a></td>
 <th class="colLast" scope="row">
 <div class="block">A collection of constants.</div>
 </th>
 </tr>
-<tr id="i16" class="altColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><a href="org/xmlresolver/ResolverFeature.html" title="class in org.xmlresolver">ResolverFeature</a>&lt;<a href="org/xmlresolver/ResolverFeature.html" title="type parameter in ResolverFeature">T</a>&gt;</td>
 <th class="colLast" scope="row">
 <div class="block">An individual resolver feature.</div>
 </th>
 </tr>
-<tr id="i17" class="rowColor">
+<tr id="i14" class="altColor">
 <td class="colFirst"><a href="org/xmlresolver/sources/ResolverInputSource.html" title="class in org.xmlresolver.sources">ResolverInputSource</a></td>
 <th class="colLast" scope="row">
 <div class="block">A <code>InputSource</code> with a <code>resolvedURI</code>.</div>
 </th>
 </tr>
-<tr id="i18" class="altColor">
+<tr id="i15" class="rowColor">
 <td class="colFirst"><a href="org/xmlresolver/logging/ResolverLogger.html" title="interface in org.xmlresolver.logging">ResolverLogger</a></td>
 <th class="colLast" scope="row">
 <div class="block">The resolver logger interface defines the features of a logging class for the resolver.</div>
 </th>
 </tr>
-<tr id="i19" class="rowColor">
+<tr id="i16" class="altColor">
 <td class="colFirst"><a href="org/xmlresolver/sources/ResolverLSInput.html" title="class in org.xmlresolver.sources">ResolverLSInput</a></td>
 <th class="colLast" scope="row">
 <div class="block">An <code>LSInput</code> with a <code>resolvedURI</code>.</div>
 </th>
 </tr>
-<tr id="i20" class="altColor">
+<tr id="i17" class="rowColor">
 <td class="colFirst"><a href="org/xmlresolver/sources/ResolverResourceInfo.html" title="interface in org.xmlresolver.sources">ResolverResourceInfo</a></td>
 <th class="colLast" scope="row">
 <div class="block">Information about a resolved resource.</div>
 </th>
 </tr>
-<tr id="i21" class="rowColor">
+<tr id="i18" class="altColor">
 <td class="colFirst"><a href="org/xmlresolver/sources/ResolverSAXSource.html" title="class in org.xmlresolver.sources">ResolverSAXSource</a></td>
 <th class="colLast" scope="row">
 <div class="block">A <code>SAXSource</code> with a <code>resolvedURI</code>.</div>
 </th>
 </tr>
-<tr id="i22" class="altColor">
+<tr id="i19" class="rowColor">
 <td class="colFirst"><a href="org/xmlresolver/tools/ResolvingXMLFilter.html" title="class in org.xmlresolver.tools">ResolvingXMLFilter</a></td>
 <th class="colLast" scope="row">
 <div class="block">An implementation of <code>XMLFilter</code> that performs catalog resolution.</div>
 </th>
 </tr>
-<tr id="i23" class="rowColor">
+<tr id="i20" class="altColor">
 <td class="colFirst"><a href="org/xmlresolver/tools/ResolvingXMLReader.html" title="class in org.xmlresolver.tools">ResolvingXMLReader</a></td>
 <th class="colLast" scope="row">
 <div class="block">An implementation of <code>XMLReader</code> that performs catalog resolution.</div>
 </th>
 </tr>
-<tr id="i24" class="altColor">
-<td class="colFirst"><a href="org/xmlresolver/Resource.html" title="class in org.xmlresolver">Resource</a></td>
+<tr id="i21" class="rowColor">
+<td class="colFirst"><a href="org/xmlresolver/ResourceAccess.html" title="class in org.xmlresolver">ResourceAccess</a></td>
 <th class="colLast" scope="row">
-<div class="block">Represents a web resource.</div>
+<div class="block">Static methods for accessing resources.</div>
+</th>
+</tr>
+<tr id="i22" class="altColor">
+<td class="colFirst"><a href="org/xmlresolver/ResourceRequest.html" title="class in org.xmlresolver">ResourceRequest</a></td>
+<th class="colLast" scope="row">
+<div class="block">A resource request.</div>
+</th>
+</tr>
+<tr id="i23" class="rowColor">
+<td class="colFirst"><a href="org/xmlresolver/ResourceResponse.html" title="class in org.xmlresolver">ResourceResponse</a></td>
+<th class="colLast" scope="row">
+<div class="block">A <code>ResourceResponse</code> is the return type for either an attempt to lookup a resource
+ in the catalog or to resolve a resource.</div>
+</th>
+</tr>
+<tr id="i24" class="altColor">
+<td class="colFirst"><a href="org/xmlresolver/adapters/SAXAdapter.html" title="class in org.xmlresolver.adapters">SAXAdapter</a></td>
+<th class="colLast" scope="row">
+<div class="block">This class implements the <code>EntityResolver</code> and <code>EntityResolver2</code> APIs.</div>
 </th>
 </tr>
 <tr id="i25" class="rowColor">
-<td class="colFirst"><a href="org/xmlresolver/cache/ResourceCache.html" title="class in org.xmlresolver.cache">ResourceCache</a></td>
-<th class="colLast" scope="row">
-<div class="block">Implements a resource cache.</div>
-</th>
-</tr>
-<tr id="i26" class="altColor">
-<td class="colFirst"><a href="org/xmlresolver/ResourceResolver.html" title="interface in org.xmlresolver">ResourceResolver</a></td>
-<th class="colLast" scope="row">
-<div class="block">The resource resolver interface.</div>
-</th>
-</tr>
-<tr id="i27" class="rowColor">
-<td class="colFirst"><a href="org/xmlresolver/StAXResolver.html" title="class in org.xmlresolver">StAXResolver</a></td>
-<th class="colLast" scope="row">
-<div class="block">Implements the <code>XMLResolver</code> interface.</div>
-</th>
-</tr>
-<tr id="i28" class="altColor">
 <td class="colFirst"><a href="org/xmlresolver/logging/SystemLogger.html" title="class in org.xmlresolver.logging">SystemLogger</a></td>
 <th class="colLast" scope="row">
 <div class="block">The system logger interfaces to a logging backend via a logging backend.</div>
 </th>
 </tr>
-<tr id="i29" class="rowColor">
+<tr id="i26" class="altColor">
 <td class="colFirst"><a href="org/xmlresolver/loaders/ValidatingXmlLoader.html" title="class in org.xmlresolver.loaders">ValidatingXmlLoader</a></td>
 <th class="colLast" scope="row">
 <div class="block">A validating catalog loader.</div>
 </th>
 </tr>
-<tr id="i30" class="altColor">
-<td class="colFirst"><a href="org/xmlresolver/XercesResolver.html" title="class in org.xmlresolver">XercesResolver</a></td>
+<tr id="i27" class="rowColor">
+<td class="colFirst"><a href="org/xmlresolver/adapters/XercesXniAdapter.html" title="class in org.xmlresolver.adapters">XercesXniAdapter</a></td>
 <th class="colLast" scope="row">
-<div class="block">An extension of the <a href="org/xmlresolver/Resolver.html" title="class in org.xmlresolver"><code>Resolver</code></a> that implements Xerces <code>XMLEntityResolver</code>.</div>
+<div class="block">This class implements the <code>XMLEntityResolver</code> API.</div>
 </th>
 </tr>
-<tr id="i31" class="rowColor">
+<tr id="i28" class="altColor">
 <td class="colFirst"><a href="org/xmlresolver/XMLCatalogResolver.html" title="interface in org.xmlresolver">XMLCatalogResolver</a></td>
 <th class="colLast" scope="row">
 <div class="block">The Catalog resolver interface.</div>
 </th>
 </tr>
-<tr id="i32" class="altColor">
+<tr id="i29" class="rowColor">
 <td class="colFirst"><a href="org/xmlresolver/loaders/XmlLoader.html" title="class in org.xmlresolver.loaders">XmlLoader</a></td>
 <th class="colLast" scope="row">
 <div class="block">An XML catalog loader.</div>
 </th>
 </tr>
-<tr id="i33" class="rowColor">
+<tr id="i30" class="altColor">
+<td class="colFirst"><a href="org/xmlresolver/XMLResolver.html" title="class in org.xmlresolver">XMLResolver</a></td>
+<th class="colLast" scope="row">
+<div class="block">The XML Resolver.</div>
+</th>
+</tr>
+<tr id="i31" class="rowColor">
 <td class="colFirst"><a href="org/xmlresolver/XMLResolverConfiguration.html" title="class in org.xmlresolver">XMLResolverConfiguration</a></td>
 <th class="colLast" scope="row">
 <div class="block">Configures an XML resolver.</div>
+</th>
+</tr>
+<tr id="i32" class="altColor">
+<td class="colFirst"><a href="org/xmlresolver/adapters/XmlStreamAdapter.html" title="class in org.xmlresolver.adapters">XmlStreamAdapter</a></td>
+<th class="colLast" scope="row">
+<div class="block">This class implements the <code>XMLResolver</code> API.</div>
 </th>
 </tr>
 </table>

@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -89,13 +89,13 @@ loadScripts(document, 'script');</script>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -150,31 +150,6 @@ implements <a href="ResolverResourceInfo.html" title="interface in org.xmlresolv
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
-<!-- =========== FIELD SUMMARY =========== -->
-<section>
-<ul class="blockList">
-<li class="blockList"><a id="field.summary">
-<!--   -->
-</a>
-<h3>Field Summary</h3>
-<table class="memberSummary">
-<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colSecond" scope="col">Field</th>
-<th class="colLast" scope="col">Description</th>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>java.net.URI</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#resolvedURI">resolvedURI</a></span></code></th>
-<td class="colLast">
-<div class="block">The underlying, resolved URI.</div>
-</td>
-</tr>
-</table>
-</li>
-</ul>
-</section>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <section>
 <ul class="blockList">
@@ -189,14 +164,7 @@ implements <a href="ResolverResourceInfo.html" title="interface in org.xmlresolv
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.net.URI,java.io.InputStream)">ResolverInputSource</a></span>&#8203;(java.net.URI&nbsp;localURI,
-                   java.io.InputStream&nbsp;stream)</code></th>
-<td class="colLast">
-<div class="block">Construct the <code>InputSource</code> while preserving the local URI.</div>
-</td>
-</tr>
-<tr class="rowColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(org.xmlresolver.ResolvedResource)">ResolverInputSource</a></span>&#8203;(<a href="../ResolvedResource.html" title="class in org.xmlresolver">ResolvedResource</a>&nbsp;rsrc)</code></th>
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(org.xmlresolver.ResourceResponse)">ResolverInputSource</a></span>&#8203;(<a href="../ResourceResponse.html" title="class in org.xmlresolver">ResourceResponse</a>&nbsp;rsrc)</code></th>
 <td class="colLast">
 <div class="block">Construct the @link org.xml.sax.InputSource} directly from a ResolvedResource</div>
 </td>
@@ -241,6 +209,13 @@ implements <a href="ResolverResourceInfo.html" title="interface in org.xmlresolv
 </td>
 </tr>
 <tr id="i3" class="rowColor">
+<td class="colFirst"><code><a href="../ResourceResponse.html" title="class in org.xmlresolver">ResourceResponse</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getResponse()">getResponse</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Returns the underlying resolver response.</div>
+</td>
+</tr>
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getStatusCode()">getStatusCode</a></span>()</code></th>
 <td class="colLast">
@@ -271,26 +246,6 @@ implements <a href="ResolverResourceInfo.html" title="interface in org.xmlresolv
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
-<!-- ============ FIELD DETAIL =========== -->
-<section>
-<ul class="blockList">
-<li class="blockList"><a id="field.detail">
-<!--   -->
-</a>
-<h3>Field Detail</h3>
-<a id="resolvedURI">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>resolvedURI</h4>
-<pre>public final&nbsp;java.net.URI resolvedURI</pre>
-<div class="block">The underlying, resolved URI.</div>
-</li>
-</ul>
-</li>
-</ul>
-</section>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <section>
 <ul class="blockList">
@@ -298,29 +253,13 @@ implements <a href="ResolverResourceInfo.html" title="interface in org.xmlresolv
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a id="&lt;init&gt;(java.net.URI,java.io.InputStream)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>ResolverInputSource</h4>
-<pre>public&nbsp;ResolverInputSource&#8203;(java.net.URI&nbsp;localURI,
-                           java.io.InputStream&nbsp;stream)</pre>
-<div class="block">Construct the <code>InputSource</code> while preserving the local URI.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>localURI</code> - The local URI.</dd>
-<dd><code>stream</code> - The stream to return for this source.</dd>
-</dl>
-</li>
-</ul>
-<a id="&lt;init&gt;(org.xmlresolver.ResolvedResource)">
+<a id="&lt;init&gt;(org.xmlresolver.ResourceResponse)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>ResolverInputSource</h4>
-<pre>public&nbsp;ResolverInputSource&#8203;(<a href="../ResolvedResource.html" title="class in org.xmlresolver">ResolvedResource</a>&nbsp;rsrc)</pre>
+<pre>public&nbsp;ResolverInputSource&#8203;(<a href="../ResourceResponse.html" title="class in org.xmlresolver">ResourceResponse</a>&nbsp;rsrc)</pre>
 <div class="block">Construct the @link org.xml.sax.InputSource} directly from a ResolvedResource</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -338,6 +277,23 @@ implements <a href="ResolverResourceInfo.html" title="interface in org.xmlresolv
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a id="getResponse()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getResponse</h4>
+<pre class="methodSignature">public&nbsp;<a href="../ResourceResponse.html" title="class in org.xmlresolver">ResourceResponse</a>&nbsp;getResponse()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="ResolverResourceInfo.html#getResponse()">ResolverResourceInfo</a></code></span></div>
+<div class="block">Returns the underlying resolver response.</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="ResolverResourceInfo.html#getResponse()">getResponse</a></code>&nbsp;in interface&nbsp;<code><a href="ResolverResourceInfo.html" title="interface in org.xmlresolver.sources">ResolverResourceInfo</a></code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The response.</dd>
+</dl>
+</li>
+</ul>
 <a id="getResolvedURI()">
 <!--   -->
 </a>
@@ -470,13 +426,13 @@ implements <a href="ResolverResourceInfo.html" title="interface in org.xmlresolv
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>

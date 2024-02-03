@@ -109,8 +109,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 
  <h1>TL;DR</h1>
 
- <p>Tell your processor to instantiate a <a href="Resolver.html" title="class in org.xmlresolver"><code>Resolver</code></a> (it has a zero argument constructor
- so that it can be instantiated just from its name) and use it as the entity and URI resolver.</p>
+ <p>Instantiate an <a href="XMLResolver.html" title="class in org.xmlresolver"><code>XMLResolver</code></a> (it has a zero argument constructor
+ so that it can be instantiated just from its name). Use the methods provided on the <code>XMLResolver</code>
+ to instantiate the resolver interfaces that you require.</p>
 
  <p>Tell your processor to instantiate a
  <a href="tools/ResolvingXMLReader.html" title="class in org.xmlresolver.tools"><code>ResolvingXMLReader</code></a> for parsing.</p>
@@ -118,26 +119,18 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
  <h1>L;OS (long; only skimmed)</h1>
 
  <p>For most users, the principle entry points to this API will be the
- <a href="Resolver.html" title="class in org.xmlresolver"><code>Resolver</code></a> class and the <a href="tools/ResolvingXMLReader.html" title="class in org.xmlresolver.tools"><code>ResolvingXMLReader</code></a>. These instantiate
+ <a href="XMLResolver.html" title="class in org.xmlresolver"><code>XMLResolver</code></a> class and the <a href="tools/ResolvingXMLReader.html" title="class in org.xmlresolver.tools"><code>ResolvingXMLReader</code></a>. These instantiate
  a resolver that can be configured with either system properties or
  a properties file.</p>
 
- <p>The <a href="Resolver.html" title="class in org.xmlresolver"><code>Resolver</code></a> class implements a wide variety of resolver APIs:</p>
+ <p>The <a href="XMLResolver.html" title="class in org.xmlresolver"><code>XMLResolver</code></a> has methods to construct a wide variety of resolver interfaces:</p>
 
  <ul>
- <li><a href="https://docs.oracle.com/javase/8/docs/api/javax/xml/transform/URIResolver.html"><code>javax.xml.transform.URIResolver</code></a>.</li>
- <li><a href="https://docs.oracle.com/javase/8/docs/api/org/w3c/dom/ls/LSResourceResolver.html"><code>org.w3c.dom.ls.LSResourceResolver</code></a>.</li>
- <li><a href="https://docs.oracle.com/javase/8/docs/api/org/xml/sax/EntityResolver.html"><code>org.xml.sax.EntityResolver</code></a>.</li>
- <li><a href="https://docs.oracle.com/javase/8/docs/api/org/xml/sax/ext/EntityResolver2.html"><code>org.xml.sax.ext.EntityResolver2</code></a>.</li>
- <li><a href="NamespaceResolver.html" title="interface in org.xmlresolver"><code>NamespaceResolver</code></a></li>
- </ul>
-
- <p>The StAX <code>XMLResolver</code> interface
- is incompatible with the <code>EntityResolver2</code>
- interface, so it’s implemented in <a href="StAXResolver.html" title="class in org.xmlresolver"><code>StAXResolver</code></a>:</p>
-
- <ul>
- <li><a href="https://docs.oracle.com/javase/8/docs/api/javax/xml/stream/XMLResolver.html"><code>javax.xml.stream.XMLResolver</code></a></li>
+ <li><a href="https://docs.oracle.com/javase/8/docs/api/javax/xml/transform/URIResolver.html"><code>javax.xml.transform.URIResolver</code></a> <a href="XMLResolver.html#getURIResolver()"><code>XMLResolver.getURIResolver()</code></a>.</li>
+ <li><a href="https://docs.oracle.com/javase/8/docs/api/org/w3c/dom/ls/LSResourceResolver.html"><code>org.w3c.dom.ls.LSResourceResolver</code></a> <a href="XMLResolver.html#getLSResourceResolver()"><code>XMLResolver.getLSResourceResolver()</code></a>.</li>
+ <li><a href="https://docs.oracle.com/javase/8/docs/api/org/xml/sax/EntityResolver.html"><code>org.xml.sax.EntityResolver</code></a> <a href="XMLResolver.html#getEntityResolver()"><code>XMLResolver.getEntityResolver()</code></a>.</li>
+ <li><a href="https://docs.oracle.com/javase/8/docs/api/org/xml/sax/ext/EntityResolver2.html"><code>org.xml.sax.ext.EntityResolver2</code></a> <a href="XMLResolver.html#getEntityResolver2()"><code>XMLResolver.getEntityResolver2()</code></a>.</li>
+ <li><code>XMLResolver</code> <a href="XMLResolver.html#getXMLResolver()"><code>XMLResolver.getXMLResolver()</code></a></li>
  </ul>
 
  <p>The <code>ResolvingXMLReader</code> class extends the SAX parser so that
@@ -159,21 +152,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </tr>
 <tbody>
 <tr class="altColor">
-<th class="colFirst" scope="row"><a href="NamespaceResolver.html" title="interface in org.xmlresolver">NamespaceResolver</a></th>
-<td class="colLast">
-<div class="block">Interface for resolving namespace URIs.</div>
-</td>
-</tr>
-<tr class="rowColor">
 <th class="colFirst" scope="row"><a href="ResolverConfiguration.html" title="interface in org.xmlresolver">ResolverConfiguration</a></th>
 <td class="colLast">
 <div class="block">Interface for configuring the resolver.</div>
-</td>
-</tr>
-<tr class="altColor">
-<th class="colFirst" scope="row"><a href="ResourceResolver.html" title="interface in org.xmlresolver">ResourceResolver</a></th>
-<td class="colLast">
-<div class="block">The resource resolver interface.</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -202,20 +183,20 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </tr>
 <tr class="rowColor">
 <th class="colFirst" scope="row"><a href="CatalogResolver.html" title="class in org.xmlresolver">CatalogResolver</a></th>
-<td class="colLast">
-<div class="block">The CatalogResolver returns resolved resources in a uniform way.</div>
+<td class="colLast">Deprecated.
+<div class="deprecationComment">6.0.0</div>
 </td>
 </tr>
 <tr class="altColor">
 <th class="colFirst" scope="row"><a href="ResolvedResource.html" title="class in org.xmlresolver">ResolvedResource</a></th>
-<td class="colLast">
-<div class="block">A resolved resource represents a successfully resolved resource.</div>
+<td class="colLast">Deprecated.
+<div class="deprecationComment">6.0.0</div>
 </td>
 </tr>
 <tr class="rowColor">
 <th class="colFirst" scope="row"><a href="Resolver.html" title="class in org.xmlresolver">Resolver</a></th>
-<td class="colLast">
-<div class="block">An implementation of many resolver interfaces.</div>
+<td class="colLast">Deprecated.
+<div class="deprecationComment">6.0.0</div>
 </td>
 </tr>
 <tr class="altColor">
@@ -231,24 +212,31 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </td>
 </tr>
 <tr class="altColor">
-<th class="colFirst" scope="row"><a href="Resource.html" title="class in org.xmlresolver">Resource</a></th>
+<th class="colFirst" scope="row"><a href="ResourceAccess.html" title="class in org.xmlresolver">ResourceAccess</a></th>
 <td class="colLast">
-<div class="block">Represents a web resource.</div>
+<div class="block">Static methods for accessing resources.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<th class="colFirst" scope="row"><a href="StAXResolver.html" title="class in org.xmlresolver">StAXResolver</a></th>
+<th class="colFirst" scope="row"><a href="ResourceRequest.html" title="class in org.xmlresolver">ResourceRequest</a></th>
 <td class="colLast">
-<div class="block">Implements the <code>XMLResolver</code> interface.</div>
+<div class="block">A resource request.</div>
 </td>
 </tr>
 <tr class="altColor">
-<th class="colFirst" scope="row"><a href="XercesResolver.html" title="class in org.xmlresolver">XercesResolver</a></th>
+<th class="colFirst" scope="row"><a href="ResourceResponse.html" title="class in org.xmlresolver">ResourceResponse</a></th>
 <td class="colLast">
-<div class="block">An extension of the <a href="Resolver.html" title="class in org.xmlresolver"><code>Resolver</code></a> that implements Xerces <code>XMLEntityResolver</code>.</div>
+<div class="block">A <code>ResourceResponse</code> is the return type for either an attempt to lookup a resource
+ in the catalog or to resolve a resource.</div>
 </td>
 </tr>
 <tr class="rowColor">
+<th class="colFirst" scope="row"><a href="XMLResolver.html" title="class in org.xmlresolver">XMLResolver</a></th>
+<td class="colLast">
+<div class="block">The XML Resolver.</div>
+</td>
+</tr>
+<tr class="altColor">
 <th class="colFirst" scope="row"><a href="XMLResolverConfiguration.html" title="class in org.xmlresolver">XMLResolverConfiguration</a></th>
 <td class="colLast">
 <div class="block">Configures an XML resolver.</div>

@@ -97,7 +97,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <span class="packageHierarchyLabel">Package Hierarchies:</span>
 <ul class="horizontal">
 <li><a href="org/xmlresolver/package-tree.html">org.xmlresolver</a>, </li>
-<li><a href="org/xmlresolver/cache/package-tree.html">org.xmlresolver.cache</a>, </li>
+<li><a href="org/xmlresolver/adapters/package-tree.html">org.xmlresolver.adapters</a>, </li>
 <li><a href="org/xmlresolver/exceptions/package-tree.html">org.xmlresolver.exceptions</a>, </li>
 <li><a href="org/xmlresolver/loaders/package-tree.html">org.xmlresolver.loaders</a>, </li>
 <li><a href="org/xmlresolver/logging/package-tree.html">org.xmlresolver.logging</a>, </li>
@@ -117,37 +117,29 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="circle">org.xmlresolver.logging.<a href="org/xmlresolver/logging/SystemLogger.html" title="class in org.xmlresolver.logging"><span class="typeNameLink">SystemLogger</span></a></li>
 </ul>
 </li>
-<li class="circle">org.xmlresolver.cache.<a href="org/xmlresolver/cache/CacheEntry.html" title="class in org.xmlresolver.cache"><span class="typeNameLink">CacheEntry</span></a></li>
-<li class="circle">org.xmlresolver.cache.<a href="org/xmlresolver/cache/CacheInfo.html" title="class in org.xmlresolver.cache"><span class="typeNameLink">CacheInfo</span></a></li>
-<li class="circle">org.xmlresolver.cache.<a href="org/xmlresolver/cache/CacheParser.html" title="class in org.xmlresolver.cache"><span class="typeNameLink">CacheParser</span></a></li>
 <li class="circle">org.xmlresolver.loaders.<a href="org/xmlresolver/loaders/CatalogLoaderResolver.html" title="class in org.xmlresolver.loaders"><span class="typeNameLink">CatalogLoaderResolver</span></a> (implements org.xml.sax.EntityResolver)</li>
-<li class="circle">org.xmlresolver.<a href="org/xmlresolver/CatalogManager.html" title="class in org.xmlresolver"><span class="typeNameLink">CatalogManager</span></a> (implements org.xmlresolver.<a href="org/xmlresolver/XMLCatalogResolver.html" title="interface in org.xmlresolver">XMLCatalogResolver</a>)
-<ul>
-<li class="circle">org.xmlresolver.cache.<a href="org/xmlresolver/cache/ResourceCache.html" title="class in org.xmlresolver.cache"><span class="typeNameLink">ResourceCache</span></a></li>
-</ul>
-</li>
-<li class="circle">org.xmlresolver.<a href="org/xmlresolver/CatalogResolver.html" title="class in org.xmlresolver"><span class="typeNameLink">CatalogResolver</span></a> (implements org.xmlresolver.<a href="org/xmlresolver/ResourceResolver.html" title="interface in org.xmlresolver">ResourceResolver</a>)</li>
+<li class="circle">org.xmlresolver.<a href="org/xmlresolver/CatalogManager.html" title="class in org.xmlresolver"><span class="typeNameLink">CatalogManager</span></a> (implements org.xmlresolver.<a href="org/xmlresolver/XMLCatalogResolver.html" title="interface in org.xmlresolver">XMLCatalogResolver</a>)</li>
+<li class="circle">org.xmlresolver.<a href="org/xmlresolver/CatalogResolver.html" title="class in org.xmlresolver"><span class="typeNameLink">CatalogResolver</span></a></li>
 <li class="circle">org.xml.sax.InputSource
 <ul>
 <li class="circle">org.xmlresolver.sources.<a href="org/xmlresolver/sources/ResolverInputSource.html" title="class in org.xmlresolver.sources"><span class="typeNameLink">ResolverInputSource</span></a> (implements org.xmlresolver.sources.<a href="org/xmlresolver/sources/ResolverResourceInfo.html" title="interface in org.xmlresolver.sources">ResolverResourceInfo</a>)</li>
 </ul>
 </li>
-<li class="circle">org.xmlresolver.<a href="org/xmlresolver/ResolvedResource.html" title="class in org.xmlresolver"><span class="typeNameLink">ResolvedResource</span></a> (implements org.xmlresolver.sources.<a href="org/xmlresolver/sources/ResolverResourceInfo.html" title="interface in org.xmlresolver.sources">ResolverResourceInfo</a>)</li>
-<li class="circle">org.xmlresolver.<a href="org/xmlresolver/Resolver.html" title="class in org.xmlresolver"><span class="typeNameLink">Resolver</span></a> (implements org.xml.sax.EntityResolver, org.xml.sax.ext.EntityResolver2, org.w3c.dom.ls.LSResourceResolver, org.xmlresolver.<a href="org/xmlresolver/NamespaceResolver.html" title="interface in org.xmlresolver">NamespaceResolver</a>, javax.xml.transform.URIResolver)
-<ul>
-<li class="circle">org.xmlresolver.<a href="org/xmlresolver/XercesResolver.html" title="class in org.xmlresolver"><span class="typeNameLink">XercesResolver</span></a> (implements org.apache.xerces.xni.parser.XMLEntityResolver)</li>
-</ul>
-</li>
+<li class="circle">org.xmlresolver.adapters.<a href="org/xmlresolver/adapters/LSResourceAdapter.html" title="class in org.xmlresolver.adapters"><span class="typeNameLink">LSResourceAdapter</span></a> (implements org.w3c.dom.ls.LSResourceResolver)</li>
+<li class="circle">org.xmlresolver.<a href="org/xmlresolver/ResolvedResource.html" title="class in org.xmlresolver"><span class="typeNameLink">ResolvedResource</span></a></li>
+<li class="circle">org.xmlresolver.<a href="org/xmlresolver/Resolver.html" title="class in org.xmlresolver"><span class="typeNameLink">Resolver</span></a> (implements org.xml.sax.EntityResolver, org.xml.sax.ext.EntityResolver2, org.w3c.dom.ls.LSResourceResolver, javax.xml.transform.URIResolver)</li>
 <li class="circle">org.xmlresolver.<a href="org/xmlresolver/ResolverConstants.html" title="class in org.xmlresolver"><span class="typeNameLink">ResolverConstants</span></a></li>
 <li class="circle">org.xmlresolver.<a href="org/xmlresolver/ResolverFeature.html" title="class in org.xmlresolver"><span class="typeNameLink">ResolverFeature</span></a>&lt;T&gt;</li>
 <li class="circle">org.xmlresolver.sources.<a href="org/xmlresolver/sources/ResolverLSInput.html" title="class in org.xmlresolver.sources"><span class="typeNameLink">ResolverLSInput</span></a> (implements org.w3c.dom.ls.LSInput, org.xmlresolver.sources.<a href="org/xmlresolver/sources/ResolverResourceInfo.html" title="interface in org.xmlresolver.sources">ResolverResourceInfo</a>)</li>
-<li class="circle">org.xmlresolver.<a href="org/xmlresolver/Resource.html" title="class in org.xmlresolver"><span class="typeNameLink">Resource</span></a></li>
+<li class="circle">org.xmlresolver.<a href="org/xmlresolver/ResourceAccess.html" title="class in org.xmlresolver"><span class="typeNameLink">ResourceAccess</span></a></li>
+<li class="circle">org.xmlresolver.<a href="org/xmlresolver/ResourceRequest.html" title="class in org.xmlresolver"><span class="typeNameLink">ResourceRequest</span></a></li>
+<li class="circle">org.xmlresolver.<a href="org/xmlresolver/ResourceResponse.html" title="class in org.xmlresolver"><span class="typeNameLink">ResourceResponse</span></a></li>
+<li class="circle">org.xmlresolver.adapters.<a href="org/xmlresolver/adapters/SAXAdapter.html" title="class in org.xmlresolver.adapters"><span class="typeNameLink">SAXAdapter</span></a> (implements org.xml.sax.EntityResolver, org.xml.sax.ext.EntityResolver2)</li>
 <li class="circle">javax.xml.transform.sax.SAXSource (implements javax.xml.transform.Source)
 <ul>
 <li class="circle">org.xmlresolver.sources.<a href="org/xmlresolver/sources/ResolverSAXSource.html" title="class in org.xmlresolver.sources"><span class="typeNameLink">ResolverSAXSource</span></a> (implements org.xmlresolver.sources.<a href="org/xmlresolver/sources/ResolverResourceInfo.html" title="interface in org.xmlresolver.sources">ResolverResourceInfo</a>)</li>
 </ul>
 </li>
-<li class="circle">org.xmlresolver.<a href="org/xmlresolver/StAXResolver.html" title="class in org.xmlresolver"><span class="typeNameLink">StAXResolver</span></a> (implements javax.xml.stream.XMLResolver)</li>
 <li class="circle">java.lang.Throwable (implements java.io.Serializable)
 <ul>
 <li class="circle">java.lang.Exception
@@ -166,6 +158,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </ul>
 </li>
 <li class="circle">org.xmlresolver.loaders.<a href="org/xmlresolver/loaders/ValidatingXmlLoader.html" title="class in org.xmlresolver.loaders"><span class="typeNameLink">ValidatingXmlLoader</span></a> (implements org.xmlresolver.loaders.<a href="org/xmlresolver/loaders/CatalogLoader.html" title="interface in org.xmlresolver.loaders">CatalogLoader</a>)</li>
+<li class="circle">org.xmlresolver.adapters.<a href="org/xmlresolver/adapters/XercesXniAdapter.html" title="class in org.xmlresolver.adapters"><span class="typeNameLink">XercesXniAdapter</span></a> (implements org.apache.xerces.xni.parser.XMLEntityResolver)</li>
 <li class="circle">org.xml.sax.helpers.XMLFilterImpl (implements org.xml.sax.ContentHandler, org.xml.sax.DTDHandler, org.xml.sax.EntityResolver, org.xml.sax.ErrorHandler, org.xml.sax.XMLFilter)
 <ul>
 <li class="circle">org.xmlresolver.tools.<a href="org/xmlresolver/tools/ResolvingXMLFilter.html" title="class in org.xmlresolver.tools"><span class="typeNameLink">ResolvingXMLFilter</span></a>
@@ -176,7 +169,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </ul>
 </li>
 <li class="circle">org.xmlresolver.loaders.<a href="org/xmlresolver/loaders/XmlLoader.html" title="class in org.xmlresolver.loaders"><span class="typeNameLink">XmlLoader</span></a> (implements org.xmlresolver.loaders.<a href="org/xmlresolver/loaders/CatalogLoader.html" title="interface in org.xmlresolver.loaders">CatalogLoader</a>)</li>
+<li class="circle">org.xmlresolver.<a href="org/xmlresolver/XMLResolver.html" title="class in org.xmlresolver"><span class="typeNameLink">XMLResolver</span></a></li>
 <li class="circle">org.xmlresolver.<a href="org/xmlresolver/XMLResolverConfiguration.html" title="class in org.xmlresolver"><span class="typeNameLink">XMLResolverConfiguration</span></a> (implements org.xmlresolver.<a href="org/xmlresolver/ResolverConfiguration.html" title="interface in org.xmlresolver">ResolverConfiguration</a>)</li>
+<li class="circle">org.xmlresolver.adapters.<a href="org/xmlresolver/adapters/XmlStreamAdapter.html" title="class in org.xmlresolver.adapters"><span class="typeNameLink">XmlStreamAdapter</span></a> (implements javax.xml.stream.XMLResolver)</li>
 </ul>
 </li>
 </ul>
@@ -185,11 +180,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <h2 title="Interface Hierarchy">Interface Hierarchy</h2>
 <ul>
 <li class="circle">org.xmlresolver.loaders.<a href="org/xmlresolver/loaders/CatalogLoader.html" title="interface in org.xmlresolver.loaders"><span class="typeNameLink">CatalogLoader</span></a></li>
-<li class="circle">org.xmlresolver.<a href="org/xmlresolver/NamespaceResolver.html" title="interface in org.xmlresolver"><span class="typeNameLink">NamespaceResolver</span></a></li>
 <li class="circle">org.xmlresolver.<a href="org/xmlresolver/ResolverConfiguration.html" title="interface in org.xmlresolver"><span class="typeNameLink">ResolverConfiguration</span></a></li>
 <li class="circle">org.xmlresolver.logging.<a href="org/xmlresolver/logging/ResolverLogger.html" title="interface in org.xmlresolver.logging"><span class="typeNameLink">ResolverLogger</span></a></li>
 <li class="circle">org.xmlresolver.sources.<a href="org/xmlresolver/sources/ResolverResourceInfo.html" title="interface in org.xmlresolver.sources"><span class="typeNameLink">ResolverResourceInfo</span></a></li>
-<li class="circle">org.xmlresolver.<a href="org/xmlresolver/ResourceResolver.html" title="interface in org.xmlresolver"><span class="typeNameLink">ResourceResolver</span></a></li>
 <li class="circle">org.xmlresolver.<a href="org/xmlresolver/XMLCatalogResolver.html" title="interface in org.xmlresolver"><span class="typeNameLink">XMLCatalogResolver</span></a></li>
 </ul>
 </section>
