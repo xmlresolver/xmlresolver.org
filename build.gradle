@@ -46,7 +46,8 @@ configurations.all {
   resolutionStrategy {
     force 'xml-apis:xml-apis:1.4.01',
       "${saxonGroup}:${saxonEdition}:${saxonVersion}",
-      "org.xmlresolver:xmlresolver:${xmlresolverVersion}"
+      "org.xmlresolver:xmlresolver:${xmlresolverVersion}",
+      "com.nwalsh:sinclude:5.3.0"
   }
 }
 
@@ -59,6 +60,7 @@ dependencies {
   implementation "org.xmlresolver:xmlresolver:${xmlresolverVersion}:data"
   implementation (
     [group: saxonGroup, name: saxonEdition, version: saxonVersion],
+    [group: 'com.nwalsh', name: 'sinclude', version: '5.3.0'],
     [group: 'org.docbook', name: 'schemas-docbook', version: '5.2b10-SNAPSHOT'],
     [group: 'org.docbook', name: 'docbook-xslTNG', version: xslTNGversion],
     [group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25' ],
@@ -79,10 +81,10 @@ defaultTasks 'website'
 
 def xsltArgs = ['-init:org.docbook.xsltng.extensions.Register']
 def mavenBaseURI = "https://repo1.maven.org/maven2/org/xmlresolver/xmlresolver"
-def javadocJar = "xmlresolver-${xmlresolverVersion}-javadoc.jar"
+def javadocJar = "xmlresolver-${xmlresolverJavadoc}-javadoc.jar"
 
 task downloadJavaDoc(type: Download) {
-  src "${mavenBaseURI}/${xmlresolverVersion}/${javadocJar}"
+  src "${mavenBaseURI}/${xmlresolverJavadoc}/${javadocJar}"
   dest file("${buildDir}/${javadocJar}")
 
   onlyIf { !file("${buildDir}/${javadocJar}").exists() }
