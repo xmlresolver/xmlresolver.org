@@ -42,6 +42,9 @@ organization at
 <listitem>
 <para><link linkend="config-settings">What can I configure?</link></para>
 </listitem>
+<listitem>
+<para><link linkend="changelog">Change log</link></para>
+</listitem>
 </itemizedlist>
 <important role="vernote">
 <para>This is the documentation for <citetitle>XML Resolver</citetitle> version 6.x,
@@ -1213,6 +1216,98 @@ logging class doesn’t have access to the resolver configuration, it
 can’t apply the usual defaulting rules.)</para>
 </section>
 </section>
+</chapter>
+
+<chapter xml:id="changelog">
+<title>Change log</title>
+
+<para>This chapter documents the significant changes in each release.</para>
+
+<para>At the time of this writing, the 6.x release is still in testing.</para>
+
+<revhistory>
+<?db revhistory-style="list"?>
+<revision>
+<revnumber>6.0.6</revnumber>
+<date>2024-08-06</date>
+<revdescription>
+<para>The following changes are included:</para>
+<variablelist>
+<varlistentry>
+<term>Improvements to support for UNC paths</term>
+<listitem>
+<para>Documents and catalogs that use Windows UNC paths are better supported
+if the <link linkend="xml.catalog.fixWindowsSystemIdentifiers">FIX_WINDOWS_SYSTEM_IDENTIFIERS</link>
+feature is enabled.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>Support for Java 21</term>
+<listitem>
+<para>The build still produces class (and jar) files that will work with any
+version of Java back to Java 8. However, the build itself now uses Java 21.
+This closes <link xlink:href="https://github.com/xmlresolver/xmlresolver/issues/173">issue 173</link>.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>Refactor the SAX entity resolvers</term>
+<listitem>
+<para>The SAX <code>EntityResolver</code> and <code>EntityResolver2</code> interfaces
+are now implemented on separate objects. 
+This closes <link xlink:href="https://github.com/xmlresolver/xmlresolver/issues/183">issue 183</link>.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>Fix namespace-based lookup in the DOM</term>
+<listitem>
+<para>The <code>LSResourceAdapter</code> API used when resolving documents
+for the DOM did not correctly handle XML Schema validation. It was failing
+to lookup based on the namespace.
+This closes <link xlink:href="https://github.com/xmlresolver/xmlresolver/issues/180">issue 180</link>.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>Improved support for concurrency</term>
+<listitem>
+<para>The catalog lookup code was not sufficiently careful about multi-threaded
+access. My thanks to <link xlink:href="https://github.com/JFK-DXML">JFK-DXML</link> for
+the patch.
+This closes <link xlink:href="https://github.com/xmlresolver/xmlresolver/issues/182">issue 182</link>.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>Reworked the FIX_WINDOWS_SYSTEM_IDENTIFIERS feature</term>
+<listitem>
+<para>This feature now applies irrespective of platform. This will enable Windows
+documents and catalogs to work correctly even on non-Windows systems.
+This closes <link xlink:href="https://github.com/xmlresolver/xmlresolver/issues/184">issue 184</link>.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para>A number of smaller issues (testing and build system issues and issues not
+expected to be user visible) have also been corrected. See the commit log for more details.
+</para>
+</revdescription>
+</revision>
+<revision>
+<revnumber>6.0.5</revnumber>
+<date>2024-07-22</date>
+<revdescription>
+<para>Apparently version 6.0.5 was never released.</para>
+</revdescription>
+</revision>
+</revhistory>
 </chapter>
 
 <chapter xml:id="seealso">
