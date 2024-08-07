@@ -1228,6 +1228,24 @@ can’t apply the usual defaulting rules.)</para>
 <revhistory>
 <?db revhistory-style="list"?>
 <revision>
+<revnumber>6.0.8</revnumber>
+<date>2024-08-07</date>
+<revdescription>
+<para>This release restores the <code>NamespaceResolver</code> API. This API is
+deprecated, but improves backwards compatibility with version 5.x.
+</para>
+</revdescription>
+</revision>
+<revision>
+<revnumber>6.0.7</revnumber>
+<date>2024-08-07</date>
+<revdescription>
+<para>This release removes two dependencies: the SLF4J API and the
+Apache HTTP Client API. This has no user-visible changes in the API, but makes
+version 6.x of the resolver a drop-in replacement for version 5.x in most cases.</para>
+</revdescription>
+</revision>
+<revision>
 <revnumber>6.0.6</revnumber>
 <date>2024-08-06</date>
 <revdescription>
