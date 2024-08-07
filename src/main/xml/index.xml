@@ -1236,6 +1236,7 @@ deprecated, but improves backwards compatibility with version 5.x.
 </para>
 </revdescription>
 </revision>
+<revision>
 <revnumber>6.0.7</revnumber>
 <date>2024-08-07</date>
 <revdescription>
