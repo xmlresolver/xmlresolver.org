@@ -1228,6 +1228,16 @@ can’t apply the usual defaulting rules.)</para>
 <revhistory>
 <?db revhistory-style="list"?>
 <revision>
+<revnumber>6.0.9</revnumber>
+<date>2024-08-19</date>
+<revdescription>
+<para>Fixed a bug where the stream opened to read resolver properties might be
+unclosed. 
+This closes <link xlink:href="https://github.com/xmlresolver/xmlresolver/issues/208">issue 208</link>.
+</para>
+</revdescription>
+</revision>
+<revision>
 <revnumber>6.0.8</revnumber>
 <date>2024-08-07</date>
 <revdescription>
