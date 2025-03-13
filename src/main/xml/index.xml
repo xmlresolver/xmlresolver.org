@@ -1228,6 +1228,28 @@ can’t apply the usual defaulting rules.)</para>
 <revhistory>
 <?db revhistory-style="list"?>
 <revision>
+<revnumber>6.0.14</revnumber>
+<date>2025-03-13</date>
+<revdescription>
+<itemizedlist>
+<listitem>
+<para>Fixed <link xlink:href="https://github.com/xmlresolver/xmlresolver/issues/229">#229</link>.
+The interaction between the “always resolve” feature and namespace URI lookup
+had the unfortunate consequence of returning the (almost always incorrect)
+document at the namespace URI as the resource. I’ve adjusted the API so that
+this is no longer the case. It’s now possible to configure “always resolve” on
+a per-request basis. This changes an interface so it’s not binary backwards
+compatible with previous 6.x releases.</para>
+</listitem>
+<listitem>
+<para>Fixed <link xlink:href="https://github.com/xmlresolver/xmlresolver/issues/230">#230</link>.
+When “always resolve” returned a resource, that URI wasn’t being logged which
+lead to a confusing log trace.</para>
+</listitem>
+</itemizedlist>
+</revdescription>
+</revision>
+<revision>
 <revnumber>6.0.13</revnumber>
 <date>2025-03-10</date>
 <revdescription>
