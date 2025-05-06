@@ -1228,6 +1228,25 @@ can’t apply the usual defaulting rules.)</para>
 <revhistory>
 <?db revhistory-style="list"?>
 <revision>
+<revnumber>5.3.2</revnumber>
+<date>2025-05-06</date>
+<revdescription>
+<para>The 5.3.2 release is a maintance patch on the 5.x branch. It fixes
+a bug where catalog file names that include drive letters on Windows were
+not handled correctly. This bug does not effect 6.0.14.
+</para>
+</revdescription>
+</revision>
+<revision>
+<revnumber>5.3.1</revnumber>
+<date>2025-04-24</date>
+<revdescription>
+<para>The 5.3.1 release is a maintance patch on the 5.x branch. It borrows
+some code from the 6.x branch to remove the dependencies on the Apache HttpComponents
+libraries and a compile time dependency on Xerces.</para>
+</revdescription>
+</revision>
+<revision>
 <revnumber>6.0.14</revnumber>
 <date>2025-03-13</date>
 <revdescription>
