@@ -1228,6 +1228,25 @@ can’t apply the usual defaulting rules.)</para>
 <revhistory>
 <?db revhistory-style="list"?>
 <revision>
+<revnumber>6.0.15</revnumber>
+<date>2025-05-13</date>
+<revdescription>
+<para>Fixed <link xlink:href="https://github.com/xmlresolver/xmlresolver/issues/242">#242</link>.
+Rewrite entries are now concatenated with, not resolved against, the rewrite prefix.
+</para>
+</revdescription>
+</revision>
+<revision>
+<revnumber>5.3.3</revnumber>
+<date>2025-05-13</date>
+<revdescription>
+<para>The 5.3.3 release is a maintance patch on the 5.x branch. It fixes
+<link xlink:href="https://github.com/xmlresolver/xmlresolver/issues/242">issue #242</link>.
+Rewrite entries are now concatenated with, not resolved against, the rewrite prefix.
+</para>
+</revdescription>
+</revision>
+<revision>
 <revnumber>5.3.2</revnumber>
 <date>2025-05-06</date>
 <revdescription>
