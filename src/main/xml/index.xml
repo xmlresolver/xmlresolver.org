@@ -1228,6 +1228,17 @@ can’t apply the usual defaulting rules.)</para>
 <revhistory>
 <?db revhistory-style="list"?>
 <revision>
+<revnumber>6.0.16</revnumber>
+<date>2025-05-17</date>
+<revdescription>
+<para>This is an interface change. It adds a <code>copy()</code> method to the
+<interfacename>ResolverConfiguration</interfacename> interface and removes the
+then redundant copy constructor for
+<classname>XMLResolverConfiguration</classname>. There are also a few JavaDoc fixes.
+</para>
+</revdescription>
+</revision>
+<revision>
 <revnumber>6.0.15</revnumber>
 <date>2025-05-13</date>
 <revdescription>
