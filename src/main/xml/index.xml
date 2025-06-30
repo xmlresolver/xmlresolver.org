@@ -1228,6 +1228,16 @@ can’t apply the usual defaulting rules.)</para>
 <revhistory>
 <?db revhistory-style="list"?>
 <revision>
+<revnumber>6.0.18</revnumber>
+<date>2025-06-30</date>
+<revdescription>
+<para>The 6.0.18 release is a maintance patch on the 6.x branch. It fixes
+<link xlink:href="https://github.com/xmlresolver/xmlresolver/issues/250">issue #250</link>;
+Xerces is no longer an implementation dependency.
+</para>
+</revdescription>
+</revision>
+<revision>
 <revnumber>6.0.17</revnumber>
 <date>2025-05-19</date>
 <revdescription>
