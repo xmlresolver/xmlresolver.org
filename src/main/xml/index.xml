@@ -1228,6 +1228,31 @@ can’t apply the usual defaulting rules.)</para>
 <revhistory>
 <?db revhistory-style="list"?>
 <revision>
+<revnumber>6.0.19</revnumber>
+<date>2025-07-17</date>
+<revdescription>
+<para>The 6.0.19 release is a maintance patch on the 6.x branch. It fixes
+<link xlink:href="https://github.com/xmlresolver/xmlresolver/issues/253">issue #253</link>;
+RDDL parsing always uses the resolved resource, not the original URI.
+RDDL parsing is also disabled now, by default. If you’re using RDDL, make sure you
+enable it in your configuration.
+</para>
+<para>The caching feature is not present in version 6.x of the resolver, but
+there were several dangling references to it. Those have also been removed.
+</para>
+</revdescription>
+</revision>
+<revision>
+<revnumber>6.0.18</revnumber>
+<date>2025-06-30</date>
+<revdescription>
+<para>The 6.0.18 release is a maintance patch on the 6.x branch. It fixes
+<link xlink:href="https://github.com/xmlresolver/xmlresolver/issues/250">issue #250</link>;
+Xerces is no longer an implementation dependency.
+</para>
+</revdescription>
+</revision>
+<revision>
 <revnumber>6.0.17</revnumber>
 <date>2025-05-19</date>
 <revdescription>
