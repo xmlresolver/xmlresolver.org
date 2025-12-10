@@ -1136,12 +1136,12 @@ requires no additional configuration.</para>
 <para>An alternate logger class (<classname>org.xmlresolver.logging.SystemLogger</classname>)
 can easily be swapped in for environments where writing to standard error is inappropriate
 or where more control is desired. If the system logger is used, it uses the 
-<link xlink:href="http://www.slf4j.org/">SLF4J</link> API to do logging. You must configure
-your environment with an appropriate logging backend.</para>
+standard Java logger (<code>java.util.logging.Logger</code>) which can be configured
+to use a variety of backends.</para>
 
 <para>A third option, available only at the API level, is to instantiate the
 <classname>org.xmlresolver.logging.SystemLogger</classname> yourself and pass in the
-<classname>java.util.logging.Logger</classname> class that you would like it to use.
+<classname>java.util.logging.Logger</classname> that you would like it to use.
 </para>
 </section>
 
