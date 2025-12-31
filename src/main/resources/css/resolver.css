@@ -17,6 +17,10 @@ body.home nav.bottom {
     display: none;
 }
 
+main {
+    padding-bottom: 1rem;
+}
+
 article.book header {
     padding-left: 0;
     border: none;
@@ -110,6 +114,19 @@ ul.manifest li {
 ul.manifest li .simpara {
     margin-top: 0;
     margin-bottom: 0;
+}
+
+.boxes {
+    float: right;
+    padding-right: 1rem;
+}
+
+.boxes img {
+    height: 18px;
+}
+
+.pgwide table {
+    width: 100%;
 }
 
 @media screen and (max-width: 1400px) {

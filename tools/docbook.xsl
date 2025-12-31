@@ -9,6 +9,7 @@
                 xmlns:tp="http://docbook.org/ns/docbook/templates/private"
                 xmlns:v="http://docbook.org/ns/docbook/variables"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                xmlns="http://www.w3.org/1999/xhtml"
                 exclude-result-prefixes="#all"
                 version="3.0">
 
@@ -30,9 +31,15 @@
          label="false"/>
 </xsl:variable>
 
-<xsl:param name="chunk-section-depth" select="0"/>
+<xsl:param name="chunk-section-depth" select="1"/>
 <xsl:param name="chunk-include" as="xs:string*"
-           select="('parent::db:book')"/>
+           select="('parent::db:book',
+                   'self::db:section[parent::db:chapter[@xml:id=''config-settings'']]')"/>
+<xsl:param name="chunk-exclude" as="xs:string*"
+           select="('self::db:partintro',
+                   'self::*[ancestor::db:partintro]',
+                   'self::db:annotation',
+                   'self::db:toc')"/>
 
 <xsl:template match="rddl:resource" mode="m:docbook">
   <rddl:resource>
@@ -43,13 +50,14 @@
 
 <xsl:template match="*" mode="m:html-head-links">
   <link rel="icon" href="/img/xr.png"/>
-  <link rel="stylesheet" href="css/resolver.css"/>
+  <link rel="stylesheet" href="/css/resolver.css"/>
+  <script src="/js/boxes.js" defer="defer"/>
 </xsl:template>
 
 <xsl:template match="db:itemizedlist[@role='java']" mode="m:docbook" priority="10">
   <div class="proptable java">
     <div class="listnav">
-      <span class="logo"><img src="/img/java.png" alt="Java logo"/></span>
+      <span class="logo"><img src="img/java.png" alt="Java logo"/></span>
       <h3>Configuration on Java</h3>
     </div>
     <xsl:next-match/>
@@ -59,39 +67,53 @@
 <xsl:template match="db:itemizedlist[@role='net']" mode="m:docbook" priority="10">
   <div class="proptable net">
     <div class="listnav">
-      <span class="logo"><img src="/img/dotNET.png" alt=".NET logo"/></span>
+      <span class="logo"><img src="img/dotNET.png" alt=".NET logo"/></span>
       <h3>Configuration on .NET</h3>
     </div>
     <xsl:next-match/>
   </div>
 </xsl:template>
 
-<xsl:template match="processing-instruction('settings-toc')" mode="m:docbook">
-  <xsl:variable name="chapter" select=".."/>
-  <xsl:variable name="features"
-                select="distinct-values($chapter//db:constant/text())"/>
-  <ul>
-    <xsl:for-each select="$features">
-      <xsl:sort select="."/>
-      <xsl:variable name="name" select="."/>
+<xsl:template name="t:top-nav">
+  <xsl:param name="chunk" as="xs:boolean"/>
+  <xsl:param name="node" as="element()"/>
+  <xsl:param name="prev" as="element()?"/>
+  <xsl:param name="next" as="element()?"/>
+  <xsl:param name="up" as="element()?"/>
+  <xsl:param name="top" as="element()?"/>
 
-      <xsl:variable name="constant"
-                    select="($chapter//db:constant[. = $name])[1]"/>
-      <xsl:variable name="section"
-                    select="$constant/ancestor::*[@xml:id][1]"/>
+  <!-- We don't have the actual DocBook sources here, so ... -->
+  <xsl:variable name="lang"
+                select="($node/ancestor-or-self::*/@lang/string(), $default-language)[1]"/>
 
-      <li>
-        <a href="#{$section/@xml:id}">
-          <xsl:sequence select="."/>
+  <xsl:if test="$chunk">
+    <div>
+      <xsl:if test="$top">
+        <a href="{fp:relative-link(., $top)}">
+          <xsl:sequence select="fp:l10n-token($lang, 'nav-home')"/>
         </a>
-        <xsl:if test="starts-with($section/@role, 'since-')">
-          <xsl:text> (Since </xsl:text>
-          <xsl:value-of select="substring-after($section/@role, 'since-')"/>
-          <xsl:text>)</xsl:text>
-        </xsl:if>
-      </li>
-    </xsl:for-each>
-  </ul>
+      </xsl:if>
+      <xsl:text> </xsl:text>
+      <xsl:if test="$up">
+        <a href="{fp:relative-link(., $up)}">
+          <xsl:sequence select="fp:l10n-token($lang, 'nav-up')"/>
+        </a>
+      </xsl:if>
+      <xsl:text> </xsl:text>
+      <xsl:if test="$next">
+        <a href="{fp:relative-link(., $next)}">
+          <xsl:sequence select="fp:l10n-token($lang, 'nav-next')"/>
+        </a>
+      </xsl:if>
+      <xsl:text> </xsl:text>
+      <xsl:if test="$prev">
+        <a href="{fp:relative-link(., $prev)}">
+          <xsl:sequence select="fp:l10n-token($lang, 'nav-prev')"/>
+        </a>
+      </xsl:if>
+      <span class="boxes"/>
+    </div>
+  </xsl:if>
 </xsl:template>
 
 </xsl:stylesheet>

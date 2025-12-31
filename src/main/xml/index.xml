@@ -257,7 +257,7 @@ instantiate a resolver configuration:</para>
 
 <para>Set the features as you wish:</para>
 
-<programlisting language="java"><![CDATA[config.setFeature(ResolverFeature.DEFAULT_LOGGER_LOG_LEVEL, "info");
+<programlisting language="java"><![CDATA[config.setFeature(ResolverFeature.LOGGER_LOG_LEVEL, "info");
 
 if (validateCatalogs) {
     config.setFeature(ResolverFeature.CATALOG_LOADER_CLASS,
@@ -322,16 +322,73 @@ the following places, in this order:</para>
 <para>An <filename>xmlresolver.properties</filename> file
 might look like this:</para>
 
-<programlisting># xmlresolver.properties
+<programlisting>## XML Resolver properties
 
-relative-catalogs=yes
+## Specify protocol(s) allowed for URI access
+#<link linkend="xml.catalog.accessExternalDocument">access-external-document</link>=all
 
-# Always use semicolons in this list
-catalogs=./catalog.xml;/Users/ndw/Documents/catalog.xml
+## Specify protocol(s) allowed for entity access
+#<link linkend="xml.catalog.accessExternalEntity">access-external-entity</link>=all
 
-prefer=public
-allow-oasis-xml-catalog-pi=no
-prefer-property-file=false</programlisting>
+## Obey oasis-xml-catalog processing instruction?
+#<link linkend="xml.catalog.allowPI">allow-oasis-xml-catalog-pi</link>=true
+
+## Always resolve resources?
+#<link linkend="xml.catalog.alwaysResolve">always-resolve</link>=true
+
+## Support catalog files in ZIP archives?
+#<link linkend="xml.catalog.archivedCatalogs">archived-catalogs</link>=true
+
+## List of additional catalog files; defaults to none
+#<link linkend="xml.catalog.additions">catalog-additions</link>=
+
+## Catalog loader class
+#<link linkend="xml.catalog.catalogLoaderClass">catalog-loader-class</link>=org.xmlresolver.loaders.XmlLoader
+
+## The initial list of catalog files; defaults to none
+#<link linkend="xml.catalog.files">catalogs</link>=
+
+## Load catalogs from the classpath?
+#<link linkend="xml.catalog.classpathCatalogs">classpath-catalogs</link>=true
+
+## Fix system identifiers on Windows?
+#<link linkend="xml.catalog.fixWindowsSystemIdentifiers">fix-windows-system-identifiers</link>=false
+
+## The logging level
+#<link linkend="xml.catalog.loggerLogLevel">logger-log-level</link>=warn
+
+## Mask jar URIs?
+#<link linkend="xml.catalog.maskJarUris">mask-jar-uris</link>=true
+
+## Merge http: and https: URI schemes?
+#<link linkend="xml.catalog.mergeHttps">merge-https</link>=true
+
+## Parse RDDL documents?
+#<link linkend="xml.catalog.parseRddl">parse-rddl</link>=false
+
+## Prefer property file values
+#<link linkend="xml.catalog.preferPropertyFile">prefer-property-file</link>=false
+
+## Preference for public or system identifiers
+#<link linkend="xml.catalog.prefer">prefer</link>=public
+
+## Support relative catalog paths
+#<link linkend="relative-catalogs">relative-catalogs</link>=true
+
+## The logger class
+#<link linkend="xml.catalog.resolverLoggerClass">resolver-logger-class</link>=org.xmlresolver.logging.DefaultLogger
+
+## The SAX parser factory class; defaults to null
+#<link linkend="xml.catalog.saxParserFactoryClass">saxparserfactory-class</link>=
+
+## Throw URI exceptions?
+#<link linkend="xml.catalog.throwUriExceptions">throw-uri-exceptions</link>=false
+
+## Use URI entries for system resolution?
+#<link linkend="xml.catalog.uriForSystem">uri-for-system</link>=true</programlisting>
+
+<para>The properites are shown with their default values.</para>
+
 </section>
 </section>
 
@@ -374,849 +431,7 @@ it might look like this:</para>
 </section>
 </chapter>
 
-<chapter xml:id="config-settings">
-<title>What you can configure</title>
-
-<para>This chapter lists all of the configurable settings in XML Resolver.
-</para>
-
-<?settings-toc?>
-
-<section xml:id="xml.catalog.files">
-<title>The initial list of catalog files</title>
-
-<itemizedlist role="java">
-<listitem>
-<simpara>Feature <constant>ResolverFeature.CATALOG_FILES</constant> (type: <type>List&lt;String&gt;</type>)</simpara>
-</listitem>
-<listitem><simpara>System property <sysprop>xml.catalog.files</sysprop></simpara></listitem>
-<listitem><simpara>Property file property <fprop>catalogs</fprop></simpara></listitem>
-</itemizedlist>
-
-<itemizedlist role="net">
-<listitem>
-<simpara>Feature <constant>ResolverFeature.CATALOG_FILES</constant> (type: <type>List&lt;string&gt;</type>)</simpara>
-</listitem>
-<listitem><simpara>Environment variable <envar>XML_CATALOG_FILES</envar></simpara></listitem>
-<listitem><simpara>Property file property <fprop>catalogs</fprop></simpara></listitem>
-</itemizedlist>
-
-<para>A semicolon-delimited list of catalog files. These are the catalog
-files that are initially consulted for resolution. If no catalog files
-are specified, by default the resolver will attempt to use a file
-named <filename>catalog.xml</filename> in the current directory as a catalog.</para>
-
-</section>
-<section xml:id="xml.catalog.additions">
-<title>A list of additional catalog files</title>
-
-<itemizedlist role="java">
-<listitem>
-<simpara>Feature <constant>ResolverFeature.CATALOG_ADDITIONS</constant> (type: <type>List&lt;String&gt;</type>)</simpara>
-</listitem>
-<listitem><simpara>System property <sysprop>xml.catalog.additions</sysprop></simpara></listitem>
-<listitem><simpara>Property file property <fprop>catalog-additions</fprop></simpara></listitem>
-</itemizedlist>
-
-<itemizedlist role="net">
-<listitem>
-<simpara>Feature <constant>ResolverFeature.CATALOG_ADDITIONS</constant> (type: <type>List&lt;string&gt;</type>)</simpara>
-</listitem>
-<listitem><simpara>Environment variable <envar>XML_CATALOG_ADDITIONS</envar></simpara></listitem>
-<listitem><simpara>Property file property <fprop>catalogAdditions</fprop></simpara></listitem>
-</itemizedlist>
-
-<para>A semicolon-delimited list of catalog files. This list is used in
-addition to the initial list of catalog files.</para>
-
-<para>If you attempt to use both a system property <emphasis>and</emphasis> a property from a
-property file to create the initial list of catalog files, you’ll only
-get one or the other. (See prefer-property-file.)</para>
-
-<para>This property provides a way to add to the current list of files. For
-example, suppose you use a global properties file to initialize the resolver, but
-for a particular application you want to search <emphasis>additional</emphasis> catalogs.
-You can specify them in the <sysprop>xml.catalog.additions</sysprop> system property and they’ll
-be appended to the list instead of replacing the list entirely as setting
-<sysprop>xml.catalog.files</sysprop> would.</para>
-
-</section>
-
-<section xml:id="xml.catalog.accessExternalDocument">
-<title>Specify protocol(s) allowed for URI access</title>
-
-<itemizedlist role="java">
-<listitem>
-<simpara>Feature <constant>ResolverFeature.ACCESS_EXTERNAL_DOCUMENT</constant> (type: <type>String</type>)</simpara>
-</listitem>
-<listitem><simpara>System property <sysprop>xml.catalog.accessExternalDocument</sysprop></simpara></listitem>
-<listitem><simpara>Property file property <fprop>access-external-document</fprop></simpara></listitem>
-</itemizedlist>
-
-<itemizedlist role="net">
-<listitem>
-<simpara>Feature <constant>ResolverFeature.ACCESS_EXTERNAL_DOCUMENT</constant> (type: <type>string</type>)</simpara>
-</listitem>
-<listitem><simpara>Environment variable <envar>XML_CATALOG_ACCESS_EXTERNAL_DOCUMENT</envar></simpara></listitem>
-<listitem><simpara>Property file property <fprop>accessExternalDocument</fprop></simpara></listitem>
-</itemizedlist>
-
-<para>This feature restricts the protocols that are allowed during URI
-resolution. If an attempt is made to resolve a document and the URI
-for that document uses a protocol not listed in this feature, the
-request is rejected. See JAXP 185.</para>
-
-<para>The keyword “<literal>all</literal>” allows all protocols. An
-empty string allows none.</para>
-
-<para>The default value for this feature is “<literal>all</literal>”.</para>
-
-</section>
-
-<section xml:id="xml.catalog.accessExternalEntity">
-<title>Specify protocol(s) allowed for entity access</title>
-
-<itemizedlist role="java">
-<listitem>
-<simpara>Feature <constant>ResolverFeature.ACCESS_EXTERNAL_ENTITY</constant> (type: <type>String</type>)</simpara>
-</listitem>
-<listitem><simpara>System property <sysprop>xml.catalog.accessExternalEntity</sysprop></simpara></listitem>
-<listitem><simpara>Property file property <fprop>access-external-entity</fprop></simpara></listitem>
-</itemizedlist>
-
-<itemizedlist role="net">
-<listitem>
-<simpara>Feature <constant>ResolverFeature.ACCESS_EXTERNAL_ENTITY</constant> (type: <type>string</type>)</simpara>
-</listitem>
-<listitem><simpara>Environment variable <envar>XML_CATALOG_ACCESS_EXTERNAL_ENTITY</envar></simpara></listitem>
-<listitem><simpara>Property file property <fprop>accessExternalEntity</fprop></simpara></listitem>
-</itemizedlist>
-
-<para>This feature restricts the protocols that are allowed during entity
-resolution. If an attempt is made to resolve an entity and the URI
-for that entity uses a protocol not listed in this feature, the
-request is rejected. See JAXP 185.</para>
-
-<para>The keyword “<literal>all</literal>” allows all protocols. An
-empty string allows none.</para>
-
-<para>The default value for this feature is “<literal>all</literal>”.</para>
-
-</section>
-
-<section xml:id="xml.assembly.catalogs">
-<title>Catalogs to load from assemblies</title>
-
-<itemizedlist role="java">
-<listitem>
-<simpara>This setting has no equivalent on Java.</simpara>
-</listitem>
-</itemizedlist>
-
-<itemizedlist role="net">
-<listitem>
-<simpara>Feature <constant>ResolverFeature.ASSEMBLY_CATALOGS</constant> (type: <type>List&lt;string&gt;</type>)</simpara>
-</listitem>
-</itemizedlist>
-
-<para>This setting can be used to load additional catalogs from other assemblies
-linked into your application.</para>
-
-<para>Starting in version 2.0.0, the assembly catalogs should be identified by their
-<code>AssemblyName</code>, not by the name of the DLL as previously.</para>
-
-</section>
-
-<section xml:id="xml.data.assembly">
-<title>Load the XmlResolverData assembly catalog?</title>
-
-<itemizedlist role="java">
-<listitem>
-<simpara>This setting has no equivalent on Java.</simpara>
-</listitem>
-</itemizedlist>
-
-<itemizedlist role="net">
-<listitem>
-<simpara>Feature <constant>ResolverFeature.USE_DATA_ASSEMBLY</constant> (type: <type>bool</type>)</simpara>
-</listitem>
-<listitem><simpara>Environment variable <envar>XML_CATALOG_USE_DATA_ASSEMBLY</envar></simpara></listitem>
-<listitem><simpara>Property file property <fprop>useDataAssembly</fprop></simpara></listitem>
-</itemizedlist>
-
-<para>This setting, which defaults to <code>true</code>, tells the resolver that
-it should always attempt to use the catalog in the
-<filename>XmlResolverData.dll</filename> assembly. This assembly is distributed as
-<link xlink:href="https://www.nuget.org/packages/XmlResolverData/">a
-separate NuGet package</link> and includes a variety of common resources.</para>
-
-<para>This setting has no effect unless you’ve linked that assembly into your application.
-</para>
-</section>
-
-<section xml:id="xml.catalog.classpathCatalogs">
-<title>Load catalogs from the classpath</title>
-
-<itemizedlist role="java">
-<listitem>
-<simpara>Feature <constant>ResolverFeature.CLASSPATH_CATALOGS</constant> (type: <type>Boolean</type>)</simpara>
-</listitem>
-<listitem><simpara>System property <sysprop>xml.catalog.classpathCatalogs</sysprop></simpara></listitem>
-<listitem><simpara>Property file property <fprop>classpath-catalogs</fprop></simpara></listitem>
-</itemizedlist>
-
-<itemizedlist role="net">
-<listitem>
-<simpara>This setting has no equivalent on .NET</simpara>
-</listitem>
-</itemizedlist>
-
-<para>Load catalog files from the classpath. If this property is true, the
-resolver will search for all of the files named
-<filename>org/xmlresolver/catalog.xml</filename> on the classpath and add each of them to the end
-of the catalog list.</para>
-
-</section>
-<section xml:id="xml.catalog.prefer">
-<title>Preference for public or system identifiers</title>
-
-<itemizedlist role="java">
-<listitem>
-<simpara>Feature <constant>ResolverFeature.PREFER_PUBLIC</constant> (type: <type>Boolean</type>)</simpara>
-</listitem>
-<listitem><simpara>System property <sysprop>xml.catalog.prefer</sysprop></simpara></listitem>
-<listitem><simpara>Property file property <fprop>prefer</fprop></simpara></listitem>
-</itemizedlist>
-
-<itemizedlist role="net">
-<listitem>
-<simpara>Feature <constant>ResolverFeature.PREFER_PUBLIC</constant> (type: <type>bool</type>)</simpara>
-</listitem>
-<listitem><simpara>Environment variable <envar>XML_CATALOG_PREFER</envar></simpara></listitem>
-<listitem><simpara>Property file property <fprop>prefer</fprop></simpara></listitem>
-</itemizedlist>
-
-<para>The initial prefer setting, either public or system.</para>
-
-</section>
-<section xml:id="xml.catalog.allowPI">
-<title>Obey <tag class="pi">oasis-xml-catalog</tag> processing instruction</title>
-
-<itemizedlist role="java">
-<listitem>
-<simpara>Feature <constant>ResolverFeature.ALLOW_CATALOG_PI</constant> (type: <type>Boolean</type>)</simpara>
-</listitem>
-<listitem><simpara>System property <sysprop>xml.catalog.allowPI</sysprop></simpara></listitem>
-<listitem><simpara>Property file property <fprop>allow-oasis-xml-catalog-pi</fprop></simpara></listitem>
-</itemizedlist>
-
-<itemizedlist role="net">
-<listitem>
-<simpara>Feature <constant>ResolverFeature.ALLOW_CATALOG_PI</constant> (type: <type>bool</type>)</simpara>
-</listitem>
-<listitem><simpara>Environment variable <envar>XML_CATALOG_ALLOW_PI</envar></simpara></listitem>
-<listitem><simpara>Property file property <fprop>allowOasisXmlCatalogPi</fprop></simpara></listitem>
-</itemizedlist>
-
-<para>This setting allows you to toggle whether or not the resolver classes
-obey the <literal>&lt;?oasis-xml-catalog?&gt;</literal> processing instruction.</para>
-
-<para>If you never use the processing instruction, you can get a very tiny
-performance improvement by disabling this feature. (If this feature is
-enabled, the parser has to create a copy of the resolver configuration
-for every parse.)</para>
-
-</section>
-
-<section xml:id="xml.catalog.alwaysResolve">
-<title>Always resolve resources</title>
-
-<itemizedlist role="java">
-<listitem>
-<simpara>Feature <constant>ResolverFeature.ALWAYS_RESOLVE</constant> (type: <type>Boolean</type>)</simpara>
-</listitem>
-<listitem><simpara>System property <sysprop>xml.catalog.alwaysResolve</sysprop></simpara></listitem>
-<listitem><simpara>Property file property <fprop>always-resolve</fprop></simpara></listitem>
-</itemizedlist>
-
-<itemizedlist role="net">
-<listitem>
-<simpara>This setting has no equivalent on .NET</simpara>
-</listitem>
-</itemizedlist>
-
-<para>The standard contract for the Java resolver APIs is that they
-return <code>null</code> if the resolver doesn’t find a match. But on
-the modern web, lots of URIs redirect (from <code>http:</code> to
-<code>https:</code> especially), and some parsers don’t follow
-redirects. That causes the parse to fail in ways that may not be easy
-for the user to fix.</para>
-
-<para>Starting in version 5.0.0, the resolver will always resolve resources,
-follow redirects, and return a stream. This deprives the parser of the option to try
-something else, but means that redirects don’t cause the parse to file.</para>
-
-<para>This feature is <emphasis>enabled</emphasis> by default. If you
-set it to false, the resolver will return <code>null</code> if the
-resource isn’t found in the catalog.</para>
-
-<para>I don’t know of any parsers that try anything else after the
-resolver has failed except loading the resource, so I expect this to
-be an improvement for users. If your implementation wants to explicitly just
-check the catalog, at the Java API level, you can use the
-<code>CatalogManager</code> API. That’s the same API the
-resolver classes use to locate resources in the catalog.</para>
-</section>
-
-<section xml:id="relative-catalogs">
-<title>Support relative catalog paths</title>
-
-<itemizedlist role="java">
-<listitem><simpara>Property file property <fprop>relative-catalogs</fprop></simpara></listitem>
-</itemizedlist>
-
-<itemizedlist role="net">
-<listitem><simpara>Property file property <fprop>relativeCatalogs</fprop></simpara></listitem>
-</itemizedlist>
-
-<para>If <fprop>relative-catalogs</fprop> is true, relative filenames in the
-<fprop>catalogs</fprop>
-property list will be made absolute relative to the current working
-directory; otherwise they will be made
-absolute with respect to the base URI of the properties file from
-which they came.</para>
-
-<para>This setting has no effect on catalogs loaded from the
-<sysprop>xml.catalogs.files</sysprop> system property which are always made absolute
-with respect to the current working directory.</para>
-
-</section>
-
-<section xml:id="xml.catalog.fixWindowsSystemIdentifiers" role="since-4.4.0">
-<title>Fix system identifiers on Windows.</title>
-
-<para>This feature is new in XML Resolver 4.4.0.</para>
-
-<itemizedlist role="java">
-<listitem>
-<simpara>Feature <constant>ResolverFeature.FIX_WINDOWS_SYSTEM_IDENTIFIERS</constant>
-(type: <type>Boolean</type>)</simpara>
-</listitem>
-<listitem><simpara>System property <sysprop>xml.catalog.fixWindowsSystemIdentifiers</sysprop></simpara></listitem>
-<listitem><simpara>Property file property <fprop>fix-windows-system-identifiers</fprop></simpara></listitem>
-</itemizedlist>
-
-<itemizedlist role="net">
-<listitem>
-<simpara>Feature <constant>ResolverFeature.FIX_WINDOWS_SYSTEM_IDENTIFIERS</constant>
-(type: <type>bool</type>)</simpara>
-</listitem>
-<listitem><simpara>Environment variable <envar>XML_CATALOG_FIX_WINDOWS_SYSTEM_IDENTIFIERS</envar></simpara></listitem>
-<listitem><simpara>Property file property <fprop>fixWindowsSystemIdentifiers</fprop></simpara></listitem>
-</itemizedlist>
-
-<para>Windows uses the backslash (“\”) instead of the forward slash as
-a path separator. The URI specification does not allow unescaped
-backslashes to appear in URIs, but as a practical reality, many users
-think of them as filenames and may simply copy filesystem paths as
-system identifiers. On Windows, this will cause “URI syntax”
-exceptions if an attempt is made to resolve them.</para>
-
-<para>If <code>FIX_WINDOWS_SYSTEM_IDENTIFIERS</code> is true, and the
-resolver is running on a Windows system, backslashes in system
-identifiers are replaced with forward slashes before any resolution is
-attempted.</para>
-
-</section>
-
-<section xml:id="xml.catalog.preferPropertyFile">
-<title>Prefer property file values</title>
-
-<itemizedlist role="java">
-<listitem>
-<simpara>Feature <constant>ResolverFeature.PREFER_PROPERTY_FILE</constant> (type: <type>Boolean</type>)</simpara>
-</listitem>
-<listitem><simpara>System property <sysprop>xml.catalog.preferPropertyFile</sysprop></simpara></listitem>
-<listitem><simpara>Property file property <fprop>prefer-property-file</fprop></simpara></listitem>
-</itemizedlist>
-
-<itemizedlist role="net">
-<listitem>
-<simpara>Feature <constant>ResolverFeature.PREFER_PROPERTY_FILE</constant> (type: <type>bool</type>)</simpara>
-</listitem>
-<listitem><simpara>Environment variable <envar>XML_CATALOG_PREFER_PROPERTY_FILE</envar></simpara></listitem>
-<listitem><simpara>Property file property <fprop>preferPropertyFile</fprop></simpara></listitem>
-</itemizedlist>
-
-<para>Prefer properties from the properties file.
-If a property file is loaded to configure the resolver and one of the properties in that
-file is also specified as a system property, the system property takes precedence.
-If you’d prefer to have the property file take precedence (as was the case in some
-earlier versions), set the “prefer property file” property to true.</para>
-
-</section>
-
-<section xml:id="xml.catalog.saxParserFactoryClass">
-<title>The SAX parser factory class</title>
-
-<itemizedlist role="java">
-<listitem>
-<simpara>Feature <constant>ResolverFeature.SAXPARSERFACTORY_CLASS</constant> (type: <type>String</type>)</simpara>
-</listitem>
-<listitem><simpara>System property <sysprop>xml.catalog.saxParserFactoryClass</sysprop></simpara></listitem>
-<listitem><simpara>Property file property <fprop>saxparserfactory-class</fprop></simpara></listitem>
-</itemizedlist>
-<itemizedlist role="net">
-<listitem>
-<simpara>This setting has no equivalent on .NET</simpara>
-</listitem>
-</itemizedlist>
-
-<para>By default, parsers are created with the
-<link linkend="xmlreader_supplier">XMLREADER_SUPPLIER</link>.</para>
-
-<para>This feature and the
-<link linkend="xmlreader_supplier">XMLREADER_SUPPLIER</link> are different
-mechanisms for configuring the same underlying feature: how does the
-resolver get an XML parser if it needs one? (For example, for the <code>ResolvingXMLFilter</code> and
-<code>ResolvingXMLReader</code> classes.)</para>
-
-<para>The <code>SAXPARSERFACTORY_CLASS</code> is initially
-<code>null</code> and the <code>XMLREADER_SUPPLIER</code> is used. The
-purpose of the <code>SAXPARSERFACTORY_CLASS</code> is to allow the
-factory to be configured with a property since the
-<code>XMLREADER_SUPPLIER</code> cannot.</para>
-
-<para>If a <code>SAXPARSERFACTORY_CLASS</code> is specified, it will
-be used in favor of the default <code>XMLREADER_SUPPLIER.</code> If an
-<code>XMLREADER_SUPPLIER</code> is explicitly set after the
-configuration is initialized, it will set this feature to
-<code>null</code> and take precedence.</para>
-</section>
-
-<section xml:id="xml.catalog.uriForSystem">
-<title>Use URI entries for system resolution</title>
-
-<itemizedlist role="java">
-<listitem>
-<simpara>Feature <constant>ResolverFeature.URI_FOR_SYSTEM</constant> (type: <type>Boolean</type>)</simpara>
-</listitem>
-<listitem><simpara>System property <sysprop>xml.catalog.uriForSystem</sysprop></simpara></listitem>
-<listitem><simpara>Property file property <fprop>uri-for-system</fprop></simpara></listitem>
-</itemizedlist>
-
-<itemizedlist role="net">
-<listitem>
-<simpara>Feature <constant>ResolverFeature.URI_FOR_SYSTEM</constant> (type: <type>bool</type>)</simpara>
-</listitem>
-<listitem><simpara>Environment variable <envar>XML_CATALOG_URI_FOR_SYSTEM</envar></simpara></listitem>
-<listitem><simpara>Property file property <fprop>uriForSystem</fprop></simpara></listitem>
-</itemizedlist>
-
-<para>Ignore the distinction between system identifiers and URIs.
-The distinction between external identifiers (the public and system identifiers that
-are used in DTDs) and general URIs (as might be used to load a RELAX NG Grammar or XML Schema,
-for example), is not supported uniformly by the parser APIs.
-The Xerces XML Schema implementation, for example, users the
-<methodname role="org.xml.sax.EntityResolver">resolveEntity</methodname> API to load
-XML Schema imports.</para>
-
-<para>Ordinarily, system identifier resolution interrogates the <tag>system</tag> and <tag>public</tag> entries (and their
-related entries), but not the <tag>uri</tag> entries. If this property is true, the resolver will attempt
-to resolve system identifiers with <tag>uri</tag> entries (<emphasis>after</emphasis>
-attempting to resolve them with the
-system and public entries.</para>
-
-</section>
-<section xml:id="xml.catalog.mergeHttps">
-<title>Merge http: and https: URI schemes</title>
-
-<itemizedlist role="java">
-<listitem>
-<simpara>Feature <constant>ResolverFeature.MERGE_HTTPS</constant> (type: <type>Boolean</type>)</simpara>
-</listitem>
-<listitem><simpara>System property <sysprop>xml.catalog.mergeHttps</sysprop></simpara></listitem>
-<listitem><simpara>Property file property <fprop>merge-https</fprop></simpara></listitem>
-</itemizedlist>
-
-<itemizedlist role="net">
-<listitem>
-<simpara>Feature <constant>ResolverFeature.MERGE_HTTPS</constant> (type: <type>bool</type>)</simpara>
-</listitem>
-<listitem><simpara>Environment variable <envar>XML_CATALOG_MERGE_HTTPS</envar></simpara></listitem>
-<listitem><simpara>Property file property <fprop>mergeHttps</fprop></simpara></listitem>
-</itemizedlist>
-
-<para>Treat http: and https: URIs as equivalent for the purpose of resolution. The web used to
-be served over http: and many existing catalog files contain http: system identifiers.
-Today, the web is largely served over https: and many documents contain https: system
-identifiers. If this property is true, that distinction will be ignored during catalog lookup,
-<uri>http://example.com/sample.dtd</uri> will match <uri>https://example.com/sample.dtd</uri>.</para>
-
-<para>Note: this has *no effect* on the URIs returned by the resolver or retrieved over the web.
-It only effects catalog lookup for system identifiers and URIs.</para>
-
-</section>
-<section xml:id="xml.catalog.maskJarUris">
-<title>Mask jar URIs</title>
-
-<itemizedlist role="java">
-<listitem>
-<simpara>Feature <constant>ResolverFeature.MASK_JAR_URIS</constant> (type: <type>Boolean</type>)</simpara>
-</listitem>
-<listitem><simpara>System property <sysprop>xml.catalog.maskJarUris</sysprop></simpara></listitem>
-<listitem><simpara>Property file property <fprop>mask-jar-uris</fprop></simpara></listitem>
-</itemizedlist>
-
-<!--
-<itemizedlist role="net">
-<listitem>
-<simpara>Feature <constant>ResolverFeature.MASK_PACK_URIS</constant> (type: <type>bool</type>)</simpara>
-</listitem>
-<listitem><simpara>Environment variable <envar>XML_CATALOG_MASK_PACK_URIS</envar></simpara></listitem>
-<listitem><simpara>Property file property <fprop>maskPackUris</fprop></simpara></listitem>
-</itemizedlist>
--->
-<itemizedlist role="net">
-<listitem>
-<simpara>This setting has no equivalent on .NET</simpara>
-</listitem>
-</itemizedlist>
-
-<para>Don’t return jar: or classpath: URIs. Most entity resolver APIs are defined such that if
-resolution succeeds, the base URI of the resource returned is the base URI of the actual,
-local resource. This can greatly simplify things because subsequent relative URIs can be
-resolved against the local resource directly.</para>
-
-<para>However, the Java URI class does not treat jar: or classpath: URI schemes as hierarchical,
-so any subsequent attempts to resolve relative URIs will fail. If this property is true,
-the local resource will be returned but the URI will be left unchanged. That may require a
-more complete catalog, but it will avoid a situation which is guaranteed to fail.</para>
-
-<sidebar>
-<para>On .NET, a similar feature could be imagined for “pack:” scheme URIs, but in
-practice, the way the <classname>System.XmlResolver</classname> works, it wouldn’t
-serve any useful purpose.
-</para>
-</sidebar>
-
-</section>
-<section xml:id="xml.catalog.catalogLoaderClass">
-<title>Catalog loader class</title>
-
-<itemizedlist role="java">
-<listitem>
-<simpara>Feature <constant>ResolverFeature.CATALOG_LOADER_CLASS</constant> (type: <type>String</type>)</simpara>
-</listitem>
-<listitem><simpara>System property <sysprop>xml.catalog.catalogLoaderClass</sysprop></simpara></listitem>
-<listitem><simpara>Property file property <fprop>catalog-loader-class</fprop></simpara></listitem>
-</itemizedlist>
-
-<itemizedlist role="net">
-<listitem>
-<simpara>Feature <constant>ResolverFeature.CATALOG_LOADER_CLASS</constant> (type: <type>string</type>)</simpara>
-</listitem>
-<listitem><simpara>Environment variable <envar>XML_CATALOG_LOADER_CLASS</envar></simpara></listitem>
-<listitem><simpara>Property file property <fprop>catalogLoaderClass</fprop></simpara></listitem>
-</itemizedlist>
-
-<para>Specify the catalog loader class. The default catalog loader ignores
-any errors encountered when loading catalogs. This is convenient for
-production use, but can be frustrating because it may not be obvious
-when resolution fails, especially if your internet connection is fast.
-A typo in a catalog file can easily go unnoticed.</para>
-
-<para>If the value <classname>org.xmlresolver.loaders.ValidatingXmlLoader</classname> is specified
-for this property, catalog files will be validated when they are
-loaded and the resolver will throw an exception for any validity
-errors encountered.</para>
-
-<para>The validating loader depends on having version 20181222 of
-<link
-xlink:href="https://search.maven.org/artifact/org.relaxng/jing">Jing</link>
-on your classpath. (This is an optional dependency in the Maven
-distribution of the resolver, so you may have to add it by hand.)</para>
-
-</section>
-<section xml:id="xml.catalog.parseRddl">
-<title>Parse RDDL documents</title>
-
-<itemizedlist role="java">
-<listitem>
-<simpara>Feature <constant>ResolverFeature.PARSE_RDDL</constant> (type: <type>Boolean</type>)</simpara>
-</listitem>
-<listitem><simpara>System property <sysprop>xml.catalog.parseRddl</sysprop></simpara></listitem>
-<listitem><simpara>Property file property <fprop>parse-rddl</fprop></simpara></listitem>
-</itemizedlist>
-
-<itemizedlist role="net">
-<listitem>
-<simpara>Feature <constant>ResolverFeature.PARSE_RDDL</constant> (type: <type>bool</type>)</simpara>
-</listitem>
-<listitem><simpara>Environment variable <envar>XML_CATALOG_PARSE_RDDL</envar></simpara></listitem>
-<listitem><simpara>Property file property <fprop>parseRddl</fprop></simpara></listitem>
-</itemizedlist>
-
-<para>Attempt to resolve RDDL resources in namespace URI lookup. If the
-namespace resolver is used, if a nature and purpose are specified, and
-if the resource returned is an HTML document, the resolver will
-attempt to find the RDDL resource description for the requested
-namespace and resolve that URI.</para>
-
-<para>For example, the following API call will return the XML Schema for XML:</para>
-
-<programlisting language="java">resolveNamespaceURI("http://www.w3.org/XML/1998/namespace",
-                    "http://www.w3.org/2001/XMLSchema",
-                    "http://www.rddl.org/purposes#schema-validation");</programlisting>
-
-<para>Attempting to resolve RDDL resources requires extra processing. If you
-know it will never succeed you can disable it by setting this property
-to false.</para>
-
-</section>
-<section xml:id="classloader">
-<title>Specify an alternate class loader</title>
-
-<itemizedlist role="java">
-<listitem>
-<simpara>Feature <constant>ResolverFeature.CLASSLOADER</constant> (type: <type>ClassLoader</type>)</simpara>
-</listitem>
-</itemizedlist>
-
-<itemizedlist role="net">
-<listitem>
-<simpara>This setting has no equivalent on .NET</simpara>
-</listitem>
-</itemizedlist>
-
-<para>If you are using the resolver in an environment where the default class
-loader (<code>getClass().getCatalogLoader()</code>) will not return useful
-class loader, you can specify an alternate loader with this feature.
-</para>
-</section>
-
-<section xml:id="xmlreader_supplier">
-<title>Configure the XML Reader</title>
-
-<itemizedlist role="java">
-<listitem>
-<simpara>Feature <constant>ResolverFeature.XMLREADER_SUPPLIER</constant>
-(type: <type>Supplier&lt;XMLReader&gt;</type>)</simpara>
-</listitem>
-</itemizedlist>
-
-<itemizedlist role="net">
-<listitem>
-<simpara>This setting has no equivalent on .NET</simpara>
-</listitem>
-</itemizedlist>
-
-<para>The default supplier is obtained with <code>SAXParserFactory.newInstance()</code> and
-the global mechanisms that it uses.</para>
-
-<para>This feature and the <link linkend="xml.catalog.saxParserFactoryClass">SAXPARSERFACTORY_CLASS</link>
-are different mechanisms for
-configuring the same underlying feature: how does the resolver get an XML parser if it needs one?
-(For example, for the <code>ResolvingXMLFilter</code> and
-<code>ResolvingXMLReader</code> classes.)
-</para>
-
-<para>The
-<link linkend="xml.catalog.saxParserFactoryClass">SAXPARSERFACTORY_CLASS</link>
-is initially <code>null</code> and the <code>XMLREADER_SUPPLIER</code>
-is used. The purpose of the <code>SAXPARSERFACTORY_CLASS</code> is to
-allow the factory to be configured with a property since the
-<code>XMLREADER_SUPPLIER</code> cannot.</para>
-
-<para>If a <code>SAXPARSERFACTORY_CLASS</code> is specified, it will be used in favor of the default
-<code>XMLREADER_SUPPLIER.</code> If an <code>XMLREADER_SUPPLIER</code> is explicitly set after the
-configuration is initialized, it will set this feature to <code>null</code> and take precedence.</para>
-</section>
-
-<section xml:id="xml.catalog.throwUriExceptions">
-<title>Throw URI exceptions?</title>
-
-<itemizedlist role="java">
-<listitem>
-<simpara>Feature <constant>ResolverFeature.THROW_URI_EXCEPTIONS</constant>
-(type: <type>Boolean</type>)</simpara>
-</listitem>
-<listitem><simpara>System property <sysprop>xml.catalog.throwUriExceptions</sysprop></simpara></listitem>
-<listitem><simpara>Property file property <fprop>throw-uri-exceptions</fprop></simpara></listitem>
-</itemizedlist>
-
-<itemizedlist role="net">
-<listitem>
-<simpara>This setting has no equivalent on .NET</simpara>
-</listitem>
-</itemizedlist>
-
-<para>If this setting is true, errors in URIs that raise illegal argument exceptions,
-malformed URI exceptions, or URI syntax exceptions will be thrown. If it’s false,
-<code>null</code> is returned and the exception is ignored.</para>
-</section>
-
-<section xml:id="xml.catalog.archivedCatalogs" role="since-3.1.0">
-<title>Support catalog files in ZIP archives</title>
-
-<para>This feature is new in XML Resolver 3.1.0.</para>
-
-<itemizedlist role="java">
-<listitem>
-<simpara>Feature <constant>ResolverFeature.ARCHIVED_CATALOGS</constant> (type: <type>Boolean</type>)</simpara>
-</listitem>
-<listitem><simpara>System property <sysprop>xml.catalog.archivedCatalogs</sysprop></simpara></listitem>
-<listitem><simpara>Property file property <fprop>archived-catalogs</fprop></simpara></listitem>
-</itemizedlist>
-
-<itemizedlist role="net">
-<listitem>
-<simpara>Feature <constant>ResolverFeature.ARCHIVED_CATALOGS</constant> (type: <type>bool</type>)</simpara>
-</listitem>
-<listitem><simpara>Environment variable <envar>XML_CATALOG_ARCHIVED_CATALOGS</envar></simpara></listitem>
-<listitem><simpara>Property file property <fprop>archivedCatalogs</fprop></simpara></listitem>
-</itemizedlist>
-
-<para>If archived catalogs are allowed, then you can place ZIP files of resources
-directly on the catalog path. The resolver will search inside the ZIP file for a catalog
-(<code>/org/xmlresolver/catalog.xml</code> or <code>/catalog.xml</code>) to use.</para>
-
-</section>
-<section xml:id="catalogmanager">
-<title>Access the underlying catalog manager</title>
-
-<itemizedlist role="java">
-<listitem>
-<simpara>Feature <constant>ResolverFeature.CATALOG_MANAGER</constant> (type: <type>CatalogManager</type>)</simpara>
-</listitem>
-</itemizedlist>
-
-<itemizedlist role="net">
-<listitem>
-<simpara>Feature <constant>ResolverFeature.CATALOG_MANAGER</constant> (type: <type>CatalogManager</type>)</simpara>
-</listitem>
-</itemizedlist>
-
-<para>The <classname role="org.xmlresolver">CatalogManager</classname> class provides
-some lower-level methods for mapping to URIs without returning sources of any kind.
-</para>
-</section>
-
-<section xml:id="logging">
-<title>Logging</title>
-
-<para>There are two options to control logging: the class used to perform logging
-and the logging level desired.</para>
-
-<para>These settings only apply to Java. On .NET, the <link
-xlink:href="https://www.nuget.org/packages/NLog">NLog</link> package
-is used for logging.</para>
-
-<section xml:id="xml.catalog.resolverLoggerClass">
-<title>The logger class</title>
-
-<itemizedlist role="java">
-<listitem>
-<simpara>Feature <constant>ResolverFeature.RESOLVER_LOGGER_CLASS</constant> (type: <type>String</type>)</simpara>
-</listitem>
-<listitem><simpara>System property <sysprop>xml.catalog.resolverLoggerClass</sysprop></simpara></listitem>
-<listitem><simpara>Property file property <fprop>resolver-logger-class</fprop></simpara></listitem>
-</itemizedlist>
-
-<itemizedlist role="net">
-<listitem>
-<simpara>This setting has no equivalent on .NET</simpara>
-</listitem>
-</itemizedlist>
-
-<para>The default logger class (<classname>org.xmlresolver.logging.DefaultLogger</classname>)
-simply writes messages to standard error. For many applications, this is sufficient and
-requires no additional configuration.</para>
-
-<para>An alternate logger class (<classname>org.xmlresolver.logging.SystemLogger</classname>)
-can easily be swapped in for environments where writing to standard error is inappropriate
-or where more control is desired. If the system logger is used, it uses the 
-standard Java logger (<code>java.util.logging.Logger</code>) which can be configured
-to use a variety of backends.</para>
-
-<para>A third option, available only at the API level, is to instantiate the
-<classname>org.xmlresolver.logging.SystemLogger</classname> yourself and pass in the
-<classname>java.util.logging.Logger</classname> that you would like it to use.
-</para>
-</section>
-
-<section xml:id="xml.catalog.defaultLoggerLogLevel">
-<title>The logging level</title>
-
-<itemizedlist role="java">
-<listitem>
-<simpara>Feature <constant>ResolverFeature.DEFAULT_LOGGER_LOG_LEVEL</constant> (type: <type>String</type>)</simpara>
-</listitem>
-<listitem><simpara>System property <sysprop>xml.catalog.defaultLoggerLogLevel</sysprop></simpara></listitem>
-<listitem><simpara>Property file property <fprop>default-logger-log-level</fprop></simpara></listitem>
-</itemizedlist>
-
-<itemizedlist role="net">
-<listitem>
-<simpara>This setting has no equivalent on .NET</simpara>
-</listitem>
-</itemizedlist>
-
-<para>As a convenience, the resolver categorizes log messages and
-allows you to change the logging level for categories
-selectively.</para>
-
-<para>The log categories aren’t as fine grained as the class hierarchy.
-There are five categories:</para>
-
-<variablelist>
-<varlistentry><term><literal>request</literal></term>
-<listitem>
-<para>Information related to the request.
-</para>
-</listitem>
-</varlistentry>
-<varlistentry><term><literal>response</literal></term>
-<listitem>
-<para>Information related to the response.
-</para>
-</listitem>
-</varlistentry>
-<varlistentry><term><literal>config</literal></term>
-<listitem>
-<para>Information related to configuration.
-</para>
-</listitem>
-</varlistentry>
-<varlistentry><term><literal>warning</literal></term>
-<listitem>
-<para>Reported warnings.
-</para>
-</listitem>
-</varlistentry>
-<varlistentry><term><literal>error</literal></term>
-<listitem>
-<para>Reported errors.
-</para>
-</listitem>
-</varlistentry>
-</variablelist>
-
-<para>Any of these categories can be reported as “debug”, “info”, or
-“warn” logging messages. This is configured with the system property
-<sysprop>xml.catalog.logging</sysprop>. That property is interpreted as a comma
-delimited list of <replaceable>category</replaceable>:<replaceable>level</replaceable>
-pairs: for example, <code>request:warn,response:info</code>, would log request
-messages as warnings and response messages as info.</para>
-
-<para>If you prefer to specify this in a configuration file, use the
-<fprop>catalog-logging</fprop> property. Note, however, that this
-setting only applies if the system property is not set. (Because the
-logging class doesn’t have access to the resolver configuration, it
-can’t apply the usual defaulting rules.)</para>
-</section>
-</section>
-</chapter>
+<xi:include href="configure.xml"/>
 
 <chapter xml:id="changelog">
 <title>Change log</title>
@@ -1227,6 +442,45 @@ can’t apply the usual defaulting rules.)</para>
 
 <revhistory>
 <?db revhistory-style="list"?>
+<revision>
+<revnumber>6.0.20</revnumber>
+<date>2025-12-31</date>
+<revdescription>
+<para>The 6.0.20 release is a maintance patch on the 6.x branch.</para>
+<itemizedlist role="java">
+<listitem>
+<para>Added checks to avoid an NPE when trying to set the system identifier to the resolved URI.
+</para>
+</listitem>
+<listitem>
+<para>Substantially rewrote and simplified the resolver logger. All of
+the complexity associated with categories has been removed. Most
+messages previously associated with a category are simply debug level
+messages.</para>
+</listitem>
+<listitem>
+<para>As a consequence of the logger refactoring, the <code>DEFAULT_LOGGER_LOG_LEVEL</code>
+is now the
+<code linkend="xml.catalog.loggerLogLevel">LOGGER_LOG_LEVEL</code>.</para>
+</listitem>
+<listitem>
+<para>Cleaned up the error handling in the catalog loader to avoid spurious error messages
+about attempting to parse ZIP files (when ultimately retrieving a catalog from the ZIP file).</para>
+</listitem>
+</itemizedlist>
+<itemizedlist role="net">
+<listitem>
+<para>There’s been a very substantial refactoring since the last .NET release.
+</para>
+</listitem>
+<listitem>
+<para>This version is in better alignment with the Java version and has improved C# APIs.
+</para>
+</listitem>
+</itemizedlist>
+<para>With luck, this will be the last set of test releases before the production release.</para>
+</revdescription>
+</revision>
 <revision>
 <revnumber>6.0.19</revnumber>
 <date>2025-07-17</date>
@@ -1506,7 +760,7 @@ expected to be user visible) have also been corrected. See the commit log for mo
 <chapter xml:id="seealso">
 <title>See also</title>
 
-<itemizedlist role="java">
+<itemizedlist>
 <listitem>
 <para>Absent more complete information here, most of
 <link xlink:href="https://xerces.apache.org/xml-commons/components/resolver/resolver-article.html">XML
