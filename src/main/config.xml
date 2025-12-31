@@ -1,0 +1,5 @@
+<cc:xml-calabash xmlns:cc="https://xmlcalabash.com/ns/configuration"
+                 licensed="false">
+  <cc:inline trim-whitespace="true"/>
+  <cc:visualizer name="silent"/>
+</cc:xml-calabash>
