@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" class="no-js">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script><title>15.&nbsp;Mask jar URIs</title>
+      <link href="/css/pygments.css" rel="stylesheet">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="https://purl.org/dc/elements/1.1/" rel="schema.dc">
+      <meta name="dc.modified" content="2025-12-31T17:36:54Z">
+      <meta name="generator" content="DocBook xslTNG version 2.7.1 / SNAPSHOT / SAXON HE 12.9">
+      <link href="/css/docbook-toc.css" rel="stylesheet">
+      <link href="/css/docbook.css" rel="stylesheet" media="screen">
+      <link href="/img/xr.png" rel="icon">
+      <link href="/css/resolver.css" rel="stylesheet"><script src="/js/boxes.js" defer></script><link rel="prev" href="LOGGER_LOG_LEVEL.html">
+      <link rel="next" href="MERGE_HTTPS.html">
+      <link rel="up" href="../ch06.html">
+      <link rel="home" href="../index.html"><script src="/js/persistent-toc.js" defer></script><script src="/js/chunk-nav.js" defer></script></head>
+   <body class="section">
+      <nav class="top">
+         <div><a href="../index.html">Home</a> <a href="../ch06.html">Up</a> <a href="MERGE_HTTPS.html">Next</a> <a href="LOGGER_LOG_LEVEL.html">Prev</a><span class="boxes"></span></div>
+      </nav>
+      <main>
+         <section id="xml.catalog.maskJarUris" db-chunk="ResolverFeature/MASK_JAR_URIS.html" db-id="d402e5319" class="section">
+            <header>
+               <h2><span class="label">15</span><span class="sep">.&nbsp;</span>Mask jar URIs</h2>
+            </header>
+            <div class="proptable java">
+               <div class="listnav"><span class="logo"><img src="../img/java.png" alt="Java logo"></span><h3>Configuration on Java</h3>
+               </div>
+               <ul class="itemizedlist java">
+                  <li>
+                     <p class="simpara">Feature <code class="constant">ResolverFeature.MASK_JAR_URIS</code> (type: <code class="type">Boolean</code>)</p>
+                  </li>
+                  <li>
+                     <p class="simpara">System property <code class="property system">xml.catalog.maskJarUris</code></p>
+                  </li>
+                  <li>
+                     <p class="simpara">Property file property <code class="file property">mask-jar-uris</code></p>
+                  </li>
+               </ul>
+            </div>
+            <div class="proptable net">
+               <div class="listnav"><span class="logo"><img src="../img/dotNET.png" alt=".NET logo"></span><h3>Configuration on .NET</h3>
+               </div>
+               <ul class="itemizedlist net">
+                  <li>
+                     <p class="simpara">This setting has no equivalent on .NET</p>
+                  </li>
+               </ul>
+            </div>
+            <p>Don’t return jar: or classpath: URIs. Most entity resolver APIs are defined such that
+               if
+               resolution succeeds, the base URI of the resource returned is the base URI of the
+               actual,
+               local resource. This can greatly simplify things because subsequent relative URIs
+               can be
+               resolved against the local resource directly.</p>
+            <p>However, the Java URI class does not treat jar: or classpath: URI schemes as hierarchical,
+               so any subsequent attempts to resolve relative URIs will fail. If this property is
+               true,
+               the local resource will be returned but the URI will be left unchanged. That may require
+               a
+               more complete catalog, but it will avoid a situation which is guaranteed to fail.</p>
+            <div class="sidebar">
+               <p>On .NET, a similar feature could be imagined for “pack:” scheme URIs, but in
+                  practice, the way the <code class="classname">System.XmlResolver</code> works, it wouldn’t
+                  serve any useful purpose.
+                  </p>
+            </div>
+         </section>
+      </main>
+      <nav class="bottom">
+         <table>
+            <tr>
+               <td class="previous"><a href="LOGGER_LOG_LEVEL.html">Prev</a></td>
+               <td class="up"><a href="../ch06.html">Up</a></td>
+               <td class="next"><a href="MERGE_HTTPS.html">Next</a></td>
+            </tr>
+            <tr>
+               <td class="previous"><span class="label">14</span><span class="sep">.&nbsp;</span>The logging level</td>
+               <td class="up"><a href="../index.html">Home</a></td>
+               <td class="next"><span class="label">16</span><span class="sep">.&nbsp;</span>Merge http: and https: URI schemes</td>
+            </tr>
+         </table>
+         <nav class="tocopen"></nav>
+         <nav class="toc"></nav>
+         <!-- Hide ToC details from user agents that don’t support JS --><script type="text/html" class="tocopen"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABYlAAAWJQFJUiTwAAABDklEQVQ4je2UUW3EMAyGv0wDUAhlkDBIyuAYXCEclEJoGZRBUgYOgzJoGHgPW6o7rWq35+2TIkWW9duW7N+oKuM46jiOGGMAaNsW5xzee5xzn8EvRESXZUFEWNcVAFWl73v6vjcGUIAYIyEEANZ1RUSY55lSCo/HA4BhGGiahtvthnOOtm0BSCnRdd1eVAGNMeoR27aptVattbpt22FOjFGrzjsX1I7q/4q3y4xf8i/4FwT3Pcw5Y4zBWvujfQMopZBzJuf8XbCeVyWEgHOO+/2+x0SEaZpIKSEih0X2Wz6jdlxKuezaqL7qpZS0lLKbw/M4ANba3RyapiGE8OJGqOrpizGq916999VATvM/AGFn1sxsVjL5AAAAAElFTkSuQmCC" alt="[toc]"></script><script type="text/html" class="toc"><header><span>Table of Contents</span><span class="close"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAtklEQVQ4jaWT0Q3DIAxEz52AEbyB2cDZhBEY3SNcPyqqBEwqpZaQAHNP5jBCEiJCPAiSIgAeiUe8zoveO9x9e9jd0XtfKwHA1hpHtNY49rO8u59zn4mqMiJSyFkcEVTVFQCAtdYFMotrrXN111JnyA/xCsggN2JeXmGEmaGU8l2XUmBm29fZuh0RW2PTK2SGZcamADPb3nmGmNkKOI7j1rAzJG2kcWhqkstQ1QX+/2ciKU/FJOUN6JFZYWpmK3sAAAAASUVORK5CYII=" alt="X"></span><p class="ptoc-search"><input class="ptoc-search" placeholder="Search" style="width: 80%"></p></header><div db-persistent-toc="persistent-toc.html" db-prefix="../">Loading…</div></script></nav>
+   </body>
+</html>

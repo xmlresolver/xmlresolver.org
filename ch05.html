@@ -1,37 +1,161 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" class="no-js"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script><title>Chapter 5. Configuring an XML Resolver</title><link href="/css/pygments.css" rel="stylesheet"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link href="https://purl.org/dc/elements/1.1/" rel="schema.dc"/><meta name="dc.modified" content="2025-07-17T09:01:10Z"/><meta name="generator" content="DocBook xslTNG version 2.1.9 / 4a661f6 / SAXON HE 11.5"/><link href="/css/docbook-toc.css" rel="stylesheet"/><link href="/css/docbook.css" rel="stylesheet" media="screen"/><link xmlns="" rel="icon" href="/img/xr.png"/><link xmlns="" rel="stylesheet" href="css/resolver.css"/><link rel="prev" href="ch04.html"/><link rel="next" href="ch06.html"/><link rel="up" href="index.html"/><link rel="home" href="index.html"/><script src="/js/persistent-toc.js" defer="defer"></script><script src="/js/copy-verbatim.js" defer="defer"></script><script src="/js/chunk-nav.js" defer="defer"></script></head><body class="chapter component"><nav class="top"><div><a href="index.html">Home</a> <a href="index.html">Up</a> <a href="ch06.html">Next</a> <a href="ch04.html">Prev</a></div></nav><main><section id="configuring" db-chunk="ch05.html" db-id="d97e3175" class="chapter component"><header><h2>Chapter <span class="label">5</span><span class="sep">. </span>Configuring an XML Resolver</h2></header><p>The XML Resolver is available for both Java and .NET. By and
-large, it works the same way in both environments and has similar
-features. One area where differences are unavoidable is in
-configuration because Java and .NET expose different mechanisms.</p><p>The Java XML Resolver classes use either Java system properties
-or a standard Java properties file to establish an initial
-environment.</p><p>On .NET, environment variables are used instead of system
-properties and the properties file is a standard .NET configuration
-file.</p><section id="config-java" class="section"><header><h2><span class="label">1</span><span class="sep">. </span>Configuring XML Resolver on Java</h2></header><p>On Java, the resolver searches for a property file by looking in
-the following places, in this order:</p><ul class="itemizedlist"><li><p>The location identified by the <code class="property system">xmlresolver.properties</code><span class="indexterm" id="config-java_itemizedlist1_listitem1_para1_indexterm1"></span> system property.
-</p></li><li><p>The location identified by the <code class="envar">XMLRESOLVER_PROPERTIES</code><span class="indexterm" id="config-java_itemizedlist1_listitem2_para1_indexterm1"></span> environment variable.
-</p></li><li><p>A file named <code class="filename">xmlresolver.properties</code> on your classpath.
-</p></li></ul><section id="xmlresolver.properties" class="section"><header><h3><span class="label">1<span class="sep">.</span>1</span><span class="sep">. </span>Example xmlresolver.properties file</h3></header><p>An <code class="filename">xmlresolver.properties</code> file
-might look like this:</p><div class="pre-wrap" db-startinglinenumber="1" db-numberoflines="10"><pre class="language-none long numbered programlisting verbatim verblines"><span class="line" db-line="1"><span class="ln"> 1 <span class="nsep">|</span></span><span class="ld"><code># xmlresolver.properties</code></span></span>
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" class="no-js">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script><title>Chapter&nbsp;5.&nbsp;Configuring an XML Resolver</title>
+      <link href="/css/pygments.css" rel="stylesheet">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="https://purl.org/dc/elements/1.1/" rel="schema.dc">
+      <meta name="dc.modified" content="2025-12-31T17:36:54Z">
+      <meta name="generator" content="DocBook xslTNG version 2.7.1 / SNAPSHOT / SAXON HE 12.9">
+      <link href="/css/docbook-toc.css" rel="stylesheet">
+      <link href="/css/docbook.css" rel="stylesheet" media="screen">
+      <link href="/img/xr.png" rel="icon">
+      <link href="/css/resolver.css" rel="stylesheet"><script src="/js/boxes.js" defer></script><link rel="prev" href="ch04.html">
+      <link rel="next" href="ch06.html">
+      <link rel="up" href="index.html">
+      <link rel="home" href="index.html"><script src="/js/persistent-toc.js" defer></script><script src="/js/copy-verbatim.js" defer></script><script src="/js/chunk-nav.js" defer></script></head>
+   <body class="chapter component">
+      <nav class="top">
+         <div><a href="index.html">Home</a> <a href="index.html">Up</a> <a href="ch06.html">Next</a> <a href="ch04.html">Prev</a><span class="boxes"></span></div>
+      </nav>
+      <main>
+         <section id="configuring" db-chunk="ch05.html" db-id="d402e3754" class="chapter component">
+            <header>
+               <h2>Chapter&nbsp;<span class="label">5</span><span class="sep">.&nbsp;</span>Configuring an XML Resolver</h2>
+            </header>
+            <div class="db-bfs">
+               <p>The XML Resolver is available for both Java and .NET. By and
+                  large, it works the same way in both environments and has similar
+                  features. One area where differences are unavoidable is in
+                  configuration because Java and .NET expose different mechanisms.</p>
+               <p>The Java XML Resolver classes use either Java system properties
+                  or a standard Java properties file to establish an initial
+                  environment.</p>
+               <p>On .NET, environment variables are used instead of system
+                  properties and the properties file is a standard .NET configuration
+                  file.</p>
+            </div>
+            <section id="config-java" class="section">
+               <header>
+                  <h2><span class="label">1</span><span class="sep">.&nbsp;</span>Configuring XML Resolver on Java</h2>
+               </header>
+               <p>On Java, the resolver searches for a property file by looking in
+                  the following places, in this order:</p>
+               <ul class="itemizedlist">
+                  <li>
+                     <p>The location identified by the <code class="property system">xmlresolver.properties</code> system property.
+                        </p>
+                  </li>
+                  <li>
+                     <p>The location identified by the <code class="envar">XMLRESOLVER_PROPERTIES</code> environment variable.
+                        </p>
+                  </li>
+                  <li>
+                     <p>A file named <code class="filename">xmlresolver.properties</code> on your classpath.
+                        </p>
+                  </li>
+               </ul>
+               <section id="xmlresolver.properties" class="section">
+                  <header>
+                     <h3><span class="label">1<span class="sep">.</span>1</span><span class="sep">.&nbsp;</span>Example xmlresolver.properties file</h3>
+                  </header>
+                  <p>An <code class="filename">xmlresolver.properties</code> file
+                     might look like this:</p>
+                  <div class="pre-wrap programlisting-wrap" db-startinglinenumber="1" db-numberoflines="64">
+                     <pre class="language-none long numbered programlisting verbatim verblines"><span class="line" db-line="1"><span class="ln"> 1 <span class="nsep">|</span></span><span class="ld"><code>## XML Resolver properties</code></span></span>
 <span class="line" db-line="2"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code> </code></span></span>
-<span class="line" db-line="3"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>relative-catalogs=yes</code></span></span>
-<span class="line" db-line="4"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code> </code></span></span>
-<span class="line" db-line="5"><span class="ln"> 5 <span class="nsep">|</span></span><span class="ld"><code># Always use semicolons in this list</code></span></span>
-<span class="line" db-line="6"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>catalogs=./catalog.xml;/Users/ndw/Documents/catalog.xml</code></span></span>
-<span class="line" db-line="7"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code> </code></span></span>
-<span class="line" db-line="8"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>prefer=public</code></span></span>
-<span class="line" db-line="9"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>allow-oasis-xml-catalog-pi=no</code></span></span>
-<span class="line" db-line="10"><span class="ln">10 <span class="nsep">|</span></span><span class="ld"><code>prefer-property-file=false</code></span></span>
-</pre></div></section></section><section id="config-net" class="section"><header><h2><span class="label">2</span><span class="sep">. </span>Configuring XML Resolver on .NET</h2></header><p>On .NET, the resolver uses the enviornment variable <code class="envar">XMLRESOLVER_APPSETTINGS</code><span class="indexterm" id="config-net_para1_indexterm1"></span>
-to locate .NET properties file. The properties file can be either XML (in an
-<code>XmlResolver</code> section) or JSON (in an <code>XmlResolver</code> object).</p><section id="xmlresolver.config.xml" class="section"><header><h3><span class="label">2<span class="sep">.</span>1</span><span class="sep">. </span>Example xmlresolver.config file</h3></header><p>An <code class="filename">xmlresolver.config</code> file
-might look like this:</p><div class="pre-wrap highlight" db-startinglinenumber="1" db-numberoflines="7"><pre class="language-xml long numbered programlisting verbatim verblines"><span class="line" db-line="1"><span class="ln">1 <span class="nsep">|</span></span><span class="ld"><code><span class="nt">&lt;configuration&gt;</span></code></span></span>
+<span class="line" db-line="3"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>## Specify protocol(s) allowed for URI access</code></span></span>
+<span class="line" db-line="4"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>#<a href="ResolverFeature/ACCESS_EXTERNAL_DOCUMENT.html" class="link">access-external-document</a>=all</code></span></span>
+<span class="line" db-line="5"><span class="ln"> 5 <span class="nsep">|</span></span><span class="ld"><code> </code></span></span>
+<span class="line" db-line="6"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>## Specify protocol(s) allowed for entity access</code></span></span>
+<span class="line" db-line="7"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>#<a href="ResolverFeature/ACCESS_EXTERNAL_ENTITY.html" class="link">access-external-entity</a>=all</code></span></span>
+<span class="line" db-line="8"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code> </code></span></span>
+<span class="line" db-line="9"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>## Obey oasis-xml-catalog processing instruction?</code></span></span>
+<span class="line" db-line="10"><span class="ln">10 <span class="nsep">|</span></span><span class="ld"><code>#<a href="ResolverFeature/ALLOW_CATALOG_PI.html" class="link">allow-oasis-xml-catalog-pi</a>=true</code></span></span>
+<span class="line" db-line="11"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code> </code></span></span>
+<span class="line" db-line="12"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>## Always resolve resources?</code></span></span>
+<span class="line" db-line="13"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>#<a href="ResolverFeature/ALWAYS_RESOLVE.html" class="link">always-resolve</a>=true</code></span></span>
+<span class="line" db-line="14"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code> </code></span></span>
+<span class="line" db-line="15"><span class="ln">15 <span class="nsep">|</span></span><span class="ld"><code>## Support catalog files in ZIP archives?</code></span></span>
+<span class="line" db-line="16"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>#<a href="ResolverFeature/ARCHIVED_CATALOGS.html" class="link">archived-catalogs</a>=true</code></span></span>
+<span class="line" db-line="17"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code> </code></span></span>
+<span class="line" db-line="18"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>## List of additional catalog files; defaults to none</code></span></span>
+<span class="line" db-line="19"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>#<a href="ResolverFeature/CATALOG_ADDITIONS.html" class="link">catalog-additions</a>=</code></span></span>
+<span class="line" db-line="20"><span class="ln">20 <span class="nsep">|</span></span><span class="ld"><code> </code></span></span>
+<span class="line" db-line="21"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>## Catalog loader class</code></span></span>
+<span class="line" db-line="22"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>#<a href="ResolverFeature/CATALOG_LOADER_CLASS.html" class="link">catalog-loader-class</a>=org.xmlresolver.loaders.XmlLoader</code></span></span>
+<span class="line" db-line="23"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code> </code></span></span>
+<span class="line" db-line="24"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>## The initial list of catalog files; defaults to none</code></span></span>
+<span class="line" db-line="25"><span class="ln">25 <span class="nsep">|</span></span><span class="ld"><code>#<a href="ResolverFeature/CATALOG_FILES.html" class="link">catalogs</a>=</code></span></span>
+<span class="line" db-line="26"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code> </code></span></span>
+<span class="line" db-line="27"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>## Load catalogs from the classpath?</code></span></span>
+<span class="line" db-line="28"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>#<a href="ResolverFeature/CLASSPATH_CATALOGS.html" class="link">classpath-catalogs</a>=true</code></span></span>
+<span class="line" db-line="29"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code> </code></span></span>
+<span class="line" db-line="30"><span class="ln">30 <span class="nsep">|</span></span><span class="ld"><code>## Fix system identifiers on Windows?</code></span></span>
+<span class="line" db-line="31"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>#<a href="ResolverFeature/FIX_WINDOWS_SYSTEM_IDENTIFIERS.html" class="link">fix-windows-system-identifiers</a>=false</code></span></span>
+<span class="line" db-line="32"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code> </code></span></span>
+<span class="line" db-line="33"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>## The logging level</code></span></span>
+<span class="line" db-line="34"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>#<a href="ResolverFeature/LOGGER_LOG_LEVEL.html" class="link">logger-log-level</a>=warn</code></span></span>
+<span class="line" db-line="35"><span class="ln">35 <span class="nsep">|</span></span><span class="ld"><code> </code></span></span>
+<span class="line" db-line="36"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>## Mask jar URIs?</code></span></span>
+<span class="line" db-line="37"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>#<a href="ResolverFeature/MASK_JAR_URIS.html" class="link">mask-jar-uris</a>=true</code></span></span>
+<span class="line" db-line="38"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code> </code></span></span>
+<span class="line" db-line="39"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>## Merge http: and https: URI schemes?</code></span></span>
+<span class="line" db-line="40"><span class="ln">40 <span class="nsep">|</span></span><span class="ld"><code>#<a href="ResolverFeature/MERGE_HTTPS.html" class="link">merge-https</a>=true</code></span></span>
+<span class="line" db-line="41"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code> </code></span></span>
+<span class="line" db-line="42"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>## Parse RDDL documents?</code></span></span>
+<span class="line" db-line="43"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>#<a href="ResolverFeature/PARSE_RDDL.html" class="link">parse-rddl</a>=false</code></span></span>
+<span class="line" db-line="44"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code> </code></span></span>
+<span class="line" db-line="45"><span class="ln">45 <span class="nsep">|</span></span><span class="ld"><code>## Prefer property file values</code></span></span>
+<span class="line" db-line="46"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>#<a href="ResolverFeature/PREFER_PROPERTY_FILE.html" class="link">prefer-property-file</a>=false</code></span></span>
+<span class="line" db-line="47"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code> </code></span></span>
+<span class="line" db-line="48"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>## Preference for public or system identifiers</code></span></span>
+<span class="line" db-line="49"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>#<a href="ResolverFeature/PREFER_PUBLIC.html" class="link">prefer</a>=public</code></span></span>
+<span class="line" db-line="50"><span class="ln">50 <span class="nsep">|</span></span><span class="ld"><code> </code></span></span>
+<span class="line" db-line="51"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>## Support relative catalog paths</code></span></span>
+<span class="line" db-line="52"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>#<a href="ResolverFeature/relative-catalogs.html" class="link">relative-catalogs</a>=true</code></span></span>
+<span class="line" db-line="53"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code> </code></span></span>
+<span class="line" db-line="54"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>## The logger class</code></span></span>
+<span class="line" db-line="55"><span class="ln">55 <span class="nsep">|</span></span><span class="ld"><code>#<a href="ResolverFeature/RESOLVER_LOGGER_CLASS.html" class="link">resolver-logger-class</a>=org.xmlresolver.logging.DefaultLogger</code></span></span>
+<span class="line" db-line="56"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code> </code></span></span>
+<span class="line" db-line="57"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>## The SAX parser factory class; defaults to null</code></span></span>
+<span class="line" db-line="58"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>#<a href="ResolverFeature/SAXPARSERFACTORY_CLASS.html" class="link">saxparserfactory-class</a>=</code></span></span>
+<span class="line" db-line="59"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code> </code></span></span>
+<span class="line" db-line="60"><span class="ln">60 <span class="nsep">|</span></span><span class="ld"><code>## Throw URI exceptions?</code></span></span>
+<span class="line" db-line="61"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>#<a href="ResolverFeature/THROW_URI_EXCEPTIONS.html" class="link">throw-uri-exceptions</a>=false</code></span></span>
+<span class="line" db-line="62"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code> </code></span></span>
+<span class="line" db-line="63"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>## Use URI entries for system resolution?</code></span></span>
+<span class="line" db-line="64"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code>#<a href="ResolverFeature/URI_FOR_SYSTEM.html" class="link">uri-for-system</a>=true</code></span></span></pre>
+                  </div>
+                  <p>The properites are shown with their default values.</p>
+               </section>
+            </section>
+            <section id="config-net" class="section">
+               <header>
+                  <h2><span class="label">2</span><span class="sep">.&nbsp;</span>Configuring XML Resolver on .NET</h2>
+               </header>
+               <p>On .NET, the resolver uses the enviornment variable <code class="envar">XMLRESOLVER_APPSETTINGS</code>
+                  to locate .NET properties file. The properties file can be either XML (in an
+                  <code>XmlResolver</code> section) or JSON (in an <code>XmlResolver</code> object).</p>
+               <section id="xmlresolver.config.xml" class="section">
+                  <header>
+                     <h3><span class="label">2<span class="sep">.</span>1</span><span class="sep">.&nbsp;</span>Example xmlresolver.config file</h3>
+                  </header>
+                  <p>An <code class="filename">xmlresolver.config</code> file
+                     might look like this:</p>
+                  <div class="pre-wrap programlisting-wrap highlight" db-startinglinenumber="1" db-numberoflines="7">
+                     <pre class="language-xml long numbered programlisting verbatim verblines"><span class="line" db-line="1"><span class="ln">1 <span class="nsep">|</span></span><span class="ld"><code><span class="nt">&lt;configuration&gt;</span></code></span></span>
 <span class="line" db-line="2"><span class="ln">  <span class="nsep">|</span></span><span class="ld"><code><span class="w">  </span><span class="nt">&lt;xmlResolver</span><span class="w"> </span><span class="na">relativeCatalogs=</span><span class="s">"no"</span></code></span></span>
 <span class="line" db-line="3"><span class="ln">  <span class="nsep">|</span></span><span class="ld"><code><span class="w">               </span><span class="na">catalogs=</span><span class="s">"./catalog.xml;/Users/userid/Documents/catalog.xml"</span></code></span></span>
 <span class="line" db-line="4"><span class="ln">  <span class="nsep">|</span></span><span class="ld"><code><span class="w">               </span><span class="na">prefer=</span><span class="s">"public"</span></code></span></span>
 <span class="line" db-line="5"><span class="ln">5 <span class="nsep">|</span></span><span class="ld"><code><span class="w">               </span><span class="na">allowOasisXmlCatalogPi=</span><span class="s">"yes"</span></code></span></span>
 <span class="line" db-line="6"><span class="ln">  <span class="nsep">|</span></span><span class="ld"><code><span class="w">               </span><span class="na">preferPropertyFile=</span><span class="s">"no"</span><span class="nt">/&gt;</span></code></span></span>
-<span class="line" db-line="7"><span class="ln">  <span class="nsep">|</span></span><span class="ld"><code><span class="nt">&lt;/configuration&gt;</span></code></span></span>
-</pre></div><p>If JSON is more convenient, 
-it might look like this:</p><div class="pre-wrap highlight" db-startinglinenumber="1" db-numberoflines="10"><pre class="language-json long numbered programlisting verbatim verblines"><span class="line" db-line="1"><span class="ln"> 1 <span class="nsep">|</span></span><span class="ld"><code><span class="p">{</span></code></span></span>
+<span class="line" db-line="7"><span class="ln">  <span class="nsep">|</span></span><span class="ld"><code><span class="nt">&lt;/configuration&gt;</span></code></span></span></pre>
+                  </div>
+                  <p>If JSON is more convenient, 
+                     it might look like this:</p>
+                  <div class="pre-wrap programlisting-wrap highlight" db-startinglinenumber="1" db-numberoflines="10">
+                     <pre class="language-json long numbered programlisting verbatim verblines"><span class="line" db-line="1"><span class="ln"> 1 <span class="nsep">|</span></span><span class="ld"><code><span class="p">{</span></code></span></span>
 <span class="line" db-line="2"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code><span class="w">  </span><span class="nt">"XmlResolver"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span></code></span></span>
 <span class="line" db-line="3"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code><span class="w">    </span><span class="nt">"preferPublic"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span></code></span></span>
 <span class="line" db-line="4"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code><span class="w">    </span><span class="nt">"relativeCatalogs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span></code></span></span>
@@ -40,5 +164,27 @@ it might look like this:</p><div class="pre-wrap highlight" db-startinglinenumbe
 <span class="line" db-line="7"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code><span class="w">    </span><span class="nt">"allowOasisXmlCatalogPi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"yes"</span><span class="p">,</span></code></span></span>
 <span class="line" db-line="8"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code><span class="w">    </span><span class="nt">"preferPropertyFile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"no"</span></code></span></span>
 <span class="line" db-line="9"><span class="ln">   <span class="nsep">|</span></span><span class="ld"><code><span class="w">  </span><span class="p">}</span></code></span></span>
-<span class="line" db-line="10"><span class="ln">10 <span class="nsep">|</span></span><span class="ld"><code><span class="p">}</span></code></span></span>
-</pre></div></section></section></section></main><nav class="bottom"><table><tr><td class="previous"><a href="ch04.html">Prev</a></td><td class="up"><a href="index.html">Up</a></td><td class="next"><a href="ch06.html">Next</a></td></tr><tr><td class="previous">Chapter <span class="label">4</span><span class="sep">. </span>Using an XML Resolver</td><td class="up"><a href="index.html">Home</a></td><td class="next">Chapter <span class="label">6</span><span class="sep">. </span>What you can configure</td></tr></table><nav class="tocopen"></nav><nav class="toc"></nav><!-- Hide ToC details from user agents that don’t support JS --><script type="text/html" class="tocopen"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABYlAAAWJQFJUiTwAAABDklEQVQ4je2UUW3EMAyGv0wDUAhlkDBIyuAYXCEclEJoGZRBUgYOgzJoGHgPW6o7rWq35+2TIkWW9duW7N+oKuM46jiOGGMAaNsW5xzee5xzn8EvRESXZUFEWNcVAFWl73v6vjcGUIAYIyEEANZ1RUSY55lSCo/HA4BhGGiahtvthnOOtm0BSCnRdd1eVAGNMeoR27aptVattbpt22FOjFGrzjsX1I7q/4q3y4xf8i/4FwT3Pcw5Y4zBWvujfQMopZBzJuf8XbCeVyWEgHOO+/2+x0SEaZpIKSEih0X2Wz6jdlxKuezaqL7qpZS0lLKbw/M4ANba3RyapiGE8OJGqOrpizGq916999VATvM/AGFn1sxsVjL5AAAAAElFTkSuQmCC" alt="[toc]"/></script><script type="text/html" class="toc"><header><span>Table of Contents</span><span class="close"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAtklEQVQ4jaWT0Q3DIAxEz52AEbyB2cDZhBEY3SNcPyqqBEwqpZaQAHNP5jBCEiJCPAiSIgAeiUe8zoveO9x9e9jd0XtfKwHA1hpHtNY49rO8u59zn4mqMiJSyFkcEVTVFQCAtdYFMotrrXN111JnyA/xCsggN2JeXmGEmaGU8l2XUmBm29fZuh0RW2PTK2SGZcamADPb3nmGmNkKOI7j1rAzJG2kcWhqkstQ1QX+/2ciKU/FJOUN6JFZYWpmK3sAAAAASUVORK5CYII=" alt="X"/></span><p class="ptoc-search"><input class="ptoc-search" placeholder="Search" style="width: 80%"/></p></header><div db-persistent-toc="persistent-toc.html" db-prefix="">Loading…</div></script></nav></body></html>
+<span class="line" db-line="10"><span class="ln">10 <span class="nsep">|</span></span><span class="ld"><code><span class="p">}</span></code></span></span></pre>
+                  </div>
+               </section>
+            </section>
+         </section>
+      </main>
+      <nav class="bottom">
+         <table>
+            <tr>
+               <td class="previous"><a href="ch04.html">Prev</a></td>
+               <td class="up"><a href="index.html">Up</a></td>
+               <td class="next"><a href="ch06.html">Next</a></td>
+            </tr>
+            <tr>
+               <td class="previous">Chapter&nbsp;<span class="label">4</span><span class="sep">.&nbsp;</span>Using an XML Resolver</td>
+               <td class="up"><a href="index.html">Home</a></td>
+               <td class="next">Chapter&nbsp;<span class="label">6</span><span class="sep">.&nbsp;</span>What you can configure</td>
+            </tr>
+         </table>
+         <nav class="tocopen"></nav>
+         <nav class="toc"></nav>
+         <!-- Hide ToC details from user agents that don’t support JS --><script type="text/html" class="tocopen"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABYlAAAWJQFJUiTwAAABDklEQVQ4je2UUW3EMAyGv0wDUAhlkDBIyuAYXCEclEJoGZRBUgYOgzJoGHgPW6o7rWq35+2TIkWW9duW7N+oKuM46jiOGGMAaNsW5xzee5xzn8EvRESXZUFEWNcVAFWl73v6vjcGUIAYIyEEANZ1RUSY55lSCo/HA4BhGGiahtvthnOOtm0BSCnRdd1eVAGNMeoR27aptVattbpt22FOjFGrzjsX1I7q/4q3y4xf8i/4FwT3Pcw5Y4zBWvujfQMopZBzJuf8XbCeVyWEgHOO+/2+x0SEaZpIKSEih0X2Wz6jdlxKuezaqL7qpZS0lLKbw/M4ANba3RyapiGE8OJGqOrpizGq916999VATvM/AGFn1sxsVjL5AAAAAElFTkSuQmCC" alt="[toc]"></script><script type="text/html" class="toc"><header><span>Table of Contents</span><span class="close"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAtklEQVQ4jaWT0Q3DIAxEz52AEbyB2cDZhBEY3SNcPyqqBEwqpZaQAHNP5jBCEiJCPAiSIgAeiUe8zoveO9x9e9jd0XtfKwHA1hpHtNY49rO8u59zn4mqMiJSyFkcEVTVFQCAtdYFMotrrXN111JnyA/xCsggN2JeXmGEmaGU8l2XUmBm29fZuh0RW2PTK2SGZcamADPb3nmGmNkKOI7j1rAzJG2kcWhqkstQ1QX+/2ciKU/FJOUN6JFZYWpmK3sAAAAASUVORK5CYII=" alt="X"></span><p class="ptoc-search"><input class="ptoc-search" placeholder="Search" style="width: 80%"></p></header><div db-persistent-toc="persistent-toc.html" db-prefix="">Loading…</div></script></nav>
+   </body>
+</html>

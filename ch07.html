@@ -1,127 +1,424 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" class="no-js"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script><title>Chapter 7. Change log</title><link href="/css/pygments.css" rel="stylesheet"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link href="https://purl.org/dc/elements/1.1/" rel="schema.dc"/><meta name="dc.modified" content="2025-07-17T09:01:10Z"/><meta name="generator" content="DocBook xslTNG version 2.1.9 / 4a661f6 / SAXON HE 11.5"/><link href="/css/docbook-toc.css" rel="stylesheet"/><link href="/css/docbook.css" rel="stylesheet" media="screen"/><link xmlns="" rel="icon" href="/img/xr.png"/><link xmlns="" rel="stylesheet" href="css/resolver.css"/><link rel="prev" href="ch06.html"/><link rel="next" href="ch08.html"/><link rel="up" href="index.html"/><link rel="home" href="index.html"/><script src="/js/persistent-toc.js" defer="defer"></script><script src="/js/chunk-nav.js" defer="defer"></script></head><body class="chapter component"><nav class="top"><div><a href="index.html">Home</a> <a href="index.html">Up</a> <a href="ch08.html">Next</a> <a href="ch06.html">Prev</a></div></nav><main><section id="changelog" db-chunk="ch07.html" db-id="d97e4702" class="chapter component"><header><h2>Chapter <span class="label">7</span><span class="sep">. </span>Change log</h2></header><p>This chapter documents the significant changes in each release.</p><p>At the time of this writing, the 6.x release is still in testing.</p><div class="revhistory"><header><div class="title">Revision History</div></header><ul><li class="revision"><div class="revnumber"><span class="revnumber">6.0.19</span>, <span class="date" time="2025-07-17">17 Jul 2025</span></div><div class="description"><div class="revdescription">
-<p>The 6.0.19 release is a maintance patch on the 6.x branch. It fixes
-<a href="https://github.com/xmlresolver/xmlresolver/issues/253" class="link">issue #253</a>;
-RDDL parsing always uses the resolved resource, not the original URI.
-RDDL parsing is also disabled now, by default. If you’re using RDDL, make sure you
-enable it in your configuration.
-</p>
-<p>The caching feature is not present in version 6.x of the resolver, but
-there were several dangling references to it. Those have also been removed.
-</p>
-</div></div></li><li class="revision"><div class="revnumber"><span class="revnumber">6.0.18</span>, <span class="date" time="2025-06-30">30 Jun 2025</span></div><div class="description"><div class="revdescription">
-<p>The 6.0.18 release is a maintance patch on the 6.x branch. It fixes
-<a href="https://github.com/xmlresolver/xmlresolver/issues/250" class="link">issue #250</a>;
-Xerces is no longer an implementation dependency.
-</p>
-</div></div></li><li class="revision"><div class="revnumber"><span class="revnumber">6.0.17</span>, <span class="date" time="2025-05-19">19 May 2025</span></div><div class="description"><div class="revdescription">
-<p>The 6.0.17 release is a maintance patch on the 6.x branch. It fixes
-<a href="https://github.com/xmlresolver/xmlresolver/issues/248" class="link">issue #248</a>.
-</p>
-</div></div></li><li class="revision"><div class="revnumber"><span class="revnumber">6.0.16</span>, <span class="date" time="2025-05-17">17 May 2025</span></div><div class="description"><div class="revdescription">
-<p>This is an interface change. It adds a <code>copy()</code> method to the
-<code class="interfacename">ResolverConfiguration</code><span class="indexterm" id="changelog_revhistory1_revision4_revdescription1_para1_indexterm1"></span><span class="indexterm" id="changelog_revhistory1_revision4_revdescription1_para1_indexterm2"></span> interface and removes the
-then redundant copy constructor for
-<code class="classname">XMLResolverConfiguration</code><span class="indexterm" id="changelog_revhistory1_revision4_revdescription1_para1_indexterm3"></span><span class="indexterm" id="changelog_revhistory1_revision4_revdescription1_para1_indexterm4"></span>. There are also a few JavaDoc fixes.
-</p>
-</div></div></li><li class="revision"><div class="revnumber"><span class="revnumber">6.0.15</span>, <span class="date" time="2025-05-13">13 May 2025</span></div><div class="description"><div class="revdescription">
-<p>Fixed <a href="https://github.com/xmlresolver/xmlresolver/issues/242" class="link">#242</a>.
-Rewrite entries are now concatenated with, not resolved against, the rewrite prefix.
-</p>
-</div></div></li><li class="revision"><div class="revnumber"><span class="revnumber">5.3.3</span>, <span class="date" time="2025-05-13">13 May 2025</span></div><div class="description"><div class="revdescription">
-<p>The 5.3.3 release is a maintance patch on the 5.x branch. It fixes
-<a href="https://github.com/xmlresolver/xmlresolver/issues/242" class="link">issue #242</a>.
-Rewrite entries are now concatenated with, not resolved against, the rewrite prefix.
-</p>
-</div></div></li><li class="revision"><div class="revnumber"><span class="revnumber">5.3.2</span>, <span class="date" time="2025-05-06">06 May 2025</span></div><div class="description"><div class="revdescription">
-<p>The 5.3.2 release is a maintance patch on the 5.x branch. It fixes
-a bug where catalog file names that include drive letters on Windows were
-not handled correctly. This bug does not effect 6.0.14.
-</p>
-</div></div></li><li class="revision"><div class="revnumber"><span class="revnumber">5.3.1</span>, <span class="date" time="2025-04-24">24 Apr 2025</span></div><div class="description"><div class="revdescription">
-<p>The 5.3.1 release is a maintance patch on the 5.x branch. It borrows
-some code from the 6.x branch to remove the dependencies on the Apache HttpComponents
-libraries and a compile time dependency on Xerces.</p>
-</div></div></li><li class="revision"><div class="revnumber"><span class="revnumber">6.0.14</span>, <span class="date" time="2025-03-13">13 Mar 2025</span></div><div class="description"><div class="revdescription">
-<ul class="itemizedlist"><li><p>Fixed <a href="https://github.com/xmlresolver/xmlresolver/issues/229" class="link">#229</a>.
-The interaction between the “always resolve” feature and namespace URI lookup
-had the unfortunate consequence of returning the (almost always incorrect)
-document at the namespace URI as the resource. I’ve adjusted the API so that
-this is no longer the case. It’s now possible to configure “always resolve” on
-a per-request basis. This changes an interface so it’s not binary backwards
-compatible with previous 6.x releases.</p></li><li><p>Fixed <a href="https://github.com/xmlresolver/xmlresolver/issues/230" class="link">#230</a>.
-When “always resolve” returned a resource, that URI wasn’t being logged which
-lead to a confusing log trace.</p></li></ul>
-</div></div></li><li class="revision"><div class="revnumber"><span class="revnumber">6.0.13</span>, <span class="date" time="2025-03-10">10 Mar 2025</span></div><div class="description"><div class="revdescription">
-<p>Changed the API so that an attempt to read a scheme that’s forbidden
-(by <code>ResolverFeature.ACCESS_EXTERNAL_ENTITY</code> or
-<code>ResolverFeature.ACCESS_EXTERNAL_DOCUMENT</code>) raises an
-<code class="exceptionname">IllegalArgumentException</code> instead of returning
-<code>null</code>.</p>
-<p>Generally, the XML Resolver tries to avoid throwing exceptions, but in this
-case failing to do so opens a security vulnerability. Returning <code>null</code> often
-signals the underlying parser to simply load the resource with the original URI. This 
-circumvents the attempt to limit access.</p>
-</div></div></li><li class="revision"><div class="revnumber"><span class="revnumber">5.3.0</span>, <span class="date" time="2025-03-10">10 Mar 2025</span></div><div class="description"><div class="revdescription">
-<p>The 5.3.0 release is a maintance patch on the 5.x branch to provide
-the security fix for foribidden URIs there as well.</p>
-</div></div></li><li class="revision"><div class="revnumber"><span class="revnumber">6.0.12</span>, <span class="date" time="2025-01-24">24 Jan 2025</span></div><div class="description"><div class="revdescription">
-<ul class="itemizedlist"><li><p>Reworked the API to use interfaces for <code class="interfacename">ResourceRequest</code><span class="indexterm" id="changelog_revhistory1_revision12_revdescription1_itemizedlist1_listitem1_para1_indexterm1"></span><span class="indexterm" id="changelog_revhistory1_revision12_revdescription1_itemizedlist1_listitem1_para1_indexterm2"></span> and
-<code class="interfacename">ResourceResponse</code><span class="indexterm" id="changelog_revhistory1_revision12_revdescription1_itemizedlist1_listitem1_para1_indexterm3"></span><span class="indexterm" id="changelog_revhistory1_revision12_revdescription1_itemizedlist1_listitem1_para1_indexterm4"></span>. This makes writing a schema handler easier. This is a
-backwards incompatible change if you were directly accessing those objects.
-You have to access the <code class="classname">ResourceRequestImpl</code><span class="indexterm" id="changelog_revhistory1_revision12_revdescription1_itemizedlist1_listitem1_para1_indexterm5"></span><span class="indexterm" id="changelog_revhistory1_revision12_revdescription1_itemizedlist1_listitem1_para1_indexterm6"></span> and
-<code class="classname">ResourceResponseImpl</code><span class="indexterm" id="changelog_revhistory1_revision12_revdescription1_itemizedlist1_listitem1_para1_indexterm7"></span><span class="indexterm" id="changelog_revhistory1_revision12_revdescription1_itemizedlist1_listitem1_para1_indexterm8"></span>
-instead. On the plus side, the setters are now public on those methods.
-</p></li><li><p>Added code that attempts to detect a Windows path (C:\path) passed as a
-catalog or property file name and avoid accidentally constructing a URI with
-the scheme “C”.
-</p></li></ul>
-</div></div></li><li class="revision"><div class="revnumber"><span class="revnumber">6.0.11</span>, <span class="date" time="2024-10-28">28 Oct 2024</span></div><div class="description"><div class="revdescription">
-<p>This version introduces a new API for registering a scheme resolver. This will
-allow a resolver to be configured, for example, to handle custom URI schemes as
-are sometimes found in products.</p>
-</div></div></li><li class="revision"><div class="revnumber"><span class="revnumber">6.0.10</span>, <span class="date" time="2024-09-22">22 Sep 2024</span></div><div class="description"><div class="revdescription">
-<p>Fixed a bug where the resolver didn’t set the system identifier of the source.
-This closes <a href="https://github.com/xmlresolver/xmlresolver/issues/211" class="link">issue 211</a>.
-</p>
-</div></div></li><li class="revision"><div class="revnumber"><span class="revnumber">6.0.9</span>, <span class="date" time="2024-08-19">19 Aug 2024</span></div><div class="description"><div class="revdescription">
-<p>Fixed a bug where the stream opened to read resolver properties might be
-unclosed. 
-This closes <a href="https://github.com/xmlresolver/xmlresolver/issues/208" class="link">issue 208</a>.
-</p>
-</div></div></li><li class="revision"><div class="revnumber"><span class="revnumber">6.0.8</span>, <span class="date" time="2024-08-07">07 Aug 2024</span></div><div class="description"><div class="revdescription">
-<p>This release restores the <code>NamespaceResolver</code> API. This API is
-deprecated, but improves backwards compatibility with version 5.x.
-</p>
-</div></div></li><li class="revision"><div class="revnumber"><span class="revnumber">6.0.7</span>, <span class="date" time="2024-08-07">07 Aug 2024</span></div><div class="description"><div class="revdescription">
-<p>This release removes two dependencies: the SLF4J API and the
-Apache HTTP Client API. This has no user-visible changes in the API, but makes
-version 6.x of the resolver a drop-in replacement for version 5.x in most cases.</p>
-</div></div></li><li class="revision"><div class="revnumber"><span class="revnumber">6.0.6</span>, <span class="date" time="2024-08-06">06 Aug 2024</span></div><div class="description"><div class="revdescription">
-<p>The following changes are included:</p>
-<dl class="long-terms variablelist"><div class="varlistentry"><dt><span class="term">Improvements to support for UNC paths</span></dt><dd><p>Documents and catalogs that use Windows UNC paths are better supported
-if the <a href="ch06.html#xml.catalog.fixWindowsSystemIdentifiers" class="link">FIX_WINDOWS_SYSTEM_IDENTIFIERS</a>
-feature is enabled.</p></dd></div><div class="varlistentry"><dt><span class="term">Support for Java 21</span></dt><dd><p>The build still produces class (and jar) files that will work with any
-version of Java back to Java 8. However, the build itself now uses Java 21.
-This closes <a href="https://github.com/xmlresolver/xmlresolver/issues/173" class="link">issue 173</a>.
-</p></dd></div><div class="varlistentry"><dt><span class="term">Refactor the SAX entity resolvers</span></dt><dd><p>The SAX <code>EntityResolver</code> and <code>EntityResolver2</code> interfaces
-are now implemented on separate objects. 
-This closes <a href="https://github.com/xmlresolver/xmlresolver/issues/183" class="link">issue 183</a>.
-</p></dd></div><div class="varlistentry"><dt><span class="term">Fix namespace-based lookup in the DOM</span></dt><dd><p>The <code>LSResourceAdapter</code> API used when resolving documents
-for the DOM did not correctly handle XML Schema validation. It was failing
-to lookup based on the namespace.
-This closes <a href="https://github.com/xmlresolver/xmlresolver/issues/180" class="link">issue 180</a>.
-</p></dd></div><div class="varlistentry"><dt><span class="term">Improved support for concurrency</span></dt><dd><p>The catalog lookup code was not sufficiently careful about multi-threaded
-access. My thanks to <a href="https://github.com/JFK-DXML" class="link">JFK-DXML</a> for
-the patch.
-This closes <a href="https://github.com/xmlresolver/xmlresolver/issues/182" class="link">issue 182</a>.
-</p></dd></div><div class="varlistentry"><dt><span class="term">Reworked the FIX_WINDOWS_SYSTEM_IDENTIFIERS feature</span></dt><dd><p>This feature now applies irrespective of platform. This will enable Windows
-documents and catalogs to work correctly even on non-Windows systems.
-This closes <a href="https://github.com/xmlresolver/xmlresolver/issues/184" class="link">issue 184</a>.
-</p></dd></div></dl>
-
-<p>A number of smaller issues (testing and build system issues and issues not
-expected to be user visible) have also been corrected. See the commit log for more details.
-</p>
-</div></div></li><li class="revision"><div class="revnumber"><span class="revnumber">6.0.5</span>, <span class="date" time="2024-07-22">22 Jul 2024</span></div><div class="description"><div class="revdescription">
-<p>Apparently version 6.0.5 was never released.</p>
-</div></div></li></ul></div></section></main><nav class="bottom"><table><tr><td class="previous"><a href="ch06.html">Prev</a></td><td class="up"><a href="index.html">Up</a></td><td class="next"><a href="ch08.html">Next</a></td></tr><tr><td class="previous">Chapter <span class="label">6</span><span class="sep">. </span>What you can configure</td><td class="up"><a href="index.html">Home</a></td><td class="next">Chapter <span class="label">8</span><span class="sep">. </span>See also</td></tr></table><nav class="tocopen"></nav><nav class="toc"></nav><!-- Hide ToC details from user agents that don’t support JS --><script type="text/html" class="tocopen"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABYlAAAWJQFJUiTwAAABDklEQVQ4je2UUW3EMAyGv0wDUAhlkDBIyuAYXCEclEJoGZRBUgYOgzJoGHgPW6o7rWq35+2TIkWW9duW7N+oKuM46jiOGGMAaNsW5xzee5xzn8EvRESXZUFEWNcVAFWl73v6vjcGUIAYIyEEANZ1RUSY55lSCo/HA4BhGGiahtvthnOOtm0BSCnRdd1eVAGNMeoR27aptVattbpt22FOjFGrzjsX1I7q/4q3y4xf8i/4FwT3Pcw5Y4zBWvujfQMopZBzJuf8XbCeVyWEgHOO+/2+x0SEaZpIKSEih0X2Wz6jdlxKuezaqL7qpZS0lLKbw/M4ANba3RyapiGE8OJGqOrpizGq916999VATvM/AGFn1sxsVjL5AAAAAElFTkSuQmCC" alt="[toc]"/></script><script type="text/html" class="toc"><header><span>Table of Contents</span><span class="close"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAtklEQVQ4jaWT0Q3DIAxEz52AEbyB2cDZhBEY3SNcPyqqBEwqpZaQAHNP5jBCEiJCPAiSIgAeiUe8zoveO9x9e9jd0XtfKwHA1hpHtNY49rO8u59zn4mqMiJSyFkcEVTVFQCAtdYFMotrrXN111JnyA/xCsggN2JeXmGEmaGU8l2XUmBm29fZuh0RW2PTK2SGZcamADPb3nmGmNkKOI7j1rAzJG2kcWhqkstQ1QX+/2ciKU/FJOUN6JFZYWpmK3sAAAAASUVORK5CYII=" alt="X"/></span><p class="ptoc-search"><input class="ptoc-search" placeholder="Search" style="width: 80%"/></p></header><div db-persistent-toc="persistent-toc.html" db-prefix="">Loading…</div></script></nav></body></html>
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" class="no-js">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script><title>Chapter&nbsp;7.&nbsp;Change log</title>
+      <link href="/css/pygments.css" rel="stylesheet">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="https://purl.org/dc/elements/1.1/" rel="schema.dc">
+      <meta name="dc.modified" content="2025-12-31T17:36:54Z">
+      <meta name="generator" content="DocBook xslTNG version 2.7.1 / SNAPSHOT / SAXON HE 12.9">
+      <link href="/css/docbook-toc.css" rel="stylesheet">
+      <link href="/css/docbook.css" rel="stylesheet" media="screen">
+      <link href="/img/xr.png" rel="icon">
+      <link href="/css/resolver.css" rel="stylesheet"><script src="/js/boxes.js" defer></script><link rel="prev" href="ResolverFeature/XMLREADER_SUPPLIER.html">
+      <link rel="next" href="ch08.html">
+      <link rel="up" href="index.html">
+      <link rel="home" href="index.html"><script src="/js/persistent-toc.js" defer></script><script src="/js/chunk-nav.js" defer></script></head>
+   <body class="chapter component">
+      <nav class="top">
+         <div><a href="index.html">Home</a> <a href="index.html">Up</a> <a href="ch08.html">Next</a> <a href="ResolverFeature/XMLREADER_SUPPLIER.html">Prev</a><span class="boxes"></span></div>
+      </nav>
+      <main>
+         <section id="changelog" db-chunk="ch07.html" db-id="d402e5958" class="chapter component">
+            <header>
+               <h2>Chapter&nbsp;<span class="label">7</span><span class="sep">.&nbsp;</span>Change log</h2>
+            </header>
+            <p>This chapter documents the significant changes in each release.</p>
+            <p>At the time of this writing, the 6.x release is still in testing.</p>
+            <div class="revhistory">
+               <header>
+                  <div class="title">Revision History</div>
+               </header>
+               <ul>
+                  <li class="revision">
+                     <div class="revnumber"><span class="revnumber">6.0.20</span>, <span class="date" time="2025-12-31">31&nbsp;Dec&nbsp;2025</span></div>
+                     <div class="description">
+                        <div class="revdescription">
+                           
+                           <p>The 6.0.20 release is a maintance patch on the 6.x branch.</p>
+                           
+                           <div class="proptable java">
+                              <div class="listnav"><span class="logo"><img src="img/java.png" alt="Java logo"></span><h3>Configuration on Java</h3>
+                              </div>
+                              <ul class="itemizedlist java">
+                                 <li>
+                                    <p>Added checks to avoid an NPE when trying to set the system identifier to the resolved
+                                       URI.
+                                       </p>
+                                 </li>
+                                 <li>
+                                    <p>Substantially rewrote and simplified the resolver logger. All of
+                                       the complexity associated with categories has been removed. Most
+                                       messages previously associated with a category are simply debug level
+                                       messages.</p>
+                                 </li>
+                                 <li>
+                                    <p>As a consequence of the logger refactoring, the <code>DEFAULT_LOGGER_LOG_LEVEL</code>
+                                       is now the
+                                       <code><a href="ResolverFeature/LOGGER_LOG_LEVEL.html">LOGGER_LOG_LEVEL</a></code>.</p>
+                                 </li>
+                                 <li>
+                                    <p>Cleaned up the error handling in the catalog loader to avoid spurious error messages
+                                       about attempting to parse ZIP files (when ultimately retrieving a catalog from the
+                                       ZIP file).</p>
+                                 </li>
+                              </ul>
+                           </div>
+                           
+                           <div class="proptable net">
+                              <div class="listnav"><span class="logo"><img src="img/dotNET.png" alt=".NET logo"></span><h3>Configuration on .NET</h3>
+                              </div>
+                              <ul class="itemizedlist net">
+                                 <li>
+                                    <p>There’s been a very substantial refactoring since the last .NET release.
+                                       </p>
+                                 </li>
+                                 <li>
+                                    <p>This version is in better alignment with the Java version and has improved C# APIs.
+                                       </p>
+                                 </li>
+                              </ul>
+                           </div>
+                           
+                           <p>With luck, this will be the last set of test releases before the production release.</p>
+                           </div>
+                     </div>
+                  </li>
+                  <li class="revision">
+                     <div class="revnumber"><span class="revnumber">6.0.19</span>, <span class="date" time="2025-07-17">17&nbsp;Jul&nbsp;2025</span></div>
+                     <div class="description">
+                        <div class="revdescription">
+                           
+                           <p>The 6.0.19 release is a maintance patch on the 6.x branch. It fixes
+                              <a href="https://github.com/xmlresolver/xmlresolver/issues/253" class="link">issue #253</a>;
+                              RDDL parsing always uses the resolved resource, not the original URI.
+                              RDDL parsing is also disabled now, by default. If you’re using RDDL, make sure you
+                              enable it in your configuration.
+                              </p>
+                           
+                           <p>The caching feature is not present in version 6.x of the resolver, but
+                              there were several dangling references to it. Those have also been removed.
+                              </p>
+                           </div>
+                     </div>
+                  </li>
+                  <li class="revision">
+                     <div class="revnumber"><span class="revnumber">6.0.18</span>, <span class="date" time="2025-06-30">30&nbsp;Jun&nbsp;2025</span></div>
+                     <div class="description">
+                        <div class="revdescription">
+                           
+                           <p>The 6.0.18 release is a maintance patch on the 6.x branch. It fixes
+                              <a href="https://github.com/xmlresolver/xmlresolver/issues/250" class="link">issue #250</a>;
+                              Xerces is no longer an implementation dependency.
+                              </p>
+                           </div>
+                     </div>
+                  </li>
+                  <li class="revision">
+                     <div class="revnumber"><span class="revnumber">6.0.17</span>, <span class="date" time="2025-05-19">19&nbsp;May&nbsp;2025</span></div>
+                     <div class="description">
+                        <div class="revdescription">
+                           
+                           <p>The 6.0.17 release is a maintance patch on the 6.x branch. It fixes
+                              <a href="https://github.com/xmlresolver/xmlresolver/issues/248" class="link">issue #248</a>.
+                              </p>
+                           </div>
+                     </div>
+                  </li>
+                  <li class="revision">
+                     <div class="revnumber"><span class="revnumber">6.0.16</span>, <span class="date" time="2025-05-17">17&nbsp;May&nbsp;2025</span></div>
+                     <div class="description">
+                        <div class="revdescription">
+                           
+                           <p>This is an interface change. It adds a <code>copy()</code> method to the
+                              <code class="interfacename">ResolverConfiguration</code> interface and removes the
+                              then redundant copy constructor for
+                              <code class="classname">XMLResolverConfiguration</code>. There are also a few JavaDoc fixes.
+                              </p>
+                           </div>
+                     </div>
+                  </li>
+                  <li class="revision">
+                     <div class="revnumber"><span class="revnumber">6.0.15</span>, <span class="date" time="2025-05-13">13&nbsp;May&nbsp;2025</span></div>
+                     <div class="description">
+                        <div class="revdescription">
+                           
+                           <p>Fixed <a href="https://github.com/xmlresolver/xmlresolver/issues/242" class="link">#242</a>.
+                              Rewrite entries are now concatenated with, not resolved against, the rewrite prefix.
+                              </p>
+                           </div>
+                     </div>
+                  </li>
+                  <li class="revision">
+                     <div class="revnumber"><span class="revnumber">5.3.3</span>, <span class="date" time="2025-05-13">13&nbsp;May&nbsp;2025</span></div>
+                     <div class="description">
+                        <div class="revdescription">
+                           
+                           <p>The 5.3.3 release is a maintance patch on the 5.x branch. It fixes
+                              <a href="https://github.com/xmlresolver/xmlresolver/issues/242" class="link">issue #242</a>.
+                              Rewrite entries are now concatenated with, not resolved against, the rewrite prefix.
+                              </p>
+                           </div>
+                     </div>
+                  </li>
+                  <li class="revision">
+                     <div class="revnumber"><span class="revnumber">5.3.2</span>, <span class="date" time="2025-05-06">06&nbsp;May&nbsp;2025</span></div>
+                     <div class="description">
+                        <div class="revdescription">
+                           
+                           <p>The 5.3.2 release is a maintance patch on the 5.x branch. It fixes
+                              a bug where catalog file names that include drive letters on Windows were
+                              not handled correctly. This bug does not effect 6.0.14.
+                              </p>
+                           </div>
+                     </div>
+                  </li>
+                  <li class="revision">
+                     <div class="revnumber"><span class="revnumber">5.3.1</span>, <span class="date" time="2025-04-24">24&nbsp;Apr&nbsp;2025</span></div>
+                     <div class="description">
+                        <div class="revdescription">
+                           
+                           <p>The 5.3.1 release is a maintance patch on the 5.x branch. It borrows
+                              some code from the 6.x branch to remove the dependencies on the Apache HttpComponents
+                              libraries and a compile time dependency on Xerces.</p>
+                           </div>
+                     </div>
+                  </li>
+                  <li class="revision">
+                     <div class="revnumber"><span class="revnumber">6.0.14</span>, <span class="date" time="2025-03-13">13&nbsp;Mar&nbsp;2025</span></div>
+                     <div class="description">
+                        <div class="revdescription">
+                           
+                           <ul class="itemizedlist">
+                              <li>
+                                 <p>Fixed <a href="https://github.com/xmlresolver/xmlresolver/issues/229" class="link">#229</a>.
+                                    The interaction between the “always resolve” feature and namespace URI lookup
+                                    had the unfortunate consequence of returning the (almost always incorrect)
+                                    document at the namespace URI as the resource. I’ve adjusted the API so that
+                                    this is no longer the case. It’s now possible to configure “always resolve” on
+                                    a per-request basis. This changes an interface so it’s not binary backwards
+                                    compatible with previous 6.x releases.</p>
+                              </li>
+                              <li>
+                                 <p>Fixed <a href="https://github.com/xmlresolver/xmlresolver/issues/230" class="link">#230</a>.
+                                    When “always resolve” returned a resource, that URI wasn’t being logged which
+                                    lead to a confusing log trace.</p>
+                              </li>
+                           </ul>
+                           </div>
+                     </div>
+                  </li>
+                  <li class="revision">
+                     <div class="revnumber"><span class="revnumber">6.0.13</span>, <span class="date" time="2025-03-10">10&nbsp;Mar&nbsp;2025</span></div>
+                     <div class="description">
+                        <div class="revdescription">
+                           
+                           <p>Changed the API so that an attempt to read a scheme that’s forbidden
+                              (by <code>ResolverFeature.ACCESS_EXTERNAL_ENTITY</code> or
+                              <code>ResolverFeature.ACCESS_EXTERNAL_DOCUMENT</code>) raises an
+                              <code class="exceptionname">IllegalArgumentException</code> instead of returning
+                              <code>null</code>.</p>
+                           
+                           <p>Generally, the XML Resolver tries to avoid throwing exceptions, but in this
+                              case failing to do so opens a security vulnerability. Returning <code>null</code> often
+                              signals the underlying parser to simply load the resource with the original URI. This
+                              
+                              circumvents the attempt to limit access.</p>
+                           </div>
+                     </div>
+                  </li>
+                  <li class="revision">
+                     <div class="revnumber"><span class="revnumber">5.3.0</span>, <span class="date" time="2025-03-10">10&nbsp;Mar&nbsp;2025</span></div>
+                     <div class="description">
+                        <div class="revdescription">
+                           
+                           <p>The 5.3.0 release is a maintance patch on the 5.x branch to provide
+                              the security fix for foribidden URIs there as well.</p>
+                           </div>
+                     </div>
+                  </li>
+                  <li class="revision">
+                     <div class="revnumber"><span class="revnumber">6.0.12</span>, <span class="date" time="2025-01-24">24&nbsp;Jan&nbsp;2025</span></div>
+                     <div class="description">
+                        <div class="revdescription">
+                           
+                           <ul class="itemizedlist">
+                              <li>
+                                 <p>Reworked the API to use interfaces for <code class="interfacename">ResourceRequest</code> and
+                                    <code class="interfacename">ResourceResponse</code>. This makes writing a schema handler easier. This is a
+                                    backwards incompatible change if you were directly accessing those objects.
+                                    You have to access the <code class="classname">ResourceRequestImpl</code> and
+                                    <code class="classname">ResourceResponseImpl</code>
+                                    instead. On the plus side, the setters are now public on those methods.
+                                    </p>
+                              </li>
+                              <li>
+                                 <p>Added code that attempts to detect a Windows path (C:\path) passed as a
+                                    catalog or property file name and avoid accidentally constructing a URI with
+                                    the scheme “C”.
+                                    </p>
+                              </li>
+                           </ul>
+                           </div>
+                     </div>
+                  </li>
+                  <li class="revision">
+                     <div class="revnumber"><span class="revnumber">6.0.11</span>, <span class="date" time="2024-10-28">28&nbsp;Oct&nbsp;2024</span></div>
+                     <div class="description">
+                        <div class="revdescription">
+                           
+                           <p>This version introduces a new API for registering a scheme resolver. This will
+                              allow a resolver to be configured, for example, to handle custom URI schemes as
+                              are sometimes found in products.</p>
+                           </div>
+                     </div>
+                  </li>
+                  <li class="revision">
+                     <div class="revnumber"><span class="revnumber">6.0.10</span>, <span class="date" time="2024-09-22">22&nbsp;Sep&nbsp;2024</span></div>
+                     <div class="description">
+                        <div class="revdescription">
+                           
+                           <p>Fixed a bug where the resolver didn’t set the system identifier of the source.
+                              This closes <a href="https://github.com/xmlresolver/xmlresolver/issues/211" class="link">issue 211</a>.
+                              </p>
+                           </div>
+                     </div>
+                  </li>
+                  <li class="revision">
+                     <div class="revnumber"><span class="revnumber">6.0.9</span>, <span class="date" time="2024-08-19">19&nbsp;Aug&nbsp;2024</span></div>
+                     <div class="description">
+                        <div class="revdescription">
+                           
+                           <p>Fixed a bug where the stream opened to read resolver properties might be
+                              unclosed. 
+                              This closes <a href="https://github.com/xmlresolver/xmlresolver/issues/208" class="link">issue 208</a>.
+                              </p>
+                           </div>
+                     </div>
+                  </li>
+                  <li class="revision">
+                     <div class="revnumber"><span class="revnumber">6.0.8</span>, <span class="date" time="2024-08-07">07&nbsp;Aug&nbsp;2024</span></div>
+                     <div class="description">
+                        <div class="revdescription">
+                           
+                           <p>This release restores the <code>NamespaceResolver</code> API. This API is
+                              deprecated, but improves backwards compatibility with version 5.x.
+                              </p>
+                           </div>
+                     </div>
+                  </li>
+                  <li class="revision">
+                     <div class="revnumber"><span class="revnumber">6.0.7</span>, <span class="date" time="2024-08-07">07&nbsp;Aug&nbsp;2024</span></div>
+                     <div class="description">
+                        <div class="revdescription">
+                           
+                           <p>This release removes two dependencies: the SLF4J API and the
+                              Apache HTTP Client API. This has no user-visible changes in the API, but makes
+                              version 6.x of the resolver a drop-in replacement for version 5.x in most cases.</p>
+                           </div>
+                     </div>
+                  </li>
+                  <li class="revision">
+                     <div class="revnumber"><span class="revnumber">6.0.6</span>, <span class="date" time="2024-08-06">06&nbsp;Aug&nbsp;2024</span></div>
+                     <div class="description">
+                        <div class="revdescription">
+                           
+                           <p>The following changes are included:</p>
+                           
+                           <dl class="long-terms variablelist">
+                              <div class="varlistentry">
+                                 <dt><span class="term">Improvements to support for UNC paths</span></dt>
+                                 <dd>
+                                    <p>Documents and catalogs that use Windows UNC paths are better supported
+                                       if the <a href="ResolverFeature/FIX_WINDOWS_SYSTEM_IDENTIFIERS.html" class="link">FIX_WINDOWS_SYSTEM_IDENTIFIERS</a>
+                                       feature is enabled.</p>
+                                 </dd>
+                              </div>
+                              <div class="varlistentry">
+                                 <dt><span class="term">Support for Java 21</span></dt>
+                                 <dd>
+                                    <p>The build still produces class (and jar) files that will work with any
+                                       version of Java back to Java 8. However, the build itself now uses Java 21.
+                                       This closes <a href="https://github.com/xmlresolver/xmlresolver/issues/173" class="link">issue 173</a>.
+                                       </p>
+                                 </dd>
+                              </div>
+                              <div class="varlistentry">
+                                 <dt><span class="term">Refactor the SAX entity resolvers</span></dt>
+                                 <dd>
+                                    <p>The SAX <code>EntityResolver</code> and <code>EntityResolver2</code> interfaces
+                                       are now implemented on separate objects. 
+                                       This closes <a href="https://github.com/xmlresolver/xmlresolver/issues/183" class="link">issue 183</a>.
+                                       </p>
+                                 </dd>
+                              </div>
+                              <div class="varlistentry">
+                                 <dt><span class="term">Fix namespace-based lookup in the DOM</span></dt>
+                                 <dd>
+                                    <p>The <code>LSResourceAdapter</code> API used when resolving documents
+                                       for the DOM did not correctly handle XML Schema validation. It was failing
+                                       to lookup based on the namespace.
+                                       This closes <a href="https://github.com/xmlresolver/xmlresolver/issues/180" class="link">issue 180</a>.
+                                       </p>
+                                 </dd>
+                              </div>
+                              <div class="varlistentry">
+                                 <dt><span class="term">Improved support for concurrency</span></dt>
+                                 <dd>
+                                    <p>The catalog lookup code was not sufficiently careful about multi-threaded
+                                       access. My thanks to <a href="https://github.com/JFK-DXML" class="link">JFK-DXML</a> for
+                                       the patch.
+                                       This closes <a href="https://github.com/xmlresolver/xmlresolver/issues/182" class="link">issue 182</a>.
+                                       </p>
+                                 </dd>
+                              </div>
+                              <div class="varlistentry">
+                                 <dt><span class="term">Reworked the FIX_WINDOWS_SYSTEM_IDENTIFIERS feature</span></dt>
+                                 <dd>
+                                    <p>This feature now applies irrespective of platform. This will enable Windows
+                                       documents and catalogs to work correctly even on non-Windows systems.
+                                       This closes <a href="https://github.com/xmlresolver/xmlresolver/issues/184" class="link">issue 184</a>.
+                                       </p>
+                                 </dd>
+                              </div>
+                           </dl>
+                           
+                           
+                           <p>A number of smaller issues (testing and build system issues and issues not
+                              expected to be user visible) have also been corrected. See the commit log for more
+                              details.
+                              </p>
+                           </div>
+                     </div>
+                  </li>
+                  <li class="revision">
+                     <div class="revnumber"><span class="revnumber">6.0.5</span>, <span class="date" time="2024-07-22">22&nbsp;Jul&nbsp;2024</span></div>
+                     <div class="description">
+                        <div class="revdescription">
+                           
+                           <p>Apparently version 6.0.5 was never released.</p>
+                           </div>
+                     </div>
+                  </li>
+               </ul>
+            </div>
+         </section>
+      </main>
+      <nav class="bottom">
+         <table>
+            <tr>
+               <td class="previous"><a href="ResolverFeature/XMLREADER_SUPPLIER.html">Prev</a></td>
+               <td class="up"><a href="index.html">Up</a></td>
+               <td class="next"><a href="ch08.html">Next</a></td>
+            </tr>
+            <tr>
+               <td class="previous"><span class="label">26</span><span class="sep">.&nbsp;</span>Configure the XML Reader</td>
+               <td class="up"><a href="index.html">Home</a></td>
+               <td class="next">Chapter&nbsp;<span class="label">8</span><span class="sep">.&nbsp;</span>See also</td>
+            </tr>
+         </table>
+         <nav class="tocopen"></nav>
+         <nav class="toc"></nav>
+         <!-- Hide ToC details from user agents that don’t support JS --><script type="text/html" class="tocopen"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABYlAAAWJQFJUiTwAAABDklEQVQ4je2UUW3EMAyGv0wDUAhlkDBIyuAYXCEclEJoGZRBUgYOgzJoGHgPW6o7rWq35+2TIkWW9duW7N+oKuM46jiOGGMAaNsW5xzee5xzn8EvRESXZUFEWNcVAFWl73v6vjcGUIAYIyEEANZ1RUSY55lSCo/HA4BhGGiahtvthnOOtm0BSCnRdd1eVAGNMeoR27aptVattbpt22FOjFGrzjsX1I7q/4q3y4xf8i/4FwT3Pcw5Y4zBWvujfQMopZBzJuf8XbCeVyWEgHOO+/2+x0SEaZpIKSEih0X2Wz6jdlxKuezaqL7qpZS0lLKbw/M4ANba3RyapiGE8OJGqOrpizGq916999VATvM/AGFn1sxsVjL5AAAAAElFTkSuQmCC" alt="[toc]"></script><script type="text/html" class="toc"><header><span>Table of Contents</span><span class="close"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAtklEQVQ4jaWT0Q3DIAxEz52AEbyB2cDZhBEY3SNcPyqqBEwqpZaQAHNP5jBCEiJCPAiSIgAeiUe8zoveO9x9e9jd0XtfKwHA1hpHtNY49rO8u59zn4mqMiJSyFkcEVTVFQCAtdYFMotrrXN111JnyA/xCsggN2JeXmGEmaGU8l2XUmBm29fZuh0RW2PTK2SGZcamADPb3nmGmNkKOI7j1rAzJG2kcWhqkstQ1QX+/2ciKU/FJOUN6JFZYWpmK3sAAAAASUVORK5CYII=" alt="X"></span><p class="ptoc-search"><input class="ptoc-search" placeholder="Search" style="width: 80%"></p></header><div db-persistent-toc="persistent-toc.html" db-prefix="">Loading…</div></script></nav>
+   </body>
+</html>

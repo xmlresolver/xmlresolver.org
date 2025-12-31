@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"org.xmlresolver"},{"l":"org.xmlresolver.adapters"},{"l":"org.xmlresolver.exceptions"},{"l":"org.xmlresolver.loaders"},{"l":"org.xmlresolver.logging"},{"l":"org.xmlresolver.sources"},{"l":"org.xmlresolver.tools"}]

@@ -1,15 +1,113 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" class="no-js"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script><title>Chapter 4. Using an XML Resolver</title><link href="/css/pygments.css" rel="stylesheet"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link href="https://purl.org/dc/elements/1.1/" rel="schema.dc"/><meta name="dc.modified" content="2025-07-17T09:01:10Z"/><meta name="generator" content="DocBook xslTNG version 2.1.9 / 4a661f6 / SAXON HE 11.5"/><link href="/css/docbook-toc.css" rel="stylesheet"/><link href="/css/docbook.css" rel="stylesheet" media="screen"/><link xmlns="" rel="icon" href="/img/xr.png"/><link xmlns="" rel="stylesheet" href="css/resolver.css"/><link rel="prev" href="ch03.html"/><link rel="next" href="ch05.html"/><link rel="up" href="index.html"/><link rel="home" href="index.html"/><script src="/js/persistent-toc.js" defer="defer"></script><script src="/js/copy-verbatim.js" defer="defer"></script><script src="/js/chunk-nav.js" defer="defer"></script></head><body class="chapter component"><nav class="top"><div><a href="index.html">Home</a> <a href="index.html">Up</a> <a href="ch05.html">Next</a> <a href="ch03.html">Prev</a></div></nav><main><section id="using" db-chunk="ch04.html" db-id="d97e3023" class="chapter component"><header><h2>Chapter <span class="label">4</span><span class="sep">. </span>Using an XML Resolver</h2></header><p>The simplest possible thing you can do is instantiate an instance of
-<code class="classname">org.xmlresolver.XMLResolver</code><span class="indexterm" id="using_para1_indexterm1"></span><span class="indexterm" id="using_para1_indexterm2"></span> and use it to obtain a resolver
-for each of the XML parsing APIs that you are using.</p><div id="using_informaltable1" class="informalobject informaltable"><table><thead><tr><th class="bleft btop colsep rowsep">Call this method:</th><th class="btop colsep rowsep">To obtain:</th></tr></thead><tbody><tr><td class="bleft btop colsep rowsep"><code class="methodname">getEntityResolver()</code><span class="indexterm" id="using_informaltable1_tgroup1_tbody1_row1_entry1_indexterm1"></span><span class="indexterm" id="using_informaltable1_tgroup1_tbody1_row1_entry1_indexterm2"></span></td><td class="btop colsep rowsep">A SAX1 <code class="interfacename">org.xml.sax.EntityResolver</code><span class="indexterm" id="using_informaltable1_tgroup1_tbody1_row1_entry2_indexterm1"></span><span class="indexterm" id="using_informaltable1_tgroup1_tbody1_row1_entry2_indexterm2"></span></td></tr><tr><td class="bleft colsep rowsep"><code class="methodname">getEntityResolver2()</code><span class="indexterm" id="using_informaltable1_tgroup1_tbody1_row2_entry1_indexterm1"></span><span class="indexterm" id="using_informaltable1_tgroup1_tbody1_row2_entry1_indexterm2"></span></td><td class="colsep rowsep">A SAX2 <code class="interfacename">org.xml.sax.ext.EntityResolver2</code><span class="indexterm" id="using_informaltable1_tgroup1_tbody1_row2_entry2_indexterm1"></span><span class="indexterm" id="using_informaltable1_tgroup1_tbody1_row2_entry2_indexterm2"></span></td></tr><tr><td class="bleft colsep rowsep"><code class="methodname">getURIResolver()</code><span class="indexterm" id="using_informaltable1_tgroup1_tbody1_row3_entry1_indexterm1"></span><span class="indexterm" id="using_informaltable1_tgroup1_tbody1_row3_entry1_indexterm2"></span></td><td class="colsep rowsep">A JAXP <code class="interfacename">javax.xml.transform.URIResolver</code><span class="indexterm" id="using_informaltable1_tgroup1_tbody1_row3_entry2_indexterm1"></span><span class="indexterm" id="using_informaltable1_tgroup1_tbody1_row3_entry2_indexterm2"></span></td></tr><tr><td class="bleft colsep rowsep"><code class="methodname">getLSResourceResolver()</code><span class="indexterm" id="using_informaltable1_tgroup1_tbody1_row4_entry1_indexterm1"></span><span class="indexterm" id="using_informaltable1_tgroup1_tbody1_row4_entry1_indexterm2"></span></td><td class="colsep rowsep">A W3C DOM <code class="interfacename">org.w3c.dom.ls.LSResourceResolver</code><span class="indexterm" id="using_informaltable1_tgroup1_tbody1_row4_entry2_indexterm1"></span><span class="indexterm" id="using_informaltable1_tgroup1_tbody1_row4_entry2_indexterm2"></span></td></tr><tr><td class="bleft colsep rowsep"><code class="methodname">getXMLResolver()</code><span class="indexterm" id="using_informaltable1_tgroup1_tbody1_row5_entry1_indexterm1"></span><span class="indexterm" id="using_informaltable1_tgroup1_tbody1_row5_entry1_indexterm2"></span></td><td class="colsep rowsep">A StAX <code class="interfacename">javax.xml.stream.XMLResolver</code><span class="indexterm" id="using_informaltable1_tgroup1_tbody1_row5_entry2_indexterm1"></span><span class="indexterm" id="using_informaltable1_tgroup1_tbody1_row5_entry2_indexterm2"></span></td></tr></tbody></table></div><p>Another simple integration point is to instantiate
-<code class="classname">org.xmlresolver.tools.ResolvingXMLReader</code><span class="indexterm" id="using_para2_indexterm1"></span><span class="indexterm" id="using_para2_indexterm2"></span> as your XML parser.</p><section id="programming" class="section"><header><h2><span class="label">1</span><span class="sep">. </span>Programming with the resolver</h2></header><p>If you want to take more complete programmatic control of the resolver,
-instantiate a resolver configuration:</p><div class="pre-wrap" db-startinglinenumber="1" db-numberoflines="2"><pre class="language-java numbered programlisting verbatim verblines"><span class="line" db-line="1"><span class="ln">  <span class="nsep">|</span></span><span class="ld"><code>XMLResolverConfiguration config</code></span></span>
-<span class="line" db-line="2"><span class="ln">  <span class="nsep">|</span></span><span class="ld"><code>  = new XMLResolverConfiguration(propertyFiles, catalogs);</code></span></span>
-</pre></div><p>Set the features as you wish:</p><div class="pre-wrap" db-startinglinenumber="1" db-numberoflines="6"><pre class="language-java long numbered programlisting verbatim verblines"><span class="line" db-line="1"><span class="ln">1 <span class="nsep">|</span></span><span class="ld"><code>config.setFeature(ResolverFeature.DEFAULT_LOGGER_LOG_LEVEL, "info");</code></span></span>
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" class="no-js">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script><title>Chapter&nbsp;4.&nbsp;Using an XML Resolver</title>
+      <link href="/css/pygments.css" rel="stylesheet">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="https://purl.org/dc/elements/1.1/" rel="schema.dc">
+      <meta name="dc.modified" content="2025-12-31T17:36:54Z">
+      <meta name="generator" content="DocBook xslTNG version 2.7.1 / SNAPSHOT / SAXON HE 12.9">
+      <link href="/css/docbook-toc.css" rel="stylesheet">
+      <link href="/css/docbook.css" rel="stylesheet" media="screen">
+      <link href="/img/xr.png" rel="icon">
+      <link href="/css/resolver.css" rel="stylesheet"><script src="/js/boxes.js" defer></script><link rel="prev" href="ch03.html">
+      <link rel="next" href="ch05.html">
+      <link rel="up" href="index.html">
+      <link rel="home" href="index.html"><script src="/js/persistent-toc.js" defer></script><script src="/js/copy-verbatim.js" defer></script><script src="/js/chunk-nav.js" defer></script></head>
+   <body class="chapter component">
+      <nav class="top">
+         <div><a href="index.html">Home</a> <a href="index.html">Up</a> <a href="ch05.html">Next</a> <a href="ch03.html">Prev</a><span class="boxes"></span></div>
+      </nav>
+      <main>
+         <section id="using" db-chunk="ch04.html" db-id="d402e3666" class="chapter component">
+            <header>
+               <h2>Chapter&nbsp;<span class="label">4</span><span class="sep">.&nbsp;</span>Using an XML Resolver</h2>
+            </header>
+            <div class="db-bfs">
+               <p>The simplest possible thing you can do is instantiate an instance of
+                  <code class="classname">org.xmlresolver.XMLResolver</code> and use it to obtain a resolver
+                  for each of the XML parsing APIs that you are using.</p>
+               <div id="using_informaltable1" class="informalobject informaltable">
+                  <table>
+                     <thead>
+                        <tr>
+                           <th class="bleft btop colsep rowsep">Call this method:</th>
+                           <th class="btop colsep rowsep">To obtain:</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td class="bleft btop colsep rowsep"><code class="methodname">getEntityResolver()</code></td>
+                           <td class="btop colsep rowsep">A SAX1 <code class="interfacename">org.xml.sax.EntityResolver</code></td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><code class="methodname">getEntityResolver2()</code></td>
+                           <td class="colsep rowsep">A SAX2 <code class="interfacename">org.xml.sax.ext.EntityResolver2</code></td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><code class="methodname">getURIResolver()</code></td>
+                           <td class="colsep rowsep">A JAXP <code class="interfacename">javax.xml.transform.URIResolver</code></td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><code class="methodname">getLSResourceResolver()</code></td>
+                           <td class="colsep rowsep">A W3C DOM <code class="interfacename">org.w3c.dom.ls.LSResourceResolver</code></td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><code class="methodname">getXMLResolver()</code></td>
+                           <td class="colsep rowsep">A StAX <code class="interfacename">javax.xml.stream.XMLResolver</code></td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+               <p>Another simple integration point is to instantiate
+                  <code class="classname">org.xmlresolver.tools.ResolvingXMLReader</code> as your XML parser.</p>
+            </div>
+            <section id="programming" class="section">
+               <header>
+                  <h2><span class="label">1</span><span class="sep">.&nbsp;</span>Programming with the resolver</h2>
+               </header>
+               <p>If you want to take more complete programmatic control of the resolver,
+                  instantiate a resolver configuration:</p>
+               <div class="pre-wrap programlisting-wrap" db-startinglinenumber="1" db-numberoflines="2">
+                  <pre class="language-java numbered programlisting verbatim verblines"><span class="line" db-line="1"><span class="ln">  <span class="nsep">|</span></span><span class="ld"><code>XMLResolverConfiguration config</code></span></span>
+<span class="line" db-line="2"><span class="ln">  <span class="nsep">|</span></span><span class="ld"><code>  = new XMLResolverConfiguration(propertyFiles, catalogs);</code></span></span></pre>
+               </div>
+               <p>Set the features as you wish:</p>
+               <div class="pre-wrap programlisting-wrap" db-startinglinenumber="1" db-numberoflines="6">
+                  <pre class="language-java long numbered programlisting verbatim verblines"><span class="line" db-line="1"><span class="ln">1 <span class="nsep">|</span></span><span class="ld"><code>config.setFeature(ResolverFeature.LOGGER_LOG_LEVEL, "info");</code></span></span>
 <span class="line" db-line="2"><span class="ln">  <span class="nsep">|</span></span><span class="ld"><code> </code></span></span>
 <span class="line" db-line="3"><span class="ln">  <span class="nsep">|</span></span><span class="ld"><code>if (validateCatalogs) {</code></span></span>
 <span class="line" db-line="4"><span class="ln">  <span class="nsep">|</span></span><span class="ld"><code>    config.setFeature(ResolverFeature.CATALOG_LOADER_CLASS,</code></span></span>
 <span class="line" db-line="5"><span class="ln">5 <span class="nsep">|</span></span><span class="ld"><code>                      "org.xmlresolver.loaders.ValidatingXmlLoader");</code></span></span>
-<span class="line" db-line="6"><span class="ln">  <span class="nsep">|</span></span><span class="ld"><code>}</code></span></span>
-</pre></div><p>Then instantiate an XML Resolver:</p><div class="pre-wrap" db-startinglinenumber="1" db-numberoflines="1"><pre class="language-java numbered programlisting verbatim verblines"><span class="line" db-line="1"><span class="ln">  <span class="nsep">|</span></span><span class="ld"><code>XMLResolver resolver = new XMLResolver(config);</code></span></span>
-</pre></div><p>and use that resolver in your parsing and URI retrieval.</p><div class="pre-wrap" db-startinglinenumber="1" db-numberoflines="1"><pre class="language-java numbered programlisting verbatim verblines"><span class="line" db-line="1"><span class="ln">  <span class="nsep">|</span></span><span class="ld"><code>myXmlReader.setEntityResolver(resolver.getEntityResolver2());</code></span></span>
-</pre></div><p>For additional APIs, consult the <a href="javadoc/index.html" class="link">JavaDoc</a>.</p></section></section></main><nav class="bottom"><table><tr><td class="previous"><a href="ch03.html">Prev</a></td><td class="up"><a href="index.html">Up</a></td><td class="next"><a href="ch05.html">Next</a></td></tr><tr><td class="previous">Chapter <span class="label">3</span><span class="sep">. </span>Getting an XML Resolver</td><td class="up"><a href="index.html">Home</a></td><td class="next">Chapter <span class="label">5</span><span class="sep">. </span>Configuring an XML Resolver</td></tr></table><nav class="tocopen"></nav><nav class="toc"></nav><!-- Hide ToC details from user agents that don’t support JS --><script type="text/html" class="tocopen"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABYlAAAWJQFJUiTwAAABDklEQVQ4je2UUW3EMAyGv0wDUAhlkDBIyuAYXCEclEJoGZRBUgYOgzJoGHgPW6o7rWq35+2TIkWW9duW7N+oKuM46jiOGGMAaNsW5xzee5xzn8EvRESXZUFEWNcVAFWl73v6vjcGUIAYIyEEANZ1RUSY55lSCo/HA4BhGGiahtvthnOOtm0BSCnRdd1eVAGNMeoR27aptVattbpt22FOjFGrzjsX1I7q/4q3y4xf8i/4FwT3Pcw5Y4zBWvujfQMopZBzJuf8XbCeVyWEgHOO+/2+x0SEaZpIKSEih0X2Wz6jdlxKuezaqL7qpZS0lLKbw/M4ANba3RyapiGE8OJGqOrpizGq916999VATvM/AGFn1sxsVjL5AAAAAElFTkSuQmCC" alt="[toc]"/></script><script type="text/html" class="toc"><header><span>Table of Contents</span><span class="close"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAtklEQVQ4jaWT0Q3DIAxEz52AEbyB2cDZhBEY3SNcPyqqBEwqpZaQAHNP5jBCEiJCPAiSIgAeiUe8zoveO9x9e9jd0XtfKwHA1hpHtNY49rO8u59zn4mqMiJSyFkcEVTVFQCAtdYFMotrrXN111JnyA/xCsggN2JeXmGEmaGU8l2XUmBm29fZuh0RW2PTK2SGZcamADPb3nmGmNkKOI7j1rAzJG2kcWhqkstQ1QX+/2ciKU/FJOUN6JFZYWpmK3sAAAAASUVORK5CYII=" alt="X"/></span><p class="ptoc-search"><input class="ptoc-search" placeholder="Search" style="width: 80%"/></p></header><div db-persistent-toc="persistent-toc.html" db-prefix="">Loading…</div></script></nav></body></html>
+<span class="line" db-line="6"><span class="ln">  <span class="nsep">|</span></span><span class="ld"><code>}</code></span></span></pre>
+               </div>
+               <p>Then instantiate an XML Resolver:</p>
+               <div class="pre-wrap programlisting-wrap" db-startinglinenumber="1" db-numberoflines="1">
+                  <pre class="language-java numbered programlisting verbatim verblines"><span class="line" db-line="1"><span class="ln">  <span class="nsep">|</span></span><span class="ld"><code>XMLResolver resolver = new XMLResolver(config);</code></span></span></pre>
+               </div>
+               <p>and use that resolver in your parsing and URI retrieval.</p>
+               <div class="pre-wrap programlisting-wrap" db-startinglinenumber="1" db-numberoflines="1">
+                  <pre class="language-java numbered programlisting verbatim verblines"><span class="line" db-line="1"><span class="ln">  <span class="nsep">|</span></span><span class="ld"><code>myXmlReader.setEntityResolver(resolver.getEntityResolver2());</code></span></span></pre>
+               </div>
+               <p>For additional APIs, consult the <a href="javadoc/index.html" class="link">JavaDoc</a>.</p>
+            </section>
+         </section>
+      </main>
+      <nav class="bottom">
+         <table>
+            <tr>
+               <td class="previous"><a href="ch03.html">Prev</a></td>
+               <td class="up"><a href="index.html">Up</a></td>
+               <td class="next"><a href="ch05.html">Next</a></td>
+            </tr>
+            <tr>
+               <td class="previous">Chapter&nbsp;<span class="label">3</span><span class="sep">.&nbsp;</span>Getting an XML Resolver</td>
+               <td class="up"><a href="index.html">Home</a></td>
+               <td class="next">Chapter&nbsp;<span class="label">5</span><span class="sep">.&nbsp;</span>Configuring an XML Resolver</td>
+            </tr>
+         </table>
+         <nav class="tocopen"></nav>
+         <nav class="toc"></nav>
+         <!-- Hide ToC details from user agents that don’t support JS --><script type="text/html" class="tocopen"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABYlAAAWJQFJUiTwAAABDklEQVQ4je2UUW3EMAyGv0wDUAhlkDBIyuAYXCEclEJoGZRBUgYOgzJoGHgPW6o7rWq35+2TIkWW9duW7N+oKuM46jiOGGMAaNsW5xzee5xzn8EvRESXZUFEWNcVAFWl73v6vjcGUIAYIyEEANZ1RUSY55lSCo/HA4BhGGiahtvthnOOtm0BSCnRdd1eVAGNMeoR27aptVattbpt22FOjFGrzjsX1I7q/4q3y4xf8i/4FwT3Pcw5Y4zBWvujfQMopZBzJuf8XbCeVyWEgHOO+/2+x0SEaZpIKSEih0X2Wz6jdlxKuezaqL7qpZS0lLKbw/M4ANba3RyapiGE8OJGqOrpizGq916999VATvM/AGFn1sxsVjL5AAAAAElFTkSuQmCC" alt="[toc]"></script><script type="text/html" class="toc"><header><span>Table of Contents</span><span class="close"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAtklEQVQ4jaWT0Q3DIAxEz52AEbyB2cDZhBEY3SNcPyqqBEwqpZaQAHNP5jBCEiJCPAiSIgAeiUe8zoveO9x9e9jd0XtfKwHA1hpHtNY49rO8u59zn4mqMiJSyFkcEVTVFQCAtdYFMotrrXN111JnyA/xCsggN2JeXmGEmaGU8l2XUmBm29fZuh0RW2PTK2SGZcamADPb3nmGmNkKOI7j1rAzJG2kcWhqkstQ1QX+/2ciKU/FJOUN6JFZYWpmK3sAAAAASUVORK5CYII=" alt="X"></span><p class="ptoc-search"><input class="ptoc-search" placeholder="Search" style="width: 80%"></p></header><div db-persistent-toc="persistent-toc.html" db-prefix="">Loading…</div></script></nav>
+   </body>
+</html>

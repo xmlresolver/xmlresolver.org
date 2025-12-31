@@ -1,178 +1,543 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" class="no-js"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script><title>Chapter 6. What you can configure</title><link href="/css/pygments.css" rel="stylesheet"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link href="https://purl.org/dc/elements/1.1/" rel="schema.dc"/><meta name="dc.modified" content="2025-07-17T09:01:10Z"/><meta name="generator" content="DocBook xslTNG version 2.1.9 / 4a661f6 / SAXON HE 11.5"/><link href="/css/docbook-toc.css" rel="stylesheet"/><link href="/css/docbook.css" rel="stylesheet" media="screen"/><link xmlns="" rel="icon" href="/img/xr.png"/><link xmlns="" rel="stylesheet" href="css/resolver.css"/><link rel="prev" href="ch05.html"/><link rel="next" href="ch07.html"/><link rel="up" href="index.html"/><link rel="home" href="index.html"/><script src="/js/persistent-toc.js" defer="defer"></script><script src="/js/copy-verbatim.js" defer="defer"></script><script src="/js/chunk-nav.js" defer="defer"></script></head><body class="chapter component"><nav class="top"><div><a href="index.html">Home</a> <a href="index.html">Up</a> <a href="ch07.html">Next</a> <a href="ch05.html">Prev</a></div></nav><main><section id="config-settings" db-chunk="ch06.html" db-id="d97e3243" class="chapter component"><header><h2>Chapter <span class="label">6</span><span class="sep">. </span>What you can configure</h2></header><p>This chapter lists all of the configurable settings in XML Resolver.
-</p><ul xmlns=""><li><a href="#xml.catalog.accessExternalDocument">ResolverFeature.ACCESS_EXTERNAL_DOCUMENT</a></li><li><a href="#xml.catalog.accessExternalEntity">ResolverFeature.ACCESS_EXTERNAL_ENTITY</a></li><li><a href="#xml.catalog.allowPI">ResolverFeature.ALLOW_CATALOG_PI</a></li><li><a href="#xml.catalog.alwaysResolve">ResolverFeature.ALWAYS_RESOLVE</a></li><li><a href="#xml.catalog.archivedCatalogs">ResolverFeature.ARCHIVED_CATALOGS</a> (Since 3.1.0)</li><li><a href="#xml.assembly.catalogs">ResolverFeature.ASSEMBLY_CATALOGS</a></li><li><a href="#xml.catalog.additions">ResolverFeature.CATALOG_ADDITIONS</a></li><li><a href="#xml.catalog.files">ResolverFeature.CATALOG_FILES</a></li><li><a href="#xml.catalog.catalogLoaderClass">ResolverFeature.CATALOG_LOADER_CLASS</a></li><li><a href="#catalogmanager">ResolverFeature.CATALOG_MANAGER</a></li><li><a href="#classloader">ResolverFeature.CLASSLOADER</a></li><li><a href="#xml.catalog.classpathCatalogs">ResolverFeature.CLASSPATH_CATALOGS</a></li><li><a href="#xml.catalog.defaultLoggerLogLevel">ResolverFeature.DEFAULT_LOGGER_LOG_LEVEL</a></li><li><a href="#xml.catalog.fixWindowsSystemIdentifiers">ResolverFeature.FIX_WINDOWS_SYSTEM_IDENTIFIERS</a> (Since 4.4.0)</li><li><a href="#xml.catalog.maskJarUris">ResolverFeature.MASK_JAR_URIS</a></li><li><a href="#xml.catalog.mergeHttps">ResolverFeature.MERGE_HTTPS</a></li><li><a href="#xml.catalog.parseRddl">ResolverFeature.PARSE_RDDL</a></li><li><a href="#xml.catalog.preferPropertyFile">ResolverFeature.PREFER_PROPERTY_FILE</a></li><li><a href="#xml.catalog.prefer">ResolverFeature.PREFER_PUBLIC</a></li><li><a href="#xml.catalog.resolverLoggerClass">ResolverFeature.RESOLVER_LOGGER_CLASS</a></li><li><a href="#xml.catalog.saxParserFactoryClass">ResolverFeature.SAXPARSERFACTORY_CLASS</a></li><li><a href="#xml.catalog.throwUriExceptions">ResolverFeature.THROW_URI_EXCEPTIONS</a></li><li><a href="#xml.catalog.uriForSystem">ResolverFeature.URI_FOR_SYSTEM</a></li><li><a href="#xml.data.assembly">ResolverFeature.USE_DATA_ASSEMBLY</a></li><li><a href="#xmlreader_supplier">ResolverFeature.XMLREADER_SUPPLIER</a></li></ul><section id="xml.catalog.files" class="section"><header><h2><span class="label">1</span><span class="sep">. </span>The initial list of catalog files</h2></header><div xmlns="" class="proptable java"><div class="listnav"><span class="logo"><img src="/img/java.png" alt="Java logo"/></span><h3>Configuration on Java</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist java"><li><p class="simpara">Feature <code class="constant">ResolverFeature.CATALOG_FILES</code><span class="indexterm" id="xml.catalog.files_itemizedlist1_listitem1_simpara1_indexterm1"></span> (type: <code class="type">List&lt;String&gt;</code>)</p></li><li><p class="simpara">System property <code class="property system">xml.catalog.files</code><span class="indexterm" id="xml.catalog.files_itemizedlist1_listitem2_simpara1_indexterm1"></span></p></li><li><p class="simpara">Property file property <code class="file property">catalogs</code><span class="indexterm" id="xml.catalog.files_itemizedlist1_listitem3_simpara1_indexterm1"></span></p></li></ul></div><div xmlns="" class="proptable net"><div class="listnav"><span class="logo"><img src="/img/dotNET.png" alt=".NET logo"/></span><h3>Configuration on .NET</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist net"><li><p class="simpara">Feature <code class="constant">ResolverFeature.CATALOG_FILES</code><span class="indexterm" id="xml.catalog.files_itemizedlist2_listitem1_simpara1_indexterm1"></span> (type: <code class="type">List&lt;string&gt;</code>)</p></li><li><p class="simpara">Environment variable <code class="envar">XML_CATALOG_FILES</code><span class="indexterm" id="xml.catalog.files_itemizedlist2_listitem2_simpara1_indexterm1"></span></p></li><li><p class="simpara">Property file property <code class="file property">catalogs</code><span class="indexterm" id="xml.catalog.files_itemizedlist2_listitem3_simpara1_indexterm1"></span></p></li></ul></div><p>A semicolon-delimited list of catalog files. These are the catalog
-files that are initially consulted for resolution. If no catalog files
-are specified, by default the resolver will attempt to use a file
-named <code class="filename">catalog.xml</code> in the current directory as a catalog.</p></section><section id="xml.catalog.additions" class="section"><header><h2><span class="label">2</span><span class="sep">. </span>A list of additional catalog files</h2></header><div xmlns="" class="proptable java"><div class="listnav"><span class="logo"><img src="/img/java.png" alt="Java logo"/></span><h3>Configuration on Java</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist java"><li><p class="simpara">Feature <code class="constant">ResolverFeature.CATALOG_ADDITIONS</code><span class="indexterm" id="xml.catalog.additions_itemizedlist1_listitem1_simpara1_indexterm1"></span> (type: <code class="type">List&lt;String&gt;</code>)</p></li><li><p class="simpara">System property <code class="property system">xml.catalog.additions</code><span class="indexterm" id="xml.catalog.additions_itemizedlist1_listitem2_simpara1_indexterm1"></span></p></li><li><p class="simpara">Property file property <code class="file property">catalog-additions</code><span class="indexterm" id="xml.catalog.additions_itemizedlist1_listitem3_simpara1_indexterm1"></span></p></li></ul></div><div xmlns="" class="proptable net"><div class="listnav"><span class="logo"><img src="/img/dotNET.png" alt=".NET logo"/></span><h3>Configuration on .NET</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist net"><li><p class="simpara">Feature <code class="constant">ResolverFeature.CATALOG_ADDITIONS</code><span class="indexterm" id="xml.catalog.additions_itemizedlist2_listitem1_simpara1_indexterm1"></span> (type: <code class="type">List&lt;string&gt;</code>)</p></li><li><p class="simpara">Environment variable <code class="envar">XML_CATALOG_ADDITIONS</code><span class="indexterm" id="xml.catalog.additions_itemizedlist2_listitem2_simpara1_indexterm1"></span></p></li><li><p class="simpara">Property file property <code class="file property">catalogAdditions</code><span class="indexterm" id="xml.catalog.additions_itemizedlist2_listitem3_simpara1_indexterm1"></span></p></li></ul></div><p>A semicolon-delimited list of catalog files. This list is used in
-addition to the initial list of catalog files.</p><p>If you attempt to use both a system property <em>and</em> a property from a
-property file to create the initial list of catalog files, you’ll only
-get one or the other. (See prefer-property-file.)</p><p>This property provides a way to add to the current list of files. For
-example, suppose you use a global properties file to initialize the resolver, but
-for a particular application you want to search <em>additional</em> catalogs.
-You can specify them in the <code class="property system">xml.catalog.additions</code><span class="indexterm" id="xml.catalog.additions_para3_indexterm1"></span> system property and they’ll
-be appended to the list instead of replacing the list entirely as setting
-<code class="property system">xml.catalog.files</code><span class="indexterm" id="xml.catalog.additions_para3_indexterm2"></span> would.</p></section><section id="xml.catalog.accessExternalDocument" class="section"><header><h2><span class="label">3</span><span class="sep">. </span>Specify protocol(s) allowed for URI access</h2></header><div xmlns="" class="proptable java"><div class="listnav"><span class="logo"><img src="/img/java.png" alt="Java logo"/></span><h3>Configuration on Java</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist java"><li><p class="simpara">Feature <code class="constant">ResolverFeature.ACCESS_EXTERNAL_DOCUMENT</code><span class="indexterm" id="xml.catalog.accessExternalDocument_itemizedlist1_listitem1_simpara1_indexterm1"></span> (type: <code class="type">String</code>)</p></li><li><p class="simpara">System property <code class="property system">xml.catalog.accessExternalDocument</code><span class="indexterm" id="xml.catalog.accessExternalDocument_itemizedlist1_listitem2_simpara1_indexterm1"></span></p></li><li><p class="simpara">Property file property <code class="file property">access-external-document</code><span class="indexterm" id="xml.catalog.accessExternalDocument_itemizedlist1_listitem3_simpara1_indexterm1"></span></p></li></ul></div><div xmlns="" class="proptable net"><div class="listnav"><span class="logo"><img src="/img/dotNET.png" alt=".NET logo"/></span><h3>Configuration on .NET</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist net"><li><p class="simpara">Feature <code class="constant">ResolverFeature.ACCESS_EXTERNAL_DOCUMENT</code><span class="indexterm" id="xml.catalog.accessExternalDocument_itemizedlist2_listitem1_simpara1_indexterm1"></span> (type: <code class="type">string</code>)</p></li><li><p class="simpara">Environment variable <code class="envar">XML_CATALOG_ACCESS_EXTERNAL_DOCUMENT</code><span class="indexterm" id="xml.catalog.accessExternalDocument_itemizedlist2_listitem2_simpara1_indexterm1"></span></p></li><li><p class="simpara">Property file property <code class="file property">accessExternalDocument</code><span class="indexterm" id="xml.catalog.accessExternalDocument_itemizedlist2_listitem3_simpara1_indexterm1"></span></p></li></ul></div><p>This feature restricts the protocols that are allowed during URI
-resolution. If an attempt is made to resolve a document and the URI
-for that document uses a protocol not listed in this feature, the
-request is rejected. See JAXP 185.</p><p>The keyword “<code class="literal">all</code>” allows all protocols. An
-empty string allows none.</p><p>The default value for this feature is “<code class="literal">all</code>”.</p></section><section id="xml.catalog.accessExternalEntity" class="section"><header><h2><span class="label">4</span><span class="sep">. </span>Specify protocol(s) allowed for entity access</h2></header><div xmlns="" class="proptable java"><div class="listnav"><span class="logo"><img src="/img/java.png" alt="Java logo"/></span><h3>Configuration on Java</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist java"><li><p class="simpara">Feature <code class="constant">ResolverFeature.ACCESS_EXTERNAL_ENTITY</code><span class="indexterm" id="xml.catalog.accessExternalEntity_itemizedlist1_listitem1_simpara1_indexterm1"></span> (type: <code class="type">String</code>)</p></li><li><p class="simpara">System property <code class="property system">xml.catalog.accessExternalEntity</code><span class="indexterm" id="xml.catalog.accessExternalEntity_itemizedlist1_listitem2_simpara1_indexterm1"></span></p></li><li><p class="simpara">Property file property <code class="file property">access-external-entity</code><span class="indexterm" id="xml.catalog.accessExternalEntity_itemizedlist1_listitem3_simpara1_indexterm1"></span></p></li></ul></div><div xmlns="" class="proptable net"><div class="listnav"><span class="logo"><img src="/img/dotNET.png" alt=".NET logo"/></span><h3>Configuration on .NET</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist net"><li><p class="simpara">Feature <code class="constant">ResolverFeature.ACCESS_EXTERNAL_ENTITY</code><span class="indexterm" id="xml.catalog.accessExternalEntity_itemizedlist2_listitem1_simpara1_indexterm1"></span> (type: <code class="type">string</code>)</p></li><li><p class="simpara">Environment variable <code class="envar">XML_CATALOG_ACCESS_EXTERNAL_ENTITY</code><span class="indexterm" id="xml.catalog.accessExternalEntity_itemizedlist2_listitem2_simpara1_indexterm1"></span></p></li><li><p class="simpara">Property file property <code class="file property">accessExternalEntity</code><span class="indexterm" id="xml.catalog.accessExternalEntity_itemizedlist2_listitem3_simpara1_indexterm1"></span></p></li></ul></div><p>This feature restricts the protocols that are allowed during entity
-resolution. If an attempt is made to resolve an entity and the URI
-for that entity uses a protocol not listed in this feature, the
-request is rejected. See JAXP 185.</p><p>The keyword “<code class="literal">all</code>” allows all protocols. An
-empty string allows none.</p><p>The default value for this feature is “<code class="literal">all</code>”.</p></section><section id="xml.assembly.catalogs" class="section"><header><h2><span class="label">5</span><span class="sep">. </span>Catalogs to load from assemblies</h2></header><div xmlns="" class="proptable java"><div class="listnav"><span class="logo"><img src="/img/java.png" alt="Java logo"/></span><h3>Configuration on Java</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist java"><li><p class="simpara">This setting has no equivalent on Java.</p></li></ul></div><div xmlns="" class="proptable net"><div class="listnav"><span class="logo"><img src="/img/dotNET.png" alt=".NET logo"/></span><h3>Configuration on .NET</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist net"><li><p class="simpara">Feature <code class="constant">ResolverFeature.ASSEMBLY_CATALOGS</code><span class="indexterm" id="xml.assembly.catalogs_itemizedlist2_listitem1_simpara1_indexterm1"></span> (type: <code class="type">List&lt;string&gt;</code>)</p></li></ul></div><p>This setting can be used to load additional catalogs from other assemblies
-linked into your application.</p><p>Starting in version 2.0.0, the assembly catalogs should be identified by their
-<code>AssemblyName</code>, not by the name of the DLL as previously.</p></section><section id="xml.data.assembly" class="section"><header><h2><span class="label">6</span><span class="sep">. </span>Load the XmlResolverData assembly catalog?</h2></header><div xmlns="" class="proptable java"><div class="listnav"><span class="logo"><img src="/img/java.png" alt="Java logo"/></span><h3>Configuration on Java</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist java"><li><p class="simpara">This setting has no equivalent on Java.</p></li></ul></div><div xmlns="" class="proptable net"><div class="listnav"><span class="logo"><img src="/img/dotNET.png" alt=".NET logo"/></span><h3>Configuration on .NET</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist net"><li><p class="simpara">Feature <code class="constant">ResolverFeature.USE_DATA_ASSEMBLY</code><span class="indexterm" id="xml.data.assembly_itemizedlist2_listitem1_simpara1_indexterm1"></span> (type: <code class="type">bool</code>)</p></li><li><p class="simpara">Environment variable <code class="envar">XML_CATALOG_USE_DATA_ASSEMBLY</code><span class="indexterm" id="xml.data.assembly_itemizedlist2_listitem2_simpara1_indexterm1"></span></p></li><li><p class="simpara">Property file property <code class="file property">useDataAssembly</code><span class="indexterm" id="xml.data.assembly_itemizedlist2_listitem3_simpara1_indexterm1"></span></p></li></ul></div><p>This setting, which defaults to <code>true</code>, tells the resolver that
-it should always attempt to use the catalog in the
-<code class="filename">XmlResolverData.dll</code> assembly. This assembly is distributed as
-<a href="https://www.nuget.org/packages/XmlResolverData/" class="link">a
-separate NuGet package</a> and includes a variety of common resources.</p><p>This setting has no effect unless you’ve linked that assembly into your application.
-</p></section><section id="xml.catalog.classpathCatalogs" class="section"><header><h2><span class="label">7</span><span class="sep">. </span>Load catalogs from the classpath</h2></header><div xmlns="" class="proptable java"><div class="listnav"><span class="logo"><img src="/img/java.png" alt="Java logo"/></span><h3>Configuration on Java</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist java"><li><p class="simpara">Feature <code class="constant">ResolverFeature.CLASSPATH_CATALOGS</code><span class="indexterm" id="xml.catalog.classpathCatalogs_itemizedlist1_listitem1_simpara1_indexterm1"></span> (type: <code class="type">Boolean</code>)</p></li><li><p class="simpara">System property <code class="property system">xml.catalog.classpathCatalogs</code><span class="indexterm" id="xml.catalog.classpathCatalogs_itemizedlist1_listitem2_simpara1_indexterm1"></span></p></li><li><p class="simpara">Property file property <code class="file property">classpath-catalogs</code><span class="indexterm" id="xml.catalog.classpathCatalogs_itemizedlist1_listitem3_simpara1_indexterm1"></span></p></li></ul></div><div xmlns="" class="proptable net"><div class="listnav"><span class="logo"><img src="/img/dotNET.png" alt=".NET logo"/></span><h3>Configuration on .NET</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist net"><li><p class="simpara">This setting has no equivalent on .NET</p></li></ul></div><p>Load catalog files from the classpath. If this property is true, the
-resolver will search for all of the files named
-<code class="filename">org/xmlresolver/catalog.xml</code> on the classpath and add each of them to the end
-of the catalog list.</p></section><section id="xml.catalog.prefer" class="section"><header><h2><span class="label">8</span><span class="sep">. </span>Preference for public or system identifiers</h2></header><div xmlns="" class="proptable java"><div class="listnav"><span class="logo"><img src="/img/java.png" alt="Java logo"/></span><h3>Configuration on Java</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist java"><li><p class="simpara">Feature <code class="constant">ResolverFeature.PREFER_PUBLIC</code><span class="indexterm" id="xml.catalog.prefer_itemizedlist1_listitem1_simpara1_indexterm1"></span> (type: <code class="type">Boolean</code>)</p></li><li><p class="simpara">System property <code class="property system">xml.catalog.prefer</code><span class="indexterm" id="xml.catalog.prefer_itemizedlist1_listitem2_simpara1_indexterm1"></span></p></li><li><p class="simpara">Property file property <code class="file property">prefer</code><span class="indexterm" id="xml.catalog.prefer_itemizedlist1_listitem3_simpara1_indexterm1"></span></p></li></ul></div><div xmlns="" class="proptable net"><div class="listnav"><span class="logo"><img src="/img/dotNET.png" alt=".NET logo"/></span><h3>Configuration on .NET</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist net"><li><p class="simpara">Feature <code class="constant">ResolverFeature.PREFER_PUBLIC</code><span class="indexterm" id="xml.catalog.prefer_itemizedlist2_listitem1_simpara1_indexterm1"></span> (type: <code class="type">bool</code>)</p></li><li><p class="simpara">Environment variable <code class="envar">XML_CATALOG_PREFER</code><span class="indexterm" id="xml.catalog.prefer_itemizedlist2_listitem2_simpara1_indexterm1"></span></p></li><li><p class="simpara">Property file property <code class="file property">prefer</code><span class="indexterm" id="xml.catalog.prefer_itemizedlist2_listitem3_simpara1_indexterm1"></span></p></li></ul></div><p>The initial prefer setting, either public or system.</p></section><section id="xml.catalog.allowPI" class="section"><header><h2><span class="label">9</span><span class="sep">. </span>Obey <code class="tag tag-pi">oasis-xml-catalog</code> processing instruction</h2></header><div xmlns="" class="proptable java"><div class="listnav"><span class="logo"><img src="/img/java.png" alt="Java logo"/></span><h3>Configuration on Java</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist java"><li><p class="simpara">Feature <code class="constant">ResolverFeature.ALLOW_CATALOG_PI</code><span class="indexterm" id="xml.catalog.allowPI_itemizedlist1_listitem1_simpara1_indexterm1"></span> (type: <code class="type">Boolean</code>)</p></li><li><p class="simpara">System property <code class="property system">xml.catalog.allowPI</code><span class="indexterm" id="xml.catalog.allowPI_itemizedlist1_listitem2_simpara1_indexterm1"></span></p></li><li><p class="simpara">Property file property <code class="file property">allow-oasis-xml-catalog-pi</code><span class="indexterm" id="xml.catalog.allowPI_itemizedlist1_listitem3_simpara1_indexterm1"></span></p></li></ul></div><div xmlns="" class="proptable net"><div class="listnav"><span class="logo"><img src="/img/dotNET.png" alt=".NET logo"/></span><h3>Configuration on .NET</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist net"><li><p class="simpara">Feature <code class="constant">ResolverFeature.ALLOW_CATALOG_PI</code><span class="indexterm" id="xml.catalog.allowPI_itemizedlist2_listitem1_simpara1_indexterm1"></span> (type: <code class="type">bool</code>)</p></li><li><p class="simpara">Environment variable <code class="envar">XML_CATALOG_ALLOW_PI</code><span class="indexterm" id="xml.catalog.allowPI_itemizedlist2_listitem2_simpara1_indexterm1"></span></p></li><li><p class="simpara">Property file property <code class="file property">allowOasisXmlCatalogPi</code><span class="indexterm" id="xml.catalog.allowPI_itemizedlist2_listitem3_simpara1_indexterm1"></span></p></li></ul></div><p>This setting allows you to toggle whether or not the resolver classes
-obey the <code class="literal">&lt;?oasis-xml-catalog?&gt;</code> processing instruction.</p><p>If you never use the processing instruction, you can get a very tiny
-performance improvement by disabling this feature. (If this feature is
-enabled, the parser has to create a copy of the resolver configuration
-for every parse.)</p></section><section id="xml.catalog.alwaysResolve" class="section"><header><h2><span class="label">10</span><span class="sep">. </span>Always resolve resources</h2></header><div xmlns="" class="proptable java"><div class="listnav"><span class="logo"><img src="/img/java.png" alt="Java logo"/></span><h3>Configuration on Java</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist java"><li><p class="simpara">Feature <code class="constant">ResolverFeature.ALWAYS_RESOLVE</code><span class="indexterm" id="xml.catalog.alwaysResolve_itemizedlist1_listitem1_simpara1_indexterm1"></span> (type: <code class="type">Boolean</code>)</p></li><li><p class="simpara">System property <code class="property system">xml.catalog.alwaysResolve</code><span class="indexterm" id="xml.catalog.alwaysResolve_itemizedlist1_listitem2_simpara1_indexterm1"></span></p></li><li><p class="simpara">Property file property <code class="file property">always-resolve</code><span class="indexterm" id="xml.catalog.alwaysResolve_itemizedlist1_listitem3_simpara1_indexterm1"></span></p></li></ul></div><div xmlns="" class="proptable net"><div class="listnav"><span class="logo"><img src="/img/dotNET.png" alt=".NET logo"/></span><h3>Configuration on .NET</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist net"><li><p class="simpara">This setting has no equivalent on .NET</p></li></ul></div><p>The standard contract for the Java resolver APIs is that they
-return <code>null</code> if the resolver doesn’t find a match. But on
-the modern web, lots of URIs redirect (from <code>http:</code> to
-<code>https:</code> especially), and some parsers don’t follow
-redirects. That causes the parse to fail in ways that may not be easy
-for the user to fix.</p><p>Starting in version 5.0.0, the resolver will always resolve resources,
-follow redirects, and return a stream. This deprives the parser of the option to try
-something else, but means that redirects don’t cause the parse to file.</p><p>This feature is <em>enabled</em> by default. If you
-set it to false, the resolver will return <code>null</code> if the
-resource isn’t found in the catalog.</p><p>I don’t know of any parsers that try anything else after the
-resolver has failed except loading the resource, so I expect this to
-be an improvement for users. If your implementation wants to explicitly just
-check the catalog, at the Java API level, you can use the
-<code>CatalogManager</code> API. That’s the same API the
-resolver classes use to locate resources in the catalog.</p></section><section id="relative-catalogs" class="section"><header><h2><span class="label">11</span><span class="sep">. </span>Support relative catalog paths</h2></header><div xmlns="" class="proptable java"><div class="listnav"><span class="logo"><img src="/img/java.png" alt="Java logo"/></span><h3>Configuration on Java</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist java"><li><p class="simpara">Property file property <code class="file property">relative-catalogs</code><span class="indexterm" id="relative-catalogs_itemizedlist1_listitem1_simpara1_indexterm1"></span></p></li></ul></div><div xmlns="" class="proptable net"><div class="listnav"><span class="logo"><img src="/img/dotNET.png" alt=".NET logo"/></span><h3>Configuration on .NET</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist net"><li><p class="simpara">Property file property <code class="file property">relativeCatalogs</code><span class="indexterm" id="relative-catalogs_itemizedlist2_listitem1_simpara1_indexterm1"></span></p></li></ul></div><p>If <code class="file property">relative-catalogs</code><span class="indexterm" id="relative-catalogs_para1_indexterm1"></span> is true, relative filenames in the
-<code class="file property">catalogs</code><span class="indexterm" id="relative-catalogs_para1_indexterm2"></span>
-property list will be made absolute relative to the current working
-directory; otherwise they will be made
-absolute with respect to the base URI of the properties file from
-which they came.</p><p>This setting has no effect on catalogs loaded from the
-<code class="property system">xml.catalogs.files</code><span class="indexterm" id="relative-catalogs_para2_indexterm1"></span> system property which are always made absolute
-with respect to the current working directory.</p></section><section id="xml.catalog.fixWindowsSystemIdentifiers" class="section since-4.4.0"><header><h2><span class="label">12</span><span class="sep">. </span>Fix system identifiers on Windows.</h2></header><p>This feature is new in XML Resolver 4.4.0.</p><div xmlns="" class="proptable java"><div class="listnav"><span class="logo"><img src="/img/java.png" alt="Java logo"/></span><h3>Configuration on Java</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist java"><li><p class="simpara">Feature <code class="constant">ResolverFeature.FIX_WINDOWS_SYSTEM_IDENTIFIERS</code><span class="indexterm" id="xml.catalog.fixWindowsSystemIdentifiers_itemizedlist1_listitem1_simpara1_indexterm1"></span>
-(type: <code class="type">Boolean</code>)</p></li><li><p class="simpara">System property <code class="property system">xml.catalog.fixWindowsSystemIdentifiers</code><span class="indexterm" id="xml.catalog.fixWindowsSystemIdentifiers_itemizedlist1_listitem2_simpara1_indexterm1"></span></p></li><li><p class="simpara">Property file property <code class="file property">fix-windows-system-identifiers</code><span class="indexterm" id="xml.catalog.fixWindowsSystemIdentifiers_itemizedlist1_listitem3_simpara1_indexterm1"></span></p></li></ul></div><div xmlns="" class="proptable net"><div class="listnav"><span class="logo"><img src="/img/dotNET.png" alt=".NET logo"/></span><h3>Configuration on .NET</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist net"><li><p class="simpara">Feature <code class="constant">ResolverFeature.FIX_WINDOWS_SYSTEM_IDENTIFIERS</code><span class="indexterm" id="xml.catalog.fixWindowsSystemIdentifiers_itemizedlist2_listitem1_simpara1_indexterm1"></span>
-(type: <code class="type">bool</code>)</p></li><li><p class="simpara">Environment variable <code class="envar">XML_CATALOG_FIX_WINDOWS_SYSTEM_IDENTIFIERS</code><span class="indexterm" id="xml.catalog.fixWindowsSystemIdentifiers_itemizedlist2_listitem2_simpara1_indexterm1"></span></p></li><li><p class="simpara">Property file property <code class="file property">fixWindowsSystemIdentifiers</code><span class="indexterm" id="xml.catalog.fixWindowsSystemIdentifiers_itemizedlist2_listitem3_simpara1_indexterm1"></span></p></li></ul></div><p>Windows uses the backslash (“\”) instead of the forward slash as
-a path separator. The URI specification does not allow unescaped
-backslashes to appear in URIs, but as a practical reality, many users
-think of them as filenames and may simply copy filesystem paths as
-system identifiers. On Windows, this will cause “URI syntax”
-exceptions if an attempt is made to resolve them.</p><p>If <code>FIX_WINDOWS_SYSTEM_IDENTIFIERS</code> is true, and the
-resolver is running on a Windows system, backslashes in system
-identifiers are replaced with forward slashes before any resolution is
-attempted.</p></section><section id="xml.catalog.preferPropertyFile" class="section"><header><h2><span class="label">13</span><span class="sep">. </span>Prefer property file values</h2></header><div xmlns="" class="proptable java"><div class="listnav"><span class="logo"><img src="/img/java.png" alt="Java logo"/></span><h3>Configuration on Java</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist java"><li><p class="simpara">Feature <code class="constant">ResolverFeature.PREFER_PROPERTY_FILE</code><span class="indexterm" id="xml.catalog.preferPropertyFile_itemizedlist1_listitem1_simpara1_indexterm1"></span> (type: <code class="type">Boolean</code>)</p></li><li><p class="simpara">System property <code class="property system">xml.catalog.preferPropertyFile</code><span class="indexterm" id="xml.catalog.preferPropertyFile_itemizedlist1_listitem2_simpara1_indexterm1"></span></p></li><li><p class="simpara">Property file property <code class="file property">prefer-property-file</code><span class="indexterm" id="xml.catalog.preferPropertyFile_itemizedlist1_listitem3_simpara1_indexterm1"></span></p></li></ul></div><div xmlns="" class="proptable net"><div class="listnav"><span class="logo"><img src="/img/dotNET.png" alt=".NET logo"/></span><h3>Configuration on .NET</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist net"><li><p class="simpara">Feature <code class="constant">ResolverFeature.PREFER_PROPERTY_FILE</code><span class="indexterm" id="xml.catalog.preferPropertyFile_itemizedlist2_listitem1_simpara1_indexterm1"></span> (type: <code class="type">bool</code>)</p></li><li><p class="simpara">Environment variable <code class="envar">XML_CATALOG_PREFER_PROPERTY_FILE</code><span class="indexterm" id="xml.catalog.preferPropertyFile_itemizedlist2_listitem2_simpara1_indexterm1"></span></p></li><li><p class="simpara">Property file property <code class="file property">preferPropertyFile</code><span class="indexterm" id="xml.catalog.preferPropertyFile_itemizedlist2_listitem3_simpara1_indexterm1"></span></p></li></ul></div><p>Prefer properties from the properties file.
-If a property file is loaded to configure the resolver and one of the properties in that
-file is also specified as a system property, the system property takes precedence.
-If you’d prefer to have the property file take precedence (as was the case in some
-earlier versions), set the “prefer property file” property to true.</p></section><section id="xml.catalog.saxParserFactoryClass" class="section"><header><h2><span class="label">14</span><span class="sep">. </span>The SAX parser factory class</h2></header><div xmlns="" class="proptable java"><div class="listnav"><span class="logo"><img src="/img/java.png" alt="Java logo"/></span><h3>Configuration on Java</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist java"><li><p class="simpara">Feature <code class="constant">ResolverFeature.SAXPARSERFACTORY_CLASS</code><span class="indexterm" id="xml.catalog.saxParserFactoryClass_itemizedlist1_listitem1_simpara1_indexterm1"></span> (type: <code class="type">String</code>)</p></li><li><p class="simpara">System property <code class="property system">xml.catalog.saxParserFactoryClass</code><span class="indexterm" id="xml.catalog.saxParserFactoryClass_itemizedlist1_listitem2_simpara1_indexterm1"></span></p></li><li><p class="simpara">Property file property <code class="file property">saxparserfactory-class</code><span class="indexterm" id="xml.catalog.saxParserFactoryClass_itemizedlist1_listitem3_simpara1_indexterm1"></span></p></li></ul></div><div xmlns="" class="proptable net"><div class="listnav"><span class="logo"><img src="/img/dotNET.png" alt=".NET logo"/></span><h3>Configuration on .NET</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist net"><li><p class="simpara">This setting has no equivalent on .NET</p></li></ul></div><p>By default, parsers are created with the
-<a href="#xmlreader_supplier" class="link">XMLREADER_SUPPLIER</a>.</p><p>This feature and the
-<a href="#xmlreader_supplier" class="link">XMLREADER_SUPPLIER</a> are different
-mechanisms for configuring the same underlying feature: how does the
-resolver get an XML parser if it needs one? (For example, for the <code>ResolvingXMLFilter</code> and
-<code>ResolvingXMLReader</code> classes.)</p><p>The <code>SAXPARSERFACTORY_CLASS</code> is initially
-<code>null</code> and the <code>XMLREADER_SUPPLIER</code> is used. The
-purpose of the <code>SAXPARSERFACTORY_CLASS</code> is to allow the
-factory to be configured with a property since the
-<code>XMLREADER_SUPPLIER</code> cannot.</p><p>If a <code>SAXPARSERFACTORY_CLASS</code> is specified, it will
-be used in favor of the default <code>XMLREADER_SUPPLIER.</code> If an
-<code>XMLREADER_SUPPLIER</code> is explicitly set after the
-configuration is initialized, it will set this feature to
-<code>null</code> and take precedence.</p></section><section id="xml.catalog.uriForSystem" class="section"><header><h2><span class="label">15</span><span class="sep">. </span>Use URI entries for system resolution</h2></header><div xmlns="" class="proptable java"><div class="listnav"><span class="logo"><img src="/img/java.png" alt="Java logo"/></span><h3>Configuration on Java</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist java"><li><p class="simpara">Feature <code class="constant">ResolverFeature.URI_FOR_SYSTEM</code><span class="indexterm" id="xml.catalog.uriForSystem_itemizedlist1_listitem1_simpara1_indexterm1"></span> (type: <code class="type">Boolean</code>)</p></li><li><p class="simpara">System property <code class="property system">xml.catalog.uriForSystem</code><span class="indexterm" id="xml.catalog.uriForSystem_itemizedlist1_listitem2_simpara1_indexterm1"></span></p></li><li><p class="simpara">Property file property <code class="file property">uri-for-system</code><span class="indexterm" id="xml.catalog.uriForSystem_itemizedlist1_listitem3_simpara1_indexterm1"></span></p></li></ul></div><div xmlns="" class="proptable net"><div class="listnav"><span class="logo"><img src="/img/dotNET.png" alt=".NET logo"/></span><h3>Configuration on .NET</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist net"><li><p class="simpara">Feature <code class="constant">ResolverFeature.URI_FOR_SYSTEM</code><span class="indexterm" id="xml.catalog.uriForSystem_itemizedlist2_listitem1_simpara1_indexterm1"></span> (type: <code class="type">bool</code>)</p></li><li><p class="simpara">Environment variable <code class="envar">XML_CATALOG_URI_FOR_SYSTEM</code><span class="indexterm" id="xml.catalog.uriForSystem_itemizedlist2_listitem2_simpara1_indexterm1"></span></p></li><li><p class="simpara">Property file property <code class="file property">uriForSystem</code><span class="indexterm" id="xml.catalog.uriForSystem_itemizedlist2_listitem3_simpara1_indexterm1"></span></p></li></ul></div><p>Ignore the distinction between system identifiers and URIs.
-The distinction between external identifiers (the public and system identifiers that
-are used in DTDs) and general URIs (as might be used to load a RELAX NG Grammar or XML Schema,
-for example), is not supported uniformly by the parser APIs.
-The Xerces XML Schema implementation, for example, users the
-<code class="methodname">resolveEntity</code><span class="indexterm" id="xml.catalog.uriForSystem_para1_indexterm1"></span><span class="indexterm" id="xml.catalog.uriForSystem_para1_indexterm2"></span> API to load
-XML Schema imports.</p><p>Ordinarily, system identifier resolution interrogates the <code class="tag tag-element">system</code> and <code class="tag tag-element">public</code> entries (and their
-related entries), but not the <code class="tag tag-element">uri</code> entries. If this property is true, the resolver will attempt
-to resolve system identifiers with <code class="tag tag-element">uri</code> entries (<em>after</em>
-attempting to resolve them with the
-system and public entries.</p></section><section id="xml.catalog.mergeHttps" class="section"><header><h2><span class="label">16</span><span class="sep">. </span>Merge http: and https: URI schemes</h2></header><div xmlns="" class="proptable java"><div class="listnav"><span class="logo"><img src="/img/java.png" alt="Java logo"/></span><h3>Configuration on Java</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist java"><li><p class="simpara">Feature <code class="constant">ResolverFeature.MERGE_HTTPS</code><span class="indexterm" id="xml.catalog.mergeHttps_itemizedlist1_listitem1_simpara1_indexterm1"></span> (type: <code class="type">Boolean</code>)</p></li><li><p class="simpara">System property <code class="property system">xml.catalog.mergeHttps</code><span class="indexterm" id="xml.catalog.mergeHttps_itemizedlist1_listitem2_simpara1_indexterm1"></span></p></li><li><p class="simpara">Property file property <code class="file property">merge-https</code><span class="indexterm" id="xml.catalog.mergeHttps_itemizedlist1_listitem3_simpara1_indexterm1"></span></p></li></ul></div><div xmlns="" class="proptable net"><div class="listnav"><span class="logo"><img src="/img/dotNET.png" alt=".NET logo"/></span><h3>Configuration on .NET</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist net"><li><p class="simpara">Feature <code class="constant">ResolverFeature.MERGE_HTTPS</code><span class="indexterm" id="xml.catalog.mergeHttps_itemizedlist2_listitem1_simpara1_indexterm1"></span> (type: <code class="type">bool</code>)</p></li><li><p class="simpara">Environment variable <code class="envar">XML_CATALOG_MERGE_HTTPS</code><span class="indexterm" id="xml.catalog.mergeHttps_itemizedlist2_listitem2_simpara1_indexterm1"></span></p></li><li><p class="simpara">Property file property <code class="file property">mergeHttps</code><span class="indexterm" id="xml.catalog.mergeHttps_itemizedlist2_listitem3_simpara1_indexterm1"></span></p></li></ul></div><p>Treat http: and https: URIs as equivalent for the purpose of resolution. The web used to
-be served over http: and many existing catalog files contain http: system identifiers.
-Today, the web is largely served over https: and many documents contain https: system
-identifiers. If this property is true, that distinction will be ignored during catalog lookup,
-<code class="uri">http://example.com/sample.dtd</code> will match <code class="uri">https://example.com/sample.dtd</code>.</p><p>Note: this has *no effect* on the URIs returned by the resolver or retrieved over the web.
-It only effects catalog lookup for system identifiers and URIs.</p></section><section id="xml.catalog.maskJarUris" class="section"><header><h2><span class="label">17</span><span class="sep">. </span>Mask jar URIs</h2></header><div xmlns="" class="proptable java"><div class="listnav"><span class="logo"><img src="/img/java.png" alt="Java logo"/></span><h3>Configuration on Java</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist java"><li><p class="simpara">Feature <code class="constant">ResolverFeature.MASK_JAR_URIS</code><span class="indexterm" id="xml.catalog.maskJarUris_itemizedlist1_listitem1_simpara1_indexterm1"></span> (type: <code class="type">Boolean</code>)</p></li><li><p class="simpara">System property <code class="property system">xml.catalog.maskJarUris</code><span class="indexterm" id="xml.catalog.maskJarUris_itemizedlist1_listitem2_simpara1_indexterm1"></span></p></li><li><p class="simpara">Property file property <code class="file property">mask-jar-uris</code><span class="indexterm" id="xml.catalog.maskJarUris_itemizedlist1_listitem3_simpara1_indexterm1"></span></p></li></ul></div><div xmlns="" class="proptable net"><div class="listnav"><span class="logo"><img src="/img/dotNET.png" alt=".NET logo"/></span><h3>Configuration on .NET</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist net"><li><p class="simpara">This setting has no equivalent on .NET</p></li></ul></div><p>Don’t return jar: or classpath: URIs. Most entity resolver APIs are defined such that if
-resolution succeeds, the base URI of the resource returned is the base URI of the actual,
-local resource. This can greatly simplify things because subsequent relative URIs can be
-resolved against the local resource directly.</p><p>However, the Java URI class does not treat jar: or classpath: URI schemes as hierarchical,
-so any subsequent attempts to resolve relative URIs will fail. If this property is true,
-the local resource will be returned but the URI will be left unchanged. That may require a
-more complete catalog, but it will avoid a situation which is guaranteed to fail.</p><div class="sidebar"><p>On .NET, a similar feature could be imagined for “pack:” scheme URIs, but in
-practice, the way the <code class="classname">System.XmlResolver</code><span class="indexterm" id="xml.catalog.maskJarUris_sidebar1_para1_indexterm1"></span><span class="indexterm" id="xml.catalog.maskJarUris_sidebar1_para1_indexterm2"></span> works, it wouldn’t
-serve any useful purpose.
-</p></div></section><section id="xml.catalog.catalogLoaderClass" class="section"><header><h2><span class="label">18</span><span class="sep">. </span>Catalog loader class</h2></header><div xmlns="" class="proptable java"><div class="listnav"><span class="logo"><img src="/img/java.png" alt="Java logo"/></span><h3>Configuration on Java</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist java"><li><p class="simpara">Feature <code class="constant">ResolverFeature.CATALOG_LOADER_CLASS</code><span class="indexterm" id="xml.catalog.catalogLoaderClass_itemizedlist1_listitem1_simpara1_indexterm1"></span> (type: <code class="type">String</code>)</p></li><li><p class="simpara">System property <code class="property system">xml.catalog.catalogLoaderClass</code><span class="indexterm" id="xml.catalog.catalogLoaderClass_itemizedlist1_listitem2_simpara1_indexterm1"></span></p></li><li><p class="simpara">Property file property <code class="file property">catalog-loader-class</code><span class="indexterm" id="xml.catalog.catalogLoaderClass_itemizedlist1_listitem3_simpara1_indexterm1"></span></p></li></ul></div><div xmlns="" class="proptable net"><div class="listnav"><span class="logo"><img src="/img/dotNET.png" alt=".NET logo"/></span><h3>Configuration on .NET</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist net"><li><p class="simpara">Feature <code class="constant">ResolverFeature.CATALOG_LOADER_CLASS</code><span class="indexterm" id="xml.catalog.catalogLoaderClass_itemizedlist2_listitem1_simpara1_indexterm1"></span> (type: <code class="type">string</code>)</p></li><li><p class="simpara">Environment variable <code class="envar">XML_CATALOG_LOADER_CLASS</code><span class="indexterm" id="xml.catalog.catalogLoaderClass_itemizedlist2_listitem2_simpara1_indexterm1"></span></p></li><li><p class="simpara">Property file property <code class="file property">catalogLoaderClass</code><span class="indexterm" id="xml.catalog.catalogLoaderClass_itemizedlist2_listitem3_simpara1_indexterm1"></span></p></li></ul></div><p>Specify the catalog loader class. The default catalog loader ignores
-any errors encountered when loading catalogs. This is convenient for
-production use, but can be frustrating because it may not be obvious
-when resolution fails, especially if your internet connection is fast.
-A typo in a catalog file can easily go unnoticed.</p><p>If the value <code class="classname">org.xmlresolver.loaders.ValidatingXmlLoader</code><span class="indexterm" id="xml.catalog.catalogLoaderClass_para2_indexterm1"></span><span class="indexterm" id="xml.catalog.catalogLoaderClass_para2_indexterm2"></span> is specified
-for this property, catalog files will be validated when they are
-loaded and the resolver will throw an exception for any validity
-errors encountered.</p><p>The validating loader depends on having version 20181222 of
-<a href="https://search.maven.org/artifact/org.relaxng/jing" class="link">Jing</a>
-on your classpath. (This is an optional dependency in the Maven
-distribution of the resolver, so you may have to add it by hand.)</p></section><section id="xml.catalog.parseRddl" class="section"><header><h2><span class="label">19</span><span class="sep">. </span>Parse RDDL documents</h2></header><div xmlns="" class="proptable java"><div class="listnav"><span class="logo"><img src="/img/java.png" alt="Java logo"/></span><h3>Configuration on Java</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist java"><li><p class="simpara">Feature <code class="constant">ResolverFeature.PARSE_RDDL</code><span class="indexterm" id="xml.catalog.parseRddl_itemizedlist1_listitem1_simpara1_indexterm1"></span> (type: <code class="type">Boolean</code>)</p></li><li><p class="simpara">System property <code class="property system">xml.catalog.parseRddl</code><span class="indexterm" id="xml.catalog.parseRddl_itemizedlist1_listitem2_simpara1_indexterm1"></span></p></li><li><p class="simpara">Property file property <code class="file property">parse-rddl</code><span class="indexterm" id="xml.catalog.parseRddl_itemizedlist1_listitem3_simpara1_indexterm1"></span></p></li></ul></div><div xmlns="" class="proptable net"><div class="listnav"><span class="logo"><img src="/img/dotNET.png" alt=".NET logo"/></span><h3>Configuration on .NET</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist net"><li><p class="simpara">Feature <code class="constant">ResolverFeature.PARSE_RDDL</code><span class="indexterm" id="xml.catalog.parseRddl_itemizedlist2_listitem1_simpara1_indexterm1"></span> (type: <code class="type">bool</code>)</p></li><li><p class="simpara">Environment variable <code class="envar">XML_CATALOG_PARSE_RDDL</code><span class="indexterm" id="xml.catalog.parseRddl_itemizedlist2_listitem2_simpara1_indexterm1"></span></p></li><li><p class="simpara">Property file property <code class="file property">parseRddl</code><span class="indexterm" id="xml.catalog.parseRddl_itemizedlist2_listitem3_simpara1_indexterm1"></span></p></li></ul></div><p>Attempt to resolve RDDL resources in namespace URI lookup. If the
-namespace resolver is used, if a nature and purpose are specified, and
-if the resource returned is an HTML document, the resolver will
-attempt to find the RDDL resource description for the requested
-namespace and resolve that URI.</p><p>For example, the following API call will return the XML Schema for XML:</p><div class="pre-wrap" db-startinglinenumber="1" db-numberoflines="3"><pre class="language-java numbered programlisting verbatim verblines"><span class="line" db-line="1"><span class="ln">  <span class="nsep">|</span></span><span class="ld"><code>resolveNamespaceURI("http://www.w3.org/XML/1998/namespace",</code></span></span>
-<span class="line" db-line="2"><span class="ln">  <span class="nsep">|</span></span><span class="ld"><code>                    "http://www.w3.org/2001/XMLSchema",</code></span></span>
-<span class="line" db-line="3"><span class="ln">  <span class="nsep">|</span></span><span class="ld"><code>                    "http://www.rddl.org/purposes#schema-validation");</code></span></span>
-</pre></div><p>Attempting to resolve RDDL resources requires extra processing. If you
-know it will never succeed you can disable it by setting this property
-to false.</p></section><section id="classloader" class="section"><header><h2><span class="label">20</span><span class="sep">. </span>Specify an alternate class loader</h2></header><div xmlns="" class="proptable java"><div class="listnav"><span class="logo"><img src="/img/java.png" alt="Java logo"/></span><h3>Configuration on Java</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist java"><li><p class="simpara">Feature <code class="constant">ResolverFeature.CLASSLOADER</code><span class="indexterm" id="classloader_itemizedlist1_listitem1_simpara1_indexterm1"></span> (type: <code class="type">ClassLoader</code>)</p></li></ul></div><div xmlns="" class="proptable net"><div class="listnav"><span class="logo"><img src="/img/dotNET.png" alt=".NET logo"/></span><h3>Configuration on .NET</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist net"><li><p class="simpara">This setting has no equivalent on .NET</p></li></ul></div><p>If you are using the resolver in an environment where the default class
-loader (<code>getClass().getCatalogLoader()</code>) will not return useful
-class loader, you can specify an alternate loader with this feature.
-</p></section><section id="xmlreader_supplier" class="section"><header><h2><span class="label">21</span><span class="sep">. </span>Configure the XML Reader</h2></header><div xmlns="" class="proptable java"><div class="listnav"><span class="logo"><img src="/img/java.png" alt="Java logo"/></span><h3>Configuration on Java</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist java"><li><p class="simpara">Feature <code class="constant">ResolverFeature.XMLREADER_SUPPLIER</code><span class="indexterm" id="xmlreader_supplier_itemizedlist1_listitem1_simpara1_indexterm1"></span>
-(type: <code class="type">Supplier&lt;XMLReader&gt;</code>)</p></li></ul></div><div xmlns="" class="proptable net"><div class="listnav"><span class="logo"><img src="/img/dotNET.png" alt=".NET logo"/></span><h3>Configuration on .NET</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist net"><li><p class="simpara">This setting has no equivalent on .NET</p></li></ul></div><p>The default supplier is obtained with <code>SAXParserFactory.newInstance()</code> and
-the global mechanisms that it uses.</p><p>This feature and the <a href="#xml.catalog.saxParserFactoryClass" class="link">SAXPARSERFACTORY_CLASS</a>
-are different mechanisms for
-configuring the same underlying feature: how does the resolver get an XML parser if it needs one?
-(For example, for the <code>ResolvingXMLFilter</code> and
-<code>ResolvingXMLReader</code> classes.)
-</p><p>The
-<a href="#xml.catalog.saxParserFactoryClass" class="link">SAXPARSERFACTORY_CLASS</a>
-is initially <code>null</code> and the <code>XMLREADER_SUPPLIER</code>
-is used. The purpose of the <code>SAXPARSERFACTORY_CLASS</code> is to
-allow the factory to be configured with a property since the
-<code>XMLREADER_SUPPLIER</code> cannot.</p><p>If a <code>SAXPARSERFACTORY_CLASS</code> is specified, it will be used in favor of the default
-<code>XMLREADER_SUPPLIER.</code> If an <code>XMLREADER_SUPPLIER</code> is explicitly set after the
-configuration is initialized, it will set this feature to <code>null</code> and take precedence.</p></section><section id="xml.catalog.throwUriExceptions" class="section"><header><h2><span class="label">22</span><span class="sep">. </span>Throw URI exceptions?</h2></header><div xmlns="" class="proptable java"><div class="listnav"><span class="logo"><img src="/img/java.png" alt="Java logo"/></span><h3>Configuration on Java</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist java"><li><p class="simpara">Feature <code class="constant">ResolverFeature.THROW_URI_EXCEPTIONS</code><span class="indexterm" id="xml.catalog.throwUriExceptions_itemizedlist1_listitem1_simpara1_indexterm1"></span>
-(type: <code class="type">Boolean</code>)</p></li><li><p class="simpara">System property <code class="property system">xml.catalog.throwUriExceptions</code><span class="indexterm" id="xml.catalog.throwUriExceptions_itemizedlist1_listitem2_simpara1_indexterm1"></span></p></li><li><p class="simpara">Property file property <code class="file property">throw-uri-exceptions</code><span class="indexterm" id="xml.catalog.throwUriExceptions_itemizedlist1_listitem3_simpara1_indexterm1"></span></p></li></ul></div><div xmlns="" class="proptable net"><div class="listnav"><span class="logo"><img src="/img/dotNET.png" alt=".NET logo"/></span><h3>Configuration on .NET</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist net"><li><p class="simpara">This setting has no equivalent on .NET</p></li></ul></div><p>If this setting is true, errors in URIs that raise illegal argument exceptions,
-malformed URI exceptions, or URI syntax exceptions will be thrown. If it’s false,
-<code>null</code> is returned and the exception is ignored.</p></section><section id="xml.catalog.archivedCatalogs" class="section since-3.1.0"><header><h2><span class="label">23</span><span class="sep">. </span>Support catalog files in ZIP archives</h2></header><p>This feature is new in XML Resolver 3.1.0.</p><div xmlns="" class="proptable java"><div class="listnav"><span class="logo"><img src="/img/java.png" alt="Java logo"/></span><h3>Configuration on Java</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist java"><li><p class="simpara">Feature <code class="constant">ResolverFeature.ARCHIVED_CATALOGS</code><span class="indexterm" id="xml.catalog.archivedCatalogs_itemizedlist1_listitem1_simpara1_indexterm1"></span> (type: <code class="type">Boolean</code>)</p></li><li><p class="simpara">System property <code class="property system">xml.catalog.archivedCatalogs</code><span class="indexterm" id="xml.catalog.archivedCatalogs_itemizedlist1_listitem2_simpara1_indexterm1"></span></p></li><li><p class="simpara">Property file property <code class="file property">archived-catalogs</code><span class="indexterm" id="xml.catalog.archivedCatalogs_itemizedlist1_listitem3_simpara1_indexterm1"></span></p></li></ul></div><div xmlns="" class="proptable net"><div class="listnav"><span class="logo"><img src="/img/dotNET.png" alt=".NET logo"/></span><h3>Configuration on .NET</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist net"><li><p class="simpara">Feature <code class="constant">ResolverFeature.ARCHIVED_CATALOGS</code><span class="indexterm" id="xml.catalog.archivedCatalogs_itemizedlist2_listitem1_simpara1_indexterm1"></span> (type: <code class="type">bool</code>)</p></li><li><p class="simpara">Environment variable <code class="envar">XML_CATALOG_ARCHIVED_CATALOGS</code><span class="indexterm" id="xml.catalog.archivedCatalogs_itemizedlist2_listitem2_simpara1_indexterm1"></span></p></li><li><p class="simpara">Property file property <code class="file property">archivedCatalogs</code><span class="indexterm" id="xml.catalog.archivedCatalogs_itemizedlist2_listitem3_simpara1_indexterm1"></span></p></li></ul></div><p>If archived catalogs are allowed, then you can place ZIP files of resources
-directly on the catalog path. The resolver will search inside the ZIP file for a catalog
-(<code>/org/xmlresolver/catalog.xml</code> or <code>/catalog.xml</code>) to use.</p></section><section id="catalogmanager" class="section"><header><h2><span class="label">24</span><span class="sep">. </span>Access the underlying catalog manager</h2></header><div xmlns="" class="proptable java"><div class="listnav"><span class="logo"><img src="/img/java.png" alt="Java logo"/></span><h3>Configuration on Java</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist java"><li><p class="simpara">Feature <code class="constant">ResolverFeature.CATALOG_MANAGER</code><span class="indexterm" id="catalogmanager_itemizedlist1_listitem1_simpara1_indexterm1"></span> (type: <code class="type">CatalogManager</code>)</p></li></ul></div><div xmlns="" class="proptable net"><div class="listnav"><span class="logo"><img src="/img/dotNET.png" alt=".NET logo"/></span><h3>Configuration on .NET</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist net"><li><p class="simpara">Feature <code class="constant">ResolverFeature.CATALOG_MANAGER</code><span class="indexterm" id="catalogmanager_itemizedlist2_listitem1_simpara1_indexterm1"></span> (type: <code class="type">CatalogManager</code>)</p></li></ul></div><p>The <code class="classname">CatalogManager</code><span class="indexterm" id="catalogmanager_para1_indexterm1"></span><span class="indexterm" id="catalogmanager_para1_indexterm2"></span> class provides
-some lower-level methods for mapping to URIs without returning sources of any kind.
-</p></section><section id="logging" class="section"><header><h2><span class="label">25</span><span class="sep">. </span>Logging</h2></header><p>There are two options to control logging: the class used to perform logging
-and the logging level desired.</p><p>These settings only apply to Java. On .NET, the <a href="https://www.nuget.org/packages/NLog" class="link">NLog</a> package
-is used for logging.</p><section id="xml.catalog.resolverLoggerClass" class="section"><header><h3><span class="label">25<span class="sep">.</span>1</span><span class="sep">. </span>The logger class</h3></header><div xmlns="" class="proptable java"><div class="listnav"><span class="logo"><img src="/img/java.png" alt="Java logo"/></span><h3>Configuration on Java</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist java"><li><p class="simpara">Feature <code class="constant">ResolverFeature.RESOLVER_LOGGER_CLASS</code><span class="indexterm" id="xml.catalog.resolverLoggerClass_itemizedlist1_listitem1_simpara1_indexterm1"></span> (type: <code class="type">String</code>)</p></li><li><p class="simpara">System property <code class="property system">xml.catalog.resolverLoggerClass</code><span class="indexterm" id="xml.catalog.resolverLoggerClass_itemizedlist1_listitem2_simpara1_indexterm1"></span></p></li><li><p class="simpara">Property file property <code class="file property">resolver-logger-class</code><span class="indexterm" id="xml.catalog.resolverLoggerClass_itemizedlist1_listitem3_simpara1_indexterm1"></span></p></li></ul></div><div xmlns="" class="proptable net"><div class="listnav"><span class="logo"><img src="/img/dotNET.png" alt=".NET logo"/></span><h3>Configuration on .NET</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist net"><li><p class="simpara">This setting has no equivalent on .NET</p></li></ul></div><p>The default logger class (<code class="classname">org.xmlresolver.logging.DefaultLogger</code><span class="indexterm" id="xml.catalog.resolverLoggerClass_para1_indexterm1"></span><span class="indexterm" id="xml.catalog.resolverLoggerClass_para1_indexterm2"></span>)
-simply writes messages to standard error. For many applications, this is sufficient and
-requires no additional configuration.</p><p>An alternate logger class (<code class="classname">org.xmlresolver.logging.SystemLogger</code><span class="indexterm" id="xml.catalog.resolverLoggerClass_para2_indexterm1"></span><span class="indexterm" id="xml.catalog.resolverLoggerClass_para2_indexterm2"></span>)
-can easily be swapped in for environments where writing to standard error is inappropriate
-or where more control is desired. If the system logger is used, it uses the 
-<a href="http://www.slf4j.org/" class="link">SLF4J</a> API to do logging. You must configure
-your environment with an appropriate logging backend.</p><p>A third option, available only at the API level, is to instantiate the
-<code class="classname">org.xmlresolver.logging.SystemLogger</code><span class="indexterm" id="xml.catalog.resolverLoggerClass_para3_indexterm1"></span><span class="indexterm" id="xml.catalog.resolverLoggerClass_para3_indexterm2"></span> yourself and pass in the
-<code class="classname">java.util.logging.Logger</code><span class="indexterm" id="xml.catalog.resolverLoggerClass_para3_indexterm3"></span><span class="indexterm" id="xml.catalog.resolverLoggerClass_para3_indexterm4"></span> class that you would like it to use.
-</p></section><section id="xml.catalog.defaultLoggerLogLevel" class="section"><header><h3><span class="label">25<span class="sep">.</span>2</span><span class="sep">. </span>The logging level</h3></header><div xmlns="" class="proptable java"><div class="listnav"><span class="logo"><img src="/img/java.png" alt="Java logo"/></span><h3>Configuration on Java</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist java"><li><p class="simpara">Feature <code class="constant">ResolverFeature.DEFAULT_LOGGER_LOG_LEVEL</code><span class="indexterm" id="xml.catalog.defaultLoggerLogLevel_itemizedlist1_listitem1_simpara1_indexterm1"></span> (type: <code class="type">String</code>)</p></li><li><p class="simpara">System property <code class="property system">xml.catalog.defaultLoggerLogLevel</code><span class="indexterm" id="xml.catalog.defaultLoggerLogLevel_itemizedlist1_listitem2_simpara1_indexterm1"></span></p></li><li><p class="simpara">Property file property <code class="file property">default-logger-log-level</code><span class="indexterm" id="xml.catalog.defaultLoggerLogLevel_itemizedlist1_listitem3_simpara1_indexterm1"></span></p></li></ul></div><div xmlns="" class="proptable net"><div class="listnav"><span class="logo"><img src="/img/dotNET.png" alt=".NET logo"/></span><h3>Configuration on .NET</h3></div><ul xmlns="http://www.w3.org/1999/xhtml" class="itemizedlist net"><li><p class="simpara">This setting has no equivalent on .NET</p></li></ul></div><p>As a convenience, the resolver categorizes log messages and
-allows you to change the logging level for categories
-selectively.</p><p>The log categories aren’t as fine grained as the class hierarchy.
-There are five categories:</p><dl class="variablelist"><div class="varlistentry"><dt><span class="term"><code class="literal">request</code></span></dt><dd><p>Information related to the request.
-</p></dd></div><div class="varlistentry"><dt><span class="term"><code class="literal">response</code></span></dt><dd><p>Information related to the response.
-</p></dd></div><div class="varlistentry"><dt><span class="term"><code class="literal">config</code></span></dt><dd><p>Information related to configuration.
-</p></dd></div><div class="varlistentry"><dt><span class="term"><code class="literal">warning</code></span></dt><dd><p>Reported warnings.
-</p></dd></div><div class="varlistentry"><dt><span class="term"><code class="literal">error</code></span></dt><dd><p>Reported errors.
-</p></dd></div></dl><p>Any of these categories can be reported as “debug”, “info”, or
-“warn” logging messages. This is configured with the system property
-<code class="property system">xml.catalog.logging</code><span class="indexterm" id="xml.catalog.defaultLoggerLogLevel_para3_indexterm1"></span>. That property is interpreted as a comma
-delimited list of <em class="replaceable">category</em>:<em class="replaceable">level</em>
-pairs: for example, <code>request:warn,response:info</code>, would log request
-messages as warnings and response messages as info.</p><p>If you prefer to specify this in a configuration file, use the
-<code class="file property">catalog-logging</code><span class="indexterm" id="xml.catalog.defaultLoggerLogLevel_para4_indexterm1"></span> property. Note, however, that this
-setting only applies if the system property is not set. (Because the
-logging class doesn’t have access to the resolver configuration, it
-can’t apply the usual defaulting rules.)</p></section></section></section></main><nav class="bottom"><table><tr><td class="previous"><a href="ch05.html">Prev</a></td><td class="up"><a href="index.html">Up</a></td><td class="next"><a href="ch07.html">Next</a></td></tr><tr><td class="previous">Chapter <span class="label">5</span><span class="sep">. </span>Configuring an XML Resolver</td><td class="up"><a href="index.html">Home</a></td><td class="next">Chapter <span class="label">7</span><span class="sep">. </span>Change log</td></tr></table><nav class="tocopen"></nav><nav class="toc"></nav><!-- Hide ToC details from user agents that don’t support JS --><script type="text/html" class="tocopen"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABYlAAAWJQFJUiTwAAABDklEQVQ4je2UUW3EMAyGv0wDUAhlkDBIyuAYXCEclEJoGZRBUgYOgzJoGHgPW6o7rWq35+2TIkWW9duW7N+oKuM46jiOGGMAaNsW5xzee5xzn8EvRESXZUFEWNcVAFWl73v6vjcGUIAYIyEEANZ1RUSY55lSCo/HA4BhGGiahtvthnOOtm0BSCnRdd1eVAGNMeoR27aptVattbpt22FOjFGrzjsX1I7q/4q3y4xf8i/4FwT3Pcw5Y4zBWvujfQMopZBzJuf8XbCeVyWEgHOO+/2+x0SEaZpIKSEih0X2Wz6jdlxKuezaqL7qpZS0lLKbw/M4ANba3RyapiGE8OJGqOrpizGq916999VATvM/AGFn1sxsVjL5AAAAAElFTkSuQmCC" alt="[toc]"/></script><script type="text/html" class="toc"><header><span>Table of Contents</span><span class="close"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAtklEQVQ4jaWT0Q3DIAxEz52AEbyB2cDZhBEY3SNcPyqqBEwqpZaQAHNP5jBCEiJCPAiSIgAeiUe8zoveO9x9e9jd0XtfKwHA1hpHtNY49rO8u59zn4mqMiJSyFkcEVTVFQCAtdYFMotrrXN111JnyA/xCsggN2JeXmGEmaGU8l2XUmBm29fZuh0RW2PTK2SGZcamADPb3nmGmNkKOI7j1rAzJG2kcWhqkstQ1QX+/2ciKU/FJOUN6JFZYWpmK3sAAAAASUVORK5CYII=" alt="X"/></span><p class="ptoc-search"><input class="ptoc-search" placeholder="Search" style="width: 80%"/></p></header><div db-persistent-toc="persistent-toc.html" db-prefix="">Loading…</div></script></nav></body></html>
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" class="no-js">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script><title>Chapter&nbsp;6.&nbsp;What you can configure</title>
+      <link href="/css/pygments.css" rel="stylesheet">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="https://purl.org/dc/elements/1.1/" rel="schema.dc">
+      <meta name="dc.modified" content="2025-12-31T17:36:54Z">
+      <meta name="generator" content="DocBook xslTNG version 2.7.1 / SNAPSHOT / SAXON HE 12.9">
+      <link href="/css/docbook-toc.css" rel="stylesheet">
+      <link href="/css/docbook.css" rel="stylesheet" media="screen">
+      <link href="/img/xr.png" rel="icon">
+      <link href="/css/resolver.css" rel="stylesheet"><script src="/js/boxes.js" defer></script><link rel="prev" href="ch05.html">
+      <link rel="next" href="ResolverFeature/ACCESS_EXTERNAL_DOCUMENT.html">
+      <link rel="up" href="index.html">
+      <link rel="home" href="index.html"><script src="/js/persistent-toc.js" defer></script><script src="/js/copy-verbatim.js" defer></script><script src="/js/chunk-nav.js" defer></script></head>
+   <body class="chapter component">
+      <nav class="top">
+         <div><a href="index.html">Home</a> <a href="index.html">Up</a> <a href="ResolverFeature/ACCESS_EXTERNAL_DOCUMENT.html">Next</a> <a href="ch05.html">Prev</a><span class="boxes"></span></div>
+      </nav>
+      <main>
+         <section id="config-settings" db-chunk="ch06.html" db-id="d402e3901" class="chapter component">
+            <header>
+               <h2>Chapter&nbsp;<span class="label">6</span><span class="sep">.&nbsp;</span>What you can configure</h2>
+            </header>
+            <div class="db-bfs">
+               <p>This chapter lists all of the configurable settings in the XML Resolver.
+                  </p>
+               <p class="java">The following features and properties can be used to
+                  configure the resolver in Java:</p>
+               <div id="config-settings_tab1" class="formalobject java pgwide table">
+                  <header>
+                     <div class="title">Table&nbsp;<span class="label">6<span class="sep">.</span>1</span><span class="sep">.&nbsp;</span>Indexed by resolver feature</div>
+                  </header>
+                  <table>
+                     <tbody>
+                        <tr>
+                           <td class="bleft btop colsep rowsep"><a href="ResolverFeature/ACCESS_EXTERNAL_DOCUMENT.html" class="link">ResolverFeature.ACCESS_EXTERNAL_DOCUMENT</a></td>
+                           <td class="btop colsep rowsep">Specify protocol(s) allowed for URI access</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/ACCESS_EXTERNAL_ENTITY.html" class="link">ResolverFeature.ACCESS_EXTERNAL_ENTITY</a></td>
+                           <td class="colsep rowsep">Specify protocol(s) allowed for entity access</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/ALLOW_CATALOG_PI.html" class="link">ResolverFeature.ALLOW_CATALOG_PI</a></td>
+                           <td class="colsep rowsep">Obey <code class="tag tag-pi">oasis-xml-catalog</code> processing instruction</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/ALWAYS_RESOLVE.html" class="link">ResolverFeature.ALWAYS_RESOLVE</a></td>
+                           <td class="colsep rowsep">Always resolve resources</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/ARCHIVED_CATALOGS.html" class="link">ResolverFeature.ARCHIVED_CATALOGS</a></td>
+                           <td class="colsep rowsep">Support catalog files in ZIP archives (Since 3.1.0)</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/CATALOG_ADDITIONS.html" class="link">ResolverFeature.CATALOG_ADDITIONS</a></td>
+                           <td class="colsep rowsep">A list of additional catalog files</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/CATALOG_FILES.html" class="link">ResolverFeature.CATALOG_FILES</a></td>
+                           <td class="colsep rowsep">The initial list of catalog files</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/CATALOG_LOADER_CLASS.html" class="link">ResolverFeature.CATALOG_LOADER_CLASS</a></td>
+                           <td class="colsep rowsep">Catalog loader class</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/CATALOG_MANAGER.html" class="link">ResolverFeature.CATALOG_MANAGER</a></td>
+                           <td class="colsep rowsep">Access the underlying catalog manager</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/CLASSLOADER.html" class="link">ResolverFeature.CLASSLOADER</a></td>
+                           <td class="colsep rowsep">Specify an alternate class loader</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/CLASSPATH_CATALOGS.html" class="link">ResolverFeature.CLASSPATH_CATALOGS</a></td>
+                           <td class="colsep rowsep">Load catalogs from the classpath</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/FIX_WINDOWS_SYSTEM_IDENTIFIERS.html" class="link">ResolverFeature.FIX_WINDOWS_SYSTEM_IDENTIFIERS</a></td>
+                           <td class="colsep rowsep">Fix system identifiers on Windows. (Since 4.4.0)</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/LOGGER_LOG_LEVEL.html" class="link">ResolverFeature.LOGGER_LOG_LEVEL</a></td>
+                           <td class="colsep rowsep">The logging level (Since 6.0.20)</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/MASK_JAR_URIS.html" class="link">ResolverFeature.MASK_JAR_URIS</a></td>
+                           <td class="colsep rowsep">Mask jar URIs</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/MERGE_HTTPS.html" class="link">ResolverFeature.MERGE_HTTPS</a></td>
+                           <td class="colsep rowsep">Merge http: and https: URI schemes</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/PARSE_RDDL.html" class="link">ResolverFeature.PARSE_RDDL</a></td>
+                           <td class="colsep rowsep">Parse RDDL documents</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/PREFER_PROPERTY_FILE.html" class="link">ResolverFeature.PREFER_PROPERTY_FILE</a></td>
+                           <td class="colsep rowsep">Prefer property file values</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/PREFER_PUBLIC.html" class="link">ResolverFeature.PREFER_PUBLIC</a></td>
+                           <td class="colsep rowsep">Preference for public or system identifiers</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/RESOLVER_LOGGER_CLASS.html" class="link">ResolverFeature.RESOLVER_LOGGER_CLASS</a></td>
+                           <td class="colsep rowsep">The logger class</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/SAXPARSERFACTORY_CLASS.html" class="link">ResolverFeature.SAXPARSERFACTORY_CLASS</a></td>
+                           <td class="colsep rowsep">The SAX parser factory class</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/THROW_URI_EXCEPTIONS.html" class="link">ResolverFeature.THROW_URI_EXCEPTIONS</a></td>
+                           <td class="colsep rowsep">Throw URI exceptions?</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/URI_FOR_SYSTEM.html" class="link">ResolverFeature.URI_FOR_SYSTEM</a></td>
+                           <td class="colsep rowsep">Use URI entries for system resolution</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/XMLREADER_SUPPLIER.html" class="link">ResolverFeature.XMLREADER_SUPPLIER</a></td>
+                           <td class="colsep rowsep">Configure the XML Reader</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+               <div id="config-settings_tab2" class="formalobject java pgwide table">
+                  <header>
+                     <div class="title">Table&nbsp;<span class="label">6<span class="sep">.</span>2</span><span class="sep">.&nbsp;</span>Indexed by system property</div>
+                  </header>
+                  <table>
+                     <tbody>
+                        <tr>
+                           <td class="bleft btop colsep rowsep"><a href="ResolverFeature/ACCESS_EXTERNAL_DOCUMENT.html" class="link">xml.catalog.accessExternalDocument</a></td>
+                           <td class="btop colsep rowsep">Specify protocol(s) allowed for URI access</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/ACCESS_EXTERNAL_ENTITY.html" class="link">xml.catalog.accessExternalEntity</a></td>
+                           <td class="colsep rowsep">Specify protocol(s) allowed for entity access</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/CATALOG_ADDITIONS.html" class="link">xml.catalog.additions</a></td>
+                           <td class="colsep rowsep">A list of additional catalog files</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/ALLOW_CATALOG_PI.html" class="link">xml.catalog.allowPI</a></td>
+                           <td class="colsep rowsep">Obey <code class="tag tag-pi">oasis-xml-catalog</code> processing instruction</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/ALWAYS_RESOLVE.html" class="link">xml.catalog.alwaysResolve</a></td>
+                           <td class="colsep rowsep">Always resolve resources</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/ARCHIVED_CATALOGS.html" class="link">xml.catalog.archivedCatalogs</a></td>
+                           <td class="colsep rowsep">Support catalog files in ZIP archives (Since 3.1.0)</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/CATALOG_LOADER_CLASS.html" class="link">xml.catalog.catalogLoaderClass</a></td>
+                           <td class="colsep rowsep">Catalog loader class</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/CLASSPATH_CATALOGS.html" class="link">xml.catalog.classpathCatalogs</a></td>
+                           <td class="colsep rowsep">Load catalogs from the classpath</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/CATALOG_FILES.html" class="link">xml.catalog.files</a></td>
+                           <td class="colsep rowsep">The initial list of catalog files</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/FIX_WINDOWS_SYSTEM_IDENTIFIERS.html" class="link">xml.catalog.fixWindowsSystemIdentifiers</a></td>
+                           <td class="colsep rowsep">Fix system identifiers on Windows. (Since 4.4.0)</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/LOGGER_LOG_LEVEL.html" class="link">xml.catalog.loggerLogLevel</a></td>
+                           <td class="colsep rowsep">The logging level (Since 6.0.20)</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/MASK_JAR_URIS.html" class="link">xml.catalog.maskJarUris</a></td>
+                           <td class="colsep rowsep">Mask jar URIs</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/MERGE_HTTPS.html" class="link">xml.catalog.mergeHttps</a></td>
+                           <td class="colsep rowsep">Merge http: and https: URI schemes</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/PARSE_RDDL.html" class="link">xml.catalog.parseRddl</a></td>
+                           <td class="colsep rowsep">Parse RDDL documents</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/PREFER_PUBLIC.html" class="link">xml.catalog.prefer</a></td>
+                           <td class="colsep rowsep">Preference for public or system identifiers</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/PREFER_PROPERTY_FILE.html" class="link">xml.catalog.preferPropertyFile</a></td>
+                           <td class="colsep rowsep">Prefer property file values</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/RESOLVER_LOGGER_CLASS.html" class="link">xml.catalog.resolverLoggerClass</a></td>
+                           <td class="colsep rowsep">The logger class</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/SAXPARSERFACTORY_CLASS.html" class="link">xml.catalog.saxParserFactoryClass</a></td>
+                           <td class="colsep rowsep">The SAX parser factory class</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/THROW_URI_EXCEPTIONS.html" class="link">xml.catalog.throwUriExceptions</a></td>
+                           <td class="colsep rowsep">Throw URI exceptions?</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/URI_FOR_SYSTEM.html" class="link">xml.catalog.uriForSystem</a></td>
+                           <td class="colsep rowsep">Use URI entries for system resolution</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+               <div id="config-settings_tab3" class="formalobject java pgwide table">
+                  <header>
+                     <div class="title">Table&nbsp;<span class="label">6<span class="sep">.</span>3</span><span class="sep">.&nbsp;</span>Indexed by file property</div>
+                  </header>
+                  <table>
+                     <tbody>
+                        <tr>
+                           <td class="bleft btop colsep rowsep"><a href="ResolverFeature/ACCESS_EXTERNAL_DOCUMENT.html" class="link">access-external-document</a></td>
+                           <td class="btop colsep rowsep">Specify protocol(s) allowed for URI access</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/ACCESS_EXTERNAL_ENTITY.html" class="link">access-external-entity</a></td>
+                           <td class="colsep rowsep">Specify protocol(s) allowed for entity access</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/ALLOW_CATALOG_PI.html" class="link">allow-oasis-xml-catalog-pi</a></td>
+                           <td class="colsep rowsep">Obey <code class="tag tag-pi">oasis-xml-catalog</code> processing instruction</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/ALWAYS_RESOLVE.html" class="link">always-resolve</a></td>
+                           <td class="colsep rowsep">Always resolve resources</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/ARCHIVED_CATALOGS.html" class="link">archived-catalogs</a></td>
+                           <td class="colsep rowsep">Support catalog files in ZIP archives (Since 3.1.0)</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/CATALOG_ADDITIONS.html" class="link">catalog-additions</a></td>
+                           <td class="colsep rowsep">A list of additional catalog files</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/CATALOG_LOADER_CLASS.html" class="link">catalog-loader-class</a></td>
+                           <td class="colsep rowsep">Catalog loader class</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/CATALOG_FILES.html" class="link">catalogs</a></td>
+                           <td class="colsep rowsep">The initial list of catalog files</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/CLASSPATH_CATALOGS.html" class="link">classpath-catalogs</a></td>
+                           <td class="colsep rowsep">Load catalogs from the classpath</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/FIX_WINDOWS_SYSTEM_IDENTIFIERS.html" class="link">fix-windows-system-identifiers</a></td>
+                           <td class="colsep rowsep">Fix system identifiers on Windows. (Since 4.4.0)</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/LOGGER_LOG_LEVEL.html" class="link">logger-log-level</a></td>
+                           <td class="colsep rowsep">The logging level (Since 6.0.20)</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/MASK_JAR_URIS.html" class="link">mask-jar-uris</a></td>
+                           <td class="colsep rowsep">Mask jar URIs</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/MERGE_HTTPS.html" class="link">merge-https</a></td>
+                           <td class="colsep rowsep">Merge http: and https: URI schemes</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/PARSE_RDDL.html" class="link">parse-rddl</a></td>
+                           <td class="colsep rowsep">Parse RDDL documents</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/PREFER_PUBLIC.html" class="link">prefer</a></td>
+                           <td class="colsep rowsep">Preference for public or system identifiers</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/PREFER_PROPERTY_FILE.html" class="link">prefer-property-file</a></td>
+                           <td class="colsep rowsep">Prefer property file values</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/relative-catalogs.html" class="link">relative-catalogs</a></td>
+                           <td class="colsep rowsep">Support relative catalog paths</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/RESOLVER_LOGGER_CLASS.html" class="link">resolver-logger-class</a></td>
+                           <td class="colsep rowsep">The logger class</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/SAXPARSERFACTORY_CLASS.html" class="link">saxparserfactory-class</a></td>
+                           <td class="colsep rowsep">The SAX parser factory class</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/THROW_URI_EXCEPTIONS.html" class="link">throw-uri-exceptions</a></td>
+                           <td class="colsep rowsep">Throw URI exceptions?</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/URI_FOR_SYSTEM.html" class="link">uri-for-system</a></td>
+                           <td class="colsep rowsep">Use URI entries for system resolution</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+               <p class="net">The following features, properties, and environment variables
+                  can be used to configure the resolver in .NET:</p>
+               <div id="config-settings_tab4" class="formalobject net pgwide table">
+                  <header>
+                     <div class="title">Table&nbsp;<span class="label">6<span class="sep">.</span>4</span><span class="sep">.&nbsp;</span>Indexed by resolver feature</div>
+                  </header>
+                  <table>
+                     <tbody>
+                        <tr>
+                           <td class="bleft btop colsep rowsep"><a href="ResolverFeature/ACCESS_EXTERNAL_DOCUMENT.html" class="link">ResolverFeature.ACCESS_EXTERNAL_DOCUMENT</a></td>
+                           <td class="btop colsep rowsep">Specify protocol(s) allowed for URI access</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/ACCESS_EXTERNAL_ENTITY.html" class="link">ResolverFeature.ACCESS_EXTERNAL_ENTITY</a></td>
+                           <td class="colsep rowsep">Specify protocol(s) allowed for entity access</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/ALLOW_CATALOG_PI.html" class="link">ResolverFeature.ALLOW_CATALOG_PI</a></td>
+                           <td class="colsep rowsep">Obey <code class="tag tag-pi">oasis-xml-catalog</code> processing instruction</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/ARCHIVED_CATALOGS.html" class="link">ResolverFeature.ARCHIVED_CATALOGS</a></td>
+                           <td class="colsep rowsep">Support catalog files in ZIP archives (Since 3.1.0)</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/ASSEMBLY_CATALOGS.html" class="link">ResolverFeature.ASSEMBLY_CATALOGS</a></td>
+                           <td class="colsep rowsep">Catalogs to load from assemblies</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/CATALOG_ADDITIONS.html" class="link">ResolverFeature.CATALOG_ADDITIONS</a></td>
+                           <td class="colsep rowsep">A list of additional catalog files</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/CATALOG_FILES.html" class="link">ResolverFeature.CATALOG_FILES</a></td>
+                           <td class="colsep rowsep">The initial list of catalog files</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/CATALOG_LOADER_CLASS.html" class="link">ResolverFeature.CATALOG_LOADER_CLASS</a></td>
+                           <td class="colsep rowsep">Catalog loader class</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/CATALOG_MANAGER.html" class="link">ResolverFeature.CATALOG_MANAGER</a></td>
+                           <td class="colsep rowsep">Access the underlying catalog manager</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/FIX_WINDOWS_SYSTEM_IDENTIFIERS.html" class="link">ResolverFeature.FIX_WINDOWS_SYSTEM_IDENTIFIERS</a></td>
+                           <td class="colsep rowsep">Fix system identifiers on Windows. (Since 4.4.0)</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/MERGE_HTTPS.html" class="link">ResolverFeature.MERGE_HTTPS</a></td>
+                           <td class="colsep rowsep">Merge http: and https: URI schemes</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/PARSE_RDDL.html" class="link">ResolverFeature.PARSE_RDDL</a></td>
+                           <td class="colsep rowsep">Parse RDDL documents</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/PREFER_PROPERTY_FILE.html" class="link">ResolverFeature.PREFER_PROPERTY_FILE</a></td>
+                           <td class="colsep rowsep">Prefer property file values</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/PREFER_PUBLIC.html" class="link">ResolverFeature.PREFER_PUBLIC</a></td>
+                           <td class="colsep rowsep">Preference for public or system identifiers</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/URI_FOR_SYSTEM.html" class="link">ResolverFeature.URI_FOR_SYSTEM</a></td>
+                           <td class="colsep rowsep">Use URI entries for system resolution</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/USE_DATA_ASSEMBLY.html" class="link">ResolverFeature.USE_DATA_ASSEMBLY</a></td>
+                           <td class="colsep rowsep">Load the XmlResolverData assembly catalog?</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+               <div id="config-settings_tab5" class="formalobject net pgwide table">
+                  <header>
+                     <div class="title">Table&nbsp;<span class="label">6<span class="sep">.</span>5</span><span class="sep">.&nbsp;</span>Indexed by file property</div>
+                  </header>
+                  <table>
+                     <tbody>
+                        <tr>
+                           <td class="bleft btop colsep rowsep"><a href="ResolverFeature/ACCESS_EXTERNAL_DOCUMENT.html" class="link">accessExternalDocument</a></td>
+                           <td class="btop colsep rowsep">Specify protocol(s) allowed for URI access</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/ACCESS_EXTERNAL_ENTITY.html" class="link">accessExternalEntity</a></td>
+                           <td class="colsep rowsep">Specify protocol(s) allowed for entity access</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/ALLOW_CATALOG_PI.html" class="link">allowOasisXmlCatalogPi</a></td>
+                           <td class="colsep rowsep">Obey <code class="tag tag-pi">oasis-xml-catalog</code> processing instruction</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/ARCHIVED_CATALOGS.html" class="link">archivedCatalogs</a></td>
+                           <td class="colsep rowsep">Support catalog files in ZIP archives (Since 3.1.0)</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/CATALOG_ADDITIONS.html" class="link">catalogAdditions</a></td>
+                           <td class="colsep rowsep">A list of additional catalog files</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/CATALOG_LOADER_CLASS.html" class="link">catalogLoaderClass</a></td>
+                           <td class="colsep rowsep">Catalog loader class</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/CATALOG_FILES.html" class="link">catalogs</a></td>
+                           <td class="colsep rowsep">The initial list of catalog files</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/FIX_WINDOWS_SYSTEM_IDENTIFIERS.html" class="link">fixWindowsSystemIdentifiers</a></td>
+                           <td class="colsep rowsep">Fix system identifiers on Windows. (Since 4.4.0)</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/MERGE_HTTPS.html" class="link">mergeHttps</a></td>
+                           <td class="colsep rowsep">Merge http: and https: URI schemes</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/PARSE_RDDL.html" class="link">parseRddl</a></td>
+                           <td class="colsep rowsep">Parse RDDL documents</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/PREFER_PUBLIC.html" class="link">prefer</a></td>
+                           <td class="colsep rowsep">Preference for public or system identifiers</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/PREFER_PROPERTY_FILE.html" class="link">preferPropertyFile</a></td>
+                           <td class="colsep rowsep">Prefer property file values</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/relative-catalogs.html" class="link">relativeCatalogs</a></td>
+                           <td class="colsep rowsep">Support relative catalog paths</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/URI_FOR_SYSTEM.html" class="link">uriForSystem</a></td>
+                           <td class="colsep rowsep">Use URI entries for system resolution</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/USE_DATA_ASSEMBLY.html" class="link">useDataAssembly</a></td>
+                           <td class="colsep rowsep">Load the XmlResolverData assembly catalog?</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+               <div id="config-settings_tab6" class="formalobject net pgwide table">
+                  <header>
+                     <div class="title">Table&nbsp;<span class="label">6<span class="sep">.</span>6</span><span class="sep">.&nbsp;</span>Indexed by environment variable</div>
+                  </header>
+                  <table>
+                     <tbody>
+                        <tr>
+                           <td class="bleft btop colsep rowsep"><a href="ResolverFeature/ACCESS_EXTERNAL_DOCUMENT.html" class="link">XML_CATALOG_ACCESS_EXTERNAL_DOCUMENT</a></td>
+                           <td class="btop colsep rowsep">Specify protocol(s) allowed for URI access</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/ACCESS_EXTERNAL_ENTITY.html" class="link">XML_CATALOG_ACCESS_EXTERNAL_ENTITY</a></td>
+                           <td class="colsep rowsep">Specify protocol(s) allowed for entity access</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/CATALOG_ADDITIONS.html" class="link">XML_CATALOG_ADDITIONS</a></td>
+                           <td class="colsep rowsep">A list of additional catalog files</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/ALLOW_CATALOG_PI.html" class="link">XML_CATALOG_ALLOW_PI</a></td>
+                           <td class="colsep rowsep">Obey <code class="tag tag-pi">oasis-xml-catalog</code> processing instruction</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/ARCHIVED_CATALOGS.html" class="link">XML_CATALOG_ARCHIVED_CATALOGS</a></td>
+                           <td class="colsep rowsep">Support catalog files in ZIP archives (Since 3.1.0)</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/CATALOG_FILES.html" class="link">XML_CATALOG_FILES</a></td>
+                           <td class="colsep rowsep">The initial list of catalog files</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/FIX_WINDOWS_SYSTEM_IDENTIFIERS.html" class="link">XML_CATALOG_FIX_WINDOWS_SYSTEM_IDENTIFIERS</a></td>
+                           <td class="colsep rowsep">Fix system identifiers on Windows. (Since 4.4.0)</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/CATALOG_LOADER_CLASS.html" class="link">XML_CATALOG_LOADER_CLASS</a></td>
+                           <td class="colsep rowsep">Catalog loader class</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/MERGE_HTTPS.html" class="link">XML_CATALOG_MERGE_HTTPS</a></td>
+                           <td class="colsep rowsep">Merge http: and https: URI schemes</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/PARSE_RDDL.html" class="link">XML_CATALOG_PARSE_RDDL</a></td>
+                           <td class="colsep rowsep">Parse RDDL documents</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/PREFER_PUBLIC.html" class="link">XML_CATALOG_PREFER</a></td>
+                           <td class="colsep rowsep">Preference for public or system identifiers</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/PREFER_PROPERTY_FILE.html" class="link">XML_CATALOG_PREFER_PROPERTY_FILE</a></td>
+                           <td class="colsep rowsep">Prefer property file values</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/URI_FOR_SYSTEM.html" class="link">XML_CATALOG_URI_FOR_SYSTEM</a></td>
+                           <td class="colsep rowsep">Use URI entries for system resolution</td>
+                        </tr>
+                        <tr>
+                           <td class="bleft colsep rowsep"><a href="ResolverFeature/USE_DATA_ASSEMBLY.html" class="link">XML_CATALOG_USE_DATA_ASSEMBLY</a></td>
+                           <td class="colsep rowsep">Load the XmlResolverData assembly catalog?</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </section>
+      </main>
+      <nav class="bottom">
+         <table>
+            <tr>
+               <td class="previous"><a href="ch05.html">Prev</a></td>
+               <td class="up"><a href="index.html">Up</a></td>
+               <td class="next"><a href="ResolverFeature/ACCESS_EXTERNAL_DOCUMENT.html">Next</a></td>
+            </tr>
+            <tr>
+               <td class="previous">Chapter&nbsp;<span class="label">5</span><span class="sep">.&nbsp;</span>Configuring an XML Resolver</td>
+               <td class="up"><a href="index.html">Home</a></td>
+               <td class="next"><span class="label">1</span><span class="sep">.&nbsp;</span>Specify protocol(s) allowed for URI access</td>
+            </tr>
+         </table>
+         <nav class="tocopen"></nav>
+         <nav class="toc"></nav>
+         <!-- Hide ToC details from user agents that don’t support JS --><script type="text/html" class="tocopen"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABYlAAAWJQFJUiTwAAABDklEQVQ4je2UUW3EMAyGv0wDUAhlkDBIyuAYXCEclEJoGZRBUgYOgzJoGHgPW6o7rWq35+2TIkWW9duW7N+oKuM46jiOGGMAaNsW5xzee5xzn8EvRESXZUFEWNcVAFWl73v6vjcGUIAYIyEEANZ1RUSY55lSCo/HA4BhGGiahtvthnOOtm0BSCnRdd1eVAGNMeoR27aptVattbpt22FOjFGrzjsX1I7q/4q3y4xf8i/4FwT3Pcw5Y4zBWvujfQMopZBzJuf8XbCeVyWEgHOO+/2+x0SEaZpIKSEih0X2Wz6jdlxKuezaqL7qpZS0lLKbw/M4ANba3RyapiGE8OJGqOrpizGq916999VATvM/AGFn1sxsVjL5AAAAAElFTkSuQmCC" alt="[toc]"></script><script type="text/html" class="toc"><header><span>Table of Contents</span><span class="close"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAtklEQVQ4jaWT0Q3DIAxEz52AEbyB2cDZhBEY3SNcPyqqBEwqpZaQAHNP5jBCEiJCPAiSIgAeiUe8zoveO9x9e9jd0XtfKwHA1hpHtNY49rO8u59zn4mqMiJSyFkcEVTVFQCAtdYFMotrrXN111JnyA/xCsggN2JeXmGEmaGU8l2XUmBm29fZuh0RW2PTK2SGZcamADPb3nmGmNkKOI7j1rAzJG2kcWhqkstQ1QX+/2ciKU/FJOUN6JFZYWpmK3sAAAAASUVORK5CYII=" alt="X"></span><p class="ptoc-search"><input class="ptoc-search" placeholder="Search" style="width: 80%"></p></header><div db-persistent-toc="persistent-toc.html" db-prefix="">Loading…</div></script></nav>
+   </body>
+</html>

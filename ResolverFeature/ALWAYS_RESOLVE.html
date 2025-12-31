@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" class="no-js">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script><title>4.&nbsp;Always resolve resources</title>
+      <link href="/css/pygments.css" rel="stylesheet">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="https://purl.org/dc/elements/1.1/" rel="schema.dc">
+      <meta name="dc.modified" content="2025-12-31T17:36:54Z">
+      <meta name="generator" content="DocBook xslTNG version 2.7.1 / SNAPSHOT / SAXON HE 12.9">
+      <link href="/css/docbook-toc.css" rel="stylesheet">
+      <link href="/css/docbook.css" rel="stylesheet" media="screen">
+      <link href="/img/xr.png" rel="icon">
+      <link href="/css/resolver.css" rel="stylesheet"><script src="/js/boxes.js" defer></script><link rel="prev" href="ALLOW_CATALOG_PI.html">
+      <link rel="next" href="ARCHIVED_CATALOGS.html">
+      <link rel="up" href="../ch06.html">
+      <link rel="home" href="../index.html"><script src="/js/persistent-toc.js" defer></script><script src="/js/chunk-nav.js" defer></script></head>
+   <body class="section">
+      <nav class="top">
+         <div><a href="../index.html">Home</a> <a href="../ch06.html">Up</a> <a href="ARCHIVED_CATALOGS.html">Next</a> <a href="ALLOW_CATALOG_PI.html">Prev</a><span class="boxes"></span></div>
+      </nav>
+      <main>
+         <section id="xml.catalog.alwaysResolve" db-chunk="ResolverFeature/ALWAYS_RESOLVE.html" db-id="d402e4802" class="section">
+            <header>
+               <h2><span class="label">4</span><span class="sep">.&nbsp;</span>Always resolve resources</h2>
+            </header>
+            <div class="proptable java">
+               <div class="listnav"><span class="logo"><img src="../img/java.png" alt="Java logo"></span><h3>Configuration on Java</h3>
+               </div>
+               <ul class="itemizedlist java">
+                  <li>
+                     <p class="simpara">Feature <code class="constant">ResolverFeature.ALWAYS_RESOLVE</code> (type: <code class="type">Boolean</code>)</p>
+                  </li>
+                  <li>
+                     <p class="simpara">System property <code class="property system">xml.catalog.alwaysResolve</code></p>
+                  </li>
+                  <li>
+                     <p class="simpara">Property file property <code class="file property">always-resolve</code></p>
+                  </li>
+               </ul>
+            </div>
+            <div class="proptable net">
+               <div class="listnav"><span class="logo"><img src="../img/dotNET.png" alt=".NET logo"></span><h3>Configuration on .NET</h3>
+               </div>
+               <ul class="itemizedlist net">
+                  <li>
+                     <p class="simpara">This setting has no equivalent on .NET</p>
+                  </li>
+               </ul>
+            </div>
+            <p>The standard contract for the Java resolver APIs is that they
+               return <code>null</code> if the resolver doesn’t find a match. But on
+               the modern web, lots of URIs redirect (from <code>http:</code> to
+               <code>https:</code> especially), and some parsers don’t follow
+               redirects. That causes the parse to fail in ways that may not be easy
+               for the user to fix.</p>
+            <p>Starting in version 5.0.0, the resolver will always resolve resources,
+               follow redirects, and return a stream. This deprives the parser of the option to try
+               something else, but means that redirects don’t cause the parse to file.</p>
+            <p>This feature is <em>enabled</em> by default. If you
+               set it to false, the resolver will return <code>null</code> if the
+               resource isn’t found in the catalog.</p>
+            <p>I don’t know of any parsers that try anything else after the
+               resolver has failed except loading the resource, so I expect this to
+               be an improvement for users. If your implementation wants to explicitly just
+               check the catalog, at the Java API level, you can use the
+               <code>CatalogManager</code> API. That’s the same API the
+               resolver classes use to locate resources in the catalog.</p>
+         </section>
+      </main>
+      <nav class="bottom">
+         <table>
+            <tr>
+               <td class="previous"><a href="ALLOW_CATALOG_PI.html">Prev</a></td>
+               <td class="up"><a href="../ch06.html">Up</a></td>
+               <td class="next"><a href="ARCHIVED_CATALOGS.html">Next</a></td>
+            </tr>
+            <tr>
+               <td class="previous"><span class="label">3</span><span class="sep">.&nbsp;</span>Obey <code class="tag tag-pi">oasis-xml-catalog</code> processing instruction</td>
+               <td class="up"><a href="../index.html">Home</a></td>
+               <td class="next"><span class="label">5</span><span class="sep">.&nbsp;</span>Support catalog files in ZIP archives</td>
+            </tr>
+         </table>
+         <nav class="tocopen"></nav>
+         <nav class="toc"></nav>
+         <!-- Hide ToC details from user agents that don’t support JS --><script type="text/html" class="tocopen"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABYlAAAWJQFJUiTwAAABDklEQVQ4je2UUW3EMAyGv0wDUAhlkDBIyuAYXCEclEJoGZRBUgYOgzJoGHgPW6o7rWq35+2TIkWW9duW7N+oKuM46jiOGGMAaNsW5xzee5xzn8EvRESXZUFEWNcVAFWl73v6vjcGUIAYIyEEANZ1RUSY55lSCo/HA4BhGGiahtvthnOOtm0BSCnRdd1eVAGNMeoR27aptVattbpt22FOjFGrzjsX1I7q/4q3y4xf8i/4FwT3Pcw5Y4zBWvujfQMopZBzJuf8XbCeVyWEgHOO+/2+x0SEaZpIKSEih0X2Wz6jdlxKuezaqL7qpZS0lLKbw/M4ANba3RyapiGE8OJGqOrpizGq916999VATvM/AGFn1sxsVjL5AAAAAElFTkSuQmCC" alt="[toc]"></script><script type="text/html" class="toc"><header><span>Table of Contents</span><span class="close"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAtklEQVQ4jaWT0Q3DIAxEz52AEbyB2cDZhBEY3SNcPyqqBEwqpZaQAHNP5jBCEiJCPAiSIgAeiUe8zoveO9x9e9jd0XtfKwHA1hpHtNY49rO8u59zn4mqMiJSyFkcEVTVFQCAtdYFMotrrXN111JnyA/xCsggN2JeXmGEmaGU8l2XUmBm29fZuh0RW2PTK2SGZcamADPb3nmGmNkKOI7j1rAzJG2kcWhqkstQ1QX+/2ciKU/FJOUN6JFZYWpmK3sAAAAASUVORK5CYII=" alt="X"></span><p class="ptoc-search"><input class="ptoc-search" placeholder="Search" style="width: 80%"></p></header><div db-persistent-toc="persistent-toc.html" db-prefix="../">Loading…</div></script></nav>
+   </body>
+</html>
