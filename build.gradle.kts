@@ -12,7 +12,7 @@ val xmlCalabashVersion = project.properties["xmlCalabashVersion"].toString()
 val docbookVersion = project.properties["docbookVersion"].toString()
 
 plugins {
-  id("org.docbook.xsltng-gradle") version "0.5.0"
+  id("org.docbook.xsltng-gradle") version "0.6.0"
 }
 
 val transformation by configurations.creating
