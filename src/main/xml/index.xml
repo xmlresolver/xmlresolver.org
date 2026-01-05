@@ -443,6 +443,20 @@ it might look like this:</para>
 <revhistory>
 <?db revhistory-style="list"?>
 <revision>
+<revnumber>6.0.21</revnumber>
+<date>2026-01-02</date>
+<revdescription>
+<para>The 6.0.21 release is a maintance patch on the 6.x branch.</para>
+<itemizedlist role="java">
+<listitem>
+<para>Log “file not found” errors at the debug level, not the warn or error level. A
+catalog path that refers to non-existent catalogs (for example, <filename>./catalog.xml</filename>)
+is fairly common and the warnings are usually spurious.</para>
+</listitem>
+</itemizedlist>
+</revdescription>
+</revision>
+<revision>
 <revnumber>6.0.20</revnumber>
 <date>2025-12-31</date>
 <revdescription>
