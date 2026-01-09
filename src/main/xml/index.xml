@@ -444,6 +444,21 @@ it might look like this:</para>
 <?db revhistory-style="list"?>
 <revision>
 <revnumber>6.0.21</revnumber>
+<date>2026-01-09</date>
+<revdescription>
+<para>The 6.0.21 release is a maintance patch on the 6.x branch.</para>
+<itemizedlist role="net">
+<listitem>
+<para>Updated target frameworks to include <code>netstandard2.0</code> for broader compatibility.</para>
+</listitem>
+<listitem>
+<para>A number of build and test improvements; building now requires .NET 10.</para>
+</listitem>
+</itemizedlist>
+</revdescription>
+</revision>
+<revision>
+<revnumber>6.0.21</revnumber>
 <date>2026-01-02</date>
 <revdescription>
 <para>The 6.0.21 release is a maintance patch on the 6.x branch.</para>
