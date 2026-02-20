@@ -443,6 +443,28 @@ it might look like this:</para>
 <revhistory>
 <?db revhistory-style="list"?>
 <revision>
+<revnumber>6.0.22</revnumber>
+<date>2026-02-20</date>
+<revdescription>
+<para>The 6.0.22 release is a maintance patch on the 6.x branch.</para>
+<itemizedlist role="net">
+<listitem>
+<para>Fixed
+<link xlink:href="https://github.com/xmlresolver/xmlresolvercs/issues/95">issue #95</link>;
+the resource response now correctly distinguishes between the URI and the
+resolved URI.</para>
+</listitem>
+<listitem>
+<para>Fixed
+<link xlink:href="https://github.com/xmlresolver/xmlresolvercs/issues/96">issue #96</link>;
+the resource response now includes the content type and encoding of the response when the
+resource was retrieved over HTTP.
+</para>
+</listitem>
+</itemizedlist>
+</revdescription>
+</revision>
+<revision>
 <revnumber>6.0.21</revnumber>
 <date>2026-01-09</date>
 <revdescription>
