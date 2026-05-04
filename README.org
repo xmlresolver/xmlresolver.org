@@ -1,5 +1,5 @@
-#+title: README.org
-#+options: toc:nil
-#+date: 2022-02-11
+Moved to Codeberg
 
-This repository contains the sources for [[xmlresolver.org]].
+To follow this project, please see https://codeberg.org/XmlResolver/xmlresolver.org
+
+To retrieve the last state of this project on GitHub, roll back one commit.
